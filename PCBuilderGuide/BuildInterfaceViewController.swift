@@ -10,6 +10,7 @@ import UIKit
 
 class BuildInterfaceViewController: UIViewController, BuildInterfaceViewDelegate {
     
+    private var _partsList: PartsList = PartsList.Instance
     private var buildInterfaceView: BuildInterfaceView { return view as! BuildInterfaceView }
     //private var buildInterfaceView: BuildInterfaceView { return view as! BuildInterfaceView }
     
@@ -31,6 +32,7 @@ class BuildInterfaceViewController: UIViewController, BuildInterfaceViewDelegate
     func buttonTouched(partType: String) {
         print("Button was touched: " + "\(partType)")
         let navigationFilterViewController: NavigationFilterInterfaceViewController = NavigationFilterInterfaceViewController(partType: partType)!
+        navigationFilterViewController.parts = _partsList.listOfAllParts.getListOfPartsByName(partType: "CPU") as [AnyObject]
         
         navigationController?.pushViewController(navigationFilterViewController, animated: true)
     }

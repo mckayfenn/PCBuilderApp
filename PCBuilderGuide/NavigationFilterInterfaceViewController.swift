@@ -12,8 +12,18 @@ class NavigationFilterInterfaceViewController: UIViewController, NavigationFilte
     
     private var navigationFilterView: NavigationFilterInterfaceView { return view as! NavigationFilterInterfaceView }
     
-
+    private var _parts: [AnyObject] = []
+    public var parts: [AnyObject] {
+        get { return _parts }
+        set { _parts = newValue }
+    }
     
+    private var _partsList: PartsList = PartsList.Instance
+    
+    
+    
+    
+    // Shouldn't need these any more
     private var CPU: [String] = ["Ryzen 7", "Ryzen 5", "Core i7", "Core i5"]
     private var Ryzen7: [String] = ["R7 1800x", "R7 1700x", "R7 1700"]
     private var Ryzen5: [String] = ["R5 1600", "R5 1500x", "R5 1500"]
@@ -41,7 +51,7 @@ class NavigationFilterInterfaceViewController: UIViewController, NavigationFilte
     
     override func loadView() {
         view = NavigationFilterInterfaceView()
-        self.edgesForExtendedLayout = [] // don't remember what this does
+        self.edgesForExtendedLayout = [] // don't remember what this does but I think it's needed
         
         navigationFilterView.delegate = self
     }

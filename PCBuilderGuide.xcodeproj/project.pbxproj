@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A1E0A351E9D6CEF002365AF /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A1E0A341E9D6CEF002365AF /* Default-568h@2x.png */; };
 		0A8688961E9C6862005D1B07 /* Parts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8688951E9C6862005D1B07 /* Parts.swift */; };
 		0A8688981E9C6E13005D1B07 /* PartsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8688971E9C6E13005D1B07 /* PartsList.swift */; };
 		0AF257471E982CCA00D9F312 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF257461E982CCA00D9F312 /* AppDelegate.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A1E0A341E9D6CEF002365AF /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		0A8688951E9C6862005D1B07 /* Parts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parts.swift; sourceTree = "<group>"; };
 		0A8688971E9C6E13005D1B07 /* PartsList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartsList.swift; sourceTree = "<group>"; };
 		0AF257431E982CCA00D9F312 /* PCBuilderGuide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PCBuilderGuide.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -46,6 +48,7 @@
 		0AF2573A1E982CC900D9F312 = {
 			isa = PBXGroup;
 			children = (
+				0A1E0A341E9D6CEF002365AF /* Default-568h@2x.png */,
 				0AF257451E982CCA00D9F312 /* PCBuilderGuide */,
 				0AF257441E982CCA00D9F312 /* Products */,
 			);
@@ -136,6 +139,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0AF2574E1E982CCA00D9F312 /* Assets.xcassets in Resources */,
+				0A1E0A351E9D6CEF002365AF /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

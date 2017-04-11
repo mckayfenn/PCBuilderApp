@@ -17,6 +17,9 @@ class PartsList {
     }
     
     private var _listOfParts: Parts? = nil
+    public var listOfAllParts: Parts {
+        get { return _listOfParts! }
+    }
 
     public func loadParts() {
         
@@ -69,11 +72,11 @@ class PartsList {
 
         _listOfParts = Parts(dictionary: partsDictionaries)
         
-        var data = _listOfParts?.getListOfPartsByName(partType: "Motherboard")
-        
-        var cpu = _listOfParts?.processors.last
-        
-        var compatibleMobos = _listOfParts?.getCompatiblePartsTo(partType: "Motherboard", compatibleTo: cpu!)
+//        var data = _listOfParts?.getListOfPartsByName(partType: "Motherboard")
+//        
+//        var cpu = _listOfParts?.processors.last
+//        
+//        var compatibleMobos = _listOfParts?.getCompatiblePartsTo(partType: "Motherboard", compatibleTo: cpu!)
         
         NSLog("finish load")
         

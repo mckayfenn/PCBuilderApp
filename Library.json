@@ -7,7 +7,10 @@
       "Socket": "LGA 1151",
       "Description": "This is a description",
       "Specs": "This is specs",
-      "Link" : "https://www.newegg.com/Product/Product.aspx?Item=N82E16819117726&cm_re=i7_7700k-_-19-117-726-_-Product"
+      "Link" : "https://www.newegg.com/Product/Product.aspx?Item=N82E16819117726&cm_re=i7_7700k-_-19-117-726-_-Product",
+      "Family": “Core i7",
+      "Generation": "Kabylake",
+      "Price": "350"
     },
     {
       "Manufacturer": "AMD",
@@ -15,7 +18,10 @@
       "Socket": "AM4",
       "Description": "This is a description",
       "Specs": "This is specs",
-      "Link" : "https://www.newegg.com/Product/Product.aspx?Item=N82E16819117726&cm_re=i7_7700k-_-19-117-726-_-Product"
+      "Link" : "https://www.newegg.com/Product/Product.aspx?Item=N82E16819117726&cm_re=i7_7700k-_-19-117-726-_-Product",
+      "Family:": "Ryzen 7",
+      "Generation": "Summit Ridge",
+      "Price": "330"
     }
   ],
   

@@ -35,7 +35,8 @@ class PartsList {
 //        }
         
         // ------- Finally just hardcoded the desktop path ------ s
-        let jsonData: Data = try! Data(contentsOf: URL(fileURLWithPath: "/Users/Authenticated User/Desktop/Library.json"))
+        let jsonData: Data = try! Data(contentsOf: URL(fileURLWithPath: "/Users/Authenticated User/Desktop/PCBuilderApp/Library.json"))
+        //let jsonData: Data = try! Data(contentsOf: URL(string: "https://www.reddit.com/r/buildapc.json")!)
         partsDictionaries = try! JSONSerialization.jsonObject(with: jsonData, options: []) as! NSDictionary
         
 //        if let path = Bundle.main.path(forResource: "Library", ofType: "json") {

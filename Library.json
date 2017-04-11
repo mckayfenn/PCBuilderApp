@@ -1,0 +1,39 @@
+{
+  "Processors": 
+  [
+    {
+      "Manufacturer": "Intel",
+      "Name": "i7 7700k",
+      "Socket": "LGA 1151",
+      "Description": "This is a description",
+      "Specs": "This is specs",
+      "Link" : "https://www.newegg.com/Product/Product.aspx?Item=N82E16819117726&cm_re=i7_7700k-_-19-117-726-_-Product"
+    },
+    {
+      "Manufacturer": "AMD",
+      "Name": "R7 1700",
+      "Socket": "AM4",
+      "Description": "This is a description",
+      "Specs": "This is specs",
+      "Link" : "https://www.newegg.com/Product/Product.aspx?Item=N82E16819117726&cm_re=i7_7700k-_-19-117-726-_-Product"
+    }
+  ],
+  
+  "Motherboards": 
+  [
+    {
+      "Manufacturer": "MSI",
+      "Name": "MSI B150 Gaming M3",
+      "Size": "ATX",
+      "Socket": "LGA 1151",
+      "Chipset": "B150"
+    },
+    {
+      "Manufacturer": "Gigabyte",
+      "Name": "Gigabyte GA-B250M-DS3H",
+      "Size": "Micro ATX",
+      "Socket": "LGA 1151",
+      "Chipset": "B250"
+    }  
+  ]
+}

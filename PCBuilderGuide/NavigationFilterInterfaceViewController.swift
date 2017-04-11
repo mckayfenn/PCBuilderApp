@@ -12,14 +12,25 @@ class NavigationFilterInterfaceViewController: UIViewController, NavigationFilte
     
     private var navigationFilterView: NavigationFilterInterfaceView { return view as! NavigationFilterInterfaceView }
     
+
+    
     private var CPU: [String] = ["Ryzen 7", "Ryzen 5", "Core i7", "Core i5"]
+    private var Ryzen7: [String] = ["R7 1800x", "R7 1700x", "R7 1700"]
+    private var Ryzen5: [String] = ["R5 1600", "R5 1500x", "R5 1500"]
+    private var Corei7: [String] = ["i7 6900k", "i7 6800k", "i7 7700k"]
+    private var Corei5: [String] = ["i5 7600k", "i5 7500", "i5 6600k"]
+    
+    //private var Processors: [Any] = [Ryzen7, Ryzen5, Corei5, Corei7]
+    var Processors: [String: [String]]? = nil
     //private var buildInterfaceView: BuildInterfaceView { return view as! BuildInterfaceView }
     
     init?(partType: String) {
         super.init(nibName: nil, bundle: nil)
+        Processors = ["Ryzen 7": Ryzen7, "Ryzen 5": Ryzen5, "Core i5": Corei5, "Core i7": Corei7]
         if(partType == "CPU")
         {
             self.navigationFilterView.requestedSpecificPartType = CPU
+            self.navigationFilterView.createButtons()
         }
     }
     
@@ -42,7 +53,16 @@ class NavigationFilterInterfaceViewController: UIViewController, NavigationFilte
     
     func buttonTouched(specificPartType: String) {
         print("Button was touched: " + "\(specificPartType)")
-        //requestedSpecificPartType = specificPartType
+        for processor in Processors!{
+            //print("Changed to: " + "\(String(describing: type(of: processor)))")
+            if(specificPartType == processor.key)
+            {
+                //remove white space in given string so it matches with name of array
+                print("Changed to: " + "\(processor.key)")
+                self.navigationFilterView.requestedSpecificPartType = processor.value
+            }
+        }
+
     }
 
 }

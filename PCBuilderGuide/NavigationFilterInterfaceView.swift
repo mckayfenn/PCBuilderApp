@@ -18,39 +18,47 @@ class NavigationFilterInterfaceView: UIView {
     private var _requestedSpecificPartType: [String]? = nil
     private var buttons: [(name: NSString, rect: CGRect, color: CGColor)] = []
     
+    public func createButtons() {
+        if(_requestedSpecificPartType != nil)
+        {
+            for i: Int in 0..<(_requestedSpecificPartType?.count)!
+            {
+                var buttonRect: CGRect = CGRect.zero
+                let buttonColor: CGColor = UIColor.blue.cgColor
+                let stringText: NSString = _requestedSpecificPartType![i] as NSString
+                
+                buttons.append((name: stringText, rect: buttonRect, color: buttonColor))
+            }
+        }
+    }
+    
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         
         let context: CGContext = UIGraphicsGetCurrentContext()!
         
-        
-        for i: Int in 0 ..< (_requestedSpecificPartType?.count)!
+        for i: Int in 0..<(buttons.count)
         {
-            var buttonRect: CGRect = CGRect.zero
-            
             let dimension: CGFloat = min(bounds.width, bounds.height)
             
-            var buttonColor: CGColor = UIColor.blue.cgColor
-            
-            buttonRect.size.width = dimension / 2
-            buttonRect.size.height = dimension / 4//CGFloat(4 + (Double(i) * 0.3))
-            
-            buttonRect.origin.x = bounds.midX - buttonRect.size.width / 2
-            buttonRect.origin.y = bounds.minY + ((buttonRect.size.height * 1.3) * CGFloat(i)) + 10
+            buttons[i].rect.size.width = dimension / 2
+            buttons[i].rect.size.height = dimension / 4
             
             
-            context.addRect(buttonRect)
-            context.setFillColor(buttonColor)
+            
+            
+            buttons[i].rect.origin.x = bounds.midX - buttons[i].rect.size.width / 2
+            buttons[i].rect.origin.y = bounds.minY + ((buttons[i].rect.size.height * 1.3) * CGFloat(i)) + 10
+ 
+            context.addRect(buttons[i].rect)
+            context.setFillColor(buttons[i].color)
             context.drawPath(using: .fill)
             
-            let stringText: NSString = _requestedSpecificPartType![i] as NSString
             
-            let stringTextAttribute: [String:Any] = [NSFontAttributeName:UIFont.boldSystemFont(ofSize: buttonRect.width / 4)]
-            let stringSize: CGSize = stringText.size(attributes: stringTextAttribute)
-            stringText.draw(at: CGPoint(x: buttonRect.midX - stringSize.width / 2, y: buttonRect.midY - stringSize.height / 2), withAttributes: stringTextAttribute)
-            
-            buttons.append((name: stringText, rect: buttonRect, color: buttonColor))
-            
+            let stringTextAttribute: [String:Any] = [NSFontAttributeName:UIFont.boldSystemFont(ofSize: buttons[i].rect.width / 4)]
+            let stringSize: CGSize = buttons[i].name.size(attributes: stringTextAttribute)
+            buttons[i].name.draw(at: CGPoint(x: buttons[i].rect.midX - stringSize.width / 2, y: buttons[i].rect.midY - stringSize.height / 2), withAttributes: stringTextAttribute)
+
         }
 
     }
@@ -59,10 +67,10 @@ class NavigationFilterInterfaceView: UIView {
         let touch: UITouch = touches.first!
         
         let touchPoint = touch.location(in: self)
-        for var button in buttons
+        for i: Int in 0..<(buttons.count)
         {
-            if (button.rect.contains(touchPoint)) {
-                button.color = UIColor.cyan.cgColor
+            if (buttons[i].rect.contains(touchPoint)) {
+                buttons[i].color = UIColor.cyan.cgColor
                 break
             }
             
@@ -76,11 +84,11 @@ class NavigationFilterInterfaceView: UIView {
         let touchPoint = touch.location(in: self)
         setNeedsDisplay()
         
-        for var button in buttons
+        for i: Int in 0..<(buttons.count)
         {
-            if (button.rect.contains(touchPoint)) {
-                delegate?.buttonTouched(specificPartType: button.name as String)
-                button.color = UIColor.blue.cgColor
+            if (buttons[i].rect.contains(touchPoint)) {
+                delegate?.buttonTouched(specificPartType: buttons[i].name as String)
+                buttons[i].color = UIColor.blue.cgColor
                 break
             }
 

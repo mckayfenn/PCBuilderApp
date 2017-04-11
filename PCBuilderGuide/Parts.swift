@@ -27,6 +27,8 @@ class Parts {
             //parts[0].value(forKey: "Processors").append(CPU(dictionary: cpu1))
             let cpu = CPU(dictionary: cpu1)
         }
+        
+        print("jsonData has been processed")
     }
     
 }

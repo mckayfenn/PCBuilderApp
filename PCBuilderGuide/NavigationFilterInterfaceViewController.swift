@@ -39,9 +39,23 @@ class NavigationFilterInterfaceViewController: UIViewController, NavigationFilte
         Processors = ["Ryzen 7": Ryzen7, "Ryzen 5": Ryzen5, "Core i5": Corei5, "Core i7": Corei7]
         if(partType == "CPU")
         {
+            
+        }
+        
+        switch partType {
+        case "CPU":
             //listOfCPUs = _partsList.getPartsByFamily(string: "Processor")
             self.navigationFilterView.requestedSpecificPartType = listOfCPUs
             self.navigationFilterView.createButtons()
+            break
+        case "Mobo":
+            listOfCPUs = _partsList.getPartsByFamily(string: "Motherboard")
+            self.navigationFilterView.requestedSpecificPartType = listOfCPUs
+            self.navigationFilterView.createButtons()
+            break
+        default:
+            // don't do anything
+            break
         }
     }
     

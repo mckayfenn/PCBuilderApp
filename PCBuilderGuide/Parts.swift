@@ -67,6 +67,31 @@ class Parts {
     }
     
     
+    public func getListOfPartsByFamily(partType: String) -> [String] {
+        var result: [String] = []
+        
+        switch partType {
+        case "Processor":
+            for cpu in _processors {
+                if (!result.contains(cpu.family)) {
+                    result.append(cpu.family)
+                }
+            }
+            break
+        case "Motherboard":
+            for mobo in _motherboards {
+                result.append(mobo.name) // THIS IS WRONG RIGHT NOW
+            }
+            break
+        default:
+            // return an empty list if parameter wasnt correct
+            break
+        }
+        
+        return result.sorted()
+    }
+    
+    
     /**
         Return a list of compatible parts (NAMES) to a given part.
         partType is the list of parts you want.

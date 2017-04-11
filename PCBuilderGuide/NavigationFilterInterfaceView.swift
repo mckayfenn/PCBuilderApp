@@ -21,11 +21,13 @@ class NavigationFilterInterfaceView: UIView {
     public func createButtons() {
         if(_requestedSpecificPartType != nil)
         {
+            buttons.removeAll()
             for i: Int in 0..<(_requestedSpecificPartType?.count)!
             {
                 var buttonRect: CGRect = CGRect.zero
                 let buttonColor: CGColor = UIColor.blue.cgColor
-                let stringText: NSString = _requestedSpecificPartType![i] as NSString
+                
+                let stringText: NSString = "nil"
                 
                 buttons.append((name: stringText, rect: buttonRect, color: buttonColor))
             }
@@ -53,6 +55,8 @@ class NavigationFilterInterfaceView: UIView {
             context.addRect(buttons[i].rect)
             context.setFillColor(buttons[i].color)
             context.drawPath(using: .fill)
+            
+            buttons[i].name = _requestedSpecificPartType![i] as NSString
             
             
             let stringTextAttribute: [String:Any] = [NSFontAttributeName:UIFont.boldSystemFont(ofSize: buttons[i].rect.width / 4)]
@@ -82,7 +86,6 @@ class NavigationFilterInterfaceView: UIView {
         let touch: UITouch = touches.first!
         
         let touchPoint = touch.location(in: self)
-        setNeedsDisplay()
         
         for i: Int in 0..<(buttons.count)
         {
@@ -93,11 +96,13 @@ class NavigationFilterInterfaceView: UIView {
             }
 
         }
+        setNeedsDisplay()
     }
     public var requestedSpecificPartType: [String]
     {
         set{
             _requestedSpecificPartType = newValue
+            //setNeedsDisplay()
         }
         get
         {

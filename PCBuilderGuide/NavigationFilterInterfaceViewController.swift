@@ -24,7 +24,7 @@ class NavigationFilterInterfaceViewController: UIViewController, NavigationFilte
     
     
     // Shouldn't need these any more
-    private var CPU: [String] = ["Ryzen 7", "Ryzen 5", "Core i7", "Core i5"]
+    private var listOfCPUs: [String] = ["Ryzen 7", "Ryzen 5", "Core i7", "Core i5"]
     private var Ryzen7: [String] = ["R7 1800x", "R7 1700x", "R7 1700"]
     private var Ryzen5: [String] = ["R5 1600", "R5 1500x", "R5 1500"]
     private var Corei7: [String] = ["i7 6900k", "i7 6800k", "i7 7700k"]
@@ -39,7 +39,8 @@ class NavigationFilterInterfaceViewController: UIViewController, NavigationFilte
         Processors = ["Ryzen 7": Ryzen7, "Ryzen 5": Ryzen5, "Core i5": Corei5, "Core i7": Corei7]
         if(partType == "CPU")
         {
-            self.navigationFilterView.requestedSpecificPartType = CPU
+            //listOfCPUs = _partsList.getPartsByFamily(string: "Processor")
+            self.navigationFilterView.requestedSpecificPartType = listOfCPUs
             self.navigationFilterView.createButtons()
         }
     }
@@ -70,6 +71,7 @@ class NavigationFilterInterfaceViewController: UIViewController, NavigationFilte
                 //remove white space in given string so it matches with name of array
                 print("Changed to: " + "\(processor.key)")
                 self.navigationFilterView.requestedSpecificPartType = processor.value
+                self.navigationFilterView.createButtons()
             }
         }
 

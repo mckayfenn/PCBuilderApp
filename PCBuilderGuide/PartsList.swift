@@ -83,6 +83,15 @@ class PartsList {
         
     }
     
+    public func getPartsByName(string: String) -> [String] {
+        let result = (_listOfParts?.getListOfPartsByName(partType: string))!
+        return result
+    }
+    
+    public func getPartsByFamily(string: String) -> [String] {
+        return (_listOfParts?.getListOfPartsByFamily(partType: string))!
+    }
+    
     private func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let documentsDirectory = paths[0]

@@ -9,7 +9,7 @@
 import UIKit
 
 protocol BuildInterfaceViewDelegate: class {
-    func buttonTouched()
+    func buttonTouched(partType: String)
 }
 
 
@@ -17,6 +17,7 @@ class BuildInterfaceView: UIView {
     
     private var buttonRect: CGRect = CGRect.zero
     private var buttonColor: CGColor = UIColor.blue.cgColor
+    let stringText: NSString = "CPU"
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
@@ -39,7 +40,6 @@ class BuildInterfaceView: UIView {
         context.setFillColor(buttonColor)
         context.drawPath(using: .fill)
         
-        let stringText: NSString = "Click"
         
         let stringTextAttribute: [String:Any] = [NSFontAttributeName:UIFont.boldSystemFont(ofSize: buttonRect.width / 4)]
         let stringSize: CGSize = stringText.size(attributes: stringTextAttribute)
@@ -59,7 +59,7 @@ class BuildInterfaceView: UIView {
         setNeedsDisplay()
         
         if (buttonRect.contains(touchPoint)) {
-            delegate?.buttonTouched()
+            delegate?.buttonTouched(partType: stringText as String)
         }
     }
     

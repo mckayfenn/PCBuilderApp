@@ -12,6 +12,8 @@
 		0AF2574E1E982CCA00D9F312 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AF2574D1E982CCA00D9F312 /* Assets.xcassets */; };
 		0AF257591E9840E900D9F312 /* BuildInterfaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF257581E9840E900D9F312 /* BuildInterfaceViewController.swift */; };
 		0AF2575B1E98434E00D9F312 /* BuildInterfaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF2575A1E98434E00D9F312 /* BuildInterfaceView.swift */; };
+		3DB036B11E9C43FA003D7FAD /* NavigationFilterInterfaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB036B01E9C43FA003D7FAD /* NavigationFilterInterfaceView.swift */; };
+		3DB036B31E9C46CF003D7FAD /* NavigationFilterInterfaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB036B21E9C46CF003D7FAD /* NavigationFilterInterfaceViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		0AF257521E982CCA00D9F312 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0AF257581E9840E900D9F312 /* BuildInterfaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildInterfaceViewController.swift; sourceTree = "<group>"; };
 		0AF2575A1E98434E00D9F312 /* BuildInterfaceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildInterfaceView.swift; sourceTree = "<group>"; };
+		3DB036B01E9C43FA003D7FAD /* NavigationFilterInterfaceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationFilterInterfaceView.swift; sourceTree = "<group>"; };
+		3DB036B21E9C46CF003D7FAD /* NavigationFilterInterfaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationFilterInterfaceViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,8 @@
 				0AF2575A1E98434E00D9F312 /* BuildInterfaceView.swift */,
 				0AF2574D1E982CCA00D9F312 /* Assets.xcassets */,
 				0AF257521E982CCA00D9F312 /* Info.plist */,
+				3DB036B01E9C43FA003D7FAD /* NavigationFilterInterfaceView.swift */,
+				3DB036B21E9C46CF003D7FAD /* NavigationFilterInterfaceViewController.swift */,
 			);
 			path = PCBuilderGuide;
 			sourceTree = "<group>";
@@ -136,8 +142,10 @@
 			files = (
 				0AF257591E9840E900D9F312 /* BuildInterfaceViewController.swift in Sources */,
 				0AF257491E982CCA00D9F312 /* UserBuildsViewController.swift in Sources */,
+				3DB036B31E9C46CF003D7FAD /* NavigationFilterInterfaceViewController.swift in Sources */,
 				0AF257471E982CCA00D9F312 /* AppDelegate.swift in Sources */,
 				0AF2575B1E98434E00D9F312 /* BuildInterfaceView.swift in Sources */,
+				3DB036B11E9C43FA003D7FAD /* NavigationFilterInterfaceView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -28,8 +28,11 @@ class BuildInterfaceViewController: UIViewController, BuildInterfaceViewDelegate
         
     }
     
-    func buttonTouched() {
-        print("Button was touched")
+    func buttonTouched(partType: String) {
+        print("Button was touched: " + "\(partType)")
+        let navigationFilterViewController: NavigationFilterInterfaceViewController = NavigationFilterInterfaceViewController(partType: partType)!
+        
+        navigationController?.pushViewController(navigationFilterViewController, animated: true)
     }
     
     func saveClicked() {

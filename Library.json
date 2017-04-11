@@ -34,6 +34,13 @@
       "Size": "Micro ATX",
       "Socket": "LGA 1151",
       "Chipset": "B250"
-    }  
+    },
+    {
+      "Manufacturer": "Asus",
+      "Name": "Asus PRIME X370-PRO",
+      "Size": "ATX",
+      "Socket": "AM4",
+      "Chipset": "X370"
+    }
   ]
 }

@@ -20,10 +20,13 @@ class PartsList {
 
     public func loadParts() {
         
+        var partsDictionaries: NSDictionary = [:]
+        
+        
         
         //var paths = NSSearchPathForDirectoriesInDomains(.desktopDirectory, .userDomainMask, true)
         //var path = paths[0]
-        var partsDictionaries: NSDictionary = [:]
+        
 //        let path: String = NSSearchPathForDirectoriesInDomains(.desktopDirectory, .userDomainMask, true)[0] as String
 //        let url = NSURL(fileURLWithPath: path)
 //        let filePath: String? = url.appendingPathComponent("Library.json")?.path
@@ -34,10 +37,7 @@ class PartsList {
 //            partsDictionaries = try! JSONSerialization.jsonObject(with: jsonData, options: []) as! NSDictionary
 //        }
         
-        // ------- Finally just hardcoded the desktop path ------ s
-        let jsonData: Data = try! Data(contentsOf: URL(fileURLWithPath: "/Users/Authenticated User/Desktop/PCBuilderApp/Library.json"))
-        //let jsonData: Data = try! Data(contentsOf: URL(string: "https://www.reddit.com/r/buildapc.json")!)
-        partsDictionaries = try! JSONSerialization.jsonObject(with: jsonData, options: []) as! NSDictionary
+        
         
 //        if let path = Bundle.main.path(forResource: "Library", ofType: "json") {
 //            do {
@@ -57,10 +57,23 @@ class PartsList {
 //            print("Invalid filename/path")
 //        }
         
+        
+        
+        
+        
+        
+        // ------- Finally just hardcoded the desktop path ------ s
+        let jsonData: Data = try! Data(contentsOf: URL(fileURLWithPath: "/Users/Authenticated User/Desktop/PCBuilderApp/Library.json"))
+        //let jsonData: Data = try! Data(contentsOf: URL(string: "https://www.reddit.com/r/buildapc.json")!)
+        partsDictionaries = try! JSONSerialization.jsonObject(with: jsonData, options: []) as! NSDictionary
 
-        let part: Parts = Parts(dictionary: partsDictionaries)
+        _listOfParts = Parts(dictionary: partsDictionaries)
         
+        var data = _listOfParts?.getListOfPartsByName(partType: "Motherboard")
         
+        var cpu = _listOfParts?.processors.last
+        
+        var compatibleMobos = _listOfParts?.getCompatiblePartsTo(partType: "Motherboard", compatibleTo: cpu!)
         
         NSLog("finish load")
         

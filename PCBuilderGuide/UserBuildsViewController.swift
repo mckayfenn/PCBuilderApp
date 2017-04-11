@@ -9,6 +9,8 @@
 import UIKit
 
 class UserBuildsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    private var _partsList: PartsList = PartsList.Instance
 
     private var contentView: UITableView! { return view as! UITableView }
     
@@ -20,6 +22,8 @@ class UserBuildsViewController: UIViewController, UITableViewDataSource, UITable
         let userBuildTableView: UITableView  = UITableView()
         
         view = userBuildTableView
+        
+        _partsList.loadParts()
     }
     
     

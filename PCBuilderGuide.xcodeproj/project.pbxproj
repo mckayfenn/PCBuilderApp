@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A8688961E9C6862005D1B07 /* Parts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8688951E9C6862005D1B07 /* Parts.swift */; };
+		0A8688981E9C6E13005D1B07 /* PartsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8688971E9C6E13005D1B07 /* PartsList.swift */; };
 		0AF257471E982CCA00D9F312 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF257461E982CCA00D9F312 /* AppDelegate.swift */; };
 		0AF257491E982CCA00D9F312 /* UserBuildsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF257481E982CCA00D9F312 /* UserBuildsViewController.swift */; };
 		0AF2574E1E982CCA00D9F312 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AF2574D1E982CCA00D9F312 /* Assets.xcassets */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A8688951E9C6862005D1B07 /* Parts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parts.swift; sourceTree = "<group>"; };
+		0A8688971E9C6E13005D1B07 /* PartsList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartsList.swift; sourceTree = "<group>"; };
 		0AF257431E982CCA00D9F312 /* PCBuilderGuide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PCBuilderGuide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AF257461E982CCA00D9F312 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0AF257481E982CCA00D9F312 /* UserBuildsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBuildsViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +70,8 @@
 				0AF257521E982CCA00D9F312 /* Info.plist */,
 				3DB036B01E9C43FA003D7FAD /* NavigationFilterInterfaceView.swift */,
 				3DB036B21E9C46CF003D7FAD /* NavigationFilterInterfaceViewController.swift */,
+				0A8688951E9C6862005D1B07 /* Parts.swift */,
+				0A8688971E9C6E13005D1B07 /* PartsList.swift */,
 			);
 			path = PCBuilderGuide;
 			sourceTree = "<group>";
@@ -140,7 +146,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A8688981E9C6E13005D1B07 /* PartsList.swift in Sources */,
 				0AF257591E9840E900D9F312 /* BuildInterfaceViewController.swift in Sources */,
+				0A8688961E9C6862005D1B07 /* Parts.swift in Sources */,
 				0AF257491E982CCA00D9F312 /* UserBuildsViewController.swift in Sources */,
 				3DB036B31E9C46CF003D7FAD /* NavigationFilterInterfaceViewController.swift in Sources */,
 				0AF257471E982CCA00D9F312 /* AppDelegate.swift in Sources */,

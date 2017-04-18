@@ -39,7 +39,7 @@ class BuildInterfaceView: UIView {
     private var psuColor: CGColor = UIColor.blue.cgColor
     
     
-    let showPhotos = false
+    let showPhotos = true
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)

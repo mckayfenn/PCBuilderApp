@@ -8,9 +8,10 @@
 
 import UIKit
 
-class NavigationFilterInterfaceViewController: UIViewController, NavigationFilterInterfaceViewDelegate {
+class NavigationFilterInterfaceViewController: UIViewController, PartFilterInterfaceViewDelegate {
     
-    private var navigationFilterView: NavigationFilterInterfaceView { return view as! NavigationFilterInterfaceView }
+    private var mainFilterView: MainFilterView { return view as! MainFilterView }
+    private var partFilterView: PartFilterInterfaceView? = nil
     
     private var _parts: [AnyObject] = []
     public var parts: [AnyObject] {
@@ -24,11 +25,15 @@ class NavigationFilterInterfaceViewController: UIViewController, NavigationFilte
     
     
     // Shouldn't need these any more
-    private var listOfCPUs: [String] = ["Ryzen 7", "Ryzen 5", "Core i7", "Core i5"]
+    private var listOfCPUs: [String] = ["Ryzen 7", "Ryzen 5", "Ryzen 3", "FX", "Core i7", "Core i5", "Core i3", "Celeron"]
     private var Ryzen7: [String] = ["R7 1800x", "R7 1700x", "R7 1700"]
     private var Ryzen5: [String] = ["R5 1600", "R5 1500x", "R5 1500"]
+    private var Ryzen3: [String] = []
+    private var FX: [String] = []
     private var Corei7: [String] = ["i7 6900k", "i7 6800k", "i7 7700k"]
     private var Corei5: [String] = ["i5 7600k", "i5 7500", "i5 6600k"]
+    private var Corei3: [String] = []
+    private var Celeron: [String] = []
     
     //private var Processors: [Any] = [Ryzen7, Ryzen5, Corei5, Corei7]
     var Processors: [String: [String]]? = nil
@@ -36,7 +41,8 @@ class NavigationFilterInterfaceViewController: UIViewController, NavigationFilte
     
     init?(partType: String) {
         super.init(nibName: nil, bundle: nil)
-        Processors = ["Ryzen 7": Ryzen7, "Ryzen 5": Ryzen5, "Core i5": Corei5, "Core i7": Corei7]
+        partFilterView = PartFilterInterfaceView()
+        Processors = ["Ryzen 7": Ryzen7, "Ryzen 5": Ryzen5, "Core i5": Corei5, "Core i7": Corei7, "Core i3": Corei3, "Ryzen 3": Ryzen3, "FX": FX, "Celeron": Celeron]
         if(partType == "CPU")
         {
             
@@ -45,13 +51,10 @@ class NavigationFilterInterfaceViewController: UIViewController, NavigationFilte
         switch partType {
         case "CPU":
             //listOfCPUs = _partsList.getPartsByFamily(string: "Processor")
-            self.navigationFilterView.requestedSpecificPartType = listOfCPUs
-            self.navigationFilterView.createButtons()
+            self.partFilterView?.setButtonAttributes(partType: listOfCPUs)
             break
         case "Mobo":
             listOfCPUs = _partsList.getPartsByFamily(string: "Motherboard")
-            self.navigationFilterView.requestedSpecificPartType = listOfCPUs
-            self.navigationFilterView.createButtons()
             break
         default:
             // don't do anything
@@ -65,14 +68,14 @@ class NavigationFilterInterfaceViewController: UIViewController, NavigationFilte
     
     
     override func loadView() {
-        view = NavigationFilterInterfaceView()
+        view = MainFilterView(frame: UIScreen.main.bounds, nextView: partFilterView!)
         self.edgesForExtendedLayout = [] // don't remember what this does but I think it's needed
         
-        navigationFilterView.delegate = self
+        partFilterView?.delegate = self
     }
     
     override func viewDidLoad() {
-        navigationFilterView.backgroundColor = UIColor.white
+        partFilterView?.backgroundColor = UIColor.white
         
     }
     
@@ -84,8 +87,7 @@ class NavigationFilterInterfaceViewController: UIViewController, NavigationFilte
             {
                 //remove white space in given string so it matches with name of array
                 print("Changed to: " + "\(processor.key)")
-                self.navigationFilterView.requestedSpecificPartType = processor.value
-                self.navigationFilterView.createButtons()
+                self.partFilterView?.setButtonAttributes(partType: processor.value)
             }
         }
 

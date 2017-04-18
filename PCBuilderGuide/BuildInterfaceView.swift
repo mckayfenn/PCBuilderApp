@@ -38,6 +38,13 @@ class BuildInterfaceView: UIView {
     private var psuRect: CGRect = CGRect.zero
     private var psuColor: CGColor = UIColor(red: 200.0, green: 200.0, blue: 200.0, alpha: 0.7).cgColor
     
+    let storageText: NSString = "Storage"
+    private var storageRect: CGRect = CGRect.zero
+    
+    
+    
+    private var noImageBackgroundColor: CGColor = UIColor(red: 200.0, green: 200.0, blue: 200.0, alpha: 0.7).cgColor
+    
     
     let showPhotos = false
     
@@ -228,6 +235,33 @@ class BuildInterfaceView: UIView {
             let psuTextAttribute: [String:Any] = [NSFontAttributeName:UIFont.systemFont(ofSize: psuRect.width / 8)]
             let psuTextSize: CGSize = psuText.size(attributes: psuTextAttribute)
             psuText.draw(at: CGPoint(x: psuRect.midX - psuTextSize.width / 2, y: psuRect.midY - psuTextSize.height / 2), withAttributes: psuTextAttribute)
+        }
+        
+        
+        // DRAW STORAGE
+        storageRect = CGRect.zero
+        storageRect.size.width = caseRect.width / 8
+        storageRect.size.height = caseRect.height / 8
+        
+        storageRect.origin.x = caseRect.midX + caseRect.midX / 4 + caseRect.midX / 6
+        storageRect.origin.y = caseRect.midY + caseRect.midY / 4
+        
+        //let psuSelected = true
+        if (false) {
+            let storageImage: UIImage = UIImage(named: "PowerSupplyPhoto.jpg")!
+            let storageImageView: UIImageView = UIImageView(image: storageImage)
+            storageImageView.frame = storageRect
+            storageImage.draw(in: storageRect)
+        }
+        else {
+            context.addRect(storageRect)
+            context.setStrokeColor(UIColor.blue.cgColor)
+            context.setFillColor(noImageBackgroundColor)
+            context.drawPath(using: .fillStroke)
+            
+            let storageTextAttribute: [String:Any] = [NSFontAttributeName:UIFont.systemFont(ofSize: storageRect.width / 8)]
+            let storageTextSize: CGSize = storageText.size(attributes: storageTextAttribute)
+            storageText.draw(at: CGPoint(x: storageRect.midX - storageTextSize.width / 2, y: storageRect.midY - storageTextSize.height / 2), withAttributes: storageTextAttribute)
         }
     }
     

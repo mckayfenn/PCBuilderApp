@@ -11,18 +11,20 @@ import UIKit
 class BuildInterfaceViewController: UIViewController, BuildInterfaceViewDelegate {
     
     private var _partsList: PartsList = PartsList.Instance
-    private var buildInterfaceView: BuildInterfaceView { return view as! BuildInterfaceView }
+    private var buildInterfaceView: BuildInterfaceView? = nil
     //private var buildInterfaceView: BuildInterfaceView { return view as! BuildInterfaceView }
+    private var mainBuilderView: MainBuilderView { return view as! MainBuilderView }
     
     override func loadView() {
-        view = BuildInterfaceView()
+        buildInterfaceView = BuildInterfaceView()
+        view = MainBuilderView(frame: UIScreen.main.bounds, buildView: buildInterfaceView!)
         self.edgesForExtendedLayout = [] // don't remember what this does
         
-        buildInterfaceView.delegate = self
+        buildInterfaceView?.delegate = self
     }
     
     override func viewDidLoad() {
-        buildInterfaceView.backgroundColor = UIColor.white
+        mainBuilderView.backgroundColor = UIColor.white
         
         let saveBuild = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveClicked))
         self.navigationItem.rightBarButtonItem = saveBuild

@@ -272,13 +272,14 @@ class BuildInterfaceView: UIView {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch: UITouch = touches.first!
-        
+        print("buildinterfaceview was touched")
         let touchPoint = touch.location(in: self)
         cpuColor = UIColor.blue.cgColor
         setNeedsDisplay()
         
         if (cpuRect.contains(touchPoint)) {
             delegate?.buttonTouched(partType: cpuText as String)
+            print("cpu touched")
         }
         else if (motherboardRect.contains(touchPoint)) {
             delegate?.buttonTouched(partType: motherboardText as String)

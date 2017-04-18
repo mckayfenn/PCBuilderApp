@@ -16,14 +16,20 @@ class MainFilterView: UIView
     init(frame: CGRect, nextView: PartFilterInterfaceView) {
         super.init(frame: frame)
         
+        var screenView = (frame.height / 5) * CGFloat(nextView.getButtonAttributes.count)
+        
         mainScrollView = UIScrollView(frame: CGRect(x: 0.0, y: 0.0, width: frame.width, height: frame.height))
         mainScrollView?.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
         //mainScrollView?.alwaysBounceVertical = true
-        mainScrollView?.contentSize = CGSize(width: frame.width, height: (frame.height / 5) * CGFloat(nextView.getButtonAttributes.count))
+        mainScrollView?.contentSize = CGSize(width: frame.width, height: screenView)
         addSubview(mainScrollView!)
         
         partFilterInterfaceView = nextView
-        partFilterInterfaceView?.frame = CGRect(x: 0.0, y: 0.0, width: frame.width, height: (frame.height / 5) * CGFloat(nextView.getButtonAttributes.count))
+        if(screenView < frame.height)
+        {
+            screenView = frame.height
+        }
+        partFilterInterfaceView?.frame = CGRect(x: 0.0, y: 0.0, width: frame.width, height: screenView)
         partFilterInterfaceView?.backgroundColor = UIColor.white
         
         mainScrollView?.addSubview(partFilterInterfaceView!)

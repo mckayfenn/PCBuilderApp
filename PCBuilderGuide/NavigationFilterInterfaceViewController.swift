@@ -87,7 +87,9 @@ class NavigationFilterInterfaceViewController: UIViewController, PartFilterInter
             {
                 //remove white space in given string so it matches with name of array
                 print("Changed to: " + "\(processor.key)")
+                partFilterView = PartFilterInterfaceView()
                 self.partFilterView?.setButtonAttributes(partType: processor.value)
+                loadView()
             }
         }
 

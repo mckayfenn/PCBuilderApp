@@ -64,12 +64,26 @@ class PartFilterInterfaceView: UIView
             
             button.setTitle(buttonAttributes[i].text as String, for: .normal)
             button.backgroundColor = buttonAttributes[i].color
+            button.tag = i
+            button.addTarget(self, action: #selector(buttonTouchUp), for: .touchUpInside)
+            button.addTarget(self, action: #selector(buttonTouchDown), for: .touchDown)
             
             
             stackView?.addArrangedSubview(button)
         }
         
     }
+    func buttonTouchDown(button: UIButton)
+    {
+        button.backgroundColor = UIColor.cyan
+    }
+    func buttonTouchUp(button: UIButton)
+    {
+        button.backgroundColor = UIColor.cyan
+        let buttonName = buttonAttributes[button.tag].text
+        delegate?.buttonTouched(specificPartType: buttonName as String)
+    }
+    
     var getButtonAttributes: [(text: NSString, color: UIColor)] {return buttonAttributes}
     weak var delegate: PartFilterInterfaceViewDelegate? = nil
 

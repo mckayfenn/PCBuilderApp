@@ -16,19 +16,19 @@ protocol BuildInterfaceViewDelegate: class {
 class BuildInterfaceView: UIView {
     let caseText: NSString = "Case"
     private var caseRect: CGRect = CGRect.zero
-    private var caseColor: CGColor = UIColor.blue.cgColor
+    private var caseColor: CGColor = UIColor(red: 200.0, green: 200.0, blue: 200.0, alpha: 0.7).cgColor
     
     let motherboardText: NSString = "Motherboard"
     private var motherboardRect: CGRect = CGRect.zero
-    private var motherboardColor: CGColor = UIColor.blue.cgColor
+    private var motherboardColor: CGColor = UIColor(red: 200.0, green: 200.0, blue: 200.0, alpha: 0.7).cgColor
     
     let cpuText: NSString = "CPU"
     private var cpuRect: CGRect = CGRect.zero
-    private var cpuColor: CGColor = UIColor.blue.cgColor
+    private var cpuColor: CGColor = UIColor(red: 200.0, green: 200.0, blue: 200.0, alpha: 0.7).cgColor
     
     let ramText: NSString = "RAM"
     private var ramRect: CGRect = CGRect.zero
-    private var ramColor: CGColor = UIColor.blue.cgColor
+    private var ramColor: CGColor = UIColor(red: 200.0, green: 200.0, blue: 200.0, alpha: 0.7).cgColor
     
     let gpuText: NSString = "Graphics Card"
     private var gpuRect: CGRect = CGRect.zero
@@ -36,7 +36,14 @@ class BuildInterfaceView: UIView {
     
     let psuText: NSString = "Power Supply"
     private var psuRect: CGRect = CGRect.zero
-    private var psuColor: CGColor = UIColor.blue.cgColor
+    private var psuColor: CGColor = UIColor(red: 200.0, green: 200.0, blue: 200.0, alpha: 0.7).cgColor
+    
+    let storageText: NSString = "Storage"
+    private var storageRect: CGRect = CGRect.zero
+    
+    
+    
+    private var noImageBackgroundColor: CGColor = UIColor(red: 200.0, green: 200.0, blue: 200.0, alpha: 0.7).cgColor
     
     
     let showPhotos = true
@@ -63,7 +70,7 @@ class BuildInterfaceView: UIView {
         caseRect.origin.y = bounds.minY
         
         //var caseSelected = true
-        if (showPhotos) {
+        if (true) {
             let caseImage: UIImage = UIImage(named: "CasePhoto.jpg")!
             let caseImageView: UIImageView = UIImageView(image: caseImage)
             caseImageView.frame = caseRect
@@ -89,15 +96,15 @@ class BuildInterfaceView: UIView {
         // DRAW MOTHERBOARD
         motherboardRect = CGRect.zero
         
-        motherboardRect.size.width = caseRect.width / 2 - 25
-        motherboardRect.size.height = caseRect.height - caseRect.height / 3 - 25
+        motherboardRect.size.width = caseRect.width / 2 - caseRect.width / 11.5
+        motherboardRect.size.height = caseRect.height / 2 + caseRect.height / 10
         
-        motherboardRect.origin.x = caseRect.minX + 35
-        motherboardRect.origin.y = caseRect.minY + 45
+        motherboardRect.origin.x = caseRect.minX + caseRect.midX / 4.5
+        motherboardRect.origin.y = caseRect.minY + caseRect.midY / 3.5
         
         
         //var motherboardSelected = true
-        if (showPhotos) {
+        if (true) {
             let motherboardImage: UIImage = UIImage(named: "MotherboardPhoto.jpg")!
             let motherboardImageView: UIImageView = UIImageView(image: motherboardImage)
             motherboardImageView.frame = motherboardRect
@@ -105,10 +112,9 @@ class BuildInterfaceView: UIView {
         }
         else {
             context.addRect(motherboardRect)
-            context.setStrokeColor(motherboardColor)
-            //context.setFillColor(UIColor.clear.cgColor)
-            //context.setFillColor(motherboardColor)
-            context.drawPath(using: .stroke)
+            context.setStrokeColor(UIColor.blue.cgColor)
+            context.setFillColor(motherboardColor)
+            context.drawPath(using: .fillStroke)
             
             
             let motherboardTextAttribute: [String:Any] = [NSFontAttributeName:UIFont.systemFont(ofSize: motherboardRect.width / 15)]
@@ -121,14 +127,14 @@ class BuildInterfaceView: UIView {
         
         // DRAW CPU
         cpuRect = CGRect.zero
-        cpuRect.size.width = motherboardRect.width / 5
-        cpuRect.size.height = motherboardRect.width / 5
+        cpuRect.size.width = motherboardRect.width / 6
+        cpuRect.size.height = motherboardRect.width / 6
         
-        cpuRect.origin.x = motherboardRect.midX - 10
-        cpuRect.origin.y = motherboardRect.midY - motherboardRect.midY / 3 - 10
+        cpuRect.origin.x = motherboardRect.midX - motherboardRect.midX / 12
+        cpuRect.origin.y = motherboardRect.midY - motherboardRect.midY / 2 + motherboardRect.midY / 7.5
         
         //let cpuSelected = true
-        if (showPhotos) {
+        if (true) {
             let cpuImage: UIImage = UIImage(named: "CPUPhoto.jpg")!
             let cpuImageView: UIImageView = UIImageView(image: cpuImage)
             cpuImageView.frame = cpuRect
@@ -136,8 +142,8 @@ class BuildInterfaceView: UIView {
         }
         else {
             context.addRect(cpuRect)
-            context.setStrokeColor(cpuColor)
-            context.setFillColor(UIColor.clear.cgColor)
+            context.setStrokeColor(UIColor.blue.cgColor)
+            context.setFillColor(cpuColor)
             context.drawPath(using: .fillStroke)
             
             
@@ -152,13 +158,13 @@ class BuildInterfaceView: UIView {
         // DRAW RAM
         ramRect = CGRect.zero
         ramRect.size.width = motherboardRect.width / 6
-        ramRect.size.height = motherboardRect.height / 2 - 5
+        ramRect.size.height = motherboardRect.height / 2 - motherboardRect.height / 50
         
-        ramRect.origin.x = motherboardRect.midX + motherboardRect.midX / 4 + 5
-        ramRect.origin.y = motherboardRect.midY - motherboardRect.midY / 2 - 20
+        ramRect.origin.x = motherboardRect.midX + motherboardRect.midX / 4 + motherboardRect.midX / 20
+        ramRect.origin.y = motherboardRect.minY + motherboardRect.midY / 20
         
         //let ramSelected = true
-        if (showPhotos) {
+        if (true) {
             let ramImage: UIImage = UIImage(named: "RAMPhoto.jpg")!
             let ramImageView: UIImageView = UIImageView(image: ramImage)
             ramImageView.frame = ramRect
@@ -166,8 +172,9 @@ class BuildInterfaceView: UIView {
         }
         else {
             context.addRect(ramRect)
-            context.setStrokeColor(ramColor)
-            context.drawPath(using: .stroke)
+            context.setStrokeColor(UIColor.blue.cgColor)
+            context.setFillColor(ramColor)
+            context.drawPath(using: .fillStroke)
             
             let ramTextAttribute: [String:Any] = [NSFontAttributeName:UIFont.systemFont(ofSize: ramRect.width / 3)]
             let ramTextSize: CGSize = ramText.size(attributes: ramTextAttribute)
@@ -178,14 +185,14 @@ class BuildInterfaceView: UIView {
         
         // DRAW GRAPHICS CARD
         gpuRect = CGRect.zero
-        gpuRect.size.width = caseRect.width / 2
+        gpuRect.size.width = motherboardRect.width + motherboardRect.width / 5
         gpuRect.size.height = motherboardRect.height / 6
         
         gpuRect.origin.x = motherboardRect.minX
-        gpuRect.origin.y = motherboardRect.midY + 10
+        gpuRect.origin.y = motherboardRect.midY + motherboardRect.midY / 10
         
         //let gpuSelected = true
-        if (showPhotos) {
+        if (true) {
             let gpuImage: UIImage = UIImage(named: "GPUPhoto.jpg")!
             let gpuImageView: UIImageView = UIImageView(image: gpuImage)
             gpuImageView.frame = gpuRect
@@ -207,13 +214,13 @@ class BuildInterfaceView: UIView {
         // DRAW POWER SUPPLY
         psuRect = CGRect.zero
         psuRect.size.width = caseRect.width / 4
-        psuRect.size.height = caseRect.height / 5
+        psuRect.size.height = caseRect.height / 6
         
-        psuRect.origin.x = caseRect.minX + 20
-        psuRect.origin.y = caseRect.maxY - psuRect.height - 10
+        psuRect.origin.x = caseRect.minX + caseRect.midX / 10
+        psuRect.origin.y = caseRect.maxY - psuRect.height - caseRect.midY / 10
         
         //let psuSelected = true
-        if (showPhotos) {
+        if (true) {
             let psuImage: UIImage = UIImage(named: "PowerSupplyPhoto.jpg")!
             let psuImageView: UIImageView = UIImageView(image: psuImage)
             psuImageView.frame = psuRect
@@ -221,13 +228,40 @@ class BuildInterfaceView: UIView {
         }
         else {
             context.addRect(psuRect)
-            context.setStrokeColor(psuColor)
-            context.setFillColor(UIColor.clear.cgColor)
+            context.setStrokeColor(UIColor.blue.cgColor)
+            context.setFillColor(psuColor)
             context.drawPath(using: .fillStroke)
             
             let psuTextAttribute: [String:Any] = [NSFontAttributeName:UIFont.systemFont(ofSize: psuRect.width / 8)]
             let psuTextSize: CGSize = psuText.size(attributes: psuTextAttribute)
             psuText.draw(at: CGPoint(x: psuRect.midX - psuTextSize.width / 2, y: psuRect.midY - psuTextSize.height / 2), withAttributes: psuTextAttribute)
+        }
+        
+        
+        // DRAW STORAGE
+        storageRect = CGRect.zero
+        storageRect.size.width = caseRect.width / 8
+        storageRect.size.height = caseRect.height / 8
+        
+        storageRect.origin.x = caseRect.midX + caseRect.midX / 4 + caseRect.midX / 6
+        storageRect.origin.y = caseRect.midY + caseRect.midY / 4
+        
+        //let psuSelected = true
+        if (false) {
+            let storageImage: UIImage = UIImage(named: "PowerSupplyPhoto.jpg")!
+            let storageImageView: UIImageView = UIImageView(image: storageImage)
+            storageImageView.frame = storageRect
+            storageImage.draw(in: storageRect)
+        }
+        else {
+            context.addRect(storageRect)
+            context.setStrokeColor(UIColor.blue.cgColor)
+            context.setFillColor(noImageBackgroundColor)
+            context.drawPath(using: .fillStroke)
+            
+            let storageTextAttribute: [String:Any] = [NSFontAttributeName:UIFont.systemFont(ofSize: storageRect.width / 8)]
+            let storageTextSize: CGSize = storageText.size(attributes: storageTextAttribute)
+            storageText.draw(at: CGPoint(x: storageRect.midX - storageTextSize.width / 2, y: storageRect.midY - storageTextSize.height / 2), withAttributes: storageTextAttribute)
         }
     }
     

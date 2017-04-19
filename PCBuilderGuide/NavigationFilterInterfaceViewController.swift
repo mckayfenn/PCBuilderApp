@@ -13,48 +13,30 @@ class NavigationFilterInterfaceViewController: UIViewController, PartFilterInter
     private var mainFilterView: MainFilterView { return view as! MainFilterView }
     private var partFilterView: PartFilterInterfaceView? = nil
     
-    private var _parts: [AnyObject] = []
-    public var parts: [AnyObject] {
-        get { return _parts }
-        set { _parts = newValue }
-    }
     
     private var _partsList: PartsList = PartsList.Instance
+    private var _inList: String = ""
+    private var _showListOfSpecificParts: Bool = false
     
     
-    
-    
-    // Shouldn't need these any more
-    private var listOfCPUs: [String] = ["Ryzen 7", "Ryzen 5", "Ryzen 3", "FX", "Core i7", "Core i5", "Core i3", "Celeron"]
-    private var Ryzen7: [String] = ["R7 1800x", "R7 1700x", "R7 1700"]
-    private var Ryzen5: [String] = ["R5 1600", "R5 1500x", "R5 1500"]
-    private var Ryzen3: [String] = []
-    private var FX: [String] = []
-    private var Corei7: [String] = ["i7 6900k", "i7 6800k", "i7 7700k"]
-    private var Corei5: [String] = ["i5 7600k", "i5 7500", "i5 6600k"]
-    private var Corei3: [String] = []
-    private var Celeron: [String] = []
-    
-    //private var Processors: [Any] = [Ryzen7, Ryzen5, Corei5, Corei7]
-    var Processors: [String: [String]]? = nil
-    //private var buildInterfaceView: BuildInterfaceView { return view as! BuildInterfaceView }
     
     init?(partType: String) {
         super.init(nibName: nil, bundle: nil)
         partFilterView = PartFilterInterfaceView()
-        Processors = ["Ryzen 7": Ryzen7, "Ryzen 5": Ryzen5, "Core i5": Corei5, "Core i7": Corei7, "Core i3": Corei3, "Ryzen 3": Ryzen3, "FX": FX, "Celeron": Celeron]
-        if(partType == "CPU")
-        {
-            
-        }
         
         switch partType {
         case "CPU":
             //listOfCPUs = _partsList.getPartsByFamily(string: "Processor")
-            self.partFilterView?.setButtonAttributes(partType: listOfCPUs)
+            //self.partFilterView?.setButtonAttributes(partType: listOfCPUs)
+            
+            _inList = partType
+            self.partFilterView?.setButtonAttributes(partType: _partsList.getListOfPartsByManufacturer(partType: "Processor"))
             break
-        case "Mobo":
-            listOfCPUs = _partsList.getPartsByFamily(string: "Motherboard")
+        case "Motherboard":
+            //listOfCPUs = _partsList.getPartsByFamily(string: "Motherboard")
+            _inList = partType
+            var mobos: [String] = _partsList.getPartsByName(string: "Motherboard")
+            self.partFilterView?.setButtonAttributes(partType: mobos)
             break
         default:
             // don't do anything
@@ -80,19 +62,31 @@ class NavigationFilterInterfaceViewController: UIViewController, PartFilterInter
     }
     
     func buttonTouched(specificPartType: String) {
-        print("Button was touched: " + "\(specificPartType)")
-        for processor in Processors!{
-            //print("Changed to: " + "\(String(describing: type(of: processor)))")
-            if(specificPartType == processor.key)
-            {
-                //remove white space in given string so it matches with name of array
-                print("Changed to: " + "\(processor.key)")
-                partFilterView = PartFilterInterfaceView()
-                self.partFilterView?.setButtonAttributes(partType: processor.value)
-                loadView()
-            }
+        print("Button was touched in part filter interface: " + "\(specificPartType)")
+        //        for processor in Processors!{
+        //            //print("Changed to: " + "\(String(describing: type(of: processor)))")
+        //            if(specificPartType == processor.key)
+        //            {
+        //                //remove white space in given string so it matches with name of array
+        //                print("Changed to: " + "\(processor.key)")
+        //                partFilterView = PartFilterInterfaceView()
+        //                self.partFilterView?.setButtonAttributes(partType: processor.value)
+        //                loadView()
+        //            }
+        //        }
+        
+        
+        
+        switch _inList {
+        case "CPU":
+            partFilterView = PartFilterInterfaceView()
+            self.partFilterView?.setButtonAttributes(partType: _partsList.getFamilyPartsOfManufacturer(type: "Processor", manufacturer: specificPartType))
+            loadView()
+            break
+        default:
+            // don't do anything
+            break
         }
-
     }
-
+    
 }

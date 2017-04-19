@@ -36,20 +36,19 @@ class BuildInterfaceViewController: UIViewController, BuildInterfaceViewDelegate
     }
     
     func buttonTouched(partType: String) {
-        print("Button was touched: " + "\(partType)")
         let navigationFilterViewController: NavigationFilterInterfaceViewController = NavigationFilterInterfaceViewController(partType: partType)!
         
-        switch partType {
-        case "CPU":
-            navigationFilterViewController.parts = _partsList.listOfAllParts.getListOfPartsByName(partType: "CPU") as [AnyObject]
-            break
-        case "Mobo":
-            navigationFilterViewController.parts = _partsList.listOfAllParts.getListOfPartsByName(partType: "Motherboard") as [AnyObject]
-            break
-        default:
-            // don't do anything
-            break
-        }
+//        switch partType {
+//        case "CPU":
+//            navigationFilterViewController.parts = _partsList.listOfAllParts.getListOfPartsByManufacturer(partType: "CPU") as [AnyObject]
+//            break
+//        case "Mobo":
+//            navigationFilterViewController.parts = _partsList.listOfAllParts.getListOfPartsByName(partType: "Motherboard") as [AnyObject]
+//            break
+//        default:
+//            // don't do anything
+//            break
+//        }
         
         
         navigationController?.pushViewController(navigationFilterViewController, animated: true)

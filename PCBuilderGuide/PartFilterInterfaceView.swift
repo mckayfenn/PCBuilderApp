@@ -50,6 +50,8 @@ class PartFilterInterfaceView: UIView
             
         }
     }
+    
+    
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         let dimension: CGFloat = min(bounds.width, bounds.height)

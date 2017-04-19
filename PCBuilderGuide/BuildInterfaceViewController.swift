@@ -8,19 +8,23 @@
 
 import UIKit
 
-class BuildInterfaceViewController: UIViewController, BuildInterfaceViewDelegate {
+class BuildInterfaceViewController: UIViewController, BuildInterfaceViewDelegate, ButtonsNLabelViewDelegate {
     
     private var _partsList: PartsList = PartsList.Instance
     private var buildInterfaceView: BuildInterfaceView? = nil
+    private var buttonNlabelView: ButtonsNLabelView? = nil
     //private var buildInterfaceView: BuildInterfaceView { return view as! BuildInterfaceView }
     private var mainBuilderView: MainBuilderView { return view as! MainBuilderView }
     
     override func loadView() {
         buildInterfaceView = BuildInterfaceView()
-        view = MainBuilderView(frame: UIScreen.main.bounds, buildView: buildInterfaceView!)
+        buttonNlabelView = ButtonsNLabelView()
+        view = MainBuilderView(frame: UIScreen.main.bounds, buildView: buildInterfaceView!, buttonLabelView: buttonNlabelView!)
         self.edgesForExtendedLayout = [] // don't remember what this does
         
         buildInterfaceView?.delegate = self
+        buttonNlabelView?.delegate = self
+        
     }
     
     override func viewDidLoad() {

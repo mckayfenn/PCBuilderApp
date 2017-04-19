@@ -12,8 +12,9 @@ class MainBuilderView: UIView {
     
     private var mainStackView: UIStackView? = nil
     private var buildInterfaceView: BuildInterfaceView? = nil
+    private var buttonNLabelView: ButtonsNLabelView? = nil
     
-    init(frame: CGRect, buildView: BuildInterfaceView) {
+    init(frame: CGRect, buildView: BuildInterfaceView, buttonLabelView: ButtonsNLabelView) {
         super.init(frame: frame)
         
         mainStackView = UIStackView(frame: CGRect(x: 0.0, y: 0.0, width: frame.width, height: frame.height))
@@ -21,16 +22,20 @@ class MainBuilderView: UIView {
         mainStackView?.axis = UILayoutConstraintAxis.vertical
         mainStackView?.layoutMargins = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         mainStackView?.isLayoutMarginsRelativeArrangement = true
-        mainStackView?.distribution = UIStackViewDistribution.fillEqually
+        mainStackView?.distribution = UIStackViewDistribution.fillProportionally
         mainStackView?.spacing = 5.0
         mainStackView?.backgroundColor = UIColor.white
         
         addSubview(mainStackView!)
         
         buildInterfaceView = buildView
-        buildInterfaceView?.frame = CGRect(x: 0.0, y: 0.0, width: frame.width, height: frame.height)
+        buildInterfaceView?.frame = CGRect(x: 0.0, y: 0.0, width: frame.width, height: frame.height * 0.6)
+        
+        buttonNLabelView = buttonLabelView
+        buttonNLabelView?.frame = CGRect(x: 0.0, y: 0.0, width: frame.width, height: frame.height * 0.4)
         
         mainStackView?.addArrangedSubview(buildInterfaceView!)
+        mainStackView?.addArrangedSubview(buttonNLabelView!)
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -1,21 +1,19 @@
 //
-//  ButtonsNLabelView.swift
+//  BuildButtonsView.swift
 //  PCBuilderGuide
 //
-//  Created by u0669056 on 4/18/17.
+//  Created by u0669056 on 4/19/17.
 //  Copyright © 2017 Fenn/Phelps. All rights reserved.
 //
 
 import UIKit
 
-protocol ButtonsNLabelViewDelegate: class {
+protocol BuildButtonsViewDelegate: class {
     func buttonTouched(partType: String)
 }
 
-class ButtonsNLabelView: UIView
+class BuildButtonsView: UIView
 {
-    private var costTotalLabel: UILabel? = nil
-    private var _costTotalString: String = "10,000"
     private var cpuButton: UIButton? = nil
     private var gpuButton: UIButton? = nil
     private var motherboardButton: UIButton? = nil
@@ -24,40 +22,21 @@ class ButtonsNLabelView: UIView
     private var ramButton: UIButton? = nil
     private var storageButton: UIButton? = nil
     
+    var buttonStackView: UIStackView? = nil
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        let stackView: UIStackView = UIStackView(frame: CGRect(x: 0.0, y: 0.0, width: frame.width, height: frame.height))
-        stackView.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
-        stackView.axis = UILayoutConstraintAxis.vertical
-        stackView.distribution = UIStackViewDistribution.fill
-        stackView.spacing = 5.0
-        addSubview(stackView)
         
-        costTotalLabel = UILabel()
-        costTotalLabel?.text = "TOTAL: $" + costTotalString
-        costTotalLabel?.textAlignment = NSTextAlignment.center
-        costTotalLabel?.frame = CGRect(x: 0.0, y: 0.0, width: 0.0, height: 0.0)
-        costTotalLabel?.font = UIFont(name: "Helvetica-Bold", size: 20)
-        costTotalLabel?.textColor = UIColor.black
-        costTotalLabel?.backgroundColor = UIColor.white
-        stackView.addArrangedSubview(costTotalLabel!)
+        buttonStackView = UIStackView(frame: CGRect(x: 0.0, y: 0.0, width: frame.width * 4, height: frame.height))
+        buttonStackView?.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
+        buttonStackView?.axis = UILayoutConstraintAxis.horizontal
+        //buttonStackView?.alignment = UIStackViewAlignment
+        buttonStackView?.distribution = UIStackViewDistribution.fillEqually
+        buttonStackView?.backgroundColor = UIColor.brown
+        buttonStackView?.spacing = 8.0
         
-        let scrollView: UIScrollView = UIScrollView(frame: CGRect(x: 0.0, y: 0.0, width: frame.width, height: frame.height))
-        scrollView.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
-        scrollView.contentSize = CGSize(width: frame.width, height: frame.height * 4)
-        stackView.addArrangedSubview(scrollView)
-        
-        
-        
-        let buttonStackView: UIStackView = UIStackView(frame: CGRect(x: 0.0, y: 0.0, width: frame.width, height: frame.height * 4))
-        buttonStackView.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
-        buttonStackView.axis = UILayoutConstraintAxis.vertical
-        //buttonStackView.alignment = UIStackViewAlignment.fill
-        buttonStackView.distribution = UIStackViewDistribution.fillEqually
-        buttonStackView.spacing = 5.0
-        
-        cpuButton = UIButton(frame: CGRect(x: 0.0, y: 0.0, width: frame.width / 3, height: frame.height))
+        cpuButton = UIButton()
         cpuButton?.backgroundColor = UIColor.gray
         cpuButton?.layer.cornerRadius = 8.0
         cpuButton?.layer.borderWidth = 1.5
@@ -111,32 +90,24 @@ class ButtonsNLabelView: UIView
         motherboardButton?.titleLabel?.font = UIFont(name: "Helvetica-Bold", size: 10)
         motherboardButton?.addTarget(self, action: #selector(buttonTouchUp), for: .touchUpInside)
         
-        buttonStackView.addArrangedSubview(cpuButton!)
-        buttonStackView.addArrangedSubview(motherboardButton!)
-        buttonStackView.addArrangedSubview(gpuButton!)
-        buttonStackView.addArrangedSubview(caseButton!)
-        buttonStackView.addArrangedSubview(psuButton!)
+        buttonStackView?.addArrangedSubview(cpuButton!)
+        buttonStackView?.addArrangedSubview(motherboardButton!)
+        buttonStackView?.addArrangedSubview(gpuButton!)
+        buttonStackView?.addArrangedSubview(caseButton!)
+        buttonStackView?.addArrangedSubview(psuButton!)
         
         
-        scrollView.addSubview(buttonStackView)
-        
-        
-        
+        addSubview(buttonStackView!)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
     func buttonTouchUp(button: UIButton)
     {
         let partType = button.currentTitle
         delegate?.buttonTouched(partType: partType!)
     }
-    var costTotalString: String
-    {
-        set{ _costTotalString = newValue}
-        get{return _costTotalString}
-    }
-    
-    weak var delegate: ButtonsNLabelViewDelegate? = nil
+    weak var delegate: BuildButtonsViewDelegate? = nil
 }

@@ -83,6 +83,10 @@ class PartsList {
         
     }
     
+    public func getListOfPartsByManufacturer(partType: String) -> [String] {
+        return (_listOfParts?.getListOfPartsByManufacturer(partType: partType))!
+    }
+    
     public func getPartsByName(string: String) -> [String] {
         let result = (_listOfParts?.getListOfPartsByName(partType: string))!
         return result
@@ -90,6 +94,10 @@ class PartsList {
     
     public func getPartsByFamily(string: String) -> [String] {
         return (_listOfParts?.getListOfPartsByFamily(partType: string))!
+    }
+    
+    public func getFamilyPartsOfManufacturer(type: String, manufacturer: String) -> [String] {
+        return (_listOfParts?.getFamilyPartsOfManufacturer(type: type, manufacturer: manufacturer))!
     }
     
     private func getDocumentsDirectory() -> URL {

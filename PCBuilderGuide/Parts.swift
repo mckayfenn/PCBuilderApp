@@ -35,6 +35,25 @@ class Parts {
     }
     
     
+    public func getListOfPartsByManufacturer(partType: String) -> [String] {
+        var result: [String] = []
+        
+        switch partType {
+        case "Processor":
+            for cpu in _processors {
+                if (!result.contains(cpu.manufacturer)) {
+                    result.append(cpu.manufacturer)
+                }
+            }
+            break
+        default:
+            // return an empty list if parameter isn't correct
+            break
+        }
+        
+        return result
+    }
+    
     /**
         Returns a specified list of parts with only names
         Give the parameter a part type
@@ -135,6 +154,24 @@ class Parts {
         return result
     }
     
+    
+    public func getFamilyPartsOfManufacturer(type: String, manufacturer: String) -> [String] {
+        var result: [String] = []
+        
+        switch type {
+        case "Processor":
+            for cpu in _processors {
+                if (cpu.manufacturer == manufacturer) {
+                    result.append(cpu.family)
+                }
+            }
+        default:
+            // return an empty list if parameters arent correct
+            break
+        }
+        
+        return result
+    }
     
 }
 

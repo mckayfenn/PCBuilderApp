@@ -83,6 +83,10 @@ class PartsList {
         
     }
     
+    public func getPartsForCategory(type: String, family: String) -> [MyParts] {
+        return (_listOfParts?.getPartsForCategory(type: type, family: family))!
+    }
+    
     public func getListOfPartsByManufacturer(partType: String) -> [String] {
         return (_listOfParts?.getListOfPartsByManufacturer(partType: partType))!
     }

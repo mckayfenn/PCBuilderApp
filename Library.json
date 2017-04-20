@@ -3,7 +3,7 @@
   [
     {
       "Manufacturer": "Intel",
-      "Name": "i7 7700k",
+      "Model": "i7 7700k",
       "Socket": "LGA 1151",
       "Description": "This is a description",
       "Specs": "This is specs",
@@ -15,7 +15,7 @@
     },
     {
       "Manufacturer": "AMD",
-      "Name": "R7 1700",
+      "Model": "R7 1700",
       "Socket": "AM4",
       "Description": "This is a description",
       "Specs": "This is specs",
@@ -27,7 +27,7 @@
     },
     {
       "Manufacturer": "AMD",
-      "Name": "R5 1600",
+      "Model": "R5 1600",
       "Socket": "AM4",
       "Description": "This is a description",
       "Specs": "This is specs",
@@ -39,7 +39,7 @@
     },
     {
       "Manufacturer": "Intel",
-      "Name": "i5 7600k",
+      "Model": "i5 7600k",
       "Socket": "LGA 1151",
       "Description": "This is a description",
       "Specs": "This is specs",
@@ -51,7 +51,7 @@
     },
     {
       "Manufacturer": "Intel",
-      "Name": "i5 7500",
+      "Model": "i5 7500",
       "Socket": "LGA 1151",
       "Description": "This is a description",
       "Specs": "This is specs",
@@ -67,7 +67,7 @@
   [
     {
       "Manufacturer": "MSI",
-      "Name": "MSI B150 Gaming M3",
+      "Model": "MSI B150 Gaming M3",
       "Size": "ATX",
       "Socket": "LGA 1151",
       "Chipset": "B150",
@@ -77,7 +77,7 @@
     },
     {
       "Manufacturer": "Gigabyte",
-      "Name": "Gigabyte GA-B250M-DS3H",
+      "Model": "Gigabyte GA-B250M-DS3H",
       "Size": "Micro ATX",
       "Socket": "LGA 1151",
       "Chipset": "B250",
@@ -87,7 +87,7 @@
     },
     {
       "Manufacturer": "Asus",
-      "Name": "Asus PRIME X370-PRO",
+      "Model": "Asus PRIME X370-PRO",
       "Size": "ATX",
       "Socket": "AM4",
       "Chipset": "X370",
@@ -101,7 +101,7 @@
   [
     {
       "Manufacturer": "Corsair",
-      "Name": "Corsair Vengence RGB",
+      "Model": "Corsair Vengence RGB",
       "Class": "DDR4",
       "Size": "2x8gb",
       "Speed": "3000",
@@ -111,7 +111,7 @@
     },
     {
       "Manufacturer": "Crucial",
-      "Name": "Ballistix Sport LT",
+      "Model": "Ballistix Sport LT",
       "Class": "DDR4",
       "Size": "1x8gb",
       "Speed": "2400",
@@ -121,7 +121,7 @@
     },
     {
       "Manufacturer": "G.Skill",
-      "Name": "TridentZ RGB",
+      "Model": "TridentZ RGB",
       "Class": "DDR4",
       "Size": "2x8gb",
       "Speed": "3200",

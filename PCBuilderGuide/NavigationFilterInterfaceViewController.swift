@@ -16,12 +16,13 @@ class NavigationFilterInterfaceViewController: UIViewController, PartFilterInter
     
     private var _partsList: PartsList = PartsList.Instance
     private var _inList: String = ""
-    private var _showListOfSpecificParts: Bool = false
-    
+    private var _showCategoryPage: Bool = false
     
     
     init?(partType: String) {
         super.init(nibName: nil, bundle: nil)
+        
+        _showCategoryPage = false
         partFilterView = PartFilterInterfaceView()
         
         switch partType {
@@ -79,9 +80,20 @@ class NavigationFilterInterfaceViewController: UIViewController, PartFilterInter
         
         switch _inList {
         case "CPU":
-            partFilterView = PartFilterInterfaceView()
-            self.partFilterView?.setButtonAttributes(partType: _partsList.getFamilyPartsOfManufacturer(type: "Processor", manufacturer: specificPartType))
-            loadView()
+            if (_showCategoryPage) {
+                print("Show specific part page")
+                let categoryViewController: CategoryViewController = CategoryViewController()
+                //categoryViewController.parts = _partsList.getPartsByName(string: "Processor")
+                
+                categoryViewController.partsList = _partsList.getPartsForCategory(type: "Processor", family: specificPartType)
+                navigationController?.pushViewController(categoryViewController, animated: true)
+            }
+            else {
+                partFilterView = PartFilterInterfaceView()
+                self.partFilterView?.setButtonAttributes(partType: _partsList.getFamilyPartsOfManufacturer(type: "Processor", manufacturer: specificPartType))
+                loadView()
+            }
+            _showCategoryPage = true
             break
         default:
             // don't do anything

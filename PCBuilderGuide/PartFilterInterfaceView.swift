@@ -17,6 +17,8 @@ class PartFilterInterfaceView: UIView
     private var buttonAttributes: [(text: NSString, color: UIColor)] = []
     private var stackView: UIStackView? = nil
     
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         

@@ -8,13 +8,23 @@
 
 import UIKit
 
-class SpecificPartPageView: UIView {
+protocol SpecificPartPageDelegate: class {
+    func selectPartClicked(part: MyParts)
+}
+
+protocol PartViewDelegate: class {
+    func selectPartClickedHere(part: MyParts)
+}
+
+class SpecificPartPageView: UIView, PartViewDelegate {
     
     private var scrollView: UIScrollView? = nil
     private var partView: PartView? = nil
     
     init(frame: CGRect, part: MyParts) {
         super.init(frame: frame)
+        
+        
         
         let screenView = bounds.height
         
@@ -29,11 +39,20 @@ class SpecificPartPageView: UIView {
         partView?.backgroundColor = UIColor.white
         
         scrollView?.addSubview(partView!)
+        
+        partView?.delegate = self
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func selectPartClickedHere(part: MyParts) {
+        delegate?.selectPartClicked(part: part)
+    }
+    
+    
+    weak var delegate: SpecificPartPageDelegate? = nil
     
 }
 
@@ -107,21 +126,32 @@ class PartView: UIView {
         let specsTextSize: CGSize = specsText.size(attributes: specsTextAttribute)
         specsText.draw(at: CGPoint(x: specsRect.minX, y: specsRect.minY), withAttributes: specsTextAttribute)
 
-        let specsDataRect = CGRect(x: 15, y: specsRect.maxY, width: frame.width, height: frame.height)
-        let specsDataStrings = _part?._specs.components(separatedBy: ",")
         
-        for i: Int in 0..<specsDataStrings?.count {
-            
+        let specsDataRect = CGRect(x: 15, y: specsRect.maxY, width: frame.width, height: frame.height / 2)
+        let specsDataStrings = _part?._specs.components(separatedBy: ",")
+        for i: Int in 0..<(specsDataStrings?.count)! {
+            let specsData = "• " + (specsDataStrings?[i])!.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+            let specsDataAttribute: [String:Any] = [NSFontAttributeName:UIFont.systemFont(ofSize: specsDataRect.width / 25), NSForegroundColorAttributeName: UIColor.black]
+            let specsDataSize: CGSize = specsData.size(attributes: specsDataAttribute)
+            specsData.draw(at: CGPoint(x: specsDataRect.minX, y: specsDataRect.minY + CGFloat(i * 15)), withAttributes: specsDataAttribute)
         }
-        let specsData = _part?._specs
-        let specsDataAttribute: [String:Any] = [NSFontAttributeName:UIFont.systemFont(ofSize: specsDataRect.width / 25), NSForegroundColorAttributeName: UIColor.black]
-        let specsDataSize: CGSize = specsData!.size(attributes: specsDataAttribute)
-        specsData?.draw(at: CGPoint(x: specsDataRect.minX, y: specsDataRect.minY), withAttributes: specsDataAttribute)
+        
+        
+        let linkButton = UIButton(frame: CGRect(x: frame.midX - frame.midX / 2, y: frame.maxY - 100, width: frame.width / 2, height: frame.height / 10))
+        linkButton.setTitle("Newegg.com", for: .normal)
+        linkButton.setTitleColor(UIColor.blue, for: .normal)
+        linkButton.addTarget(self, action: #selector(linkSelected), for: .touchUpInside)
+        stackView?.addSubview(linkButton)
         
     }
     
     func buttonSelected() {
-        print("Select button was selected")
+        delegate?.selectPartClickedHere(part: _part!)
+    }
+    
+    func linkSelected() {
+        let url = NSURL(string: (_part?._link)!)!
+        UIApplication.shared.openURL(url as URL)
     }
     
     // get the image data from url.    FROM (http://stackoverflow.com/questions/24231680/loading-downloading-image-from-url-on-swift)
@@ -145,5 +175,7 @@ class PartView: UIView {
         }
     }
     
+    
+    weak var delegate: PartViewDelegate? = nil
     
 }

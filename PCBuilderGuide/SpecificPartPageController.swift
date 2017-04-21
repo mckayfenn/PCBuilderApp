@@ -8,12 +8,17 @@
 
 import UIKit
 
-class SpecificPartPageController: UIViewController {
+protocol SpecificPartPageControllerDelegate: class {
+    func partWasSelected(part: MyParts)
+}
+
+class SpecificPartPageController: UIViewController, SpecificPartPageDelegate {
     
     private var _part: MyParts? = nil
     public var part: MyParts { get { return _part! } set { _part = newValue } }
     
     private var specificPartView: SpecificPartPageView { return view as! SpecificPartPageView }
+    
     
     init(part: MyParts) {
         super.init(nibName: nil, bundle: nil)
@@ -31,6 +36,15 @@ class SpecificPartPageController: UIViewController {
         self.edgesForExtendedLayout = []
         
         self.title = _part?._model
+        
+        specificPartView.delegate = self
     }
     
+    
+    func selectPartClicked(part: MyParts) {
+        print("\(_part?._model) was selected")
+        delegate?.partWasSelected(part: part)
+    }
+    
+    weak var delegate: SpecificPartPageControllerDelegate? = nil
 }

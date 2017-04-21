@@ -8,13 +8,14 @@
 
 import UIKit
 
-class BuildInterfaceViewController: UIViewController, BuildInterfaceViewDelegate, BuildButtonsViewDelegate {
+class BuildInterfaceViewController: UIViewController, BuildInterfaceViewDelegate, BuildButtonsViewDelegate, NavigationFilterInterfaceControllerDelegate {
     
     private var _partsList: PartsList = PartsList.Instance
     private var buildInterfaceView: BuildInterfaceView? = nil
     private var buildButtonsView: BuildButtonsView? = nil
-    //private var buildInterfaceView: BuildInterfaceView { return view as! BuildInterfaceView }
     private var mainBuilderView: MainBuilderView { return view as! MainBuilderView }
+    
+    private var navigationFilterViewController: NavigationFilterInterfaceViewController? = nil
     
     override func loadView() {
         buildInterfaceView = BuildInterfaceView()
@@ -37,7 +38,7 @@ class BuildInterfaceViewController: UIViewController, BuildInterfaceViewDelegate
     }
     
     func buttonTouched(partType: String) {
-        let navigationFilterViewController: NavigationFilterInterfaceViewController = NavigationFilterInterfaceViewController(partType: partType)!
+        navigationFilterViewController = NavigationFilterInterfaceViewController(partType: partType)!
         
 //        switch partType {
 //        case "CPU":
@@ -51,11 +52,16 @@ class BuildInterfaceViewController: UIViewController, BuildInterfaceViewDelegate
 //            break
 //        }
         
+        navigationFilterViewController?.delegate = self
         
-        navigationController?.pushViewController(navigationFilterViewController, animated: true)
+        navigationController?.pushViewController(navigationFilterViewController!, animated: true)
     }
     
     func saveClicked() {
         print("Save clicked!")
+    }
+    
+    func partWasSelected(part: MyParts) {
+        navigationController?.popToViewController(self, animated: true)
     }
 }

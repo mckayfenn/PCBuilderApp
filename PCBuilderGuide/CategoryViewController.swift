@@ -8,14 +8,17 @@
 
 import UIKit
 
-class CategoryViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+protocol CategoryViewControllerDelegate: class {
+    func partWasSelected(part: MyParts)
+}
+
+class CategoryViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, SpecificPartPageControllerDelegate {
     
     private var categoryView: UICollectionView { return view as! UICollectionView }
-    //private var _partsNames: [String]? = nil
     private var _parts: [MyParts] = []
-    
-    //public var parts: [String] { get { return _partsNames!} set { _partsNames = newValue } }
     public var partsList: [MyParts] { get { return _parts} set { _parts = newValue } }
+    
+    private var partViewController: SpecificPartPageController? = nil
     
     override func loadView() {
         super.loadView()
@@ -27,6 +30,8 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
         categoryLayout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         
         view = UICollectionView(frame: CGRect.zero, collectionViewLayout: categoryLayout)
+        
+        //partViewController?.delegate = self
     }
     
     override func viewDidLoad() {
@@ -77,9 +82,18 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
         
         let part = _parts[indexPath.item]
         
-        let partViewController: SpecificPartPageController = SpecificPartPageController(part: part)
+        partViewController = SpecificPartPageController(part: part)
         
-        navigationController?.pushViewController(partViewController, animated: true)
+        partViewController?.delegate = self
+        
+        navigationController?.pushViewController(partViewController!, animated: true)
         print("Create a view with this specific part")
     }
+    
+    
+    func partWasSelected(part: MyParts) {
+        delegate?.partWasSelected(part: part)
+    }
+    
+    weak var delegate: CategoryViewControllerDelegate? = nil
 }

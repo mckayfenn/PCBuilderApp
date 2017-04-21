@@ -42,7 +42,6 @@ class SpecificPartPageController: UIViewController, SpecificPartPageDelegate {
     
     
     func selectPartClicked(part: MyParts) {
-        print("\(_part?._model) was selected")
         delegate?.partWasSelected(part: part)
     }
     

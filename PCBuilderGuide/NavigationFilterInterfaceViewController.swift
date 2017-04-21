@@ -8,10 +8,16 @@
 
 import UIKit
 
-class NavigationFilterInterfaceViewController: UIViewController, PartFilterInterfaceViewDelegate {
+protocol NavigationFilterInterfaceControllerDelegate: class {
+    func partWasSelected(part: MyParts)
+}
+
+class NavigationFilterInterfaceViewController: UIViewController, PartFilterInterfaceViewDelegate, CategoryViewControllerDelegate {
     
     private var mainFilterView: MainFilterView { return view as! MainFilterView }
     private var partFilterView: PartFilterInterfaceView? = nil
+    
+    private var categoryViewController: CategoryViewController? = nil
     
     
     private var _partsList: PartsList = PartsList.Instance
@@ -82,11 +88,11 @@ class NavigationFilterInterfaceViewController: UIViewController, PartFilterInter
         case "CPU":
             if (_showCategoryPage) {
                 print("Show specific part page")
-                let categoryViewController: CategoryViewController = CategoryViewController()
+                categoryViewController = CategoryViewController()
                 //categoryViewController.parts = _partsList.getPartsByName(string: "Processor")
                 
-                categoryViewController.partsList = _partsList.getPartsForCategory(type: "Processor", family: specificPartType)
-                navigationController?.pushViewController(categoryViewController, animated: true)
+                categoryViewController?.partsList = _partsList.getPartsForCategory(type: "Processor", family: specificPartType)
+                navigationController?.pushViewController(categoryViewController!, animated: true)
             }
             else {
                 partFilterView = PartFilterInterfaceView()
@@ -99,6 +105,15 @@ class NavigationFilterInterfaceViewController: UIViewController, PartFilterInter
             // don't do anything
             break
         }
+        
+        
+        categoryViewController?.delegate = self
     }
     
+    
+    func partWasSelected(part: MyParts) {
+        delegate?.partWasSelected(part: part)
+    }
+    
+    weak var delegate: NavigationFilterInterfaceControllerDelegate? = nil
 }

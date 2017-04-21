@@ -18,6 +18,7 @@ class SpecificPartPageView: UIView {
         
         let screenView = bounds.height
         
+        // Have a scroll view
         scrollView = UIScrollView(frame: CGRect(x: 0.0, y: 0.0, width: frame.width, height: frame.height))
         scrollView?.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
         scrollView?.contentSize = CGSize(width: frame.width, height: screenView)
@@ -54,7 +55,7 @@ class PartView: UIView {
         print("in PartView")
         
         
-        
+        // have a stack view
         stackView = UIStackView(frame: CGRect(x: 0.0, y: 0.0, width: frame.width, height: frame.height))
         stackView?.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
         stackView?.axis = UILayoutConstraintAxis.vertical
@@ -74,12 +75,13 @@ class PartView: UIView {
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         
+        let context: CGContext = UIGraphicsGetCurrentContext()!
+        
         stackView?.frame = CGRect(x: 0.0, y: 0.0, width: frame.width, height: frame.height)
         
         let selectButton: UIButton = UIButton()
-        //selectButton.frame = CGRect(x: frame.midX - selectButton.frame.width, y: 10, width: frame.width / 2, height: frame.height / 10)
         selectButton.frame.size = CGSize(width: frame.width / 2, height: frame.height / 10)
-        selectButton.frame.origin.x = frame.midX - selectButton.frame.width / 2
+        selectButton.frame.origin.x = frame.midX - frame.midX / 2
         selectButton.frame.origin.y = 10
         selectButton.layer.borderWidth = 2.5
         selectButton.layer.borderColor = UIColor.lightGray.cgColor
@@ -91,21 +93,30 @@ class PartView: UIView {
         stackView?.addSubview(selectButton)
         
         
-        let label = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: frame.width, height: frame.height))
-        label.textColor = UIColor.black
-        label.text = _part?._model
-        
-        stackView?.addSubview(label)
-        
-        
+        // load the part image using helper methods
         imageView = UIImageView(frame: CGRect(x: frame.midX - frame.midX / 2, y: selectButton.frame.maxY, width: frame.width / 2, height: frame.height / 3))
         if let checkedURL = URL(string: (_part?._image)!) {
             imageView?.contentMode = .scaleAspectFit
             downloadImage(url: checkedURL)
         }
-        
-        
         stackView?.addSubview(imageView!)
+        
+        let specsRect = CGRect(x: 10.0, y: (imageView?.frame.maxY)!, width: frame.width, height: frame.height / 20)
+        let specsText = "Specs:"
+        let specsTextAttribute: [String:Any] = [NSFontAttributeName:UIFont.systemFont(ofSize: specsRect.width / 18), NSForegroundColorAttributeName: UIColor.black]
+        let specsTextSize: CGSize = specsText.size(attributes: specsTextAttribute)
+        specsText.draw(at: CGPoint(x: specsRect.minX, y: specsRect.minY), withAttributes: specsTextAttribute)
+
+        let specsDataRect = CGRect(x: 15, y: specsRect.maxY, width: frame.width, height: frame.height)
+        let specsDataStrings = _part?._specs.components(separatedBy: ",")
+        
+        for i: Int in 0..<specsDataStrings?.count {
+            
+        }
+        let specsData = _part?._specs
+        let specsDataAttribute: [String:Any] = [NSFontAttributeName:UIFont.systemFont(ofSize: specsDataRect.width / 25), NSForegroundColorAttributeName: UIColor.black]
+        let specsDataSize: CGSize = specsData!.size(attributes: specsDataAttribute)
+        specsData?.draw(at: CGPoint(x: specsDataRect.minX, y: specsDataRect.minY), withAttributes: specsDataAttribute)
         
     }
     

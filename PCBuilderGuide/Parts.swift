@@ -13,6 +13,7 @@ import Foundation
 protocol MyParts: class {
     var _link: String { get }
     var _specs: String { get }
+    var _image: String { get }
     var _price: String { get }
     var _model: String { get }
     var _socket: String { get }
@@ -217,6 +218,7 @@ class CPU: MyParts {
     internal var _link: String
     internal var _specs: String
     internal var _price: String
+    internal var _image: String
     internal var _model: String
     internal var _socket: String
     internal var _family: String
@@ -231,6 +233,7 @@ class CPU: MyParts {
         _link = dictionary.value(forKey: "Link") as! String
         _specs = dictionary.value(forKey: "Specs") as! String
         _price = dictionary.value(forKey: "Price") as! String
+        _image = dictionary.value(forKey: "Image") as! String
         _model = dictionary.value(forKey: "Model") as! String
         _socket = dictionary.value(forKey: "Socket") as! String
         _family = dictionary.value(forKey: "Family") as! String
@@ -243,6 +246,7 @@ class CPU: MyParts {
     var link: String { get { return _link } }
     var specs: String { get { return _specs } }
     var price: String { get { return _price } }
+    var image: String { get { return _image } }
     var model: String { get { return _model } }
     var socket: String { get { return _socket } }
     var family: String { get { return _family } }

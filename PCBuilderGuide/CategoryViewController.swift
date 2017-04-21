@@ -20,6 +20,8 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
     override func loadView() {
         super.loadView()
         
+        self.edgesForExtendedLayout = []
+        
         let categoryLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         categoryLayout.itemSize = CGSize(width: view.bounds.width / 2 - 20, height: view.bounds.height / 4 - 10)
         categoryLayout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
@@ -60,7 +62,7 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
         cellView.frame = cell.bounds
         
         
-        let part = _parts[indexPath.row]
+        let part = _parts[indexPath.item]
         
         cellView.modelLabel = part._model
         cellView.priceLabel = "$" + part._price
@@ -72,6 +74,12 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let part = _parts[indexPath.item]
+        
+        let partViewController: SpecificPartPageController = SpecificPartPageController(part: part)
+        
+        navigationController?.pushViewController(partViewController, animated: true)
         print("Create a view with this specific part")
     }
 }

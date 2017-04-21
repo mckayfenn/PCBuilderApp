@@ -13,6 +13,8 @@
 		0A8688961E9C6862005D1B07 /* Parts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8688951E9C6862005D1B07 /* Parts.swift */; };
 		0A8688981E9C6E13005D1B07 /* PartsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8688971E9C6E13005D1B07 /* PartsList.swift */; };
 		0A96FF461EA6D25500577128 /* MainBuilderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A96FF451EA6D25500577128 /* MainBuilderView.swift */; };
+		0AA8A7731EAAA06500FFBBAA /* SpecificPartPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA8A7721EAAA06500FFBBAA /* SpecificPartPageController.swift */; };
+		0AA8A7751EAAA1F800FFBBAA /* SpecificPartPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA8A7741EAAA1F800FFBBAA /* SpecificPartPageView.swift */; };
 		0AF257471E982CCA00D9F312 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF257461E982CCA00D9F312 /* AppDelegate.swift */; };
 		0AF257491E982CCA00D9F312 /* UserBuildsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF257481E982CCA00D9F312 /* UserBuildsViewController.swift */; };
 		0AF2574E1E982CCA00D9F312 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AF2574D1E982CCA00D9F312 /* Assets.xcassets */; };
@@ -32,6 +34,8 @@
 		0A8688951E9C6862005D1B07 /* Parts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parts.swift; sourceTree = "<group>"; };
 		0A8688971E9C6E13005D1B07 /* PartsList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartsList.swift; sourceTree = "<group>"; };
 		0A96FF451EA6D25500577128 /* MainBuilderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainBuilderView.swift; sourceTree = "<group>"; };
+		0AA8A7721EAAA06500FFBBAA /* SpecificPartPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecificPartPageController.swift; sourceTree = "<group>"; };
+		0AA8A7741EAAA1F800FFBBAA /* SpecificPartPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecificPartPageView.swift; sourceTree = "<group>"; };
 		0AF257431E982CCA00D9F312 /* PCBuilderGuide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PCBuilderGuide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AF257461E982CCA00D9F312 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0AF257481E982CCA00D9F312 /* UserBuildsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBuildsViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +70,15 @@
 			name = CategoryClasses;
 			sourceTree = "<group>";
 		};
+		0AA8A7711EAAA03C00FFBBAA /* SpecificPartPage */ = {
+			isa = PBXGroup;
+			children = (
+				0AA8A7721EAAA06500FFBBAA /* SpecificPartPageController.swift */,
+				0AA8A7741EAAA1F800FFBBAA /* SpecificPartPageView.swift */,
+			);
+			name = SpecificPartPage;
+			sourceTree = "<group>";
+		};
 		0AF2573A1E982CC900D9F312 = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +106,7 @@
 				3DF992AC1EA6960700EE8728 /* BuildInterfaceClasses */,
 				3DF992A91EA695C400EE8728 /* NavigationFilterClasses */,
 				0A8537A81EA8328F00185DFA /* CategoryClasses */,
+				0AA8A7711EAAA03C00FFBBAA /* SpecificPartPage */,
 				0AF2574D1E982CCA00D9F312 /* Assets.xcassets */,
 				0AF257521E982CCA00D9F312 /* Info.plist */,
 			);
@@ -202,7 +216,9 @@
 				0AF257491E982CCA00D9F312 /* UserBuildsViewController.swift in Sources */,
 				0A8537AC1EA8331800185DFA /* CategoryCellView.swift in Sources */,
 				3DB036B31E9C46CF003D7FAD /* NavigationFilterInterfaceViewController.swift in Sources */,
+				0AA8A7751EAAA1F800FFBBAA /* SpecificPartPageView.swift in Sources */,
 				0AF257471E982CCA00D9F312 /* AppDelegate.swift in Sources */,
+				0AA8A7731EAAA06500FFBBAA /* SpecificPartPageController.swift in Sources */,
 				0A8537AA1EA832D200185DFA /* CategoryViewController.swift in Sources */,
 				0AF2575B1E98434E00D9F312 /* BuildInterfaceView.swift in Sources */,
 				3DB036B11E9C43FA003D7FAD /* NavigationFilterInterfaceView.swift in Sources */,

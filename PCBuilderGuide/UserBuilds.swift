@@ -124,18 +124,42 @@ class UserBuild {
     
     public var buildTitle: String { get { return _buildTitle } set { _buildTitle = newValue } }
     
+    
+    
+    
+    /**
+    * Add a part to the user build
+    * check if there is already one of these parts and remove it to replace it
+    **/
     public func addPart(part: MyParts) {
-//        var typeOfPart = type(of: part)
-//        print(typeOfPart)
-//        var typeOf: String = (String)typeOfPart
-//        for i: Int in 0..<_listOfUsersParts.count {
-//            if let thisPart = part as? typeOfPart {
-//                _listOfUsersParts.remove(at: i)
-//                break
-//            }
-//        }
+        
+        print(type(of: part))
+        
+        let typeOfPart = type(of: part)
+        
+        if (type(of: part) == CPU.self) {
+            for i: Int in 0..<_listOfUsersParts.count {
+                let thisPart = _listOfUsersParts[i]
+                if (type(of: thisPart) == CPU.self) {
+                    _listOfUsersParts.remove(at: i)
+                    break
+                }
+            }
+        }
+        else if (type(of: part) == Motherboard.self) {
+            // same thing but remove motherboard
+        }
+        
+
+        
+
+        
+        // add the new one
         _listOfUsersParts.append(part)
     }
+    
+    
+    
     
     public func getAllParts() -> [MyParts] {
         return _listOfUsersParts

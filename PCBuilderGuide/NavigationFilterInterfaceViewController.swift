@@ -16,6 +16,8 @@ class NavigationFilterInterfaceViewController: UIViewController, PartFilterInter
     
     private var mainFilterView: MainFilterView { return view as! MainFilterView }
     private var partFilterView: PartFilterInterfaceView? = nil
+    private var customPartViewController: CustomPartViewController? = nil
+    var buttons = [UIBarButtonItem]()
     
     private var categoryViewController: CategoryViewController? = nil
     
@@ -66,6 +68,22 @@ class NavigationFilterInterfaceViewController: UIViewController, PartFilterInter
     override func viewDidLoad() {
         partFilterView?.backgroundColor = UIColor.white
         
+        let viewAll = UIBarButtonItem(title: "View All", style: .plain, target: self, action: #selector(viewAllClicked))
+        buttons.append(viewAll)
+        
+        let createPart = UIBarButtonItem(title: "Add Part", style: .plain, target: self, action: #selector(addPartClicked))
+        buttons.append(createPart)
+        
+        self.navigationItem.setRightBarButtonItems(buttons, animated: true)
+    }
+    func addPartClicked()
+    {
+        customPartViewController = CustomPartViewController()
+        navigationController?.pushViewController(customPartViewController!, animated: true)
+    }
+    func viewAllClicked()
+    {
+        print("view all clicked")
     }
     
     func buttonTouched(specificPartType: String) {

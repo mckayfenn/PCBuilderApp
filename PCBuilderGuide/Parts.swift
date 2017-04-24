@@ -50,7 +50,12 @@ class Parts {
     }
     
     
-    public func getAllPartsForCategory(type: String) -> [MyParts] {
+    /**
+    * Get all the parts of a given category
+    * EX: getAllPartsForCategory(type: "Processor") -> [i7 7700k, R7 1700, i3 6100, R5 1600x ....]
+    * First level of View All
+    **/
+    public func getAllPartsFirstLevel(type: String) -> [MyParts] {
         var result: [MyParts] = []
         
         switch type {
@@ -61,6 +66,30 @@ class Parts {
             break
         default:
             // return an empty list if parameter isn't correct
+            break
+        }
+        
+        return result
+    }
+    
+    /**
+    * Get all parts of given category and manfucturer
+    * manufacturer can be different based on which category
+    * EX: getAllPartsSecondLevel(category: "Processor", manufacturer: "Intel") -> [i7 7700k, i5 6500, i3 6100, Pentium g4560 ....]
+    * Second level of View All
+    **/
+    public func getAllPartsSecondLevel(type: String, category: String) -> [MyParts] {
+        var result: [MyParts] = []
+        
+        switch type {
+        case "Processor":
+            for cpu in _processors {
+                if (cpu._manufacturer == category) {
+                    result.append(cpu)
+                }
+            }
+            break
+        default:
             break
         }
         
@@ -89,6 +118,8 @@ class Parts {
         return result
     }
     
+    
+    /** is in use **/
     public func getListOfPartsByManufacturer(partType: String) -> [String] {
         var result: [String] = []
         
@@ -108,107 +139,8 @@ class Parts {
         return result
     }
     
-    /**
-     Returns a specified list of parts with only names
-     Give the parameter a part type
-     Example: getListOfPartsByName("Processor") will return
-     ["i7 7700k", "R7 1700x", .... ]
-     
-     Parameter must match one of these:
-     "Processor", "Motherboard"
-     */
-    public func getListOfPartsByName(partType: String) -> [String] {
-        var result: [String] = []
-        
-        switch partType {
-        case "Processor":
-            for cpu in _processors {
-                result.append(cpu.model)
-            }
-            break
-        case "Motherboard":
-            for mobo in _motherboards {
-                result.append(mobo.model)
-            }
-            break
-        default:
-            // return an empty list if parameter wasnt correct
-            break
-        }
-        
-        return result
-    }
     
-    
-    public func getListOfPartsByFamily(partType: String) -> [String] {
-        var result: [String] = []
-        
-        switch partType {
-        case "Processor":
-            for cpu in _processors {
-                if (!result.contains(cpu.family)) {
-                    result.append(cpu.family)
-                }
-            }
-            break
-        case "Motherboard":
-            for mobo in _motherboards {
-                result.append(mobo.model) // THIS IS WRONG RIGHT NOW
-            }
-            break
-        default:
-            // return an empty list if parameter wasnt correct
-            break
-        }
-        
-        return result.sorted()
-    }
-    
-    
-    /**
-     Return a list of compatible parts (NAMES) to a given part.
-     partType is the list of parts you want.
-     compatibleTo is the part you have that you want parts compatible to.
-     
-     Example: cpu = R7 1700
-     getCompatiblePartsTo(partType: "Motherboard", compatibleTo: cpu) will return
-     ["Asus Prime X370", .... ]
-     */
-    public func getCompatiblePartsTo(partType: String, compatibleTo: AnyObject) -> [String] {
-        var result: [String] = []
-        
-        
-        // Switch on which part they passed us
-        switch compatibleTo {
-        case is CPU:
-            let part: CPU = compatibleTo as! CPU
-            
-            
-            // Switch on which part they are wanting
-            switch partType {
-            case "Motherboard":
-                for mobo in _motherboards {
-                    if (mobo.socket == part.socket) {
-                        result.append(mobo.model)
-                    }
-                }
-                break
-            default:
-                // nothing
-                break
-            }
-            
-            
-            
-        default:
-            // return an empty list if parameters arent correct
-            break
-        }
-        
-        return result
-    }
-    
-    
+    /** is in use **/
     public func getFamilyPartsOfManufacturer(type: String, manufacturer: String) -> [String] {
         var result: [String] = []
         

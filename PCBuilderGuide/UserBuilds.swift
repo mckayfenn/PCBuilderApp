@@ -125,6 +125,15 @@ class UserBuild {
     public var buildTitle: String { get { return _buildTitle } set { _buildTitle = newValue } }
     
     public func addPart(part: MyParts) {
+//        var typeOfPart = type(of: part)
+//        print(typeOfPart)
+//        var typeOf: String = (String)typeOfPart
+//        for i: Int in 0..<_listOfUsersParts.count {
+//            if let thisPart = part as? typeOfPart {
+//                _listOfUsersParts.remove(at: i)
+//                break
+//            }
+//        }
         _listOfUsersParts.append(part)
     }
     
@@ -133,24 +142,6 @@ class UserBuild {
     }
     
     public var dictionaryRepresentation: NSDictionary {
-//        var result: [String : [String : [String : String]]] = [:]
-//        
-//        var strings: [String : [String : String]] = [:]
-//        var attributes: [String: String] = [:]
-//        var items: String = ""
-//        for part: MyParts in _listOfUsersParts {
-//            if (part is CPU) {
-//                items = part._model
-//                attributes["Model"] = items
-//                
-//                strings["CPU"] = attributes
-//            }
-//        }
-//        
-//        
-//        
-//        result["Parts"] = strings
-        //result["Title"] = [String(_buildTitle)]
         
         var result: [String : [String : String]] = [:]
         var partType: [String : String] = [:]

@@ -126,7 +126,6 @@ class BuildInterfaceViewController: UIViewController, BuildInterfaceViewDelegate
         _viewTitle = title
         
         _userBuild?.buildTitle = title
-        print("in save method with title: \(title)")
         
         delegate?.saveBuilds()
     }

@@ -83,8 +83,12 @@ class PartsList {
         
     }
     
-    public func getAllPartsForCategory(type: String) -> [MyParts] {
-        return (_listOfParts?.getAllPartsForCategory(type: type))!
+    public func getAllPartsFirstLevel(type: String) -> [MyParts] {
+        return (_listOfParts?.getAllPartsFirstLevel(type: type))!
+    }
+    
+    public func getAllPartsSecondLevel(type: String, category: String) -> [MyParts] {
+        return (_listOfParts?.getAllPartsSecondLevel(type: type, category: category))!
     }
     
     public func getPartsForCategory(type: String, family: String) -> [MyParts] {
@@ -93,15 +97,6 @@ class PartsList {
     
     public func getListOfPartsByManufacturer(partType: String) -> [String] {
         return (_listOfParts?.getListOfPartsByManufacturer(partType: partType))!
-    }
-    
-    public func getPartsByName(string: String) -> [String] {
-        let result = (_listOfParts?.getListOfPartsByName(partType: string))!
-        return result
-    }
-    
-    public func getPartsByFamily(string: String) -> [String] {
-        return (_listOfParts?.getListOfPartsByFamily(partType: string))!
     }
     
     public func getFamilyPartsOfManufacturer(type: String, manufacturer: String) -> [String] {

@@ -15,6 +15,7 @@
 		0A96FF461EA6D25500577128 /* MainBuilderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A96FF451EA6D25500577128 /* MainBuilderView.swift */; };
 		0AA8A7731EAAA06500FFBBAA /* SpecificPartPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA8A7721EAAA06500FFBBAA /* SpecificPartPageController.swift */; };
 		0AA8A7751EAAA1F800FFBBAA /* SpecificPartPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA8A7741EAAA1F800FFBBAA /* SpecificPartPageView.swift */; };
+		0AD7C0891EAD88F6007ACD4D /* UserBuilds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD7C0881EAD88F6007ACD4D /* UserBuilds.swift */; };
 		0AF257471E982CCA00D9F312 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF257461E982CCA00D9F312 /* AppDelegate.swift */; };
 		0AF257491E982CCA00D9F312 /* UserBuildsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF257481E982CCA00D9F312 /* UserBuildsViewController.swift */; };
 		0AF2574E1E982CCA00D9F312 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AF2574D1E982CCA00D9F312 /* Assets.xcassets */; };
@@ -36,6 +37,7 @@
 		0A96FF451EA6D25500577128 /* MainBuilderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainBuilderView.swift; sourceTree = "<group>"; };
 		0AA8A7721EAAA06500FFBBAA /* SpecificPartPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecificPartPageController.swift; sourceTree = "<group>"; };
 		0AA8A7741EAAA1F800FFBBAA /* SpecificPartPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecificPartPageView.swift; sourceTree = "<group>"; };
+		0AD7C0881EAD88F6007ACD4D /* UserBuilds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserBuilds.swift; sourceTree = "<group>"; };
 		0AF257431E982CCA00D9F312 /* PCBuilderGuide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PCBuilderGuide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AF257461E982CCA00D9F312 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0AF257481E982CCA00D9F312 /* UserBuildsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBuildsViewController.swift; sourceTree = "<group>"; };
@@ -79,6 +81,21 @@
 			name = SpecificPartPage;
 			sourceTree = "<group>";
 		};
+		0AD7C0861EAD88CC007ACD4D /* PartsModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = PartsModel;
+			sourceTree = "<group>";
+		};
+		0AD7C0871EAD88DB007ACD4D /* UserBuilds */ = {
+			isa = PBXGroup;
+			children = (
+				0AD7C0881EAD88F6007ACD4D /* UserBuilds.swift */,
+			);
+			name = UserBuilds;
+			sourceTree = "<group>";
+		};
 		0AF2573A1E982CC900D9F312 = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +118,8 @@
 			children = (
 				0AF257461E982CCA00D9F312 /* AppDelegate.swift */,
 				0AF257481E982CCA00D9F312 /* UserBuildsViewController.swift */,
+				0AD7C0871EAD88DB007ACD4D /* UserBuilds */,
+				0AD7C0861EAD88CC007ACD4D /* PartsModel */,
 				0A8688951E9C6862005D1B07 /* Parts.swift */,
 				0A8688971E9C6E13005D1B07 /* PartsList.swift */,
 				3DF992AC1EA6960700EE8728 /* BuildInterfaceClasses */,
@@ -213,6 +232,7 @@
 				3DF992AE1EA6974400EE8728 /* MainFilterView.swift in Sources */,
 				0A8688961E9C6862005D1B07 /* Parts.swift in Sources */,
 				0A96FF461EA6D25500577128 /* MainBuilderView.swift in Sources */,
+				0AD7C0891EAD88F6007ACD4D /* UserBuilds.swift in Sources */,
 				0AF257491E982CCA00D9F312 /* UserBuildsViewController.swift in Sources */,
 				0A8537AC1EA8331800185DFA /* CategoryCellView.swift in Sources */,
 				3DB036B31E9C46CF003D7FAD /* NavigationFilterInterfaceViewController.swift in Sources */,

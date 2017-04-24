@@ -24,6 +24,8 @@
 		3D52D32F1EA7DB63002129CF /* BuildButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D52D32E1EA7DB63002129CF /* BuildButtonsView.swift */; };
 		3DB036B11E9C43FA003D7FAD /* NavigationFilterInterfaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB036B01E9C43FA003D7FAD /* NavigationFilterInterfaceView.swift */; };
 		3DB036B31E9C46CF003D7FAD /* NavigationFilterInterfaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB036B21E9C46CF003D7FAD /* NavigationFilterInterfaceViewController.swift */; };
+		3DD626551EAD85E100AC7E8D /* CustomPartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD626541EAD85E100AC7E8D /* CustomPartViewController.swift */; };
+		3DD626571EAD85F100AC7E8D /* CustomPartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD626561EAD85F100AC7E8D /* CustomPartView.swift */; };
 		3DF992AB1EA695FA00EE8728 /* PartFilterInterfaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF992AA1EA695FA00EE8728 /* PartFilterInterfaceView.swift */; };
 		3DF992AE1EA6974400EE8728 /* MainFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF992AD1EA6974400EE8728 /* MainFilterView.swift */; };
 /* End PBXBuildFile section */
@@ -48,6 +50,8 @@
 		3D52D32E1EA7DB63002129CF /* BuildButtonsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildButtonsView.swift; sourceTree = "<group>"; };
 		3DB036B01E9C43FA003D7FAD /* NavigationFilterInterfaceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationFilterInterfaceView.swift; sourceTree = "<group>"; };
 		3DB036B21E9C46CF003D7FAD /* NavigationFilterInterfaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationFilterInterfaceViewController.swift; sourceTree = "<group>"; };
+		3DD626541EAD85E100AC7E8D /* CustomPartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPartViewController.swift; sourceTree = "<group>"; };
+		3DD626561EAD85F100AC7E8D /* CustomPartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPartView.swift; sourceTree = "<group>"; };
 		3DF992AA1EA695FA00EE8728 /* PartFilterInterfaceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartFilterInterfaceView.swift; sourceTree = "<group>"; };
 		3DF992AD1EA6974400EE8728 /* MainFilterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainFilterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -122,6 +126,7 @@
 				0AD7C0861EAD88CC007ACD4D /* PartsModel */,
 				0A8688951E9C6862005D1B07 /* Parts.swift */,
 				0A8688971E9C6E13005D1B07 /* PartsList.swift */,
+				3DD626531EAD85B100AC7E8D /* CustomPartPage */,
 				3DF992AC1EA6960700EE8728 /* BuildInterfaceClasses */,
 				3DF992A91EA695C400EE8728 /* NavigationFilterClasses */,
 				0A8537A81EA8328F00185DFA /* CategoryClasses */,
@@ -130,6 +135,15 @@
 				0AF257521E982CCA00D9F312 /* Info.plist */,
 			);
 			path = PCBuilderGuide;
+			sourceTree = "<group>";
+		};
+		3DD626531EAD85B100AC7E8D /* CustomPartPage */ = {
+			isa = PBXGroup;
+			children = (
+				3DD626541EAD85E100AC7E8D /* CustomPartViewController.swift */,
+				3DD626561EAD85F100AC7E8D /* CustomPartView.swift */,
+			);
+			name = CustomPartPage;
 			sourceTree = "<group>";
 		};
 		3DF992A91EA695C400EE8728 /* NavigationFilterClasses */ = {
@@ -230,6 +244,7 @@
 				3DF992AB1EA695FA00EE8728 /* PartFilterInterfaceView.swift in Sources */,
 				3D52D32F1EA7DB63002129CF /* BuildButtonsView.swift in Sources */,
 				3DF992AE1EA6974400EE8728 /* MainFilterView.swift in Sources */,
+				3DD626551EAD85E100AC7E8D /* CustomPartViewController.swift in Sources */,
 				0A8688961E9C6862005D1B07 /* Parts.swift in Sources */,
 				0A96FF461EA6D25500577128 /* MainBuilderView.swift in Sources */,
 				0AD7C0891EAD88F6007ACD4D /* UserBuilds.swift in Sources */,
@@ -241,6 +256,7 @@
 				0AA8A7731EAAA06500FFBBAA /* SpecificPartPageController.swift in Sources */,
 				0A8537AA1EA832D200185DFA /* CategoryViewController.swift in Sources */,
 				0AF2575B1E98434E00D9F312 /* BuildInterfaceView.swift in Sources */,
+				3DD626571EAD85F100AC7E8D /* CustomPartView.swift in Sources */,
 				3DB036B11E9C43FA003D7FAD /* NavigationFilterInterfaceView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

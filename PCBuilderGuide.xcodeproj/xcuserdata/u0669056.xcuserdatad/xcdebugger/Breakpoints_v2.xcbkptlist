@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PCBuilderGuide/NavigationFilterInterfaceViewController.swift"
-            timestampString = "514239632.115417"
+            timestampString = "514691368.462797"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
             landmarkName = "init(partType:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PCBuilderGuide/NavigationFilterInterfaceViewController.swift"
-            timestampString = "514243005.341248"
+            timestampString = "514691368.462797"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
             landmarkName = "buttonTouched(specificPartType:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PCBuilderGuide/NavigationFilterInterfaceViewController.swift"
-            timestampString = "514245719.263754"
+            timestampString = "514691368.462797"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
             landmarkName = "init(partType:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PCBuilderGuide/NavigationFilterInterfaceViewController.swift"
-            timestampString = "514246082.724267"
+            timestampString = "514691368.462797"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
             landmarkName = "buttonTouched(specificPartType:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PCBuilderGuide/NavigationFilterInterfaceViewController.swift"
-            timestampString = "514246084.540544"
+            timestampString = "514691368.462797"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
             landmarkName = "init(partType:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PCBuilderGuide/NavigationFilterInterfaceViewController.swift"
-            timestampString = "514246152.523721"
+            timestampString = "514691368.462797"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
             landmarkName = "buttonTouched(specificPartType:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -218,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PCBuilderGuide/NavigationFilterInterfaceViewController.swift"
-            timestampString = "514246153.603827"
+            timestampString = "514691368.462797"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
             landmarkName = "buttonTouched(specificPartType:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -239,7 +239,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "83"
             endingLineNumber = "83"
-            landmarkName = "buttonTouchUp(button:)"
+            landmarkName = "buttonTouchDown(button:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -288,6 +288,38 @@
             startingLineNumber = "44"
             endingLineNumber = "44"
             landmarkName = "init(frame:buildView:buildButtonsView:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PCBuilderGuide/CustomPartView.swift"
+            timestampString = "514700761.802648"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "412"
+            endingLineNumber = "412"
+            landmarkName = "textFieldShouldReturn(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PCBuilderGuide/CustomPartView.swift"
+            timestampString = "514700761.802648"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "402"
+            endingLineNumber = "402"
+            landmarkName = "init(coder:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

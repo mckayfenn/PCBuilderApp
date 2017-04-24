@@ -19,7 +19,7 @@ class NavigationFilterInterfaceViewController: UIViewController, PartFilterInter
     private var customPartViewController: CustomPartViewController? = nil
     var buttons = [UIBarButtonItem]()
     
-    private var categoryViewController: CategoryViewController? = nil
+    private var categoryViewController: CategoryViewController = CategoryViewController()
     
     
     private var _partsList: PartsList = PartsList.Instance
@@ -63,6 +63,8 @@ class NavigationFilterInterfaceViewController: UIViewController, PartFilterInter
         self.edgesForExtendedLayout = [] // don't remember what this does but I think it's needed
         
         partFilterView?.delegate = self
+        
+        categoryViewController.delegate = self
     }
     
     override func viewDidLoad() {
@@ -84,6 +86,16 @@ class NavigationFilterInterfaceViewController: UIViewController, PartFilterInter
     func viewAllClicked()
     {
         print("view all clicked")
+        switch _inList {
+        case "CPU":
+            categoryViewController.partsList = _partsList.getAllPartsForCategory(type: "Processor")
+            break
+        default:
+            break
+        }
+        
+        navigationController?.pushViewController(categoryViewController, animated: true)
+        
     }
     
     func buttonTouched(specificPartType: String) {
@@ -106,11 +118,11 @@ class NavigationFilterInterfaceViewController: UIViewController, PartFilterInter
         case "CPU":
             if (_showCategoryPage) {
                 print("Show specific part page")
-                categoryViewController = CategoryViewController()
+                //categoryViewController = CategoryViewController()
                 //categoryViewController.parts = _partsList.getPartsByName(string: "Processor")
                 
-                categoryViewController?.partsList = _partsList.getPartsForCategory(type: "Processor", family: specificPartType)
-                navigationController?.pushViewController(categoryViewController!, animated: true)
+                categoryViewController.partsList = _partsList.getPartsForCategory(type: "Processor", family: specificPartType)
+                navigationController?.pushViewController(categoryViewController, animated: true)
             }
             else {
                 partFilterView = PartFilterInterfaceView()
@@ -124,8 +136,6 @@ class NavigationFilterInterfaceViewController: UIViewController, PartFilterInter
             break
         }
         
-        
-        categoryViewController?.delegate = self
     }
     
     

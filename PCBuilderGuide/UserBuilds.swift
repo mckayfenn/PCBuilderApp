@@ -22,6 +22,10 @@ class UserBuilds {
         _listOfBuilds.append(newBuild)
     }
     
+    public func deleteBuild(index: Int) {
+        _listOfBuilds.remove(at: index)
+    }
+    
     public func getBuildAt(index: Int) -> UserBuild {
         return _listOfBuilds[index]
     }
@@ -53,9 +57,9 @@ class UserBuilds {
         }
         
         let jsonData: Data = try! JSONSerialization.data(withJSONObject: buildDictionaries, options: .prettyPrinted)
-        let docDirectory: URL = getDesktop().appendingPathComponent("Library.json")
+        let docDirectory: URL = getDesktop().appendingPathComponent("UserBuilds.json")
         //try! jsonData.write(to: docDirectory)
-        try! jsonData.write(to: URL.init(fileURLWithPath: "/Users/Authenticated User/Desktop/Library.json"))
+        try! jsonData.write(to: URL.init(fileURLWithPath: "/Users/Authenticated User/Desktop/UserBuilds.json"))
         print("finsih save")
     }
     
@@ -67,7 +71,7 @@ class UserBuilds {
     public func loadBuilds() {
         var buildDictionaries: [NSDictionary] = []
         
-        let jsonData: Data = try! Data(contentsOf: URL(fileURLWithPath: "/Users/Authenticated User/Desktop/Library.json"))
+        let jsonData: Data = try! Data(contentsOf: URL(fileURLWithPath: "/Users/Authenticated User/Desktop/UserBuilds.json"))
         buildDictionaries = try! JSONSerialization.jsonObject(with: jsonData, options: []) as! [NSDictionary]
         
         for build: NSDictionary in buildDictionaries {

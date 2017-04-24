@@ -103,6 +103,79 @@ class UserBuildsViewController: UIViewController, UITableViewDataSource, UITable
         navigationController?.pushViewController(buildInterfaceViewController, animated: true)
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .normal, title: "Delete") { action, index in
+            self.deleteBuild(index: indexPath.row)
+        }
+        delete.backgroundColor = UIColor.red
+        
+        let rename = UITableViewRowAction(style: .normal, title: "Rename") {action , index in
+            self.renameBuild(index: indexPath.row)
+        }
+        
+        
+        return [delete, rename]
+    }
+    
+    
+    func deleteBuild(index: Int) {
+        print("delete \(index)")
+        
+        
+        
+        // Have an alert to make sure they actually want to delete it
+        let alertController = UIAlertController(title: "", message: "Are you sure you want to delete this build?", preferredStyle: .alert)
+        
+        let confirmAction = UIAlertAction(title: "Confirm", style: .default) { (_) in
+            self._userBuilds.deleteBuild(index: index)
+            self._userBuilds.saveBuilds()
+            self.contentView.reloadData()
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
+        
+        alertController.addAction(confirmAction)
+        alertController.addAction(cancelAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+        
+    }
+    
+    func renameBuild(index: Int) {
+        print("rename \(index)")
+        
+        
+        let alertController = UIAlertController(title: "", message: "Please enter a name:", preferredStyle: .alert)
+        
+        let confirmAction = UIAlertAction(title: "Confirm", style: .default) { (_) in
+            if let field = alertController.textFields![0] as? UITextField {
+                // store your data
+                UserDefaults.standard.set(field.text, forKey: "saveBuild")
+                UserDefaults.standard.synchronize()
+                self._userBuilds.getBuildAt(index: index).buildTitle = field.text!
+                self._userBuilds.saveBuilds()
+                self.contentView.reloadData()
+            } else {
+                // user did not fill field
+            }
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
+        
+        alertController.addTextField { (textField) in
+            textField.placeholder = "Name"
+        }
+        
+        alertController.addAction(confirmAction)
+        alertController.addAction(cancelAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+
+    }
     
     func saveBuilds() {
         print("in tableview save the builds")

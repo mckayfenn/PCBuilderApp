@@ -50,6 +50,23 @@ class Parts {
     }
     
     
+    public func getAllPartsForCategory(type: String) -> [MyParts] {
+        var result: [MyParts] = []
+        
+        switch type {
+        case "Processor":
+            for cpu in _processors {
+                result.append(cpu)
+            }
+            break
+        default:
+            // return an empty list if parameter isn't correct
+            break
+        }
+        
+        return result
+    }
+    
     /**
         give (type: "Processor", family: "Core i5") get [i5 6600k, i5 6500, ...]
     */

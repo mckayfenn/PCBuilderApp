@@ -88,6 +88,8 @@
 		0AD7C0861EAD88CC007ACD4D /* PartsModel */ = {
 			isa = PBXGroup;
 			children = (
+				0A8688951E9C6862005D1B07 /* Parts.swift */,
+				0A8688971E9C6E13005D1B07 /* PartsList.swift */,
 			);
 			name = PartsModel;
 			sourceTree = "<group>";
@@ -124,8 +126,6 @@
 				0AF257481E982CCA00D9F312 /* UserBuildsViewController.swift */,
 				0AD7C0871EAD88DB007ACD4D /* UserBuilds */,
 				0AD7C0861EAD88CC007ACD4D /* PartsModel */,
-				0A8688951E9C6862005D1B07 /* Parts.swift */,
-				0A8688971E9C6E13005D1B07 /* PartsList.swift */,
 				3DD626531EAD85B100AC7E8D /* CustomPartPage */,
 				3DF992AC1EA6960700EE8728 /* BuildInterfaceClasses */,
 				3DF992A91EA695C400EE8728 /* NavigationFilterClasses */,

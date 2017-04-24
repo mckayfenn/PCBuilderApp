@@ -133,10 +133,6 @@ class UserBuild {
     **/
     public func addPart(part: MyParts) {
         
-        print(type(of: part))
-        
-        let typeOfPart = type(of: part)
-        
         if (type(of: part) == CPU.self) {
             for i: Int in 0..<_listOfUsersParts.count {
                 let thisPart = _listOfUsersParts[i]
@@ -149,8 +145,6 @@ class UserBuild {
         else if (type(of: part) == Motherboard.self) {
             // same thing but remove motherboard
         }
-        
-
         
 
         

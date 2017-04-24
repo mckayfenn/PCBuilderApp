@@ -20,8 +20,6 @@ class UserBuildsViewController: UIViewController, UITableViewDataSource, UITable
     override func loadView() {
         super.loadView()
         
-        
-        
         let userBuildTableView: UITableView  = UITableView()
         
         view = userBuildTableView

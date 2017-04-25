@@ -27,6 +27,10 @@ class UserBuildsViewController: UIViewController, UITableViewDataSource, UITable
 //        _userBuilds.loadBuilds()
         _partsList.loadParts()
         
+        _partsList.loadCustomParts()
+        
+        _userBuilds.loadBuilds()
+        
         contentView.reloadData()
     }
     
@@ -178,6 +182,7 @@ class UserBuildsViewController: UIViewController, UITableViewDataSource, UITable
     func saveBuilds() {
         print("in tableview save the builds")
         _userBuilds.saveBuilds()
+        
     }
     
     

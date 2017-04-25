@@ -11,7 +11,8 @@
       "Family": "Core i7",
       "Generation": "Kabylake",
       "Price": "350",
-      "Image": "https://images10.newegg.com/ProductImageCompressAll1280/19-117-726-Z01.jpg?w=660&h=500"
+      "Image": "https://images10.newegg.com/ProductImageCompressAll1280/19-117-726-Z01.jpg?w=660&h=500",
+      "IsCustom": "false"
     },
     {
       "Manufacturer": "AMD",
@@ -23,7 +24,8 @@
       "Family": "Ryzen 7",
       "Generation": "Summit Ridge",
       "Price": "330",
-      "Image": "https://images10.newegg.com/NeweggImage/ProductImageCompressAll1280/19-113-428-01.jpg?w=660&h=500"
+      "Image": "https://images10.newegg.com/NeweggImage/ProductImageCompressAll1280/19-113-428-01.jpg?w=660&h=500",
+      "IsCustom": "false"
     },
     {
       "Manufacturer": "AMD",
@@ -35,7 +37,8 @@
       "Family": "Ryzen 5",
       "Generation": "Summit Ridge",
       "Price": "220",
-      "Image": "https://images10.newegg.com/NeweggImage/ProductImageCompressAll1280/19-113-435-Z01.jpg?w=660&h=500"
+      "Image": "https://images10.newegg.com/NeweggImage/ProductImageCompressAll1280/19-113-435-Z01.jpg?w=660&h=500",
+      "IsCustom": "false"
     },
     {
       "Manufacturer": "Intel",
@@ -47,7 +50,8 @@
       "Family": "Core i5",
       "Generation": "Kabylake",
       "Price": "240",
-      "Image": "https://images10.newegg.com/ProductImageCompressAll1280/19-117-728-Z01.jpg?w=660&h=500"
+      "Image": "https://images10.newegg.com/ProductImageCompressAll1280/19-117-728-Z01.jpg?w=660&h=500",
+      "IsCustom": "false"
     },
     {
       "Manufacturer": "Intel",
@@ -59,7 +63,8 @@
       "Family": "Core i5",
       "Generation": "Kabylake",
       "Price": "200",
-      "Image": "https://images10.newegg.com/ProductImageCompressAll1280/19-117-730-Z01.jpg?w=660&h=500"
+      "Image": "https://images10.newegg.com/ProductImageCompressAll1280/19-117-730-Z01.jpg?w=660&h=500",
+      "IsCustom": "false"
     }
   ],
   
@@ -73,7 +78,8 @@
       "Chipset": "B150",
       "RAM": "DDR4",
       "Link": "https://www.newegg.com/Product/Product.aspx?Item=N82E16813130886&cm_re=msi_b150-_-13-130-886-_-Product",
-      "Image": "https://images10.newegg.com/ProductImageCompressAll1280/13-130-886_R01.jpg?w=660&h=500"
+      "Image": "https://images10.newegg.com/ProductImageCompressAll1280/13-130-886_R01.jpg?w=660&h=500",
+      "IsCustom": "false"
     },
     {
       "Manufacturer": "Gigabyte",
@@ -83,7 +89,8 @@
       "Chipset": "B250",
       "RAM": "DDR4",
       "Link": "https://www.newegg.com/Product/Product.aspx?Item=N82E16813128980&cm_re=gigabyte_b250-_-13-128-980-_-Product",
-      "Image": "https://images10.newegg.com/NeweggImage/ProductImageCompressAll1280/13-128-980_R01.jpg?w=660&h=500"
+      "Image": "https://images10.newegg.com/NeweggImage/ProductImageCompressAll1280/13-128-980_R01.jpg?w=660&h=500",
+      "IsCustom": "false"
     },
     {
       "Manufacturer": "Asus",
@@ -93,7 +100,8 @@
       "Chipset": "X370",
       "RAM": "DDR4",
       "Link": "https://www.newegg.com/Product/Product.aspx?Item=N82E16813132964&cm_re=asus_x370_pro-_-13-132-964-_-Product",
-      "Image": "https://images10.newegg.com/NeweggImage/ProductImageCompressAll1280/13-132-964-V01.jpg?w=660&h=500"
+      "Image": "https://images10.newegg.com/NeweggImage/ProductImageCompressAll1280/13-132-964-V01.jpg?w=660&h=500",
+      "IsCustom": "false"
     }
   ],
   
@@ -107,7 +115,8 @@
       "Speed": "3000",
       "Specs": "DDR4 3000 (PC4 24000), Timing 15-17-17-35, Cas Latency 15, Voltage 1.35V",
       "Link": "https://www.newegg.com/Product/Product.aspx?Item=N82E16820236165",
-      "Image": "https://images10.newegg.com/NeweggImage/ProductImageCompressAll1280/20-236-165-V03[1].jpg?w=660&h=500"
+      "Image": "https://images10.newegg.com/NeweggImage/ProductImageCompressAll1280/20-236-165-V03[1].jpg?w=660&h=500",
+      "IsCustom": "false"
     },
     {
       "Manufacturer": "Crucial",
@@ -117,7 +126,8 @@
       "Speed": "2400",
       "Specs": "DDR4 2400 (PC4 19200), Timing 16-16-16, Cas Latency 16, Voltage 1.2V",
       "Link": "https://www.newegg.com/Product/Product.aspx?Item=N82E16820148983",
-      "Image": "https://images10.newegg.com/NeweggImage/ProductImageCompressAll1280/20-148-983-V01.jpg?w=660&h=500"
+      "Image": "https://images10.newegg.com/NeweggImage/ProductImageCompressAll1280/20-148-983-V01.jpg?w=660&h=500",
+      "IsCustom": "false"
     },
     {
       "Manufacturer": "G.Skill",
@@ -127,7 +137,8 @@
       "Speed": "3200",
       "Specs": "DDR4 3200 (PC4 25600), Timing 16-18-18-38, Cas Latency 16, Voltage 1.35V",
       "Link": "https://www.newegg.com/Product/Product.aspx?Item=N82E16820232476",
-      "Image": "https://images10.newegg.com/NeweggImage/ProductImageCompressAll1280/20-232-476-S01.jpg?w=660&h=500"
+      "Image": "https://images10.newegg.com/NeweggImage/ProductImageCompressAll1280/20-232-476-S01.jpg?w=660&h=500",
+      "IsCustom": "false"
     }
   ],
   
@@ -143,7 +154,8 @@
       "Length": "277mm",
       "Price": "275",
       "Link": "https://www.newegg.com/Product/Product.aspx?Item=N82E16814127963&cm_re=msi_1060_gaming_x-_-14-127-963-_-Product",
-      "Image": "https://images10.newegg.com/ProductImageCompressAll1280/14-127-963-08.jpg?w=660&h=500"
+      "Image": "https://images10.newegg.com/ProductImageCompressAll1280/14-127-963-08.jpg?w=660&h=500",
+      "IsCustom": "false"
     },
     {
       "Manufacturer": "AMD",
@@ -155,7 +167,8 @@
       "Length": "240mm",
       "Price": "185",
       "Link": "https://www.newegg.com/Product/Product.aspx?Item=N82E16814150776&cm_re=xfx_rx_470-_-14-150-776-_-Product",
-      "Image": "https://images10.newegg.com/ProductImageCompressAll1280/14-150-776-09.jpg?w=660&h=500"
+      "Image": "https://images10.newegg.com/ProductImageCompressAll1280/14-150-776-09.jpg?w=660&h=500",
+      "IsCustom": "false"
     }
   ],
   
@@ -168,7 +181,8 @@
       "Size": "ATX mid",
       "Price": "100",
       "Link": "https://www.newegg.com/Product/Product.aspx?item=N82E16811146239",
-      "Image": "https://www.newegg.com/Product/Product.aspx?item=N82E16811146239"
+      "Image": "https://www.newegg.com/Product/Product.aspx?item=N82E16811146239",
+      "IsCustom": "false"
     },
     {
       "Manufacturer": "Phanteks",
@@ -177,7 +191,8 @@
       "Size": "ATX mid",
       "Price": "80",
       "Link": "https://www.newegg.com/Product/Product.aspx?Item=N82E16811854049&cm_re=p400-_-11-854-049-_-Product",
-      "Image": "https://images10.newegg.com/NeweggImage/ProductImageCompressAll1280/11-854-049-V26.jpg?w=660&h=500"
+      "Image": "https://images10.newegg.com/NeweggImage/ProductImageCompressAll1280/11-854-049-V26.jpg?w=660&h=500",
+      "IsCustom": "false"
     }
   ],
   
@@ -191,7 +206,8 @@
       "Modular": "Full",
       "Price": "100",
       "Link": "https://www.newegg.com/Product/Product.aspx?Item=N82E16817438054&cm_re=evga_g2-_-17-438-054-_-Product",
-      "Image": "https://images10.newegg.com/NeweggImage/ProductImageCompressAll1280/17-438-054-18.jpg?w=660&h=500"
+      "Image": "https://images10.newegg.com/NeweggImage/ProductImageCompressAll1280/17-438-054-18.jpg?w=660&h=500",
+      "IsCustom": "false"
     },
     {
       "Manufacturer": "Corsair",
@@ -201,7 +217,8 @@
       "Modular": "Full",
       "Price": "110",
       "Link": "https://www.newegg.com/Product/Product.aspx?Item=N82E16817139143&cm_re=corsair_rmx-_-17-139-143-_-Product",
-      "Image": "https://images10.newegg.com/productimage/17-139-143-06.jpg"
+      "Image": "https://images10.newegg.com/productimage/17-139-143-06.jpg",
+      "IsCustom": "false"
     }
   ]
 }

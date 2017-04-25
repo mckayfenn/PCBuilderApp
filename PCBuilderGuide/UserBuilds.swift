@@ -186,6 +186,7 @@ class UserBuild {
                 partType["Generation"] = part._generation
                 partType["Price"] = part._price
                 partType["Image"] = part._image
+                partType["IsCustom"] = String(part._isCustom)
                 
                 result["CPU"] = partType
             }

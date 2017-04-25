@@ -21,6 +21,8 @@ protocol MyParts: class {
     var _generation: String { get }
     var _description: String { get }
     var _manufacturer: String { get }
+    
+    var _isCustom: Bool { get }
 }
 
 class Parts {
@@ -47,6 +49,30 @@ class Parts {
         }
         
         print("jsonData has been processed")
+    }
+    
+    
+    
+    public func addCustomPart(part: MyParts) {
+        switch part.self {
+        case is CPU:
+            var contains: Bool = false
+            for cpu: CPU in _processors {
+                
+                // only add unique parts
+                if (cpu === part as! CPU) {
+                    contains = true
+                    break
+                }
+            }
+            
+            if (!contains) {
+                _processors.append(part as! CPU)
+            }
+            break
+        default:
+            break
+        }
     }
     
     
@@ -206,7 +232,7 @@ class CPU: MyParts {
         _generation = dictionary.value(forKey: "Generation") as! String
         _description = dictionary.value(forKey: "Description") as! String
         _manufacturer = dictionary.value(forKey: "Manufacturer") as! String
-        _isCustom = false
+        _isCustom = Bool(dictionary.value(forKey: "IsCustom") as! String)!
     }
     
     

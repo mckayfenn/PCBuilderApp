@@ -79,6 +79,7 @@ class NavigationFilterInterfaceViewController: UIViewController, PartFilterInter
     func addPartClicked()
     {
         customPartViewController = CustomPartViewController(partAsString: _inList)
+        customPartViewController?.delegate = self
         navigationController?.pushViewController(customPartViewController!, animated: true)
     }
     

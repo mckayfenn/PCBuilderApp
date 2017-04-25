@@ -109,7 +109,6 @@ class PartsList {
         let jsonData: Data = try! Data(contentsOf: URL.init(fileURLWithPath: "/Users/Authenticated User/Desktop/CustomParts.json"))
         customPartsDictionaries = try! JSONSerialization.jsonObject(with: jsonData, options: []) as! [NSDictionary]
         
-        //_listOfParts = Parts(dictionary: customPartsDictionaries)
         
         for parts in customPartsDictionaries {
             let keys = parts.allKeys
@@ -118,10 +117,15 @@ class PartsList {
                 let keyString: String = (key as AnyObject).description
                 print(keyString)
                 let dict = parts.value(forKey: key as! String)
-                //_listOfParts?.processors.append(contentsOf: CPU(parts))
-                print(dict)
-                let cpu = CPU(dictionary: dict as! NSDictionary)
-                print("made cpu")
+
+                switch keyString {
+                case "CPU":
+                    let cpu = CPU(dictionary: dict as! NSDictionary)
+                    _listOfParts?.addCustomPart(part: cpu)
+                    break
+                default:
+                    break
+                }
             }
         }
     }
@@ -148,6 +152,11 @@ class PartsList {
     
     public func getFamilyPartsOfManufacturer(type: String, manufacturer: String) -> [String] {
         return (_listOfParts?.getFamilyPartsOfManufacturer(type: type, manufacturer: manufacturer))!
+    }
+    
+    
+    public func addCustomPart(part: MyParts) {
+        _listOfParts?.addCustomPart(part: part)
     }
     
     private func getDocumentsDirectory() -> URL {

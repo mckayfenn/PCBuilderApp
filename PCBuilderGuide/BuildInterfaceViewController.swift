@@ -134,6 +134,13 @@ class BuildInterfaceViewController: UIViewController, BuildInterfaceViewDelegate
     func partWasSelected(part: MyParts) {
         navigationController?.popToViewController(self, animated: true)
         _userBuild?.addPart(part: part)
+        
+        if (part._isCustom) {
+            _partsList.addCustomPart(part: part)
+            _partsList.saveCustomParts()
+        }
+        
+        
     }
     
     weak var delegate: BuildInterfaceViewControllerDelegate? = nil

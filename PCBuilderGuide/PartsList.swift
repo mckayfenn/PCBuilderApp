@@ -83,6 +83,53 @@ class PartsList {
         
     }
     
+    
+    
+    // for pastelist save load custom parts
+    public func saveCustomParts() {
+        
+        var partsDictionaries: [NSDictionary] = []
+        
+        for cpu in (_listOfParts?.processors)! {
+            if (cpu.isCustom) {
+                partsDictionaries.append(cpu.dictionaryRepresentation)
+            }
+        }
+        
+        let jsonData: Data = try! JSONSerialization.data(withJSONObject: partsDictionaries, options: .prettyPrinted)
+        let docDirectory: URL = getDesktop().appendingPathComponent("CustomParts.json")
+        
+        try! jsonData.write(to: URL.init(fileURLWithPath: "/Users/Authenticated User/Desktop/CustomParts.json"))
+        print("finish saving custom parts")
+    }
+    
+    public func loadCustomParts() {
+        var customPartsDictionaries: [NSDictionary] = []
+        
+        let jsonData: Data = try! Data(contentsOf: URL.init(fileURLWithPath: "/Users/Authenticated User/Desktop/CustomParts.json"))
+        customPartsDictionaries = try! JSONSerialization.jsonObject(with: jsonData, options: []) as! [NSDictionary]
+        
+        //_listOfParts = Parts(dictionary: customPartsDictionaries)
+        
+        for parts in customPartsDictionaries {
+            let keys = parts.allKeys
+            print(keys)
+            for key in keys {
+                let keyString: String = (key as AnyObject).description
+                print(keyString)
+                let dict = parts.value(forKey: key as! String)
+                //_listOfParts?.processors.append(contentsOf: CPU(parts))
+                print(dict)
+                let cpu = CPU(dictionary: dict as! NSDictionary)
+                print("made cpu")
+            }
+        }
+    }
+
+    
+    
+    
+    
     public func getAllPartsFirstLevel(type: String) -> [MyParts] {
         return (_listOfParts?.getAllPartsFirstLevel(type: type))!
     }

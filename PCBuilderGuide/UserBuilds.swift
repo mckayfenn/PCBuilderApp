@@ -133,20 +133,29 @@ class UserBuild {
     **/
     public func addPart(part: MyParts) {
         
-        if (type(of: part) == CPU.self) {
-            for i: Int in 0..<_listOfUsersParts.count {
-                let thisPart = _listOfUsersParts[i]
-                if (type(of: thisPart) == CPU.self) {
-                    _listOfUsersParts.remove(at: i)
-                    break
-                }
-            }
-        }
-        else if (type(of: part) == Motherboard.self) {
-            // same thing but remove motherboard
-        }
+//        if (type(of: part) == CPU.self) {
+//            for i: Int in 0..<_listOfUsersParts.count {
+//                let thisPart = _listOfUsersParts[i]
+//                if (type(of: thisPart) == CPU.self) {
+//                    _listOfUsersParts.remove(at: i)
+//                    break
+//                }
+//            }
+//        }
+//        else if (type(of: part) == Motherboard.self) {
+//            // same thing but remove motherboard
+//        }
         
 
+        
+        // This is a much better way to do it add part
+        for i: Int in 0..<_listOfUsersParts.count {
+            let thisPart = _listOfUsersParts[i]
+            if (type(of: thisPart).self == type(of: part).self) {
+                _listOfUsersParts.remove(at: i)
+            }
+        }
+        
         
         // add the new one
         _listOfUsersParts.append(part)

@@ -43,7 +43,7 @@ class Parts {
         let motherboards: [AnyObject] = dictionary.value(forKey: "Motherboards") as! [AnyObject]
         for motherboard in motherboards {
             let mobo: NSDictionary = motherboard as! NSDictionary
-            _motherboards.append(Motherboard(dictionary: mobo))
+            //_motherboards.append(Motherboard(dictionary: mobo))
         }
         
         print("jsonData has been processed")
@@ -210,6 +210,27 @@ class CPU: MyParts {
     }
     
     
+    public var dictionaryRepresentation: NSDictionary {
+        var result: [String: [String : String]] = [:]
+        var partAttributes: [String : String] = [:]
+        
+        partAttributes["Link"] = _link
+        partAttributes["Specs"] = _specs
+        partAttributes["Price"] = _price
+        partAttributes["Image"] = _image
+        partAttributes["Model"] = _model
+        partAttributes["Socket"] = _socket
+        partAttributes["Family"] = _family
+        partAttributes["Generation"] = _generation
+        partAttributes["Description"] = _description
+        partAttributes["Manufacturer"] = _manufacturer
+        partAttributes["IsCustom"] = String(_isCustom)
+        
+        result["CPU"] = partAttributes
+        
+        return result as NSDictionary
+    }
+    
     var link: String { get { return _link } set{_link = newValue} }
     var specs: String { get { return _specs } set {_specs = newValue}}
     var price: String { get { return _price } set {_price = newValue}}
@@ -256,6 +277,40 @@ class Motherboard: MyParts {
     
     // Create a motherboard from a dictionary
     public init(dictionary: NSDictionary) {
+        //parts motherboard
+        if (dictionary.value(forKey: "Link") != nil) {
+            _link = dictionary.value(forKey: "Link") as! String
+        }
+        if (dictionary.value(forKey: "Specs") != nil) {
+            _specs = dictionary.value(forKey: "Specs") as! String
+        }
+        if (dictionary.value(forKey: "Price") != nil){
+            _price = dictionary.value(forKey: "Price") as! String
+        }
+        if (dictionary.value(forKey: "Image") != nil) {
+            _image = dictionary.value(forKey: "Image") as! String
+        }
+        if (dictionary.value(forKey: "Model") != nil) {
+            _model = dictionary.value(forKey: "Model") as! String
+        }
+        if (dictionary.value(forKey: "Socket") != nil) {
+            _socket = dictionary.value(forKey: "Socket") as! String
+        }
+        if (dictionary.value(forKey: "Family") != nil) {
+            _family = dictionary.value(forKey: "Family") as! String
+        }
+        if (dictionary.value(forKey: "Generation") != nil) {
+            _generation = dictionary.value(forKey: "Generation") as! String
+        }
+        if (dictionary.value(forKey: "Description") != nil) {
+            _description = dictionary.value(forKey: "Description") as! String
+        }
+        if (dictionary.value(forKey: "Manufacturer") != nil) {
+            _manufacturer = dictionary.value(forKey: "Manufacturer") as! String
+        }
+        if (dictionary.value(forKey: "IsCustom") != nil) {
+            _isCustom = false
+        }
         _link = dictionary.value(forKey: "Link") as! String
         _specs = dictionary.value(forKey: "Specs") as! String
         _price = dictionary.value(forKey: "Price") as! String
@@ -267,7 +322,6 @@ class Motherboard: MyParts {
         _description = dictionary.value(forKey: "Description") as! String
         _manufacturer = dictionary.value(forKey: "Manufacturer") as! String
         _isCustom = false
-        
     }
     
     var link: String { get { return _link } set{_link = newValue} }

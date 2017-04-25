@@ -12,7 +12,7 @@ protocol BuildInterfaceViewControllerDelegate: class {
     func saveBuilds()
 }
 
-class BuildInterfaceViewController: UIViewController, BuildInterfaceViewDelegate, BuildButtonsViewDelegate, NavigationFilterInterfaceControllerDelegate {
+class BuildInterfaceViewController: UIViewController, BuildInterfaceViewDelegate, BuildButtonsViewDelegate, NavigationFilterInterfaceControllerDelegate{
     
     private var _partsList: PartsList = PartsList.Instance
     private var _usersParts: [MyParts]? = nil

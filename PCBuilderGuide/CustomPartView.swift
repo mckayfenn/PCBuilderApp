@@ -10,8 +10,6 @@ import UIKit
 
 class CustomPartView: UIView, UITextFieldDelegate
 {
-    private var _partAsString: String? = nil
-    private var _part: MyParts? = nil
     
     private var scrollView: UIScrollView? = nil
     private var stackView: UIStackView? = nil
@@ -72,11 +70,9 @@ class CustomPartView: UIView, UITextFieldDelegate
     var _description: String?  = nil
     var _manufacturer: String?  = nil
     
-    init(frame: CGRect, part: String) {
+    override init(frame: CGRect) {
         super.init(frame: frame)
         
-        _partAsString = part
-        _part = seeWhatPart(partAsString: _partAsString)
         
         scrollView = UIScrollView(frame: CGRect(x: 0.0, y: 0.0, width: frame.width, height: frame.height))
         scrollView?.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
@@ -485,30 +481,23 @@ class CustomPartView: UIView, UITextFieldDelegate
 
         return true
     }
-    func seeWhatPart(partAsString: String) -> MyParts
+    func getAllFieldValues() -> [String]
     {
-        switch partAsString {
-        case "CPU":
-            return CPU(link: "", specs: "", price: "", image: "", model: "", socket: "", family: "", generation: "", description: "", manufacturer: "", isCustom: true)
-        case "Motherboard":
-            model = textField.text!
-        case "GPU":
-            specs = textField.text!
-        case "RAM":
-            price = textField.text!
-        case "CASE":
-            family = textField.text!
-        case "Power Supply":
-            socket = textField.text!
-        case "Storage":
-            generation = textField.text!
-        case "Optical Drive":
-            link = textField.text!
-        case "Cooler":
-            image = textField.text!
-        default:
-            print("Unable to change field to variable")
-        }
+        var arr = [String]()
+        //these are added in a very specific order so that it matches easily with how the controller calls them in the createPart Func
+        arr.append(link)
+        arr.append(specs)
+        arr.append(price)
+        arr.append(image)
+        arr.append(model)
+        arr.append(socket)
+        arr.append(family)
+        arr.append(generation)
+        arr.append(descriptionString)
+        arr.append(manufacturer)
+        
+        return arr
+        
     }
     var descriptionString: String {get{return _description!}set{_description = newValue}}
     var link: String {get{return _link!}set{_link = newValue}}

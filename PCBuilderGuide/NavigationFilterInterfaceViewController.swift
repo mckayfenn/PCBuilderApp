@@ -12,7 +12,7 @@ protocol NavigationFilterInterfaceControllerDelegate: class {
     func partWasSelected(part: MyParts)
 }
 
-class NavigationFilterInterfaceViewController: UIViewController, PartFilterInterfaceViewDelegate, CategoryViewControllerDelegate {
+class NavigationFilterInterfaceViewController: UIViewController, PartFilterInterfaceViewDelegate, CategoryViewControllerDelegate, CustomPartViewDelegate {
     
     private var mainFilterView: MainFilterView { return view as! MainFilterView }
     private var partFilterView: PartFilterInterfaceView? = nil
@@ -61,6 +61,7 @@ class NavigationFilterInterfaceViewController: UIViewController, PartFilterInter
         partFilterView?.delegate = self
         
         categoryViewController.delegate = self
+        customPartViewController?.delegate = self
     }
     
     override func viewDidLoad() {

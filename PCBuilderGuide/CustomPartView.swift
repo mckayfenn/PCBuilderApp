@@ -10,6 +10,9 @@ import UIKit
 
 class CustomPartView: UIView, UITextFieldDelegate
 {
+    private var _partAsString: String? = nil
+    private var _part: MyParts? = nil
+    
     private var scrollView: UIScrollView? = nil
     private var stackView: UIStackView? = nil
     
@@ -45,10 +48,6 @@ class CustomPartView: UIView, UITextFieldDelegate
     private var generationTypeField: UITextField? = nil
     private var generationTypeLabel: UILabel? = nil
     
-    private var descriptionStackView: UIStackView? = nil
-    private var descriptionTypeField: UITextField? = nil
-    private var descriptionTypeLabel: UILabel? = nil
-    
     private var linkStackView: UIStackView? = nil
     private var linkTypeField: UITextField? = nil
     private var linkTypeLabel: UILabel? = nil
@@ -56,6 +55,10 @@ class CustomPartView: UIView, UITextFieldDelegate
     private var imageStackView: UIStackView? = nil
     private var imageTypeField: UITextField? = nil
     private var imageTypeLabel: UILabel? = nil
+    
+    private var descriptionStackView: UIStackView? = nil
+    private var descriptionTypeField: UITextField? = nil
+    private var descriptionTypeLabel: UILabel? = nil
     
     
     var _link: String?  = nil
@@ -69,8 +72,11 @@ class CustomPartView: UIView, UITextFieldDelegate
     var _description: String?  = nil
     var _manufacturer: String?  = nil
     
-    override init(frame: CGRect) {
+    init(frame: CGRect, part: String) {
         super.init(frame: frame)
+        
+        _partAsString = part
+        _part = seeWhatPart(partAsString: _partAsString)
         
         scrollView = UIScrollView(frame: CGRect(x: 0.0, y: 0.0, width: frame.width, height: frame.height))
         scrollView?.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
@@ -114,9 +120,10 @@ class CustomPartView: UIView, UITextFieldDelegate
         partTypeField?.autocorrectionType = UITextAutocorrectionType.no
         partTypeField?.backgroundColor = UIColor.lightGray
         partTypeField?.clearsOnBeginEditing = true
+        partTypeField?.tag = 0
         partTypeField?.delegate = self
         partStackView?.addArrangedSubview(partTypeField!)
-        stackView?.addArrangedSubview(partStackView!)
+        //stackView?.addArrangedSubview(partStackView!)
         
         
         manufacturerStackView = UIStackView(frame: CGRect(x: 0.0, y: 0.0, width: frame.width, height: frame.height))
@@ -145,6 +152,7 @@ class CustomPartView: UIView, UITextFieldDelegate
         manufacturerTypeField?.autocorrectionType = UITextAutocorrectionType.no
         manufacturerTypeField?.backgroundColor = UIColor.lightGray
         manufacturerTypeField?.clearsOnBeginEditing = true
+        manufacturerTypeField?.tag = 1
         manufacturerTypeField?.delegate = self
         manufacturerStackView?.addArrangedSubview(manufacturerTypeField!)
         stackView?.addArrangedSubview(manufacturerStackView!)
@@ -176,6 +184,7 @@ class CustomPartView: UIView, UITextFieldDelegate
         modelTypeField?.autocorrectionType = UITextAutocorrectionType.no
         modelTypeField?.backgroundColor = UIColor.lightGray
         modelTypeField?.clearsOnBeginEditing = true
+        modelTypeField?.tag = 2
         modelTypeField?.delegate = self
         modelStackView?.addArrangedSubview(modelTypeField!)
         stackView?.addArrangedSubview(modelStackView!)
@@ -207,6 +216,7 @@ class CustomPartView: UIView, UITextFieldDelegate
         specsTypeField?.autocorrectionType = UITextAutocorrectionType.no
         specsTypeField?.backgroundColor = UIColor.lightGray
         specsTypeField?.clearsOnBeginEditing = true
+        specsTypeField?.tag = 3
         specsTypeField?.delegate = self
         specsStackView?.addArrangedSubview(specsTypeField!)
         stackView?.addArrangedSubview(specsStackView!)
@@ -238,6 +248,7 @@ class CustomPartView: UIView, UITextFieldDelegate
         priceTypeField?.autocorrectionType = UITextAutocorrectionType.no
         priceTypeField?.backgroundColor = UIColor.lightGray
         priceTypeField?.clearsOnBeginEditing = true
+        priceTypeField?.tag = 4
         priceTypeField?.delegate = self
         priceStackView?.addArrangedSubview(priceTypeField!)
         stackView?.addArrangedSubview(priceStackView!)
@@ -269,6 +280,7 @@ class CustomPartView: UIView, UITextFieldDelegate
         familyTypeField?.autocorrectionType = UITextAutocorrectionType.no
         familyTypeField?.backgroundColor = UIColor.lightGray
         familyTypeField?.clearsOnBeginEditing = true
+        familyTypeField?.tag = 5
         familyTypeField?.delegate = self
         familyStackView?.addArrangedSubview(familyTypeField!)
         stackView?.addArrangedSubview(familyStackView!)
@@ -300,6 +312,7 @@ class CustomPartView: UIView, UITextFieldDelegate
         socketTypeField?.autocorrectionType = UITextAutocorrectionType.no
         socketTypeField?.backgroundColor = UIColor.lightGray
         socketTypeField?.clearsOnBeginEditing = true
+        socketTypeField?.tag = 6
         socketTypeField?.delegate = self
         socketStackView?.addArrangedSubview(socketTypeField!)
         stackView?.addArrangedSubview(socketStackView!)
@@ -331,6 +344,7 @@ class CustomPartView: UIView, UITextFieldDelegate
         generationTypeField?.autocorrectionType = UITextAutocorrectionType.no
         generationTypeField?.backgroundColor = UIColor.lightGray
         generationTypeField?.clearsOnBeginEditing = true
+        generationTypeField?.tag = 7
         generationTypeField?.delegate = self
         generationStackView?.addArrangedSubview(generationTypeField!)
         stackView?.addArrangedSubview(generationStackView!)
@@ -362,6 +376,7 @@ class CustomPartView: UIView, UITextFieldDelegate
         linkTypeField?.autocorrectionType = UITextAutocorrectionType.no
         linkTypeField?.backgroundColor = UIColor.lightGray
         linkTypeField?.clearsOnBeginEditing = true
+        linkTypeField?.tag = 8
         linkTypeField?.delegate = self
         linkStackView?.addArrangedSubview(linkTypeField!)
         stackView?.addArrangedSubview(linkStackView!)
@@ -393,9 +408,42 @@ class CustomPartView: UIView, UITextFieldDelegate
         imageTypeField?.autocorrectionType = UITextAutocorrectionType.no
         imageTypeField?.backgroundColor = UIColor.lightGray
         imageTypeField?.clearsOnBeginEditing = true
+        imageTypeField?.tag = 9
         imageTypeField?.delegate = self
         imageStackView?.addArrangedSubview(imageTypeField!)
         stackView?.addArrangedSubview(imageStackView!)
+        
+        
+        descriptionStackView = UIStackView(frame: CGRect(x: 0.0, y: 0.0, width: frame.width, height: frame.height))
+        descriptionStackView?.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
+        descriptionStackView?.axis = UILayoutConstraintAxis.horizontal
+        //descriptionStackView?.layoutMargins = UIEdgeInsets(top: 10, left: 35, bottom: 10, right: 35)
+        //descriptionStackView?.isLayoutMarginsRelativeArrangement = true
+        descriptionStackView?.distribution = UIStackViewDistribution.fill
+        descriptionStackView?.spacing = 5.0
+        descriptionStackView?.backgroundColor = UIColor.white
+        
+        descriptionTypeLabel = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: 150, height: 30))
+        descriptionTypeLabel?.text = "Image URL: "
+        descriptionTypeLabel?.font = UIFont(name: "Helvetica", size: 15)
+        //imageTypeLabel?.textColor = UIColor.black
+        descriptionStackView?.addArrangedSubview(descriptionTypeLabel!)
+        
+        descriptionTypeField = UITextField(frame: CGRect(x: 0.0, y: 0.0, width: 150, height: frame.width))
+        descriptionTypeField?.allowsEditingTextAttributes = true
+        descriptionTypeField?.placeholder = "Enter your text here"
+        descriptionTypeField?.font = UIFont.systemFont(ofSize: 15)
+        descriptionTypeField?.keyboardType = UIKeyboardType.default
+        descriptionTypeField?.returnKeyType = UIReturnKeyType.done
+        descriptionTypeField?.clearButtonMode = UITextFieldViewMode.whileEditing
+        descriptionTypeField?.borderStyle = UITextBorderStyle.roundedRect
+        descriptionTypeField?.autocorrectionType = UITextAutocorrectionType.no
+        descriptionTypeField?.backgroundColor = UIColor.lightGray
+        descriptionTypeField?.clearsOnBeginEditing = true
+        descriptionTypeField?.tag = 10
+        descriptionTypeField?.delegate = self
+        descriptionStackView?.addArrangedSubview(descriptionTypeField!)
+        stackView?.addArrangedSubview(descriptionStackView!)
         
     }
     
@@ -410,7 +458,57 @@ class CustomPartView: UIView, UITextFieldDelegate
         
         textField.resignFirstResponder()
         textField.backgroundColor = UIColor.lightGray
+        switch textField.tag {
+        case 1:
+            manufacturer = textField.text!
+        case 2:
+            model = textField.text!
+        case 3:
+            specs = textField.text!
+        case 4:
+            price = textField.text!
+        case 5:
+            family = textField.text!
+        case 6:
+            socket = textField.text!
+        case 7:
+            generation = textField.text!
+        case 8:
+            link = textField.text!
+        case 9:
+            image = textField.text!
+        case 10:
+            descriptionString = textField.text!
+        default:
+            print("Unable to change field to variable")
+        }
+
         return true
+    }
+    func seeWhatPart(partAsString: String) -> MyParts
+    {
+        switch partAsString {
+        case "CPU":
+            return CPU(link: "", specs: "", price: "", image: "", model: "", socket: "", family: "", generation: "", description: "", manufacturer: "", isCustom: true)
+        case "Motherboard":
+            model = textField.text!
+        case "GPU":
+            specs = textField.text!
+        case "RAM":
+            price = textField.text!
+        case "CASE":
+            family = textField.text!
+        case "Power Supply":
+            socket = textField.text!
+        case "Storage":
+            generation = textField.text!
+        case "Optical Drive":
+            link = textField.text!
+        case "Cooler":
+            image = textField.text!
+        default:
+            print("Unable to change field to variable")
+        }
     }
     var descriptionString: String {get{return _description!}set{_description = newValue}}
     var link: String {get{return _link!}set{_link = newValue}}

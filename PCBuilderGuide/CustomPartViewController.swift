@@ -8,13 +8,18 @@
 
 import UIKit
 
+protocol CustomPartViewDelegate: class{
+    func partWasSelected(part: MyParts)
+}
+
 class CustomPartViewController: UIViewController {
     
     private var customPartView: CustomPartView { return view as! CustomPartView}
+    private var _partAsString: String? = nil
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-    super.init(nibName: nil, bundle: nil)
-        
+    init?(partAsString: String) {
+        super.init(nibName: nil, bundle: nil)
+        _partAsString = partAsString
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -22,7 +27,7 @@ class CustomPartViewController: UIViewController {
     }
     
     override func loadView() {
-        view = CustomPartView(frame: UIScreen.main.bounds)
+        view = CustomPartView(frame: UIScreen.main.bounds, part: _partAsString!)
         self.title = "Add a Part"
         
     }
@@ -33,6 +38,7 @@ class CustomPartViewController: UIViewController {
     }
     func doneWithPartClicked()
     {
-        print("Done with part clicked")
+        //delegate?.partWasSelected(part: _part)
     }
+    weak var delegate: CustomPartViewDelegate? = nil
 }

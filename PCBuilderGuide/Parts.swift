@@ -362,7 +362,7 @@ class Parts {
             break
         case "Motherboard":
             for mobo in _motherboards {
-                if (mobo._manufacturer == secondLevelSelection) {
+                if (mobo._socket == secondLevelSelection) {
                     result.append(mobo)
                 }
             }
@@ -438,8 +438,8 @@ class Parts {
             break
         case "Motherboard":
             for mobo in _motherboards {
-                if (!result.contains(mobo._socket!)) {
-                    result.append(mobo._socket!)
+                if (!result.contains(mobo._manufacturer!)) {
+                    result.append(mobo._manufacturer!)
                 }
             }
             break
@@ -514,8 +514,8 @@ class Parts {
             break
         case "Motherboard":
             for mobo in _motherboards {
-                if (mobo._socket == firstLevelSelection && !result.contains(mobo._manufacturer!)) {
-                    result.append(mobo._manufacturer!)
+                if (mobo._manufacturer == firstLevelSelection && !result.contains(mobo._socket!)) {
+                    result.append(mobo._socket!)
                 }
             }
             break
@@ -748,7 +748,7 @@ class Motherboard: MyParts {
     
     
     public var dictionaryRepresentation: NSDictionary {
-        var result: [String: [String : String]] = [:]
+        //var result: [String: [String : String]] = [:]
         var partAttributes: [String : String] = [:]
         
         partAttributes["RAM"] = _ram
@@ -760,11 +760,17 @@ class Motherboard: MyParts {
         partAttributes["Socket"] = _socket
         partAttributes["Chipset"] = _chipset
         partAttributes["Manufacturer"] = _manufacturer
-        partAttributes["IsCustom"] = String(describing: _isCustom)
+        // have to do this because swift is stupid
+        if (_isCustom)! {
+            partAttributes["IsCustom"] = "true"
+        }
+        else {
+            partAttributes["IsCustom"] = "false"
+        }
         
-        result["Motherboard"] = partAttributes
+        //result["Motherboard"] = partAttributes
         
-        return result as NSDictionary
+        return partAttributes as NSDictionary
     }
 
     
@@ -844,7 +850,7 @@ class RAM: MyParts {
     
     
     public var dictionaryRepresentation: NSDictionary {
-        var result: [String: [String : String]] = [:]
+        //var result: [String: [String : String]] = [:]
         var partAttributes: [String : String] = [:]
         
         partAttributes["RAM"] = _link
@@ -856,11 +862,17 @@ class RAM: MyParts {
         partAttributes["Model"] = _model
         partAttributes["Speed"] = _speed
         partAttributes["Manufacturer"] = _manufacturer
-        partAttributes["IsCustom"] = String(describing: _isCustom)
+        // have to do this because swift is stupid
+        if (_isCustom)! {
+            partAttributes["IsCustom"] = "true"
+        }
+        else {
+            partAttributes["IsCustom"] = "false"
+        }
         
-        result["RAM"] = partAttributes
+        //result["RAM"] = partAttributes
         
-        return result as NSDictionary
+        return partAttributes as NSDictionary
     }
     
     var ram: String { get { return _ram! } set { _ram = newValue } }
@@ -939,7 +951,7 @@ class Storage: MyParts {
     
     
     public var dictionaryRepresentation: NSDictionary {
-        var result: [String: [String : String]] = [:]
+        //var result: [String: [String : String]] = [:]
         var partAttributes: [String : String] = [:]
         
         partAttributes["Link"] = _link
@@ -953,9 +965,9 @@ class Storage: MyParts {
         partAttributes["Manufacturer"] = _manufacturer
         partAttributes["IsCustom"] = String(describing: _isCustom)
         
-        result["Storage"] = partAttributes
+        //result["Storage"] = partAttributes
         
-        return result as NSDictionary
+        return partAttributes as NSDictionary
     }
     
     var link: String { get { return _link! } set { _link = newValue } }
@@ -1035,7 +1047,7 @@ class GPU: MyParts {
     
     
     public var dictionaryRepresentation: NSDictionary {
-        var result: [String: [String : String]] = [:]
+        //var result: [String: [String : String]] = [:]
         var partAttributes: [String : String] = [:]
         
         partAttributes["VRAM"] = _vram
@@ -1050,9 +1062,9 @@ class GPU: MyParts {
         partAttributes["Manufacturer"] = _manufacturer
         partAttributes["IsCustom"] = String(describing: _isCustom)
         
-        result["GPU"] = partAttributes
+        //result["GPU"] = partAttributes
         
-        return result as NSDictionary
+        return partAttributes as NSDictionary
     }
     
     var vram: String { get { return _vram! } set { _vram = newValue } }
@@ -1131,7 +1143,7 @@ class PSU: MyParts {
     
     
     public var dictionaryRepresentation: NSDictionary {
-        var result: [String: [String : String]] = [:]
+        //var result: [String: [String : String]] = [:]
         var partAttributes: [String : String] = [:]
         
         partAttributes["Link"] = _link
@@ -1144,9 +1156,9 @@ class PSU: MyParts {
         partAttributes["Manufacturer"] = _manufacturer
         partAttributes["IsCustom"] = String(describing: _isCustom)
         
-        result["PSU"] = partAttributes
+        //result["PSU"] = partAttributes
         
-        return result as NSDictionary
+        return partAttributes as NSDictionary
     }
     
     var link: String { get { return _link! } set { _link = newValue } }
@@ -1222,7 +1234,7 @@ class OpticalDrive: MyParts {
     
     
     public var dictionaryRepresentation: NSDictionary {
-        var result: [String: [String : String]] = [:]
+        //var result: [String: [String : String]] = [:]
         var partAttributes: [String : String] = [:]
         
         partAttributes["Link"] = _link
@@ -1234,9 +1246,9 @@ class OpticalDrive: MyParts {
         partAttributes["Manufacturer"] = _manufacturer
         partAttributes["IsCustom"] = String(describing: _isCustom)
         
-        result["Optical Drive"] = partAttributes
+        //result["Optical Drive"] = partAttributes
         
-        return result as NSDictionary
+        return partAttributes as NSDictionary
     }
     
     var link: String { get { return _link! } set { _link = newValue } }
@@ -1311,7 +1323,7 @@ class Case: MyParts {
     
     
     public var dictionaryRepresentation: NSDictionary {
-        var result: [String: [String : String]] = [:]
+        //var result: [String: [String : String]] = [:]
         var partAttributes: [String : String] = [:]
         
         partAttributes["Link"] = _link
@@ -1323,9 +1335,9 @@ class Case: MyParts {
         partAttributes["Manufacturer"] = _manufacturer
         partAttributes["IsCustom"] = String(describing: _isCustom)
         
-        result["Case"] = partAttributes
+        //result["Case"] = partAttributes
         
-        return result as NSDictionary
+        return partAttributes as NSDictionary
     }
     
     var link: String { get { return _link! } set { _link = newValue } }
@@ -1399,7 +1411,7 @@ class Cooler: MyParts {
     
     
     public var dictionaryRepresentation: NSDictionary {
-        var result: [String: [String : String]] = [:]
+        //var result: [String: [String : String]] = [:]
         var partAttributes: [String : String] = [:]
         
         partAttributes["Link"] = _link
@@ -1411,9 +1423,9 @@ class Cooler: MyParts {
         partAttributes["Manufacturer"] = _manufacturer
         partAttributes["IsCustom"] = String(describing: _isCustom)
         
-        result["Cooler"] = partAttributes
+        //result["Cooler"] = partAttributes
         
-        return result as NSDictionary
+        return partAttributes as NSDictionary
     }
     
     var link: String { get { return _link! } set { _link = newValue } }

@@ -171,13 +171,44 @@ class UserBuild {
     public var dictionaryRepresentation: NSDictionary {
         
         var result: [String : [String : String]] = [:]
-        var partType: [String : String] = [:]
 
         
         for part: MyParts in _listOfUsersParts {
             if (part is CPU) {
                 let cpu: CPU = part as! CPU
-                result["CPU"] = cpu.dictionaryRepresentation as! [String : String]
+                result["CPU"] = cpu.dictionaryRepresentation as? [String : String]
+            }
+            else if (part is Motherboard) {
+                let mobo: Motherboard = part as! Motherboard
+                result["Motherboard"] = mobo.dictionaryRepresentation as? [String : String]
+            }
+            else if (part is RAM) {
+                let ram: RAM = part as! RAM
+                result["RAM"] = ram.dictionaryRepresentation as? [String : String]
+            }
+            else if (part is GPU) {
+                let gpu: GPU = part as! GPU
+                result["GPU"] = gpu.dictionaryRepresentation as? [String : String]
+            }
+            else if (part is Case) {
+                let tower: Case = part as! Case
+                result["Case"] = tower.dictionaryRepresentation as? [String : String]
+            }
+            else if (part is PSU) {
+                let psu: PSU = part as! PSU
+                result["PSU"] = psu.dictionaryRepresentation as? [String : String]
+            }
+            else if (part is Cooler) {
+                let cooler: Cooler = part as! Cooler
+                result["Cooler"] = cooler.dictionaryRepresentation as? [String : String]
+            }
+            else if (part is Storage) {
+                let drive: Storage = part as! Storage
+                result["Storage"] = drive.dictionaryRepresentation as? [String : String]
+            }
+            else if (part is OpticalDrive) {
+                let drive: OpticalDrive = part as! OpticalDrive
+                result["Optical Drive"] = drive.dictionaryRepresentation as? [String : String]
             }
         }
         

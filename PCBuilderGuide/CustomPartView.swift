@@ -58,7 +58,11 @@ class CustomPartView: UIView, UITextFieldDelegate
     private var descriptionTypeField: UITextField? = nil
     private var descriptionTypeLabel: UILabel? = nil
     
+    private var ramStackView: UIStackView? = nil
+    private var ramTypeField: UITextField? = nil
+    private var ramTypeLabel: UILabel? = nil
     
+    var _ram: String? = nil
     var _link: String?  = nil
     var _specs: String?  = nil
     var _image: String?  = nil
@@ -441,6 +445,39 @@ class CustomPartView: UIView, UITextFieldDelegate
         descriptionStackView?.addArrangedSubview(descriptionTypeField!)
         stackView?.addArrangedSubview(descriptionStackView!)
         
+        
+        // RAM
+        ramStackView = UIStackView(frame: CGRect(x: 0.0, y: 0.0, width: frame.width, height: frame.height))
+        ramStackView?.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
+        ramStackView?.axis = UILayoutConstraintAxis.horizontal
+        //descriptionStackView?.layoutMargins = UIEdgeInsets(top: 10, left: 35, bottom: 10, right: 35)
+        //descriptionStackView?.isLayoutMarginsRelativeArrangement = true
+        ramStackView?.distribution = UIStackViewDistribution.fill
+        ramStackView?.spacing = 5.0
+        ramStackView?.backgroundColor = UIColor.white
+        
+        ramTypeLabel = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: 150, height: 30))
+        ramTypeLabel?.text = "Image URL: "
+        ramTypeLabel?.font = UIFont(name: "Helvetica", size: 15)
+        //imageTypeLabel?.textColor = UIColor.black
+        ramStackView?.addArrangedSubview(ramTypeLabel!)
+        
+        ramTypeField = UITextField(frame: CGRect(x: 0.0, y: 0.0, width: 150, height: frame.width))
+        ramTypeField?.allowsEditingTextAttributes = true
+        ramTypeField?.placeholder = "Enter your text here"
+        ramTypeField?.font = UIFont.systemFont(ofSize: 15)
+        ramTypeField?.keyboardType = UIKeyboardType.default
+        ramTypeField?.returnKeyType = UIReturnKeyType.done
+        ramTypeField?.clearButtonMode = UITextFieldViewMode.whileEditing
+        ramTypeField?.borderStyle = UITextBorderStyle.roundedRect
+        ramTypeField?.autocorrectionType = UITextAutocorrectionType.no
+        ramTypeField?.backgroundColor = UIColor.lightGray
+        ramTypeField?.clearsOnBeginEditing = true
+        ramTypeField?.tag = 10
+        ramTypeField?.delegate = self
+        ramStackView?.addArrangedSubview(ramTypeField!)
+        stackView?.addArrangedSubview(ramStackView!)
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -475,6 +512,8 @@ class CustomPartView: UIView, UITextFieldDelegate
             image = textField.text!
         case 10:
             descriptionString = textField.text!
+        case 11:
+            ram = textField.text!
         default:
             print("Unable to change field to variable")
         }
@@ -485,6 +524,7 @@ class CustomPartView: UIView, UITextFieldDelegate
     {
         var arr = [String]()
         //these are added in a very specific order so that it matches easily with how the controller calls them in the createPart Func
+        
         arr.append(link)
         arr.append(specs)
         arr.append(price)
@@ -495,6 +535,7 @@ class CustomPartView: UIView, UITextFieldDelegate
         arr.append(generation)
         arr.append(descriptionString)
         arr.append(manufacturer)
+        arr.append(ram)
         
         return arr
         
@@ -509,6 +550,7 @@ class CustomPartView: UIView, UITextFieldDelegate
     var family: String {get{return _family!}set{_family = newValue}}
     var generation: String {get{return _generation!}set{_generation = newValue}}
     var manufacturer: String {get{return _manufacturer!}set{_manufacturer = newValue}}
+    var ram: String {get{return _ram!}set{_ram = newValue}}
     
     
     

@@ -281,8 +281,20 @@ class BuildInterfaceView: UIView {
         if (cpuRect.contains(touchPoint)) {
             delegate?.buttonTouched(partType: cpuText as String)
         }
+        else if (ramRect.contains(touchPoint)) {
+            delegate?.buttonTouched(partType: ramText as String)
+        }
+        else if (gpuRect.contains(touchPoint)) {
+            delegate?.buttonTouched(partType: gpuText as String)
+        }
         else if (motherboardRect.contains(touchPoint)) {
             delegate?.buttonTouched(partType: motherboardText as String)
+        }
+        else if (psuRect.contains(touchPoint)) {
+            delegate?.buttonTouched(partType: psuText as String)
+        }
+        else if (storageRect.contains(touchPoint)) {
+            delegate?.buttonTouched(partType: storageText as String)
         }
     }
     

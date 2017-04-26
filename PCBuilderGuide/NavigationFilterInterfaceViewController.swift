@@ -28,21 +28,30 @@ class NavigationFilterInterfaceViewController: UIViewController, PartFilterInter
     private var _secondLevel: Bool = false
     private var _specificPartType: String? = nil
     
+    private var _usersCurrentParts: [MyParts] = []
+    public var usersCurrentParts: [MyParts] { get { return _usersCurrentParts } set { _usersCurrentParts = newValue } }
+    
     
     init?(partType: String) {
         super.init(nibName: nil, bundle: nil)
         
+        //categoryViewController.usersCurrentParts = _usersCurrentParts
+        
         _showCategoryPage = false
         partFilterView = PartFilterInterfaceView()
         
+        _inList = partType
         switch partType {
         case "CPU":
-            _inList = partType
-            self.partFilterView?.setButtonAttributes(partType: _partsList.getListOfPartsByManufacturer(partType: "Processor"))
+            self.partFilterView?.setButtonAttributes(partType: _partsList.getFirstLevelParts(partType: "Processor"))
             break
         case "Motherboard":
-            _inList = partType
+            self.partFilterView?.setButtonAttributes(partType: _partsList.getFirstLevelParts(partType: "Motherboard"))
             break
+        case "RAM":
+            self.partFilterView?.setButtonAttributes(partType: _partsList.getFirstLevelParts(partType: "RAM"))
+            break
+            
         default:
             // don't do anything
             break
@@ -85,6 +94,7 @@ class NavigationFilterInterfaceViewController: UIViewController, PartFilterInter
     
     func viewAllClicked()
     {
+        categoryViewController.usersCurrentParts = _usersCurrentParts
         switch _inList {
         case "CPU":
             if (_secondLevel) {
@@ -94,6 +104,13 @@ class NavigationFilterInterfaceViewController: UIViewController, PartFilterInter
                 categoryViewController.partsList = _partsList.getAllPartsFirstLevel(type: "Processor")
             }
             break
+        case "Motherboard":
+            if (_secondLevel) {
+                categoryViewController.partsList = _partsList.getAllPartsSecondLevel(type: "Motherboard", category: _specificPartType!)
+            }
+            else {
+                categoryViewController.partsList = _partsList.getAllPartsFirstLevel(type: "Motherboard")
+            }
         default:
             break
         }
@@ -107,13 +124,28 @@ class NavigationFilterInterfaceViewController: UIViewController, PartFilterInter
         switch _inList {
         case "CPU":
             if (_showCategoryPage) {
+                categoryViewController.usersCurrentParts = _usersCurrentParts
                 categoryViewController.partsList = _partsList.getPartsForCategory(type: "Processor", family: specificPartType)
                 navigationController?.pushViewController(categoryViewController, animated: true)
             }
             else {
                 _secondLevel = true
                 partFilterView = PartFilterInterfaceView()
-                self.partFilterView?.setButtonAttributes(partType: _partsList.getFamilyPartsOfManufacturer(type: "Processor", manufacturer: specificPartType))
+                self.partFilterView?.setButtonAttributes(partType: _partsList.getSecondLevelParts(type: "Processor", manufacturer: specificPartType))
+                loadView()
+            }
+            _showCategoryPage = true
+            break
+        case "Motherboard":
+            if (_showCategoryPage) {
+                categoryViewController.usersCurrentParts = _usersCurrentParts
+                categoryViewController.partsList = _partsList.getPartsForCategory(type: "Motherboard", family: specificPartType)
+                navigationController?.pushViewController(categoryViewController, animated: true)
+            }
+            else {
+                _secondLevel = true
+                partFilterView = PartFilterInterfaceView()
+                self.partFilterView?.setButtonAttributes(partType: _partsList.getSecondLevelParts(type: "Motherboard", manufacturer: specificPartType))
                 loadView()
             }
             _showCategoryPage = true
@@ -129,6 +161,7 @@ class NavigationFilterInterfaceViewController: UIViewController, PartFilterInter
     func partWasSelected(part: MyParts) {
         delegate?.partWasSelected(part: part)
     }
+    
     
     weak var delegate: NavigationFilterInterfaceControllerDelegate? = nil
 }

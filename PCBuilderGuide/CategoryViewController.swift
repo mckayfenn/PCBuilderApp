@@ -14,9 +14,14 @@ protocol CategoryViewControllerDelegate: class {
 
 class CategoryViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, SpecificPartPageControllerDelegate {
     
+    private var allPartsList: PartsList = PartsList.Instance
+    
     private var categoryView: UICollectionView { return view as! UICollectionView }
-    private var _parts: [MyParts] = []
-    public var partsList: [MyParts] { get { return _parts} set { _parts = newValue } }
+    private var _partsToShow: [MyParts] = []
+    public var partsList: [MyParts] { get { return _partsToShow} set { _partsToShow = newValue } }
+    
+    private var _usersCurrentParts: [MyParts] = []
+    public var usersCurrentParts: [MyParts] { get { return _usersCurrentParts } set { _usersCurrentParts = newValue } }
     
     private var partViewController: SpecificPartPageController? = nil
     
@@ -51,15 +56,30 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return _parts.count
+        return _partsToShow.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let part = _partsToShow[indexPath.item] // part to be displayed in the cellView
+        
+        let compatible = allPartsList.isPartCompatibleTo(currentParts: _usersCurrentParts, thisPart: part)
+        
+        
         let cell: UICollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: NSStringFromClass(UICollectionViewCell.self), for: indexPath)
+
+        
+        if (compatible) {
+            cell.layer.borderColor = UIColor.green.cgColor
+        }
+        else {
+            cell.layer.borderColor = UIColor.red.cgColor
+            cell.isUserInteractionEnabled = false
+        }
+        
         
         cell.backgroundColor = UIColor.white
         cell.layer.backgroundColor = UIColor.white.cgColor
-        cell.layer.borderColor = UIColor.lightGray.cgColor
         cell.layer.borderWidth = 2.5
         cell.layer.cornerRadius = 10.0
         
@@ -67,10 +87,11 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
         cellView.frame = cell.bounds
         
         
-        let part = _parts[indexPath.item]
         
-        cellView.modelLabel = part._model
-        cellView.priceLabel = "$" + part._price
+        
+        cellView.modelLabel = part._model!
+        //cellView.priceLabel = "$" + part._price!
+        
         
         cell.contentView.addSubview(cellView)
         
@@ -80,7 +101,7 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let part = _parts[indexPath.item]
+        let part = _partsToShow[indexPath.item]
         
         partViewController = SpecificPartPageController(part: part)
         

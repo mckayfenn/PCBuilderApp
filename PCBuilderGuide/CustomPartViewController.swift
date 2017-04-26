@@ -47,25 +47,25 @@ class CustomPartViewController: UIViewController {
     {
         switch partAsString {
         case "CPU":
-            return CPU(link: values[0], specs: values[1], price: values[2], image: values[3], model: values[4], socket: values[5], family: values[6], generation: values[7], description: values[8], manufacturer: values[9], isCustom: true)
+            return CPU(link: values[0], specs: values[1], price: values[2], image: values[3], model: values[4], socket: values[5], family: values[6], generation: values[7], description: values[8], manufacturer: values[9], ram: values[10], isCustom: true)
         case "Motherboard":
-            return Motherboard(link: values[0], specs: values[1], price: values[2], image: values[3], model: values[4], socket: values[5], family: values[6], generation: values[7], description: values[8], manufacturer: values[9], isCustom: true)
+            return Motherboard(link: values[0], specs: values[1], price: values[2], image: values[3], model: values[4], socket: values[5], family: values[6], generation: values[7], description: values[8], manufacturer: values[9], ram: values[10], isCustom: true)
         case "GPU":
-            return GPU(link: values[0], specs: values[1], price: values[2], image: values[3], model: values[4], socket: values[5], family: values[6], generation: values[7], description: values[8], manufacturer: values[9], isCustom: true)
+            return GPU(link: values[0], specs: values[1], price: values[2], image: values[3], model: values[4], socket: values[5], family: values[6], generation: values[7], description: values[8], manufacturer: values[9], ram: values[10], isCustom: true)
         case "RAM":
-            return RAM(link: values[0], specs: values[1], price: values[2], image: values[3], model: values[4], socket: values[5], family: values[6], generation: values[7], description: values[8], manufacturer: values[9], isCustom: true)
+            return RAM(link: values[0], specs: values[1], price: values[2], image: values[3], model: values[4], socket: values[5], family: values[6], generation: values[7], description: values[8], manufacturer: values[9], ram: values[10], isCustom: true)
         case "CASE":
-            return Case(link: values[0], specs: values[1], price: values[2], image: values[3], model: values[4], socket: values[5], family: values[6], generation: values[7], description: values[8], manufacturer: values[9], isCustom: true)
+            return Case(link: values[0], specs: values[1], price: values[2], image: values[3], model: values[4], socket: values[5], family: values[6], generation: values[7], description: values[8], manufacturer: values[9], ram: values[10], isCustom: true)
         case "Power Supply":
-            return PowerSupply(link: values[0], specs: values[1], price: values[2], image: values[3], model: values[4], socket: values[5], family: values[6], generation: values[7], description: values[8], manufacturer: values[9], isCustom: true)
+            return PSU(link: values[0], specs: values[1], price: values[2], image: values[3], model: values[4], socket: values[5], family: values[6], generation: values[7], description: values[8], manufacturer: values[9], ram: values[10], isCustom: true)
         case "Storage":
-            return Storage(link: values[0], specs: values[1], price: values[2], image: values[3], model: values[4], socket: values[5], family: values[6], generation: values[7], description: values[8], manufacturer: values[9], isCustom: true)
+            return Storage(link: values[0], specs: values[1], price: values[2], image: values[3], model: values[4], socket: values[5], family: values[6], generation: values[7], description: values[8], manufacturer: values[9], ram: values[10], isCustom: true)
         case "Optical Drive":
-            return OpticalDrive(link: values[0], specs: values[1], price: values[2], image: values[3], model: values[4], socket: values[5], family: values[6], generation: values[7], description: values[8], manufacturer: values[9], isCustom: true)
+            return OpticalDrive(link: values[0], specs: values[1], price: values[2], image: values[3], model: values[4], socket: values[5], family: values[6], generation: values[7], description: values[8], manufacturer: values[9], ram: values[10], isCustom: true)
         case "Cooler":
-            return Cooler(link: values[0], specs: values[1], price: values[2], image: values[3], model: values[4], socket: values[5], family: values[6], generation: values[7], description: values[8], manufacturer: values[9], isCustom: true)
+            return Cooler(link: values[0], specs: values[1], price: values[2], image: values[3], model: values[4], socket: values[5], family: values[6], generation: values[7], description: values[8], manufacturer: values[9], ram: values[10], isCustom: true)
         default:
-            return CPU(link: "something went wrong", specs: "", price: "", image: "", model: "", socket: "", family: "", generation: "", description: "", manufacturer: "", isCustom: true)
+            return CPU(link: "something went wrong", specs: "", price: "", image: "", model: "", socket: "", family: "", generation: "", description: "", manufacturer: "", ram: "", isCustom: true)
             print("Unable to change field to variable")
         }
     }

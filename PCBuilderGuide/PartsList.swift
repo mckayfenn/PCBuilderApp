@@ -132,7 +132,9 @@ class PartsList {
 
     
     
-    
+    public func isPartCompatibleTo(currentParts: [MyParts], thisPart: MyParts) -> Bool {
+        return (_listOfParts?.isPartCompatibleTo(currentParts: currentParts, thisPart: thisPart))!
+    }
     
     public func getAllPartsFirstLevel(type: String) -> [MyParts] {
         return (_listOfParts?.getAllPartsFirstLevel(type: type))!
@@ -146,12 +148,12 @@ class PartsList {
         return (_listOfParts?.getPartsForCategory(type: type, family: family))!
     }
     
-    public func getListOfPartsByManufacturer(partType: String) -> [String] {
-        return (_listOfParts?.getListOfPartsByManufacturer(partType: partType))!
+    public func getFirstLevelParts(partType: String) -> [String] {
+        return (_listOfParts?.getFirstLevelParts(partType: partType))!
     }
     
-    public func getFamilyPartsOfManufacturer(type: String, manufacturer: String) -> [String] {
-        return (_listOfParts?.getFamilyPartsOfManufacturer(type: type, manufacturer: manufacturer))!
+    public func getSecondLevelParts(type: String, manufacturer: String) -> [String] {
+        return (_listOfParts?.getSecondLevelParts(type: type, manufacturer: manufacturer))!
     }
     
     

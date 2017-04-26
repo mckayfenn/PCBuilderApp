@@ -77,19 +77,9 @@ class BuildInterfaceViewController: UIViewController, BuildInterfaceViewDelegate
     func buttonTouched(partType: String) {
         navigationFilterViewController = NavigationFilterInterfaceViewController(partType: partType)!
         
-//        switch partType {
-//        case "CPU":
-//            navigationFilterViewController.parts = _partsList.listOfAllParts.getListOfPartsByManufacturer(partType: "CPU") as [AnyObject]
-//            break
-//        case "Mobo":
-//            navigationFilterViewController.parts = _partsList.listOfAllParts.getListOfPartsByName(partType: "Motherboard") as [AnyObject]
-//            break
-//        default:
-//            // don't do anything
-//            break
-//        }
         
         navigationFilterViewController?.delegate = self
+        navigationFilterViewController?.usersCurrentParts = _usersParts!
         
         navigationController?.pushViewController(navigationFilterViewController!, animated: true)
     }
@@ -135,12 +125,13 @@ class BuildInterfaceViewController: UIViewController, BuildInterfaceViewDelegate
         navigationController?.popToViewController(self, animated: true)
         _userBuild?.addPart(part: part)
         
-        if (part._isCustom) {
+        if (part._isCustom)! {
             _partsList.addCustomPart(part: part)
             _partsList.saveCustomParts()
         }
         
-        
+        // TODO: remove the part first if there is already one of these
+        _usersParts?.append(part)
     }
     
     weak var delegate: BuildInterfaceViewControllerDelegate? = nil

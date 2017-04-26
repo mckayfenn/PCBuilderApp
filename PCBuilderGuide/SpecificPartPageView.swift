@@ -127,14 +127,14 @@ class PartView: UIView {
         specsText.draw(at: CGPoint(x: specsRect.minX, y: specsRect.minY), withAttributes: specsTextAttribute)
 
         
-        let specsDataRect = CGRect(x: 15, y: specsRect.maxY, width: frame.width, height: frame.height / 2)
-        let specsDataStrings = _part?._specs.components(separatedBy: ",")
-        for i: Int in 0..<(specsDataStrings?.count)! {
-            let specsData = "• " + (specsDataStrings?[i])!.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-            let specsDataAttribute: [String:Any] = [NSFontAttributeName:UIFont.systemFont(ofSize: specsDataRect.width / 25), NSForegroundColorAttributeName: UIColor.black]
-            let specsDataSize: CGSize = specsData.size(attributes: specsDataAttribute)
-            specsData.draw(at: CGPoint(x: specsDataRect.minX, y: specsDataRect.minY + CGFloat(i * 15)), withAttributes: specsDataAttribute)
-        }
+//        let specsDataRect = CGRect(x: 15, y: specsRect.maxY, width: frame.width, height: frame.height / 2)
+//        let specsDataStrings = _part?._specs?.components(separatedBy: ",")
+//        for i: Int in 0..<(specsDataStrings?.count)! {
+//            let specsData = "• " + (specsDataStrings?[i])!.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+//            let specsDataAttribute: [String:Any] = [NSFontAttributeName:UIFont.systemFont(ofSize: specsDataRect.width / 25), NSForegroundColorAttributeName: UIColor.black]
+//            let specsDataSize: CGSize = specsData.size(attributes: specsDataAttribute)
+//            specsData.draw(at: CGPoint(x: specsDataRect.minX, y: specsDataRect.minY + CGFloat(i * 15)), withAttributes: specsDataAttribute)
+//        }
         
         
         let linkButton = UIButton(frame: CGRect(x: frame.midX - frame.midX / 2, y: frame.maxY - 100, width: frame.width / 2, height: frame.height / 10))

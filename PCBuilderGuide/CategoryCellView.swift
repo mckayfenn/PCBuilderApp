@@ -42,8 +42,8 @@ class CategoryCellView: UIView {
         _modelLabel?.draw(at: CGPoint(x: preview.midX - modelTextSize.width / 2, y: preview.midY + modelTextSize.height / 2), withAttributes: modelTextAttribute)
         
         let priceTextAttribute: [String:Any] = [NSFontAttributeName:UIFont.systemFont(ofSize: preview.width / 10), NSForegroundColorAttributeName: UIColor.white]
-        let priceTextSize: CGSize = _priceLabel!.size(attributes: priceTextAttribute)
-        _priceLabel?.draw(at: CGPoint(x: preview.midX - priceTextSize.width / 2, y: preview.midY + 4 * priceTextSize.height / 2), withAttributes: priceTextAttribute)
+        //let priceTextSize: CGSize = _priceLabel!.size(attributes: priceTextAttribute)
+        //_priceLabel?.draw(at: CGPoint(x: preview.midX - priceTextSize.width / 2, y: preview.midY + 4 * priceTextSize.height / 2), withAttributes: priceTextAttribute)
     }
     
 }

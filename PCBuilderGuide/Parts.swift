@@ -219,7 +219,7 @@ class Parts {
             }
             break
         case "Motherboard":
-            for mobo in _processors {
+            for mobo in _motherboards {
                 result.append(mobo)
             }
             break
@@ -642,7 +642,7 @@ class CPU: MyParts {
     
     
     public var dictionaryRepresentation: NSDictionary {
-        var result: [String: [String : String]] = [:]
+        //var result: [String: [String : String]] = [:]
         var partAttributes: [String : String] = [:]
         
         partAttributes["RAM"] = _ram
@@ -656,11 +656,17 @@ class CPU: MyParts {
         partAttributes["Generation"] = _generation
         partAttributes["Description"] = _description
         partAttributes["Manufacturer"] = _manufacturer
-        partAttributes["IsCustom"] = String(describing: _isCustom)
+        // have to do this because swift is stupid
+        if (_isCustom)! {
+            partAttributes["IsCustom"] = "true"
+        }
+        else {
+            partAttributes["IsCustom"] = "false"
+        }
         
-        result["CPU"] = partAttributes
+        //result["CPU"] = partAttributes
         
-        return result as NSDictionary
+        return partAttributes as NSDictionary
     }
     
     var ram: String { get { return _ram! } set { _ram = newValue } }

@@ -176,19 +176,8 @@ class UserBuild {
         
         for part: MyParts in _listOfUsersParts {
             if (part is CPU) {
-                partType["Manufacturer"] = part._manufacturer
-                partType["Model"] = part._model
-                partType["Socket"] = part._socket
-                partType["Description"] = part._description
-                partType["Specs"] = part._specs
-                partType["Link"] = part._link
-                partType["Family"] = part._family
-                partType["Generation"] = part._generation
-                partType["Price"] = part._price
-                partType["Image"] = part._image
-                partType["IsCustom"] = String(describing: part._isCustom)
-                
-                result["CPU"] = partType
+                let cpu: CPU = part as! CPU
+                result["CPU"] = cpu.dictionaryRepresentation as! [String : String]
             }
         }
         

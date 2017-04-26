@@ -261,7 +261,7 @@ class BuildInterfaceView: UIView {
             context.setFillColor(noImageBackgroundColor)
             context.drawPath(using: .fillStroke)
             
-            let storageTextAttribute: [String:Any] = [NSFontAttributeName:UIFont.systemFont(ofSize: storageRect.width / 8)]
+            let storageTextAttribute: [String:Any] = [NSFontAttributeName:UIFont.systemFont(ofSize: storageRect.width / 6)]
             let storageTextSize: CGSize = storageText.size(attributes: storageTextAttribute)
             storageText.draw(at: CGPoint(x: storageRect.midX - storageTextSize.width / 2, y: storageRect.midY - storageTextSize.height / 2), withAttributes: storageTextAttribute)
         }

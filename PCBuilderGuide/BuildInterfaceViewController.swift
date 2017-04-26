@@ -118,6 +118,8 @@ class BuildInterfaceViewController: UIViewController, BuildInterfaceViewDelegate
         _userBuild?.buildTitle = title
         
         delegate?.saveBuilds()
+        
+        view.reloadInputViews()
     }
     
     // a part was selected so pop back to this viewController
@@ -131,6 +133,7 @@ class BuildInterfaceViewController: UIViewController, BuildInterfaceViewDelegate
         }
         
         // TODO: remove the part first if there is already one of these
+        // actually maybe not needed. Now assigning userparts based on the parts in the userbuilds. 
         //_usersParts?.append(part)
     }
     

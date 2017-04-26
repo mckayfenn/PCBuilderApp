@@ -17,6 +17,9 @@ class SpecificPartPageController: UIViewController, SpecificPartPageDelegate {
     private var _part: MyParts? = nil
     public var part: MyParts { get { return _part! } set { _part = newValue } }
     
+    private var _isCompatible: Bool = true
+    public var isCompatible: Bool { get { return _isCompatible } set { _isCompatible = newValue } }
+    
     private var specificPartView: SpecificPartPageView { return view as! SpecificPartPageView }
     
     
@@ -42,7 +45,20 @@ class SpecificPartPageController: UIViewController, SpecificPartPageDelegate {
     
     
     func selectPartClicked(part: MyParts) {
-        delegate?.partWasSelected(part: part)
+        // if it's compatible then delegate up
+        if (_isCompatible) {
+            delegate?.partWasSelected(part: part)
+        }
+        // if its not, then tell the user
+        else {
+            let alertController = UIAlertController(title: "Not Compatible", message: "This part is not compatible with the rest of your build. \n Please select a different part.", preferredStyle: .alert)
+            
+            let confirmAction = UIAlertAction(title: "OK", style: .default) { (_) in }
+            
+            alertController.addAction(confirmAction)
+            
+            self.present(alertController, animated: true, completion: nil)
+        }
     }
     
     weak var delegate: SpecificPartPageControllerDelegate? = nil

@@ -67,14 +67,14 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
         
         
         let cell: UICollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: NSStringFromClass(UICollectionViewCell.self), for: indexPath)
-
+        let cellView: CategoryCellView = CategoryCellView()
         
         if (compatible) {
             cell.layer.borderColor = UIColor.green.cgColor
         }
         else {
             cell.layer.borderColor = UIColor.red.cgColor
-            cell.isUserInteractionEnabled = false
+            //cell.isUserInteractionEnabled = false
         }
         
         
@@ -83,7 +83,7 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
         cell.layer.borderWidth = 2.5
         cell.layer.cornerRadius = 10.0
         
-        let cellView: CategoryCellView = CategoryCellView()
+        
         cellView.frame = cell.bounds
         
         
@@ -102,8 +102,13 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let part = _partsToShow[indexPath.item]
+        let compatible = allPartsList.isPartCompatibleTo(currentParts: _usersCurrentParts, thisPart: part)
         
         partViewController = SpecificPartPageController(part: part)
+        
+        if (!compatible) {
+            partViewController?.isCompatible = false
+        }
         
         partViewController?.delegate = self
         

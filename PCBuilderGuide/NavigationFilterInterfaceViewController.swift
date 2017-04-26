@@ -51,7 +51,24 @@ class NavigationFilterInterfaceViewController: UIViewController, PartFilterInter
         case "RAM":
             self.partFilterView?.setButtonAttributes(partType: _partsList.getFirstLevelParts(partType: "RAM"))
             break
-            
+        case "Graphics Card":
+            self.partFilterView?.setButtonAttributes(partType: _partsList.getFirstLevelParts(partType: "GPU"))
+            break
+        case "Case":
+            self.partFilterView?.setButtonAttributes(partType: _partsList.getFirstLevelParts(partType: "Case"))
+            break
+        case "Power Supply":
+            self.partFilterView?.setButtonAttributes(partType: _partsList.getFirstLevelParts(partType: "PSU"))
+            break
+        case "Cooler":
+            self.partFilterView?.setButtonAttributes(partType: _partsList.getFirstLevelParts(partType: "Cooler"))
+            break
+        case "Storage":
+            self.partFilterView?.setButtonAttributes(partType: _partsList.getFirstLevelParts(partType: "Storage"))
+            break
+        case "Optical Drive":
+            self.partFilterView?.setButtonAttributes(partType: _partsList.getFirstLevelParts(partType: "Optical Drive"))
+            break
         default:
             // don't do anything
             break
@@ -146,6 +163,104 @@ class NavigationFilterInterfaceViewController: UIViewController, PartFilterInter
                 _secondLevel = true
                 partFilterView = PartFilterInterfaceView()
                 self.partFilterView?.setButtonAttributes(partType: _partsList.getSecondLevelParts(type: "Motherboard", manufacturer: specificPartType))
+                loadView()
+            }
+            _showCategoryPage = true
+            break
+        case "RAM":
+            if (_showCategoryPage) {
+                categoryViewController.usersCurrentParts = _usersCurrentParts
+                categoryViewController.partsList = _partsList.getPartsForCategory(type: "RAM", family: specificPartType)
+                navigationController?.pushViewController(categoryViewController, animated: true)
+            }
+            else {
+                _secondLevel = true
+                partFilterView = PartFilterInterfaceView()
+                self.partFilterView?.setButtonAttributes(partType: _partsList.getSecondLevelParts(type: "RAM", manufacturer: specificPartType))
+                loadView()
+            }
+            _showCategoryPage = true
+            break
+        case "Graphics Card":
+            if (_showCategoryPage) {
+                categoryViewController.usersCurrentParts = _usersCurrentParts
+                categoryViewController.partsList = _partsList.getPartsForCategory(type: "GPU", family: specificPartType)
+                navigationController?.pushViewController(categoryViewController, animated: true)
+            }
+            else {
+                _secondLevel = true
+                partFilterView = PartFilterInterfaceView()
+                self.partFilterView?.setButtonAttributes(partType: _partsList.getSecondLevelParts(type: "GPU", manufacturer: specificPartType))
+                loadView()
+            }
+            _showCategoryPage = true
+            break
+        case "Case":
+            if (_showCategoryPage) {
+                categoryViewController.usersCurrentParts = _usersCurrentParts
+                categoryViewController.partsList = _partsList.getPartsForCategory(type: "Case", family: specificPartType)
+                navigationController?.pushViewController(categoryViewController, animated: true)
+            }
+            else {
+                _secondLevel = true
+                partFilterView = PartFilterInterfaceView()
+                self.partFilterView?.setButtonAttributes(partType: _partsList.getSecondLevelParts(type: "Case", manufacturer: specificPartType))
+                loadView()
+            }
+            _showCategoryPage = true
+            break
+        case "Power Supply":
+            if (_showCategoryPage) {
+                categoryViewController.usersCurrentParts = _usersCurrentParts
+                categoryViewController.partsList = _partsList.getPartsForCategory(type: "PSU", family: specificPartType)
+                navigationController?.pushViewController(categoryViewController, animated: true)
+            }
+            else {
+                _secondLevel = true
+                partFilterView = PartFilterInterfaceView()
+                self.partFilterView?.setButtonAttributes(partType: _partsList.getSecondLevelParts(type: "PSU", manufacturer: specificPartType))
+                loadView()
+            }
+            _showCategoryPage = true
+            break
+        case "Cooler":
+            if (_showCategoryPage) {
+                categoryViewController.usersCurrentParts = _usersCurrentParts
+                categoryViewController.partsList = _partsList.getPartsForCategory(type: "Cooler", family: specificPartType)
+                navigationController?.pushViewController(categoryViewController, animated: true)
+            }
+            else {
+                _secondLevel = true
+                partFilterView = PartFilterInterfaceView()
+                self.partFilterView?.setButtonAttributes(partType: _partsList.getSecondLevelParts(type: "Cooler", manufacturer: specificPartType))
+                loadView()
+            }
+            _showCategoryPage = true
+            break
+        case "Storage":
+            if (_showCategoryPage) {
+                categoryViewController.usersCurrentParts = _usersCurrentParts
+                categoryViewController.partsList = _partsList.getPartsForCategory(type: "Storage", family: specificPartType)
+                navigationController?.pushViewController(categoryViewController, animated: true)
+            }
+            else {
+                _secondLevel = true
+                partFilterView = PartFilterInterfaceView()
+                self.partFilterView?.setButtonAttributes(partType: _partsList.getSecondLevelParts(type: "Storage", manufacturer: specificPartType))
+                loadView()
+            }
+            _showCategoryPage = true
+            break
+        case "Optical Drive":
+            if (_showCategoryPage) {
+                categoryViewController.usersCurrentParts = _usersCurrentParts
+                categoryViewController.partsList = _partsList.getPartsForCategory(type: "Optical Drive", family: specificPartType)
+                navigationController?.pushViewController(categoryViewController, animated: true)
+            }
+            else {
+                _secondLevel = true
+                partFilterView = PartFilterInterfaceView()
+                self.partFilterView?.setButtonAttributes(partType: _partsList.getSecondLevelParts(type: "Optical Drive", manufacturer: specificPartType))
                 loadView()
             }
             _showCategoryPage = true

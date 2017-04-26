@@ -43,10 +43,22 @@ class Parts {
     private var _processors: [CPU] = []
     private var _motherboards: [Motherboard] = []
     private var _rams: [RAM] = []
+    private var _gpus: [GPU] = []
+    private var _cases: [Case] = []
+    private var _psus: [PSU] = []
+    private var _coolers: [Cooler] = []
+    private var _storages: [Storage] = []
+    private var _opticalDrives: [OpticalDrive] = []
     
     var processors: [CPU] { get { return _processors } }
     var motherboards: [Motherboard] { get { return _motherboards } }
     var rams: [RAM] { get { return _rams } }
+    var gpus: [GPU] { get { return _gpus } }
+    var cases: [Case] { get { return _cases } }
+    var psus: [PSU] { get { return _psus } }
+    var coolers: [Cooler] { get { return _coolers } }
+    var storages: [Storage] { get { return _storages } }
+    var opticalDrives: [OpticalDrive] { get { return _opticalDrives } }
     
     /// Load data
     public init(dictionary: NSDictionary) {
@@ -61,6 +73,45 @@ class Parts {
             let mobo: NSDictionary = motherboard as! NSDictionary
             _motherboards.append(Motherboard(dictionary: mobo))
         }
+        
+        let rams: [AnyObject] = dictionary.value(forKey: "RAM") as! [AnyObject]
+        for ramSet in rams {
+            let ram: NSDictionary = ramSet as! NSDictionary
+            _rams.append(RAM(dictionary: ram))
+        }
+        
+        let videoCards: [AnyObject] = dictionary.value(forKey: "GPU") as! [AnyObject]
+        for card in videoCards {
+            let gpu: NSDictionary = card as! NSDictionary
+            _gpus.append(GPU(dictionary: gpu))
+        }
+        
+        let cases: [AnyObject] = dictionary.value(forKey: "Case") as! [AnyObject]
+        for tower in cases {
+            _cases.append(Case(dictionary: tower as! NSDictionary))
+        }
+        
+        let psus: [AnyObject] = dictionary.value(forKey: "PSU") as! [AnyObject]
+        for psu in psus {
+            _psus.append(PSU(dictionary: psu as! NSDictionary))
+        }
+        
+        let coolers: [AnyObject] = dictionary.value(forKey: "Cooler") as! [AnyObject]
+        for cooler in coolers {
+            _coolers.append(Cooler(dictionary: cooler as! NSDictionary))
+        }
+        
+        let storages: [AnyObject] = dictionary.value(forKey: "Storage") as! [AnyObject]
+        for drive in storages {
+            _storages.append(Storage(dictionary: drive as! NSDictionary))
+        }
+        
+        let opticalDrives: [AnyObject] = dictionary.value(forKey: "Optical Drive") as! [AnyObject]
+        for drive in opticalDrives {
+            _opticalDrives.append(OpticalDrive(dictionary: drive as! NSDictionary))
+        }
+        
+        
         
         print("jsonData has been processed")
     }
@@ -228,12 +279,53 @@ class Parts {
                 }
             }
             break
+        case "GPU":
+            for gpu in _gpus {
+                if (!result.contains(gpu._manufacturer!)) {
+                    result.append(gpu._manufacturer!)
+                }
+            }
+            break
+        case "Case":
+            for tower in _cases {
+                if (!result.contains(tower._manufacturer!)) {
+                    result.append(tower._manufacturer!)
+                }
+            }
+            break
+        case "PSU":
+            for psu in _psus {
+                if (!result.contains(psu._efficiency!)) {
+                    result.append(psu._efficiency!)
+                }
+            }
+            break
+        case "Cooler":
+            for cooler in _coolers {
+                if (!result.contains(cooler._class!)) {
+                    result.append(cooler._class!)
+                }
+            }
+            break
+        case "Storage":
+            for drive in _storages {
+                if (!result.contains(drive._class!)) {
+                    result.append(drive._class!)
+                }
+            }
+            break
+        case "Optical Drive":
+            for drive in _opticalDrives {
+                if (!result.contains(drive._class!)) {
+                    result.append(drive._class!)
+                }
+            }
         default:
             // return an empty list if parameter isn't correct
             break
         }
         
-        return result
+        return result.sorted()
     }
     
     
@@ -244,7 +336,7 @@ class Parts {
         switch type {
         case "Processor":
             for cpu in _processors {
-                if (cpu.manufacturer == manufacturer && !result.contains(cpu.family)) {
+                if (cpu._manufacturer == manufacturer && !result.contains(cpu.family)) {
                     result.append(cpu.family)
                 }
             }
@@ -256,12 +348,60 @@ class Parts {
                 }
             }
             break
+        case "RAM":
+            for ram in _rams {
+                if (ram._ram == manufacturer && !result.contains(ram._speed!)) {
+                    result.append(ram._speed!)
+                }
+            }
+            break
+        case "GPU":
+            for gpu in _gpus {
+                if (gpu._manufacturer == manufacturer && !result.contains(gpu._series!)) {
+                    result.append(gpu._series!)
+                }
+            }
+            break
+        case "Case":
+            for tower in _cases {
+                if (tower._manufacturer == manufacturer && !result.contains(tower._size!)) {
+                    result.append(tower._size!)
+                }
+            }
+            break
+        case "PSU":
+            for psu in _psus {
+                if (psu._efficiency == manufacturer && !result.contains(psu._wattage!)) {
+                    result.append(psu._wattage!)
+                }
+            }
+            break
+        case "Cooler":
+            for cooler in _coolers {
+                if (cooler._class == manufacturer && !result.contains(cooler._manufacturer!)) {
+                    result.append(cooler._manufacturer!)
+                }
+            }
+            break
+        case "Storage":
+            for drive in _storages {
+                if (drive._class == manufacturer && !result.contains(drive._size!)) {
+                    result.append(drive._size!)
+                }
+            }
+            break
+        case "Optical Drive":
+            for drive in _opticalDrives {
+                if (drive._class == manufacturer && !result.contains(drive._manufacturer!)) {
+                    result.append(drive._manufacturer!)
+                }
+            }
         default:
             // return an empty list if parameters arent correct
             break
         }
         
-        return result
+        return result.sorted()
     }
     
 }

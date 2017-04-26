@@ -79,7 +79,7 @@ class BuildInterfaceViewController: UIViewController, BuildInterfaceViewDelegate
         
         
         navigationFilterViewController?.delegate = self
-        navigationFilterViewController?.usersCurrentParts = _usersParts!
+        navigationFilterViewController?.usersCurrentParts = (_userBuild?.getAllParts())!
         
         navigationController?.pushViewController(navigationFilterViewController!, animated: true)
     }
@@ -131,7 +131,7 @@ class BuildInterfaceViewController: UIViewController, BuildInterfaceViewDelegate
         }
         
         // TODO: remove the part first if there is already one of these
-        _usersParts?.append(part)
+        //_usersParts?.append(part)
     }
     
     weak var delegate: BuildInterfaceViewControllerDelegate? = nil

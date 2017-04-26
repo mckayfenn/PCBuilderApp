@@ -90,7 +90,7 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
         
         
         cellView.modelLabel = part._model!
-        //cellView.priceLabel = "$" + part._price!
+        cellView.priceLabel = "$" + part._price!
         
         
         cell.contentView.addSubview(cellView)

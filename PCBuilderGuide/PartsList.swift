@@ -140,20 +140,20 @@ class PartsList {
         return (_listOfParts?.getAllPartsFirstLevel(type: type))!
     }
     
-    public func getAllPartsSecondLevel(type: String, category: String) -> [MyParts] {
-        return (_listOfParts?.getAllPartsSecondLevel(type: type, category: category))!
+    public func getAllPartsSecondLevel(type: String, firstLevelSelection: String) -> [MyParts] {
+        return (_listOfParts?.getAllPartsSecondLevel(type: type, firstLevelSelection: firstLevelSelection))!
     }
     
-    public func getPartsForCategory(type: String, family: String) -> [MyParts] {
-        return (_listOfParts?.getPartsForCategory(type: type, family: family))!
+    public func getPartsForCategory(type: String, secondLevelSelection: String) -> [MyParts] {
+        return (_listOfParts?.getPartsForCategory(type: type, secondLevelSelection: secondLevelSelection))!
     }
     
     public func getFirstLevelParts(partType: String) -> [String] {
         return (_listOfParts?.getFirstLevelParts(partType: partType))!
     }
     
-    public func getSecondLevelParts(type: String, manufacturer: String) -> [String] {
-        return (_listOfParts?.getSecondLevelParts(type: type, manufacturer: manufacturer))!
+    public func getSecondLevelParts(type: String, firstLevelSelection: String) -> [String] {
+        return (_listOfParts?.getSecondLevelParts(type: type, firstLevelSelection: firstLevelSelection))!
     }
     
     

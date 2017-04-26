@@ -296,6 +296,9 @@ class BuildInterfaceView: UIView {
         else if (storageRect.contains(touchPoint)) {
             delegate?.buttonTouched(partType: storageText as String)
         }
+        else if (caseRect.contains(touchPoint)) {
+            delegate?.buttonTouched(partType: caseText as String)
+        }
     }
     
     weak var delegate: BuildInterfaceViewDelegate? = nil

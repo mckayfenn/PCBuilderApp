@@ -143,10 +143,12 @@ class Parts {
     
     public func isPartCompatibleTo(currentParts: [MyParts], thisPart: MyParts) -> Bool {
         
+        // switch on which part they are trying to select
         switch thisPart {
         case is CPU:
             for part in currentParts {
                 
+                // switch on the parts they already have
                 switch part {
                 case is Motherboard:
                     if (part._socket != thisPart._socket) {
@@ -161,6 +163,40 @@ class Parts {
                 }
             }
             break
+        case is Motherboard:
+            for part in currentParts {
+                
+                // switch on the parts they already have
+                switch part {
+                case is CPU:
+                    if (part._socket != thisPart._socket) {
+                        return false
+                    }
+                case is RAM:
+                    if (part._ram != thisPart._ram) {
+                        return false
+                    }
+                default:
+                    break
+                }
+            }
+        case is RAM:
+            for part in currentParts {
+                
+                // switch on the parts they already have
+                switch part {
+                case is CPU:
+                    if (part._ram != thisPart._ram) {
+                        return false
+                    }
+                case is Motherboard:
+                    if (part._ram != thisPart._ram) {
+                        return false
+                    }
+                default:
+                    break
+                }
+            }
         default:
             break
         }
@@ -177,7 +213,7 @@ class Parts {
         var result: [MyParts] = []
         
         switch type {
-        case "Processor":
+        case "CPU":
             for cpu in _processors {
                 result.append(cpu)
             }
@@ -185,6 +221,41 @@ class Parts {
         case "Motherboard":
             for mobo in _processors {
                 result.append(mobo)
+            }
+            break
+        case "RAM":
+            for ram in _rams {
+                result.append(ram)
+            }
+            break
+        case "Graphics Card":
+            for gpu in _gpus {
+                result.append(gpu)
+            }
+            break
+        case "Case":
+            for tower in _cases {
+                result.append(tower)
+            }
+            break
+        case "Power Supply":
+            for psu in _psus {
+                result.append(psu)
+            }
+            break
+        case "Cooler":
+            for cooler in _coolers {
+                result.append(cooler)
+            }
+            break
+        case "Storage":
+            for drive in _storages {
+                result.append(drive)
+            }
+            break
+        case "Optical Drive":
+            for drive in _opticalDrives {
+                result.append(drive)
             }
             break
         default:
@@ -201,21 +272,73 @@ class Parts {
      * EX: getAllPartsSecondLevel(category: "Processor", manufacturer: "Intel") -> [i7 7700k, i5 6500, i3 6100, Pentium g4560 ....]
      * Second level of View All
      **/
-    public func getAllPartsSecondLevel(type: String, category: String) -> [MyParts] {
+    public func getAllPartsSecondLevel(type: String, firstLevelSelection: String) -> [MyParts] {
         var result: [MyParts] = []
         
         switch type {
-        case "Processor":
+        case "CPU":
             for cpu in _processors {
-                if (cpu._manufacturer == category) {
+                if (cpu._manufacturer == firstLevelSelection) {
                     result.append(cpu)
                 }
             }
             break
         case "Motherboard":
             for mobo in _motherboards {
-                //if (mobo.)
+                if (mobo._socket == firstLevelSelection) {
+                    result.append(mobo)
+                }
             }
+            break
+        case "RAM":
+            for ram in _rams {
+                if (ram._ram == firstLevelSelection) {
+                    result.append(ram)
+                }
+            }
+            break
+        case "Graphics Card":
+            for gpu in _gpus {
+                if (gpu._manufacturer == firstLevelSelection) {
+                    result.append(gpu)
+                }
+            }
+            break
+        case "Case":
+            for tower in _cases {
+                if (tower._manufacturer == firstLevelSelection) {
+                    result.append(tower)
+                }
+            }
+            break
+        case "Power Supply":
+            for psu in _psus {
+                if (psu._efficiency == firstLevelSelection) {
+                    result.append(psu)
+                }
+            }
+            break
+        case "Cooler":
+            for cooler in _coolers {
+                if (cooler._class == firstLevelSelection) {
+                    result.append(cooler)
+                }
+            }
+            break
+        case "Storage":
+            for drive in _storages {
+                if (drive._class == firstLevelSelection) {
+                    result.append(drive)
+                }
+            }
+            break
+        case "Optical Drive":
+            for drive in _opticalDrives {
+                if (drive._class == firstLevelSelection) {
+                    result.append(drive)
+                }
+            }
+            break
         default:
             break
         }
@@ -226,21 +349,69 @@ class Parts {
     /**
      give (type: "Processor", family: "Core i5") get [i5 6600k, i5 6500, ...]
      */
-    public func getPartsForCategory(type: String, family: String) -> [MyParts] {
+    public func getPartsForCategory(type: String, secondLevelSelection: String) -> [MyParts] {
         var result: [MyParts] = []
         
         switch type {
-        case "Processor":
+        case "CPU":
             for cpu in _processors {
-                if (cpu.family == family) {
+                if (cpu.family == secondLevelSelection) {
                     result.append(cpu)
                 }
             }
             break
         case "Motherboard":
             for mobo in _motherboards {
-                if (mobo._manufacturer == family) {
+                if (mobo._manufacturer == secondLevelSelection) {
                     result.append(mobo)
+                }
+            }
+            break
+        case "RAM":
+            for ram in _rams {
+                if (ram._speed == secondLevelSelection) {
+                    result.append(ram)
+                }
+            }
+            break
+        case "Graphics Card":
+            for gpu in _gpus {
+                if (gpu._series == secondLevelSelection) {
+                    result.append(gpu)
+                }
+            }
+            break
+        case "Case":
+            for tower in _cases {
+                if (tower._size == secondLevelSelection) {
+                    result.append(tower)
+                }
+            }
+            break
+        case "Power Supply":
+            for psu in _psus {
+                if (psu._wattage == secondLevelSelection) {
+                    result.append(psu)
+                }
+            }
+            break
+        case "Cooler":
+            for cooler in _coolers {
+                if (cooler._manufacturer == secondLevelSelection) {
+                    result.append(cooler)
+                }
+            }
+            break
+        case "Storage":
+            for drive in _storages {
+                if (drive._size == secondLevelSelection) {
+                    result.append(drive)
+                }
+            }
+        case "Optical Drive":
+            for drive in _opticalDrives {
+                if (drive._manufacturer == secondLevelSelection) {
+                    result.append(drive)
                 }
             }
             break
@@ -258,7 +429,7 @@ class Parts {
         var result: [String] = []
         
         switch partType {
-        case "Processor":
+        case "CPU":
             for cpu in _processors {
                 if (!result.contains(cpu._manufacturer!)) {
                     result.append(cpu._manufacturer!)
@@ -279,7 +450,7 @@ class Parts {
                 }
             }
             break
-        case "GPU":
+        case "Graphics Card":
             for gpu in _gpus {
                 if (!result.contains(gpu._manufacturer!)) {
                     result.append(gpu._manufacturer!)
@@ -293,7 +464,7 @@ class Parts {
                 }
             }
             break
-        case "PSU":
+        case "Power Supply":
             for psu in _psus {
                 if (!result.contains(psu._efficiency!)) {
                     result.append(psu._efficiency!)
@@ -330,69 +501,69 @@ class Parts {
     
     
     /** is in use **/
-    public func getSecondLevelParts(type: String, manufacturer: String) -> [String] {
+    public func getSecondLevelParts(type: String, firstLevelSelection: String) -> [String] {
         var result: [String] = []
         
         switch type {
-        case "Processor":
+        case "CPU":
             for cpu in _processors {
-                if (cpu._manufacturer == manufacturer && !result.contains(cpu.family)) {
+                if (cpu._manufacturer == firstLevelSelection && !result.contains(cpu.family)) {
                     result.append(cpu.family)
                 }
             }
             break
         case "Motherboard":
             for mobo in _motherboards {
-                if (mobo._socket == manufacturer && !result.contains(mobo._manufacturer!)) {
+                if (mobo._socket == firstLevelSelection && !result.contains(mobo._manufacturer!)) {
                     result.append(mobo._manufacturer!)
                 }
             }
             break
         case "RAM":
             for ram in _rams {
-                if (ram._ram == manufacturer && !result.contains(ram._speed!)) {
+                if (ram._ram == firstLevelSelection && !result.contains(ram._speed!)) {
                     result.append(ram._speed!)
                 }
             }
             break
-        case "GPU":
+        case "Graphics Card":
             for gpu in _gpus {
-                if (gpu._manufacturer == manufacturer && !result.contains(gpu._series!)) {
+                if (gpu._manufacturer == firstLevelSelection && !result.contains(gpu._series!)) {
                     result.append(gpu._series!)
                 }
             }
             break
         case "Case":
             for tower in _cases {
-                if (tower._manufacturer == manufacturer && !result.contains(tower._size!)) {
+                if (tower._manufacturer == firstLevelSelection && !result.contains(tower._size!)) {
                     result.append(tower._size!)
                 }
             }
             break
-        case "PSU":
+        case "Power Supply":
             for psu in _psus {
-                if (psu._efficiency == manufacturer && !result.contains(psu._wattage!)) {
+                if (psu._efficiency == firstLevelSelection && !result.contains(psu._wattage!)) {
                     result.append(psu._wattage!)
                 }
             }
             break
         case "Cooler":
             for cooler in _coolers {
-                if (cooler._class == manufacturer && !result.contains(cooler._manufacturer!)) {
+                if (cooler._class == firstLevelSelection && !result.contains(cooler._manufacturer!)) {
                     result.append(cooler._manufacturer!)
                 }
             }
             break
         case "Storage":
             for drive in _storages {
-                if (drive._class == manufacturer && !result.contains(drive._size!)) {
+                if (drive._class == firstLevelSelection && !result.contains(drive._size!)) {
                     result.append(drive._size!)
                 }
             }
             break
         case "Optical Drive":
             for drive in _opticalDrives {
-                if (drive._class == manufacturer && !result.contains(drive._manufacturer!)) {
+                if (drive._class == firstLevelSelection && !result.contains(drive._manufacturer!)) {
                     result.append(drive._manufacturer!)
                 }
             }

@@ -963,7 +963,13 @@ class Storage: MyParts {
         partAttributes["Image"] = _image
         partAttributes["Model"] = _model
         partAttributes["Manufacturer"] = _manufacturer
-        partAttributes["IsCustom"] = String(describing: _isCustom)
+        // have to do this because swift is stupid
+        if (_isCustom)! {
+            partAttributes["IsCustom"] = "true"
+        }
+        else {
+            partAttributes["IsCustom"] = "false"
+        }
         
         //result["Storage"] = partAttributes
         
@@ -1060,7 +1066,13 @@ class GPU: MyParts {
         partAttributes["Model"] = _model
         partAttributes["Series"] = _series
         partAttributes["Manufacturer"] = _manufacturer
-        partAttributes["IsCustom"] = String(describing: _isCustom)
+        // have to do this because swift is stupid
+        if (_isCustom)! {
+            partAttributes["IsCustom"] = "true"
+        }
+        else {
+            partAttributes["IsCustom"] = "false"
+        }
         
         //result["GPU"] = partAttributes
         
@@ -1154,7 +1166,13 @@ class PSU: MyParts {
         partAttributes["Modular"] = _modular
         partAttributes["Efficiency"] = _efficiency
         partAttributes["Manufacturer"] = _manufacturer
-        partAttributes["IsCustom"] = String(describing: _isCustom)
+        // have to do this because swift is stupid
+        if (_isCustom)! {
+            partAttributes["IsCustom"] = "true"
+        }
+        else {
+            partAttributes["IsCustom"] = "false"
+        }
         
         //result["PSU"] = partAttributes
         
@@ -1244,7 +1262,13 @@ class OpticalDrive: MyParts {
         partAttributes["Image"] = _image
         partAttributes["Model"] = _model
         partAttributes["Manufacturer"] = _manufacturer
-        partAttributes["IsCustom"] = String(describing: _isCustom)
+        // have to do this because swift is stupid
+        if (_isCustom)! {
+            partAttributes["IsCustom"] = "true"
+        }
+        else {
+            partAttributes["IsCustom"] = "false"
+        }
         
         //result["Optical Drive"] = partAttributes
         
@@ -1333,7 +1357,13 @@ class Case: MyParts {
         partAttributes["Image"] = _image
         partAttributes["Model"] = _model
         partAttributes["Manufacturer"] = _manufacturer
-        partAttributes["IsCustom"] = String(describing: _isCustom)
+        // have to do this because swift is stupid
+        if (_isCustom)! {
+            partAttributes["IsCustom"] = "true"
+        }
+        else {
+            partAttributes["IsCustom"] = "false"
+        }
         
         //result["Case"] = partAttributes
         
@@ -1421,7 +1451,13 @@ class Cooler: MyParts {
         partAttributes["Image"] = _image
         partAttributes["Model"] = _model
         partAttributes["Manufacturer"] = _manufacturer
-        partAttributes["IsCustom"] = String(describing: _isCustom)
+        // have to do this because swift is stupid
+        if (_isCustom)! {
+            partAttributes["IsCustom"] = "true"
+        }
+        else {
+            partAttributes["IsCustom"] = "false"
+        }
         
         //result["Cooler"] = partAttributes
         

@@ -89,9 +89,49 @@ class UserBuilds {
                     _listOfBuilds[_listOfBuilds.count - 1].buildTitle = title.value(forKey: "Title") as! String
                     break
                 case "CPU":
-                    let processors: NSDictionary = build.value(forKey: "CPU") as! NSDictionary
-                    let cpuPart = CPU(dictionary: processors)
+                    let cpuDict: NSDictionary = build.value(forKey: "CPU") as! NSDictionary
+                    let cpuPart = CPU(dictionary: cpuDict)
                     _listOfBuilds[_listOfBuilds.count - 1].addPart(part: cpuPart)
+                    break
+                case "Motherboard":
+                    let moboDict: NSDictionary = build.value(forKey: "Motherboard") as! NSDictionary
+                    let moboPart = Motherboard(dictionary: moboDict)
+                    _listOfBuilds[_listOfBuilds.count - 1].addPart(part: moboPart)
+                    break
+                case "RAM":
+                    let ramDict: NSDictionary = build.value(forKey: "RAM") as! NSDictionary
+                    let ramPart = RAM(dictionary: ramDict)
+                    _listOfBuilds[_listOfBuilds.count - 1].addPart(part: ramPart)
+                    break
+                case "GPU":
+                    let gpuDict: NSDictionary = build.value(forKey: "GPU") as! NSDictionary
+                    let gpuPart = GPU(dictionary: gpuDict)
+                    _listOfBuilds[_listOfBuilds.count - 1].addPart(part: gpuPart)
+                    break
+                case "Case":
+                    let caseDict: NSDictionary = build.value(forKey: "Case") as! NSDictionary
+                    let towerPart = Case(dictionary: caseDict)
+                    _listOfBuilds[_listOfBuilds.count - 1].addPart(part: towerPart)
+                    break
+                case "PSU":
+                    let psuDict: NSDictionary = build.value(forKey: "PSU") as! NSDictionary
+                    let psuPart = PSU(dictionary: psuDict)
+                    _listOfBuilds[_listOfBuilds.count - 1].addPart(part: psuPart)
+                    break
+                case "Cooler":
+                    let coolerDict: NSDictionary = build.value(forKey: "Cooler") as! NSDictionary
+                    let coolerPart = Cooler(dictionary: coolerDict)
+                    _listOfBuilds[_listOfBuilds.count - 1].addPart(part: coolerPart)
+                    break
+                case "Storage":
+                    let storageDict: NSDictionary = build.value(forKey: "Storage") as! NSDictionary
+                    let drivePart = Storage(dictionary: storageDict)
+                    _listOfBuilds[_listOfBuilds.count - 1].addPart(part: drivePart)
+                    break
+                case "Optical Drive":
+                    let driveDict: NSDictionary = build.value(forKey: "Optical Drive") as! NSDictionary
+                    let drivePart = OpticalDrive(dictionary: driveDict)
+                    _listOfBuilds[_listOfBuilds.count - 1].addPart(part: drivePart)
                     break
                 default:
                     break

@@ -349,68 +349,68 @@ class Parts {
     /**
      give (type: "Processor", family: "Core i5") get [i5 6600k, i5 6500, ...]
      */
-    public func getPartsForCategory(type: String, secondLevelSelection: String) -> [MyParts] {
+    public func getPartsForCategory(type: String, firstLevelSelection: String, secondLevelSelection: String) -> [MyParts] {
         var result: [MyParts] = []
         
         switch type {
         case "CPU":
             for cpu in _processors {
-                if (cpu.family == secondLevelSelection) {
+                if (cpu._manufacturer == firstLevelSelection && cpu._family == secondLevelSelection) {
                     result.append(cpu)
                 }
             }
             break
         case "Motherboard":
             for mobo in _motherboards {
-                if (mobo._socket == secondLevelSelection) {
+                if (mobo._manufacturer == firstLevelSelection && mobo._socket == secondLevelSelection) {
                     result.append(mobo)
                 }
             }
             break
         case "RAM":
             for ram in _rams {
-                if (ram._speed == secondLevelSelection) {
+                if (ram._ram == firstLevelSelection && ram._speed == secondLevelSelection) {
                     result.append(ram)
                 }
             }
             break
         case "Graphics Card":
             for gpu in _gpus {
-                if (gpu._series == secondLevelSelection) {
+                if (gpu._manufacturer == firstLevelSelection && gpu._series == secondLevelSelection) {
                     result.append(gpu)
                 }
             }
             break
         case "Case":
             for tower in _cases {
-                if (tower._size == secondLevelSelection) {
+                if (tower._manufacturer == firstLevelSelection && tower._size == secondLevelSelection) {
                     result.append(tower)
                 }
             }
             break
         case "Power Supply":
             for psu in _psus {
-                if (psu._wattage == secondLevelSelection) {
+                if (psu._efficiency == firstLevelSelection && psu._wattage == secondLevelSelection) {
                     result.append(psu)
                 }
             }
             break
         case "Cooler":
             for cooler in _coolers {
-                if (cooler._manufacturer == secondLevelSelection) {
+                if (cooler._class == firstLevelSelection && cooler._manufacturer == secondLevelSelection) {
                     result.append(cooler)
                 }
             }
             break
         case "Storage":
             for drive in _storages {
-                if (drive._size == secondLevelSelection) {
+                if (drive._class == firstLevelSelection && drive._size == secondLevelSelection) {
                     result.append(drive)
                 }
             }
         case "Optical Drive":
             for drive in _opticalDrives {
-                if (drive._manufacturer == secondLevelSelection) {
+                if (drive._class == firstLevelSelection && drive._manufacturer == secondLevelSelection) {
                     result.append(drive)
                 }
             }

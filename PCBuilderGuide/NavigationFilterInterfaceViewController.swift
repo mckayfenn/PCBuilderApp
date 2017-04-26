@@ -26,6 +26,7 @@ class NavigationFilterInterfaceViewController: UIViewController, PartFilterInter
     private var _inList: String = ""
     private var _showCategoryPage: Bool = false
     private var _secondLevel: Bool = false
+    private var _firstLevel: String? = nil
     private var _specificPartType: String? = nil
     
     private var _usersCurrentParts: [MyParts] = []
@@ -336,9 +337,13 @@ class NavigationFilterInterfaceViewController: UIViewController, PartFilterInter
 //            break
 //        }
         
+        if (!_secondLevel) {
+            _firstLevel = specificPartType
+        }
+        
         if (_showCategoryPage) {
             categoryViewController.usersCurrentParts = _usersCurrentParts
-            categoryViewController.partsList = _partsList.getPartsForCategory(type: _inList, secondLevelSelection: specificPartType)
+            categoryViewController.partsList = _partsList.getPartsForCategory(type: _inList, firstLevelSelection: _firstLevel!, secondLevelSelection: specificPartType)
             navigationController?.pushViewController(categoryViewController, animated: true)
         }
         else {

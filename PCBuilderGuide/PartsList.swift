@@ -144,8 +144,8 @@ class PartsList {
         return (_listOfParts?.getAllPartsSecondLevel(type: type, firstLevelSelection: firstLevelSelection))!
     }
     
-    public func getPartsForCategory(type: String, secondLevelSelection: String) -> [MyParts] {
-        return (_listOfParts?.getPartsForCategory(type: type, secondLevelSelection: secondLevelSelection))!
+    public func getPartsForCategory(type: String, firstLevelSelection: String, secondLevelSelection: String) -> [MyParts] {
+        return (_listOfParts?.getPartsForCategory(type: type, firstLevelSelection: firstLevelSelection, secondLevelSelection: secondLevelSelection))!
     }
     
     public func getFirstLevelParts(partType: String) -> [String] {

@@ -89,15 +89,15 @@ class BuildInterfaceView: UIView {
         }
         else {
             context.addRect(caseRect)
-            context.setStrokeColor(caseColor)
-            context.setFillColor(UIColor.clear.cgColor)
+            context.setStrokeColor(UIColor.orange.cgColor)
+            context.setFillColor(caseColor)
             context.drawPath(using: .fillStroke)
             
             
             let caseTextAttribute: [String:Any] = [NSFontAttributeName:UIFont.boldSystemFont(ofSize: caseRect.width / 15)]
             let caseTextSize: CGSize = caseText.size(attributes: caseTextAttribute)
             //caseText.draw(at: CGPoint(x: caseRect.midX - caseTextSize.width / 2, y: caseRect.midY - caseTextSize.height / 2), withAttributes: caseTextAttribute)
-            caseText.draw(at: CGPoint(x: caseRect.maxX - caseTextSize.width, y: caseRect.maxY - caseTextSize.height) , withAttributes: caseTextAttribute)
+            caseText.draw(at: CGPoint(x: caseRect.maxX - (caseTextSize.width * 2), y: caseRect.minY + (caseTextSize.height*4)) , withAttributes: caseTextAttribute)
         }
         
         
@@ -122,7 +122,7 @@ class BuildInterfaceView: UIView {
         }
         else {
             context.addRect(motherboardRect)
-            context.setStrokeColor(UIColor.blue.cgColor)
+            context.setStrokeColor(UIColor.orange.cgColor)
             context.setFillColor(motherboardColor)
             context.drawPath(using: .fillStroke)
             
@@ -152,7 +152,7 @@ class BuildInterfaceView: UIView {
         }
         else {
             context.addRect(cpuRect)
-            context.setStrokeColor(UIColor.blue.cgColor)
+            context.setStrokeColor(UIColor.orange.cgColor)
             context.setFillColor(cpuColor)
             context.drawPath(using: .fillStroke)
             
@@ -182,7 +182,7 @@ class BuildInterfaceView: UIView {
         }
         else {
             context.addRect(ramRect)
-            context.setStrokeColor(UIColor.blue.cgColor)
+            context.setStrokeColor(UIColor.orange.cgColor)
             context.setFillColor(ramColor)
             context.drawPath(using: .fillStroke)
             
@@ -210,7 +210,7 @@ class BuildInterfaceView: UIView {
         }
         else {
             context.addRect(gpuRect)
-            context.setStrokeColor(UIColor.blue.cgColor)
+            context.setStrokeColor(UIColor.orange.cgColor)
             context.setFillColor(gpuColor)
             context.drawPath(using: .fillStroke)
             
@@ -238,7 +238,7 @@ class BuildInterfaceView: UIView {
         }
         else {
             context.addRect(psuRect)
-            context.setStrokeColor(UIColor.blue.cgColor)
+            context.setStrokeColor(UIColor.orange.cgColor)
             context.setFillColor(psuColor)
             context.drawPath(using: .fillStroke)
             
@@ -265,7 +265,7 @@ class BuildInterfaceView: UIView {
         }
         else {
             context.addRect(storageRect)
-            context.setStrokeColor(UIColor.blue.cgColor)
+            context.setStrokeColor(UIColor.orange.cgColor)
             context.setFillColor(noImageBackgroundColor)
             context.drawPath(using: .fillStroke)
             

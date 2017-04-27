@@ -21,6 +21,8 @@ class BuildInterfaceViewController: UIViewController, BuildInterfaceViewDelegate
     private var buildButtonsView: BuildButtonsView? = nil
     private var mainBuilderView: MainBuilderView { return view as! MainBuilderView }
     
+    private var userBuildTotalPrice = [Int](repeating: 0, count: 9)
+    
     private var navigationFilterViewController: NavigationFilterInterfaceViewController? = nil
     
     private var _viewTitle: String = "Custom Build"
@@ -129,7 +131,12 @@ class BuildInterfaceViewController: UIViewController, BuildInterfaceViewDelegate
         
         showPictureAndTextFor(part: part)
         
-        mainBuilderView.costTotalText += Int(part._price!)!
+        //iterate through userBuildsPrice total array
+        mainBuilderView.costTotalText = 0
+        for i in 0 ..< 9
+        {
+            mainBuilderView.costTotalText += userBuildTotalPrice[i]
+        }
         mainBuilderView.setNeedsDisplay()
         
         if (part._isCustom)! {
@@ -146,39 +153,48 @@ class BuildInterfaceViewController: UIViewController, BuildInterfaceViewDelegate
         switch part {
         case is CPU:
             buildInterfaceView?.cpuSelectedBool = true
-            buildButtonsView?.cpuButtonTitleText = part._model!
+            buildButtonsView?.cpuButtonTitleText = part._model! + "\n" + "Price: $" + part._price!
+            userBuildTotalPrice[0] = Int(part._price!)!
             break
         case is Motherboard:
             buildInterfaceView?.motherboardSelectedBool = true
-            buildButtonsView?.motherboardButtonTitleText = part._model!
+            buildButtonsView?.motherboardButtonTitleText = part._model! + "\n" + "Price: $" + part._price!
+            userBuildTotalPrice[1] = Int(part._price!)!
             break
         case is RAM:
             buildInterfaceView?.ramSelectedBool = true
-            buildButtonsView?.ramButtonTitleText = part._model!
+            buildButtonsView?.ramButtonTitleText = part._model! + "\n" + "Price: $" + part._price!
+            userBuildTotalPrice[2] = Int(part._price!)!
             break
         case is GPU:
             buildInterfaceView?.gpuSelectedBool = true
-            buildButtonsView?.gpuButtonTitleText = part._model!
+            buildButtonsView?.gpuButtonTitleText = part._model! + "\n" + "Price: $" + part._price!
+            userBuildTotalPrice[3] = Int(part._price!)!
             break
         case is Case:
             buildInterfaceView?.caseSelectedBool = true
-            buildButtonsView?.caseButtonTitleText = part._model!
+            buildButtonsView?.caseButtonTitleText = part._model! + "\n" + "Price: $" + part._price!
+            userBuildTotalPrice[4] = Int(part._price!)!
             break
         case is PSU:
             buildInterfaceView?.psuSelectedBool = true
-            buildButtonsView?.psuButtonTitleText = part._model!
+            buildButtonsView?.psuButtonTitleText = part._model! + "\n" + "Price: $" + part._price!
+            userBuildTotalPrice[5] = Int(part._price!)!
             break
 //        case is Cooler:
 //            buildInterfaceView?.coolerSelectedBool = true
-//            buildButtonsView?.cpuButtonTitleText = part._model!
+//            buildButtonsView?.cpuButtonTitleText = part._model! + "\n" + "Price: $" + part._price!
+//                userBuildTotalPrice[6] = Int(part._price!)!
 //            break
         case is Storage:
             buildInterfaceView?.storageSelectedBool = true
-            buildButtonsView?.storageButtonTitleText = part._model!
+            buildButtonsView?.storageButtonTitleText = part._model! + "\n" + "Price: $" + part._price!
+            userBuildTotalPrice[7] = Int(part._price!)!
             break
 //        case is Optical Drive:
 //            self.partFilterView?.setButtonAttributes(partType: _partsList.getFirstLevelParts(partType: "Optical Drive"))
- //           buildButtonsView?.cpuButtonTitleText = part._model!
+ //           buildButtonsView?.cpuButtonTitleText = part._model! + "\n" + "Price: $" + part._price!
+ //           userBuildTotalPrice[8] = Int(part._price!)!
 //            break
         default:
             // don't do anything

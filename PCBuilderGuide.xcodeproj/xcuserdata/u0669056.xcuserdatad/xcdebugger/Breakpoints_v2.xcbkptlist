@@ -266,11 +266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PCBuilderGuide/BuildInterfaceViewController.swift"
-            timestampString = "514321853.182418"
+            timestampString = "515012352.021974"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
             landmarkName = "BuildInterfaceViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -303,7 +303,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "481"
             endingLineNumber = "481"
-            landmarkName = "init(frame:)"
+            landmarkName = "init(frame:partCreating:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -319,7 +319,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "446"
             endingLineNumber = "446"
-            landmarkName = "init(frame:)"
+            landmarkName = "init(frame:partCreating:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -335,7 +335,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "479"
             endingLineNumber = "479"
-            landmarkName = "init(frame:)"
+            landmarkName = "init(frame:partCreating:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -351,7 +351,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "480"
             endingLineNumber = "480"
-            landmarkName = "init(frame:)"
+            landmarkName = "init(frame:partCreating:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -367,8 +367,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "482"
             endingLineNumber = "482"
-            landmarkName = "CustomPartView"
-            landmarkType = "3">
+            landmarkName = "init(frame:partCreating:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -378,11 +378,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PCBuilderGuide/BuildInterfaceViewController.swift"
-            timestampString = "514955908.267826"
+            timestampString = "515012612.094992"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
             landmarkName = "partWasSelected(part:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -394,11 +394,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PCBuilderGuide/BuildInterfaceViewController.swift"
-            timestampString = "514955908.267826"
+            timestampString = "515012612.094992"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
             landmarkName = "partWasSelected(part:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -410,11 +410,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PCBuilderGuide/BuildInterfaceViewController.swift"
-            timestampString = "514958392.548199"
+            timestampString = "515012612.094992"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "187"
-            endingLineNumber = "187"
+            startingLineNumber = "203"
+            endingLineNumber = "203"
             landmarkName = "showPictureAndTextFor(part:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -442,11 +442,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PCBuilderGuide/BuildButtonsView.swift"
-            timestampString = "514959212.369338"
+            timestampString = "515014172.59119"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
             landmarkName = "buttonTouchUp(button:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -458,11 +458,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PCBuilderGuide/BuildInterfaceViewController.swift"
-            timestampString = "514958713.943618"
+            timestampString = "515012352.021974"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
             landmarkName = "buttonTouched(partType:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -474,11 +474,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PCBuilderGuide/BuildButtonsView.swift"
-            timestampString = "514959360.891411"
+            timestampString = "515014172.59119"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "133"
-            endingLineNumber = "133"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
             landmarkName = "buttonTouchUp(button:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -490,13 +490,29 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PCBuilderGuide/BuildButtonsView.swift"
-            timestampString = "514959473.378597"
+            timestampString = "515014172.59119"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
             landmarkName = "init(frame:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PCBuilderGuide/BuildButtonsView.swift"
+            timestampString = "515014172.59119"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
+            landmarkName = "BuildButtonsView"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

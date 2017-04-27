@@ -193,6 +193,7 @@ class UserBuild {
             let thisPart = _listOfUsersParts[i]
             if (type(of: thisPart).self == type(of: part).self) {
                 _listOfUsersParts.remove(at: i)
+                break
             }
         }
         

@@ -23,6 +23,9 @@ class SpecificPartPageController: UIViewController, SpecificPartPageDelegate {
     private var specificPartView: SpecificPartPageView { return view as! SpecificPartPageView }
     
     
+    private var _usersParts: [MyParts]? = nil
+    public var usersParts: [MyParts] { get { return _usersParts! } set { _usersParts = newValue } }
+    
     init(part: MyParts) {
         super.init(nibName: nil, bundle: nil)
         
@@ -45,9 +48,52 @@ class SpecificPartPageController: UIViewController, SpecificPartPageDelegate {
     
     
     func selectPartClicked(part: MyParts) {
+        
+        var customPart: Bool = false
+        for thisPart in _usersParts! {
+            switch part {
+            case is CPU:
+                if (thisPart._isCustom!) {
+                    customPart = true
+                    break
+                }
+                break
+            case is Motherboard:
+                if (thisPart._isCustom!) {
+                    customPart = true
+                    break
+                }
+                break
+            case is RAM:
+                if (thisPart._isCustom!) {
+                    customPart = true
+                    break
+                }
+                break
+            default:
+                break
+            }
+            
+        }
+        
         // if it's compatible then delegate up
-        if (_isCompatible) {
+        if (_isCompatible && !customPart) {
             delegate?.partWasSelected(part: part)
+        }
+        else if (customPart) {
+            let alertController = UIAlertController(title: "Compatibility", message: "We cannot guarantee the compatibility of this part. \n Are you sure you want to select it?", preferredStyle: .alert)
+            
+            let confirmAction = UIAlertAction(title: "Confirm", style: .default) { (_) in
+                self.delegate?.partWasSelected(part: part)
+            }
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .default) { (_) in }
+            
+            alertController.addAction(cancelAction)
+            alertController.addAction(confirmAction)
+            
+            
+            self.present(alertController, animated: true, completion: nil)
         }
         // if its not, then tell the user
         else {

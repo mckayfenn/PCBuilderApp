@@ -143,10 +143,17 @@ class Parts {
     
     public func isPartCompatibleTo(currentParts: [MyParts], thisPart: MyParts) -> Bool {
         
+        // if any part is custom, we can't tell for sure compatibility
+
+        
         // switch on which part they are trying to select
         switch thisPart {
         case is CPU:
             for part in currentParts {
+                
+                if (part._isCustom)! {
+                    return false
+                }
                 
                 // switch on the parts they already have
                 switch part {
@@ -166,6 +173,10 @@ class Parts {
         case is Motherboard:
             for part in currentParts {
                 
+                if (part._isCustom)! {
+                    return false
+                }
+                
                 // switch on the parts they already have
                 switch part {
                 case is CPU:
@@ -182,6 +193,10 @@ class Parts {
             }
         case is RAM:
             for part in currentParts {
+                
+                if (part._isCustom)! {
+                    return false
+                }
                 
                 // switch on the parts they already have
                 switch part {

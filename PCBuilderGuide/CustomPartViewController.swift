@@ -27,7 +27,7 @@ class CustomPartViewController: UIViewController {
     }
     
     override func loadView() {
-        view = CustomPartView(frame: UIScreen.main.bounds)
+        view = CustomPartView(frame: UIScreen.main.bounds, partCreating: _partAsString!)
         
         self.title = "Add a Part"
         
@@ -40,7 +40,9 @@ class CustomPartViewController: UIViewController {
     func doneWithPartClicked()
     {
         let array = customPartView.getAllFieldValues()
-        let part = createPart(partAsString: _partAsString!, values: array)
+        let dictionary = customPartView.getAllFieldValuesDict()
+        //let part = createPart(partAsString: _partAsString!, values: array)
+        let part = createPartWithDict(partAsString: _partAsString!, values: dictionary)
         delegate?.partWasSelected(part: part)
     }
     func createPart(partAsString: String, values: [String]) -> MyParts
@@ -64,6 +66,32 @@ class CustomPartViewController: UIViewController {
             return OpticalDrive(link: values[0], specs: values[1], price: values[2], image: values[3], model: values[4], socket: values[5], family: values[6], generation: values[7], description: values[8], manufacturer: values[9], ram: values[10], isCustom: true)
         case "Cooler":
             return Cooler(link: values[0], specs: values[1], price: values[2], image: values[3], model: values[4], socket: values[5], family: values[6], generation: values[7], description: values[8], manufacturer: values[9], ram: values[10], isCustom: true)
+        default:
+            return CPU(link: "something went wrong", specs: "", price: "", image: "", model: "", socket: "", family: "", generation: "", description: "", manufacturer: "", ram: "", isCustom: true)
+            print("Unable to change field to variable")
+        }
+    }
+    
+    func createPartWithDict(partAsString: String, values: NSDictionary) -> MyParts {
+        switch partAsString {
+        case "CPU":
+            return CPU(dictionary: values)
+        case "Motherboard":
+            return Motherboard(dictionary: values)
+        case "GPU":
+            return GPU(dictionary: values)
+        case "RAM":
+            return RAM(dictionary: values)
+        case "CASE":
+            return Case(dictionary: values)
+        case "Power Supply":
+            return PSU(dictionary: values)
+        case "Storage":
+            return Storage(dictionary: values)
+        case "Optical Drive":
+            return OpticalDrive(dictionary: values)
+        case "Cooler":
+            return Cooler(dictionary: values)
         default:
             return CPU(link: "something went wrong", specs: "", price: "", image: "", model: "", socket: "", family: "", generation: "", description: "", manufacturer: "", ram: "", isCustom: true)
             print("Unable to change field to variable")

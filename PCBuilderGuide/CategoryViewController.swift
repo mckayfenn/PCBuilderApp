@@ -105,6 +105,7 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
         let compatible = allPartsList.isPartCompatibleTo(currentParts: _usersCurrentParts, thisPart: part)
         
         partViewController = SpecificPartPageController(part: part)
+        partViewController?.usersParts = _usersCurrentParts
         
         if (!compatible) {
             partViewController?.isCompatible = false

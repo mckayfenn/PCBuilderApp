@@ -118,13 +118,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PCBuilderGuide/BuildInterfaceViewController.swift"
-            timestampString = "514929049.9753"
+            filePath = "PCBuilderGuide/SpecificPartPageController.swift"
+            timestampString = "514961628.472228"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
-            landmarkName = "init(build:)"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "selectPartClicked(part:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

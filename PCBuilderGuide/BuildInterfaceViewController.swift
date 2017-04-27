@@ -127,6 +127,11 @@ class BuildInterfaceViewController: UIViewController, BuildInterfaceViewDelegate
         navigationController?.popToViewController(self, animated: true)
         _userBuild?.addPart(part: part)
         
+        showPictureAndTextFor(part: part)
+        
+        mainBuilderView.costTotalText += Int(part._price!)!
+        mainBuilderView.setNeedsDisplay()
+        
         if (part._isCustom)! {
             _partsList.addCustomPart(part: part)
             _partsList.saveCustomParts()
@@ -135,6 +140,52 @@ class BuildInterfaceViewController: UIViewController, BuildInterfaceViewDelegate
         // TODO: remove the part first if there is already one of these
         // actually maybe not needed. Now assigning userparts based on the parts in the userbuilds. 
         //_usersParts?.append(part)
+    }
+    func showPictureAndTextFor(part: MyParts)
+    {
+        switch part {
+        case is CPU:
+            buildInterfaceView?.cpuSelectedBool = true
+            buildButtonsView?.cpuButtonTitleText = part._model!
+            break
+        case is Motherboard:
+            buildInterfaceView?.motherboardSelectedBool = true
+            buildButtonsView?.motherboardButtonTitleText = part._model!
+            break
+        case is RAM:
+            buildInterfaceView?.ramSelectedBool = true
+            buildButtonsView?.ramButtonTitleText = part._model!
+            break
+        case is GPU:
+            buildInterfaceView?.gpuSelectedBool = true
+            buildButtonsView?.gpuButtonTitleText = part._model!
+            break
+        case is Case:
+            buildInterfaceView?.caseSelectedBool = true
+            buildButtonsView?.caseButtonTitleText = part._model!
+            break
+        case is PSU:
+            buildInterfaceView?.psuSelectedBool = true
+            buildButtonsView?.psuButtonTitleText = part._model!
+            break
+//        case is Cooler:
+//            buildInterfaceView?.coolerSelectedBool = true
+//            buildButtonsView?.cpuButtonTitleText = part._model!
+//            break
+        case is Storage:
+            buildInterfaceView?.storageSelectedBool = true
+            buildButtonsView?.storageButtonTitleText = part._model!
+            break
+//        case is Optical Drive:
+//            self.partFilterView?.setButtonAttributes(partType: _partsList.getFirstLevelParts(partType: "Optical Drive"))
+ //           buildButtonsView?.cpuButtonTitleText = part._model!
+//            break
+        default:
+            // don't do anything
+            break
+        }
+        buildInterfaceView?.setNeedsDisplay()
+        buildButtonsView?.setNeedsDisplay()
     }
     
     weak var delegate: BuildInterfaceViewControllerDelegate? = nil

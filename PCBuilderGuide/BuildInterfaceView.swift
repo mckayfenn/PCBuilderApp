@@ -17,29 +17,37 @@ class BuildInterfaceView: UIView {
     let caseText: NSString = "Case"
     private var caseRect: CGRect = CGRect.zero
     private var caseColor: CGColor = UIColor(red: 200.0, green: 200.0, blue: 200.0, alpha: 0.7).cgColor
+    private var caseSelected: Bool = false
     
     let motherboardText: NSString = "Motherboard"
     private var motherboardRect: CGRect = CGRect.zero
     private var motherboardColor: CGColor = UIColor(red: 200.0, green: 200.0, blue: 200.0, alpha: 0.7).cgColor
+    private var motherboardSelected: Bool = false
     
     let cpuText: NSString = "CPU"
     private var cpuRect: CGRect = CGRect.zero
     private var cpuColor: CGColor = UIColor(red: 200.0, green: 200.0, blue: 200.0, alpha: 0.7).cgColor
+    private var cpuSelected: Bool = false
     
     let ramText: NSString = "RAM"
     private var ramRect: CGRect = CGRect.zero
     private var ramColor: CGColor = UIColor(red: 200.0, green: 200.0, blue: 200.0, alpha: 0.7).cgColor
+    private var ramSelected = false
     
     let gpuText: NSString = "Graphics Card"
     private var gpuRect: CGRect = CGRect.zero
     private var gpuColor: CGColor = UIColor(red: 200.0, green: 200.0, blue: 200.0, alpha: 0.7).cgColor
+    private var gpuSelected: Bool = false
     
     let psuText: NSString = "Power Supply"
     private var psuRect: CGRect = CGRect.zero
     private var psuColor: CGColor = UIColor(red: 200.0, green: 200.0, blue: 200.0, alpha: 0.7).cgColor
+    private var psuSelected: Bool = false
     
     let storageText: NSString = "Storage"
     private var storageRect: CGRect = CGRect.zero
+    private var storageSelected: Bool = false
+    
     
     
     
@@ -72,7 +80,7 @@ class BuildInterfaceView: UIView {
         caseRect.origin.y = bounds.minY
         
         //var caseSelected = true
-        if (true) {
+        if (caseSelected) {
             let caseImage: UIImage = UIImage(named: "CasePhoto.jpg")!
             let caseImageView: UIImageView = UIImageView(image: caseImage)
             caseImageView.frame = caseRect
@@ -106,7 +114,7 @@ class BuildInterfaceView: UIView {
         
         
         //var motherboardSelected = true
-        if (true) {
+        if (motherboardSelected) {
             let motherboardImage: UIImage = UIImage(named: "MotherboardPhoto.jpg")!
             let motherboardImageView: UIImageView = UIImageView(image: motherboardImage)
             motherboardImageView.frame = motherboardRect
@@ -136,7 +144,7 @@ class BuildInterfaceView: UIView {
         cpuRect.origin.y = motherboardRect.midY - motherboardRect.midY / 2 + motherboardRect.midY / 7.5
         
         //let cpuSelected = true
-        if (true) {
+        if (cpuSelected) {
             let cpuImage: UIImage = UIImage(named: "CPUPhoto.jpg")!
             let cpuImageView: UIImageView = UIImageView(image: cpuImage)
             cpuImageView.frame = cpuRect
@@ -166,7 +174,7 @@ class BuildInterfaceView: UIView {
         ramRect.origin.y = motherboardRect.minY + motherboardRect.midY / 20
         
         //let ramSelected = true
-        if (true) {
+        if (ramSelected) {
             let ramImage: UIImage = UIImage(named: "RAMPhoto.jpg")!
             let ramImageView: UIImageView = UIImageView(image: ramImage)
             ramImageView.frame = ramRect
@@ -194,7 +202,7 @@ class BuildInterfaceView: UIView {
         gpuRect.origin.y = motherboardRect.midY + motherboardRect.midY / 10
         
         //let gpuSelected = true
-        if (true) {
+        if (gpuSelected) {
             let gpuImage: UIImage = UIImage(named: "GPUPhoto.jpg")!
             let gpuImageView: UIImageView = UIImageView(image: gpuImage)
             gpuImageView.frame = gpuRect
@@ -222,7 +230,7 @@ class BuildInterfaceView: UIView {
         psuRect.origin.y = caseRect.maxY - psuRect.height - caseRect.midY / 10
         
         //let psuSelected = true
-        if (true) {
+        if (psuSelected) {
             let psuImage: UIImage = UIImage(named: "PowerSupplyPhoto.jpg")!
             let psuImageView: UIImageView = UIImageView(image: psuImage)
             psuImageView.frame = psuRect
@@ -249,7 +257,7 @@ class BuildInterfaceView: UIView {
         storageRect.origin.y = caseRect.midY + caseRect.midY / 4
         
         //let psuSelected = true
-        if (false) {
+        if (storageSelected) {
             let storageImage: UIImage = UIImage(named: "PowerSupplyPhoto.jpg")!
             let storageImageView: UIImageView = UIImageView(image: storageImage)
             storageImageView.frame = storageRect
@@ -268,39 +276,88 @@ class BuildInterfaceView: UIView {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        cpuColor = UIColor.cyan.cgColor
-        setNeedsDisplay()
+        let touch: UITouch = touches.first!
+        let touchPoint = touch.location(in: self)
+        
+        if (cpuRect.contains(touchPoint)) {
+            cpuColor = UIColor.cyan.cgColor
+            setNeedsDisplay()
+        }
+        else if (ramRect.contains(touchPoint)) {
+            ramColor = UIColor.cyan.cgColor
+            setNeedsDisplay()
+        }
+        else if (gpuRect.contains(touchPoint)) {
+            gpuColor = UIColor.cyan.cgColor
+            setNeedsDisplay()
+        }
+        else if (motherboardRect.contains(touchPoint)) {
+            motherboardColor = UIColor.cyan.cgColor
+            setNeedsDisplay()
+        }
+        else if (psuRect.contains(touchPoint)) {
+            psuColor = UIColor.cyan.cgColor
+            setNeedsDisplay()
+        }
+        else if (storageRect.contains(touchPoint)) {
+            setNeedsDisplay()
+        }
+        else if (caseRect.contains(touchPoint)) {
+            caseColor = UIColor.cyan.cgColor
+            setNeedsDisplay()
+        }
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch: UITouch = touches.first!
         let touchPoint = touch.location(in: self)
-        cpuColor = UIColor.blue.cgColor
-        setNeedsDisplay()
         
         if (cpuRect.contains(touchPoint)) {
+            cpuColor = UIColor.blue.cgColor
+            setNeedsDisplay()
             delegate?.buttonTouched(partType: cpuText as String)
         }
         else if (ramRect.contains(touchPoint)) {
+            ramColor = UIColor.blue.cgColor
+            setNeedsDisplay()
             delegate?.buttonTouched(partType: ramText as String)
         }
         else if (gpuRect.contains(touchPoint)) {
+            gpuColor = UIColor.blue.cgColor
+            setNeedsDisplay()
             delegate?.buttonTouched(partType: gpuText as String)
         }
         else if (motherboardRect.contains(touchPoint)) {
+            motherboardColor = UIColor.blue.cgColor
+            setNeedsDisplay()
             delegate?.buttonTouched(partType: motherboardText as String)
         }
         else if (psuRect.contains(touchPoint)) {
+            psuColor = UIColor.blue.cgColor
+            setNeedsDisplay()
             delegate?.buttonTouched(partType: psuText as String)
         }
         else if (storageRect.contains(touchPoint)) {
+            //storageColor = UIColor.blue.cgColor
+            setNeedsDisplay()
             delegate?.buttonTouched(partType: storageText as String)
         }
         else if (caseRect.contains(touchPoint)) {
+            caseColor = UIColor.blue.cgColor
+            setNeedsDisplay()
             delegate?.buttonTouched(partType: caseText as String)
         }
     }
     
     weak var delegate: BuildInterfaceViewDelegate? = nil
+    
+    var cpuSelectedBool: Bool {get{return cpuSelected} set{cpuSelected = newValue}}
+    var gpuSelectedBool: Bool {get{return gpuSelected} set{gpuSelected = newValue}}
+    var ramSelectedBool: Bool {get{return ramSelected} set{ramSelected = newValue}}
+    var psuSelectedBool: Bool {get{return psuSelected} set{psuSelected = newValue}}
+    var motherboardSelectedBool: Bool {get{return motherboardSelected} set{motherboardSelected = newValue}}
+    var storageSelectedBool: Bool {get{return storageSelected} set{storageSelected = newValue}}
+    var caseSelectedBool: Bool {get{return caseSelected} set{caseSelected = newValue}}
+
     
 }

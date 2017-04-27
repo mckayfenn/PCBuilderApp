@@ -75,11 +75,11 @@ class NavigationFilterInterfaceView: UIView {
         {
             if (buttons[i].rect.contains(touchPoint)) {
                 buttons[i].color = UIColor.cyan.cgColor
+                setNeedsDisplay()
                 break
             }
             
         }
-        setNeedsDisplay()
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -90,13 +90,13 @@ class NavigationFilterInterfaceView: UIView {
         for i: Int in 0..<(buttons.count)
         {
             if (buttons[i].rect.contains(touchPoint)) {
-                delegate?.buttonTouched(specificPartType: buttons[i].name as String)
                 buttons[i].color = UIColor.blue.cgColor
+                setNeedsDisplay()
+                delegate?.buttonTouched(specificPartType: buttons[i].name as String)
                 break
             }
 
         }
-        setNeedsDisplay()
     }
     public var requestedSpecificPartType: [String]
     {

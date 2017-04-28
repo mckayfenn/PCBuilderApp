@@ -127,9 +127,22 @@ class BuildButtonsView: UIView
         motherboardButton?.addTarget(self, action: #selector(buttonTouchUp), for: .touchUpInside)
         motherboardButton?.addTarget(self, action: #selector(buttonTouchDown), for: .touchDown)
         
+        storageButton = UIButton()
+        storageButton?.backgroundColor = _buttonColor
+        storageButton?.layer.cornerRadius = 8.0
+        storageButton?.layer.borderWidth = 1.5
+        storageButton?.layer.borderColor = UIColor.lightGray.cgColor
+        storageButton?.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
+        storageButton?.titleLabel?.textAlignment = .center
+        storageButton?.setTitle(motherboardButtonTitle, for: .normal)
+        storageButton?.titleLabel?.font = UIFont(name: "Helvetica-Bold", size: 10)
+        storageButton?.addTarget(self, action: #selector(buttonTouchUp), for: .touchUpInside)
+        storageButton?.addTarget(self, action: #selector(buttonTouchDown), for: .touchDown)
+        
         buttonStackView?.addArrangedSubview(cpuButton!)
         buttonStackView?.addArrangedSubview(motherboardButton!)
         buttonStackView?.addArrangedSubview(gpuButton!)
+        buttonStackView?.addArrangedSubview(ramButton!)
         buttonStackView?.addArrangedSubview(caseButton!)
         buttonStackView?.addArrangedSubview(psuButton!)
         

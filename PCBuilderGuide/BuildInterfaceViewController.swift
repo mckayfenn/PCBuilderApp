@@ -63,7 +63,12 @@ class BuildInterfaceViewController: UIViewController, BuildInterfaceViewDelegate
         buildInterfaceView?.delegate = self
         buildButtonsView?.delegate = self
         
-        
+        mainBuilderView.costTotalText = 0
+        for part in _usersParts!
+        {
+            showPictureAndTextFor(part: part)
+            mainBuilderView.costTotalText += Int(part._price!)!
+        }
     }
     
     override func viewDidLoad() {

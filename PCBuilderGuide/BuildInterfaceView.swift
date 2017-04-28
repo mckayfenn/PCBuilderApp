@@ -258,7 +258,7 @@ class BuildInterfaceView: UIView {
         
         //let psuSelected = true
         if (storageSelected) {
-            let storageImage: UIImage = UIImage(named: "PowerSupplyPhoto.jpg")!
+            let storageImage: UIImage = UIImage(named: "StoragePhoto.jpg")!
             let storageImageView: UIImageView = UIImageView(image: storageImage)
             storageImageView.frame = storageRect
             storageImage.draw(in: storageRect)

@@ -356,6 +356,7 @@ class NavigationFilterInterfaceViewController: UIViewController, PartFilterInter
     }
     
     
+    
     func partWasSelected(part: MyParts) {
         delegate?.partWasSelected(part: part)
     }

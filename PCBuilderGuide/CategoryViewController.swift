@@ -31,13 +31,18 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
         self.edgesForExtendedLayout = []
         
         let categoryLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        categoryLayout.itemSize = CGSize(width: view.bounds.width / 2 - 20, height: view.bounds.height / 4 - 10)
+        categoryLayout.itemSize = CGSize(width: view.bounds.width / 2 - 20, height: view.bounds.height / 3)
         categoryLayout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         
         view = UICollectionView(frame: CGRect.zero, collectionViewLayout: categoryLayout)
         
         //partViewController?.delegate = self
+        
+        
+        
     }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,10 +50,12 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
         // set delegate
         
         categoryView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: NSStringFromClass(UICollectionViewCell.self))
-        categoryView.backgroundColor = UIColor.white
+        //categoryView.backgroundColor = UIColor.white
         
         categoryView.dataSource = self
         categoryView.delegate = self
+        
+        self.view.backgroundColor = UIColor.darkGray
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,27 +77,26 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
         let cellView: CategoryCellView = CategoryCellView()
         
         if (compatible) {
-            cell.layer.borderColor = UIColor.green.cgColor
+            cellView.compatible = true
         }
         else {
-            cell.layer.borderColor = UIColor.red.cgColor
-            //cell.isUserInteractionEnabled = false
+            cellView.compatible = false
         }
         
-        
+        cell.layer.borderColor = UIColor(red: 82.0/255.0, green: 128.0/255.0, blue: 164.0/255.0, alpha: 1.0).cgColor
         cell.backgroundColor = UIColor.white
         cell.layer.backgroundColor = UIColor.white.cgColor
-        cell.layer.borderWidth = 2.5
-        cell.layer.cornerRadius = 10.0
+        cell.layer.borderWidth = 4.5
+        cell.layer.cornerRadius = 7.0
         
         
         cellView.frame = cell.bounds
         
         
         
-        
         cellView.modelLabel = part._model!
         cellView.priceLabel = "$" + part._price!
+        cellView.imageURL = part._image!
         
         
         cell.contentView.addSubview(cellView)

@@ -12,14 +12,25 @@ class CategoryCellView: UIView {
     
     private var _modelLabel: String? = nil
     private var _priceLabel: String? = nil
+    private var _imageURL: String? = nil
+    private var _compatible: Bool = true
+    private var imageView: UIImageView? = nil
     
     var modelLabel: String { get { return _modelLabel! } set { _modelLabel = newValue } }
     var priceLabel: String { get { return _priceLabel! } set { _priceLabel = newValue } }
+    var imageURL: String { get { return _imageURL! } set { _imageURL = newValue } }
+    var compatible: Bool { get { return _compatible } set { _compatible = newValue } }
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = UIColor.white
+        self.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
+        
+        
+        
     }
+    
+
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -32,19 +43,81 @@ class CategoryCellView: UIView {
         
         let preview: CGRect = CGRect(x: 0.0 + 3, y: 0.0 + 3, width: bounds.size.width - 6, height: bounds.size.height - 6)
         
+        let colors = [UIColor.white.cgColor, UIColor.lightGray.cgColor] as CFArray
+        let colorSpace = CGColorSpaceCreateDeviceRGB()
+        let gradient = CGGradient(colorsSpace: colorSpace, colors: colors , locations: [0.0, 0.8, 1])
         
-        context.setFillColor(UIColor.blue.cgColor)
+        
         context.addRect(preview)
-        context.drawPath(using: .fill)
+        context.clip(to: preview)
+        context.drawLinearGradient(gradient!, start: CGPoint(x: preview.minX, y: preview.minY) , end: CGPoint(x: preview.minX , y: preview.maxY), options: [.drawsBeforeStartLocation, .drawsAfterEndLocation])
+        
+        
+        let imageRect = CGRect(x: preview.midX - preview.midX / 2 - 15, y: preview.minY + 10, width: preview.width / 2 + 30, height: preview.height / 3 + 20)
+        
+        imageView = UIImageView(frame: imageRect)
+        
+        if let checkedURL = URL(string: (imageURL)) {
+            imageView?.contentMode = .scaleAspectFit
+            downloadImage(url: checkedURL)
+        }
+        
+        let url = URL(string: imageURL)
+        
+//        DispatchQueue.global().async {
+//            let data = try? Data(contentsOf: url!)
+//            DispatchQueue.main.async {
+//                self.imageView?.image = UIImage(data: data!)
+//            }
+//        }
+        
+        addSubview(imageView!)
+        
+        context.addRect(imageRect)
+        print(imageView)
+        //context.draw((imageView?.image?.cgImage)!, in: imageRect)
+        
+        
         
         
         let modelTextAttribute: [String:Any] = [NSFontAttributeName:UIFont.systemFont(ofSize: preview.width / 8), NSForegroundColorAttributeName: UIColor.white]
         let modelTextSize: CGSize = _modelLabel!.size(attributes: modelTextAttribute)
-        _modelLabel?.draw(at: CGPoint(x: preview.midX - modelTextSize.width / 2, y: preview.midY + modelTextSize.height / 2), withAttributes: modelTextAttribute)
+        _modelLabel?.draw(at: CGPoint(x: preview.midX - modelTextSize.width / 2, y: imageRect.maxY + preview.midX / 4 + modelTextSize.height / 2), withAttributes: modelTextAttribute)
         
         let priceTextAttribute: [String:Any] = [NSFontAttributeName:UIFont.systemFont(ofSize: preview.width / 10), NSForegroundColorAttributeName: UIColor.white]
         let priceTextSize: CGSize = _priceLabel!.size(attributes: priceTextAttribute)
-        _priceLabel?.draw(at: CGPoint(x: preview.midX - priceTextSize.width / 2, y: preview.midY + 4 * priceTextSize.height / 2), withAttributes: priceTextAttribute)
+        _priceLabel?.draw(at: CGPoint(x: preview.midX - priceTextSize.width / 2, y: imageRect.maxY + preview.midX / 4 + 4 * priceTextSize.height / 2), withAttributes: priceTextAttribute)
+        
+        
+        if (!compatible) {
+            let compatibleLabel = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: preview.width + 30, height: preview.height + 30))
+            compatibleLabel.text = "NOT COMPATIBLE"
+            compatibleLabel.textColor = UIColor.red
+            compatibleLabel.font = UIFont.boldSystemFont(ofSize:18)
+            compatibleLabel.transform = CGAffineTransform(rotationAngle: CGFloat.pi / -3.5).translatedBy(x: 0.0, y: -15.0)
+            addSubview(compatibleLabel)
+        }
+    }
+    
+    // get the image data from url.    FROM (http://stackoverflow.com/questions/24231680/loading-downloading-image-from-url-on-swift)
+    func getDataFromUrl(url: URL, completion: @escaping (_ data: Data?, _  response: URLResponse?, _ error: Error?) -> Void) {
+        URLSession.shared.dataTask(with: url) {
+            (data, response, error) in
+            completion(data, response, error)
+            }.resume()
+    }
+    
+    // download the image.     FROM (http://stackoverflow.com/questions/24231680/loading-downloading-image-from-url-on-swift)
+    func downloadImage(url: URL) {
+        print("Download Started")
+        getDataFromUrl(url: url) { (data, response, error)  in
+            guard let data = data, error == nil else { return }
+            print(response?.suggestedFilename ?? url.lastPathComponent)
+            print("Download Finished")
+            DispatchQueue.main.async() { () -> Void in
+                self.imageView?.image = UIImage(data: data)
+            }
+        }
     }
     
 }

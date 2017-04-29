@@ -65,7 +65,7 @@ class BuildInterfaceView: UIView {
     
     let showPhotos = true
     
-    
+    private var strokeColor = UIColor(red: 82.0/255.0, green: 128.0/255.0, blue: 164.0/255.0, alpha: 1.0).cgColor
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
@@ -98,7 +98,7 @@ class BuildInterfaceView: UIView {
         }
         else {
             context.addRect(caseRect)
-            context.setStrokeColor(UIColor.orange.cgColor)
+            context.setStrokeColor(strokeColor)
             context.setFillColor(caseColor)
             context.drawPath(using: .fillStroke)
             
@@ -131,7 +131,7 @@ class BuildInterfaceView: UIView {
         }
         else {
             context.addRect(motherboardRect)
-            context.setStrokeColor(UIColor.orange.cgColor)
+            context.setStrokeColor(strokeColor)
             context.setFillColor(motherboardColor)
             context.drawPath(using: .fillStroke)
             
@@ -161,7 +161,7 @@ class BuildInterfaceView: UIView {
         }
         else {
             context.addRect(cpuRect)
-            context.setStrokeColor(UIColor.orange.cgColor)
+            context.setStrokeColor(strokeColor)
             context.setFillColor(cpuColor)
             context.drawPath(using: .fillStroke)
             
@@ -191,7 +191,7 @@ class BuildInterfaceView: UIView {
         }
         else {
             context.addRect(ramRect)
-            context.setStrokeColor(UIColor.orange.cgColor)
+            context.setStrokeColor(strokeColor)
             context.setFillColor(ramColor)
             context.drawPath(using: .fillStroke)
             
@@ -219,7 +219,7 @@ class BuildInterfaceView: UIView {
         }
         else {
             context.addRect(gpuRect)
-            context.setStrokeColor(UIColor.orange.cgColor)
+            context.setStrokeColor(strokeColor)
             context.setFillColor(gpuColor)
             context.drawPath(using: .fillStroke)
             
@@ -247,7 +247,7 @@ class BuildInterfaceView: UIView {
         }
         else {
             context.addRect(psuRect)
-            context.setStrokeColor(UIColor.orange.cgColor)
+            context.setStrokeColor(strokeColor)
             context.setFillColor(psuColor)
             context.drawPath(using: .fillStroke)
             
@@ -260,7 +260,7 @@ class BuildInterfaceView: UIView {
         // DRAW STORAGE
         storageRect = CGRect.zero
         storageRect.size.width = caseRect.width / 8
-        storageRect.size.height = caseRect.height / 8
+        storageRect.size.height = caseRect.height / 6
         
         storageRect.origin.x = caseRect.midX + caseRect.midX / 4 + caseRect.midX / 6
         storageRect.origin.y = caseRect.midY + caseRect.midY / 4
@@ -274,7 +274,7 @@ class BuildInterfaceView: UIView {
         }
         else {
             context.addRect(storageRect)
-            context.setStrokeColor(UIColor.orange.cgColor)
+            context.setStrokeColor(strokeColor)
             context.setFillColor(noImageBackgroundColor)
             context.drawPath(using: .fillStroke)
             
@@ -301,7 +301,7 @@ class BuildInterfaceView: UIView {
         }
         else {
             context.addRect(opticalDriveRect)
-            context.setStrokeColor(UIColor.orange.cgColor)
+            context.setStrokeColor(strokeColor)
             context.setFillColor(noImageBackgroundColor)
             context.drawPath(using: .fillStroke)
             
@@ -331,7 +331,7 @@ class BuildInterfaceView: UIView {
             }
             else {
                 context.addRect(coolerRect)
-                context.setStrokeColor(UIColor.orange.cgColor)
+                context.setStrokeColor(strokeColor)
                 context.setFillColor(noImageBackgroundColor)
                 context.drawPath(using: .fillStroke)
                 
@@ -347,41 +347,42 @@ class BuildInterfaceView: UIView {
         let touch: UITouch = touches.first!
         let touchPoint = touch.location(in: self)
         
+        let newColor = UIColor(red: 100.0/255.0, green: 128.0/255.0, blue: 160.0/255.0, alpha: 1.0).cgColor
         
         if (coolerRect.contains(touchPoint)) {
-            coolerColor = UIColor.cyan.cgColor
+            coolerColor = newColor
             setNeedsDisplay()
         }
         else if (cpuRect.contains(touchPoint)) {
-            cpuColor = UIColor.cyan.cgColor
+            cpuColor = newColor
             setNeedsDisplay()
         }
         else if (ramRect.contains(touchPoint)) {
-            ramColor = UIColor.cyan.cgColor
+            ramColor = newColor
             setNeedsDisplay()
         }
         else if (gpuRect.contains(touchPoint)) {
-            gpuColor = UIColor.cyan.cgColor
+            gpuColor = newColor
             setNeedsDisplay()
         }
         else if (motherboardRect.contains(touchPoint)) {
-            motherboardColor = UIColor.cyan.cgColor
+            motherboardColor = newColor
             setNeedsDisplay()
         }
         else if (psuRect.contains(touchPoint)) {
-            psuColor = UIColor.cyan.cgColor
+            psuColor = newColor
             setNeedsDisplay()
         }
         else if (storageRect.contains(touchPoint)) {
-            storageColor = UIColor.cyan.cgColor
+            storageColor = newColor
             setNeedsDisplay()
         }
         else if (opticalDriveRect.contains(touchPoint)) {
-            opticalDriveColor = UIColor.cyan.cgColor
+            opticalDriveColor = newColor
             setNeedsDisplay()
         }
         else if (caseRect.contains(touchPoint)) {
-            caseColor = UIColor.cyan.cgColor
+            caseColor = newColor
             setNeedsDisplay()
         }
 
@@ -393,37 +394,37 @@ class BuildInterfaceView: UIView {
         
         
         if (coolerRect.contains(touchPoint)) {
-            coolerColor = UIColor.blue.cgColor
+            coolerColor = UIColor(red: 200.0, green: 200.0, blue: 200.0, alpha: 0.7).cgColor
             setNeedsDisplay()
             delegate?.buttonTouched(partType: coolerText as String)
         }
         else if (cpuRect.contains(touchPoint)) {
-            cpuColor = UIColor.blue.cgColor
+            cpuColor = UIColor(red: 200.0, green: 200.0, blue: 200.0, alpha: 0.7).cgColor
             setNeedsDisplay()
             delegate?.buttonTouched(partType: cpuText as String)
         }
         else if (ramRect.contains(touchPoint)) {
-            ramColor = UIColor.blue.cgColor
+            ramColor = UIColor(red: 200.0, green: 200.0, blue: 200.0, alpha: 0.7).cgColor
             setNeedsDisplay()
             delegate?.buttonTouched(partType: ramText as String)
         }
         else if (gpuRect.contains(touchPoint)) {
-            gpuColor = UIColor.blue.cgColor
+            gpuColor = UIColor(red: 200.0, green: 200.0, blue: 200.0, alpha: 0.7).cgColor
             setNeedsDisplay()
             delegate?.buttonTouched(partType: gpuText as String)
         }
         else if (motherboardRect.contains(touchPoint)) {
-            motherboardColor = UIColor.blue.cgColor
+            motherboardColor = UIColor(red: 200.0, green: 200.0, blue: 200.0, alpha: 0.7).cgColor
             setNeedsDisplay()
             delegate?.buttonTouched(partType: motherboardText as String)
         }
         else if (psuRect.contains(touchPoint)) {
-            psuColor = UIColor.blue.cgColor
+            psuColor = UIColor(red: 200.0, green: 200.0, blue: 200.0, alpha: 0.7).cgColor
             setNeedsDisplay()
             delegate?.buttonTouched(partType: psuText as String)
         }
         else if (storageRect.contains(touchPoint)) {
-            storageColor = UIColor.blue.cgColor
+            storageColor = UIColor(red: 200.0, green: 200.0, blue: 200.0, alpha: 0.7).cgColor
             setNeedsDisplay()
             delegate?.buttonTouched(partType: storageText as String)
         }
@@ -433,7 +434,7 @@ class BuildInterfaceView: UIView {
             delegate?.buttonTouched(partType: opticalDriveText as String)
         }
         else if (caseRect.contains(touchPoint)) {
-            caseColor = UIColor.blue.cgColor
+            caseColor = UIColor(red: 200.0, green: 200.0, blue: 200.0, alpha: 0.7).cgColor
             setNeedsDisplay()
             delegate?.buttonTouched(partType: caseText as String)
         }

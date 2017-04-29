@@ -63,12 +63,12 @@ class PartFilterInterfaceView: UIView
             let button: UIButton = UIButton()
             button.frame = CGRect(x: 2.0, y: 2.0, width: dimension * 0.77, height: dimension / 4)
             button.layer.borderWidth = 4.0
-            button.layer.borderColor = UIColor.darkGray.cgColor
+            button.layer.borderColor = UIColor(red: 82.0/255.0, green: 128.0/255.0, blue: 164.0/255.0, alpha: 1.0).cgColor
             button.layer.cornerRadius = 5.0
             
             button.setTitle(buttonAttributes[i].text as String, for: .normal)
             //button.backgroundColor = buttonAttributes[i].color
-            setGradientColors(button: button, colors: [UIColor.gray, UIColor.lightGray], gradientLocations: [0.0,0.5,1.0])
+            setGradientColors(button: button, colors: [UIColor.gray, UIColor.darkGray], gradientLocations: [0.0,0.5,1.0])
             button.tag = i
             button.addTarget(self, action: #selector(buttonTouchUp), for: .touchUpInside)
             button.addTarget(self, action: #selector(buttonTouchDown), for: .touchDown)

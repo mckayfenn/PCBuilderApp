@@ -36,7 +36,7 @@ class SpecificPartPageView: UIView, PartViewDelegate {
         
         partView = PartView(frame: frame, part: part)
         partView?.frame = CGRect(x: 0.0, y: 0.0, width: frame.width, height: screenView)
-        partView?.backgroundColor = UIColor.white
+        //partView?.backgroundColor = UIColor.white
         
         scrollView?.addSubview(partView!)
         
@@ -82,13 +82,32 @@ class PartView: UIView {
         stackView?.isLayoutMarginsRelativeArrangement = true
         stackView?.distribution = UIStackViewDistribution.fillEqually
         stackView?.spacing = 15.0
-        stackView?.backgroundColor = UIColor.blue
+        //stackView?.backgroundColor = UIColor.blue
+        setGradientColors(viewPassed: stackView!, colors: [UIColor.white, UIColor.lightGray], gradientLocations: [0.0,0.7,1.0])
         
         addSubview(stackView!)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    func setGradientColors(viewPassed: UIView,colors: [UIColor], gradientLocations: [NSNumber])
+    {
+        let gradient: CAGradientLayer = CAGradientLayer()
+        gradient.frame = viewPassed.frame
+        gradient.colors = colors.map {$0.cgColor}
+        gradient.locations = gradientLocations
+        viewPassed.layer.insertSublayer(gradient, at: 0)
+        
+    }
+    func setGradientColors(button: UIView,colors: [UIColor], gradientLocations: [NSNumber])
+    {
+        let gradient: CAGradientLayer = CAGradientLayer()
+        gradient.frame = CGRect(x: 1.9, y: 1.0, width: button.frame.width * 0.96, height: button.frame.height * 0.95)
+        gradient.colors = colors.map {$0.cgColor}
+        gradient.locations = gradientLocations
+        button.layer.insertSublayer(gradient, at: 0)
+        
     }
     
     override func draw(_ rect: CGRect) {
@@ -102,12 +121,13 @@ class PartView: UIView {
         selectButton.frame.size = CGSize(width: frame.width / 2, height: frame.height / 10)
         selectButton.frame.origin.x = frame.midX - frame.midX / 2
         selectButton.frame.origin.y = 10
-        selectButton.layer.borderWidth = 2.5
-        selectButton.layer.borderColor = UIColor.lightGray.cgColor
-        selectButton.layer.cornerRadius = 10.0
-        selectButton.backgroundColor = UIColor.blue
+        selectButton.layer.borderWidth = 4.5
+        selectButton.layer.borderColor = UIColor(red: 82.0/255.0, green: 128.0/255.0, blue: 164.0/255.0, alpha: 1.0).cgColor
+        selectButton.layer.cornerRadius = 8.0
+        //selectButton.backgroundColor = UIColor.blue
         selectButton.setTitle("Select", for: .normal)
         selectButton.addTarget(self, action: #selector(buttonSelected), for: .touchUpInside)
+        setGradientColors(button: selectButton, colors: [UIColor.gray, UIColor.darkGray], gradientLocations: [0.0,0.5,1.0])
         
         stackView?.addSubview(selectButton)
         
@@ -174,7 +194,7 @@ class PartView: UIView {
             }
         }
     }
-    
+
     
     weak var delegate: PartViewDelegate? = nil
     

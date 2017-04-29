@@ -36,6 +36,8 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
         
         view = UICollectionView(frame: CGRect.zero, collectionViewLayout: categoryLayout)
         
+    
+        
         //partViewController?.delegate = self
         
         

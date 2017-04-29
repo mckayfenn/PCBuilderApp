@@ -39,7 +39,7 @@ class BuildButtonsView: UIView
     private var coolerButtonTitle: String = "Cooler: Select CPU Cooler"
     
     
-    private var _buttonColor: UIColor = UIColor.gray
+    private var _borderColor: CGColor = UIColor(red: 82.0/255.0, green: 128.0/255.0, blue: 164.0/255.0, alpha: 1.0).cgColor
 
     
     override init(frame: CGRect) {
@@ -60,7 +60,7 @@ class BuildButtonsView: UIView
         cpuButton = UIButton()
         cpuButton?.layer.cornerRadius = 7.0
         cpuButton?.layer.borderWidth = 4.7
-        cpuButton?.layer.borderColor = UIColor.lightGray.cgColor
+        cpuButton?.layer.borderColor = _borderColor
         cpuButton?.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
         cpuButton?.titleLabel?.textAlignment = .center
         cpuButton?.setTitle(cpuButtonTitle, for: .normal)
@@ -72,7 +72,7 @@ class BuildButtonsView: UIView
         gpuButton = UIButton()
         gpuButton?.layer.cornerRadius = 7.0
         gpuButton?.layer.borderWidth = 4.7
-        gpuButton?.layer.borderColor = UIColor.lightGray.cgColor
+        gpuButton?.layer.borderColor = _borderColor
         gpuButton?.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
         gpuButton?.titleLabel?.textAlignment = .center
         gpuButton?.setTitle(gpuButtonTitle, for: .normal)
@@ -84,7 +84,7 @@ class BuildButtonsView: UIView
         caseButton = UIButton()
         caseButton?.layer.cornerRadius = 7.0
         caseButton?.layer.borderWidth = 4.7
-        caseButton?.layer.borderColor = UIColor.lightGray.cgColor
+        caseButton?.layer.borderColor = _borderColor
         caseButton?.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
         caseButton?.titleLabel?.textAlignment = .center
         caseButton?.setTitle(caseButtonTitle, for: .normal)
@@ -96,7 +96,7 @@ class BuildButtonsView: UIView
         psuButton = UIButton()
         psuButton?.layer.cornerRadius = 7.0
         psuButton?.layer.borderWidth = 4.7
-        psuButton?.layer.borderColor = UIColor.lightGray.cgColor
+        psuButton?.layer.borderColor = _borderColor
         psuButton?.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
         psuButton?.titleLabel?.textAlignment = .center
         psuButton?.setTitle(psuButtonTitle, for: .normal)
@@ -108,7 +108,7 @@ class BuildButtonsView: UIView
         ramButton = UIButton()
         ramButton?.layer.cornerRadius = 7.0
         ramButton?.layer.borderWidth = 4.7
-        ramButton?.layer.borderColor = UIColor.lightGray.cgColor
+        ramButton?.layer.borderColor = _borderColor
         ramButton?.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
         ramButton?.titleLabel?.textAlignment = .center
         ramButton?.setTitle(ramButtonTitle, for: .normal)
@@ -120,7 +120,7 @@ class BuildButtonsView: UIView
         motherboardButton = UIButton()
         motherboardButton?.layer.cornerRadius = 7.0
         motherboardButton?.layer.borderWidth = 4.7
-        motherboardButton?.layer.borderColor = UIColor.lightGray.cgColor
+        motherboardButton?.layer.borderColor = _borderColor
         motherboardButton?.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
         motherboardButton?.titleLabel?.textAlignment = .center
         motherboardButton?.setTitle(motherboardButtonTitle, for: .normal)
@@ -132,7 +132,7 @@ class BuildButtonsView: UIView
         storageButton = UIButton()
         storageButton?.layer.cornerRadius = 7.0
         storageButton?.layer.borderWidth = 4.7
-        storageButton?.layer.borderColor = UIColor.lightGray.cgColor
+        storageButton?.layer.borderColor = _borderColor
         storageButton?.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
         storageButton?.titleLabel?.textAlignment = .center
         storageButton?.setTitle(storageButtonTitle, for: .normal)
@@ -144,7 +144,7 @@ class BuildButtonsView: UIView
         opticalDriveButton = UIButton()
         opticalDriveButton?.layer.cornerRadius = 7.0
         opticalDriveButton?.layer.borderWidth = 4.7
-        opticalDriveButton?.layer.borderColor = UIColor.lightGray.cgColor
+        opticalDriveButton?.layer.borderColor = _borderColor
         opticalDriveButton?.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
         opticalDriveButton?.titleLabel?.textAlignment = .center
         opticalDriveButton?.setTitle(opticalDriveButtonTitle, for: .normal)
@@ -156,7 +156,7 @@ class BuildButtonsView: UIView
         coolerButton = UIButton()
         coolerButton?.layer.cornerRadius = 7.0
         coolerButton?.layer.borderWidth = 4.7
-        coolerButton?.layer.borderColor = UIColor.lightGray.cgColor
+        coolerButton?.layer.borderColor = _borderColor
         coolerButton?.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
         coolerButton?.titleLabel?.textAlignment = .center
         coolerButton?.setTitle(coolerButtonTitle, for: .normal)
@@ -235,5 +235,5 @@ class BuildButtonsView: UIView
     var opticalDriveButtonTitleText: String {get{return opticalDriveButtonTitle} set{opticalDriveButtonTitle = "Optical Drive: " + newValue}}
     var coolerButtonTitleText: String {get{return coolerButtonTitle} set{coolerButtonTitle = "Cooler: " + newValue}}
     
-    var buttonColor: UIColor {get{return _buttonColor} set{_buttonColor = newValue}}
+    var borderColor: CGColor {get{return _borderColor} set{_borderColor = newValue}}
 }

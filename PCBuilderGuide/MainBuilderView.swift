@@ -21,6 +21,9 @@ class MainBuilderView: UIView {
     init(frame: CGRect, buildView: BuildInterfaceView, buildButtonsView: BuildButtonsView) {
         super.init(frame: frame)
         
+        self.backgroundColor = UIColor.white
+        //setGradientColors(viewPassed: self, colors: [UIColor.white, UIColor.lightGray], gradientLocations: [0.0,0.5,1.0])
+        
         buildInterfaceView = buildView
         buildInterfaceView?.frame = CGRect(x: 0.0, y: 0.0, width: frame.width, height: frame.height)
         

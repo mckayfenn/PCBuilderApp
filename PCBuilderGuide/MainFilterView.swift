@@ -31,7 +31,7 @@ class MainFilterView: UIView
         }
         partFilterInterfaceView?.frame = CGRect(x: 0.0, y: 0.0, width: frame.width, height: screenView)
         //partFilterInterfaceView?.backgroundColor = UIColor.yellow
-        setGradientColors(viewPassed: partFilterInterfaceView!, colors: [UIColor.white, UIColor.lightGray, UIColor.darkGray], gradientLocations: [0.0,0.5,1.0])
+        setGradientColors(viewPassed: partFilterInterfaceView!, colors: [UIColor.white, UIColor.lightGray], gradientLocations: [0.0,0.5,1.0])
         
         mainScrollView?.addSubview(partFilterInterfaceView!)
         

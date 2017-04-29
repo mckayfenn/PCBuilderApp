@@ -36,6 +36,8 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
         
         view = UICollectionView(frame: CGRect.zero, collectionViewLayout: categoryLayout)
         
+    
+        
         //partViewController?.delegate = self
     }
     
@@ -45,7 +47,13 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
         // set delegate
         
         categoryView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: NSStringFromClass(UICollectionViewCell.self))
-        categoryView.backgroundColor = UIColor.white
+        //categoryView.backgroundColor = UIColor.white
+        
+        let collectionGradient = CAGradientLayer()
+        collectionGradient.frame = self.categoryView.frame
+        collectionGradient.colors = [UIColor.gray, UIColor.white]
+        collectionGradient.locations = [0.0, 0.5, 1.0]
+        categoryView.layer.insertSublayer(collectionGradient, at: 0)
         
         categoryView.dataSource = self
         categoryView.delegate = self

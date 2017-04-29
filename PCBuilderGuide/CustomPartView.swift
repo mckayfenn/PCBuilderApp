@@ -86,6 +86,7 @@ class CustomPartView: UIView, UITextFieldDelegate
         stackView?.distribution = UIStackViewDistribution.fillEqually
         stackView?.spacing = 45.0
         stackView?.backgroundColor = UIColor.white
+        setGradientColors(viewPassed: stackView!, colors: [UIColor.white, UIColor.lightGray], gradientLocations: [0.0,0.5,1.0])
         scrollView?.addSubview(stackView!)
 //
 //        
@@ -549,7 +550,7 @@ class CustomPartView: UIView, UITextFieldDelegate
             partTypeField.clearButtonMode = UITextFieldViewMode.whileEditing
             partTypeField.borderStyle = UITextBorderStyle.roundedRect
             partTypeField.autocorrectionType = UITextAutocorrectionType.no
-            partTypeField.backgroundColor = UIColor.lightGray
+            partTypeField.backgroundColor = UIColor(red: 82.0/255.0, green: 128.0/255.0, blue: 164.0/255.0, alpha: 0.7)
             partTypeField.tag = i
             partTypeField.delegate = self
             partStackView.addArrangedSubview(partTypeField)
@@ -573,7 +574,7 @@ class CustomPartView: UIView, UITextFieldDelegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         textField.resignFirstResponder()
-        textField.backgroundColor = UIColor.lightGray
+        textField.backgroundColor = UIColor(red: 82.0/255.0, green: 128.0/255.0, blue: 164.0/255.0, alpha: 0.7)
         switch textField.tag {
         case 0:
             _manufacturer = textField.text!
@@ -658,6 +659,15 @@ class CustomPartView: UIView, UITextFieldDelegate
         result["IsCustom"] = "true"
         
         return result as NSDictionary
+    }
+    func setGradientColors(viewPassed: UIView,colors: [UIColor], gradientLocations: [NSNumber])
+    {
+        let gradient: CAGradientLayer = CAGradientLayer()
+        gradient.frame = viewPassed.frame
+        gradient.colors = colors.map {$0.cgColor}
+        gradient.locations = gradientLocations
+        viewPassed.layer.insertSublayer(gradient, at: 0)
+        
     }
     
     var _ram: String? = nil

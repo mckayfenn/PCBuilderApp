@@ -78,9 +78,14 @@ class CategoryCellView: UIView {
         //context.draw((imageView?.image?.cgImage)!, in: imageRect)
         
         
-        
-        
-        let modelTextAttribute: [String:Any] = [NSFontAttributeName:UIFont.systemFont(ofSize: preview.width / 8), NSForegroundColorAttributeName: UIColor.white]
+        let modelLength: Int = (_modelLabel?.characters.count)!
+        var modelTextAttribute: [String:Any] = [NSFontAttributeName:UIFont.systemFont(ofSize: preview.width / (CGFloat(modelLength) * 0.9)), NSForegroundColorAttributeName: UIColor.white]
+        if(modelLength > 9)
+        {
+            modelTextAttribute = [NSFontAttributeName:UIFont.systemFont(ofSize: preview.width / (CGFloat(modelLength) * 0.65)), NSForegroundColorAttributeName: UIColor.white]
+        }
+
+
         let modelTextSize: CGSize = _modelLabel!.size(attributes: modelTextAttribute)
         _modelLabel?.draw(at: CGPoint(x: preview.midX - modelTextSize.width / 2, y: imageRect.maxY + preview.midX / 4 + modelTextSize.height / 2), withAttributes: modelTextAttribute)
         
@@ -92,7 +97,7 @@ class CategoryCellView: UIView {
         if (!compatible) {
             let compatibleLabel = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: preview.width + 30, height: preview.height + 30))
             compatibleLabel.text = "NOT COMPATIBLE"
-            compatibleLabel.textColor = UIColor.red
+            compatibleLabel.textColor = UIColor(red: 200.0/255.0, green: 30.0/255.0, blue: 30.0/255.0, alpha: 0.5)
             compatibleLabel.font = UIFont.boldSystemFont(ofSize:18)
             compatibleLabel.transform = CGAffineTransform(rotationAngle: CGFloat.pi / -3.5).translatedBy(x: 0.0, y: -15.0)
             addSubview(compatibleLabel)

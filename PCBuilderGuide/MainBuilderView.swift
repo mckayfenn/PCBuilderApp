@@ -26,19 +26,23 @@ class MainBuilderView: UIView {
         
         scrollView = UIScrollView(frame: CGRect(x: 0.0, y: 0.0, width: frame.width, height: frame.height / 4))
         scrollView?.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
-        scrollView?.contentSize = CGSize(width: frame.width * 3, height: (frame.height / 5))
+        scrollView?.contentSize = CGSize(width: frame.width * 5, height: (frame.height / 5))
         
         _costTotalLabel = UILabel()
         _costTotalLabel?.text = "Total: $" + String(describing: _costTotalText)
         _costTotalLabel?.textAlignment = NSTextAlignment.center
-        _costTotalLabel?.frame = CGRect(x: 0.0, y: 0.0, width: frame.width / 4, height: frame.height / 4)
+        _costTotalLabel?.frame = CGRect(x: 0.0, y: 0.0, width: frame.width, height: frame.height / 8)
         _costTotalLabel?.font = UIFont(name: "Helvetica-Bold", size: 20)
         _costTotalLabel?.textColor = UIColor.black
         _costTotalLabel?.backgroundColor = UIColor.white
+//setGradientColors(viewPassed: _costTotalLabel!, colors: [UIColor.lightGray, UIColor.white], gradientLocations: [0.0,0.5,1.0])
+
         
         _buildButtonsView = buildButtonsView
-        _buildButtonsView?.frame = CGRect(x: 0.0, y: 0.0, width: (scrollView?.frame.width)! * 3, height: (scrollView?.frame.height)!)
-        _buildButtonsView?.backgroundColor = UIColor.white
+        _buildButtonsView?.frame = CGRect(x: 0.0, y: 0.0, width: (scrollView?.frame.width)! * 5, height: (scrollView?.frame.height)!)
+        //_buildButtonsView?.backgroundColor = UIColor.white
+        setGradientColors(viewPassed: _buildButtonsView!, colors: [UIColor.white, UIColor.lightGray], gradientLocations: [0.0,0.5,1.0])
+
         
         scrollView?.addSubview(_buildButtonsView!)
         
@@ -63,6 +67,15 @@ class MainBuilderView: UIView {
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    func setGradientColors(viewPassed: UIView,colors: [UIColor], gradientLocations: [NSNumber])
+    {
+        let gradient: CAGradientLayer = CAGradientLayer()
+        gradient.frame = viewPassed.frame
+        gradient.colors = colors.map {$0.cgColor}
+        gradient.locations = gradientLocations
+        viewPassed.layer.insertSublayer(gradient, at: 0)
+        
     }
     var costTotalText: Int { get{return _costTotalText} set{_costTotalText = newValue}}
     

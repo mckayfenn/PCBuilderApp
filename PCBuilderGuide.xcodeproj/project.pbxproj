@@ -23,7 +23,6 @@
 		0AF257591E9840E900D9F312 /* BuildInterfaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF257581E9840E900D9F312 /* BuildInterfaceViewController.swift */; };
 		0AF2575B1E98434E00D9F312 /* BuildInterfaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF2575A1E98434E00D9F312 /* BuildInterfaceView.swift */; };
 		3D52D32F1EA7DB63002129CF /* BuildButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D52D32E1EA7DB63002129CF /* BuildButtonsView.swift */; };
-		3DB036B11E9C43FA003D7FAD /* NavigationFilterInterfaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB036B01E9C43FA003D7FAD /* NavigationFilterInterfaceView.swift */; };
 		3DB036B31E9C46CF003D7FAD /* NavigationFilterInterfaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB036B21E9C46CF003D7FAD /* NavigationFilterInterfaceViewController.swift */; };
 		3DD626551EAD85E100AC7E8D /* CustomPartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD626541EAD85E100AC7E8D /* CustomPartViewController.swift */; };
 		3DD626571EAD85F100AC7E8D /* CustomPartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD626561EAD85F100AC7E8D /* CustomPartView.swift */; };
@@ -50,7 +49,6 @@
 		0AF257581E9840E900D9F312 /* BuildInterfaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildInterfaceViewController.swift; sourceTree = "<group>"; };
 		0AF2575A1E98434E00D9F312 /* BuildInterfaceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildInterfaceView.swift; sourceTree = "<group>"; };
 		3D52D32E1EA7DB63002129CF /* BuildButtonsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildButtonsView.swift; sourceTree = "<group>"; };
-		3DB036B01E9C43FA003D7FAD /* NavigationFilterInterfaceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationFilterInterfaceView.swift; sourceTree = "<group>"; };
 		3DB036B21E9C46CF003D7FAD /* NavigationFilterInterfaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationFilterInterfaceViewController.swift; sourceTree = "<group>"; };
 		3DD626541EAD85E100AC7E8D /* CustomPartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPartViewController.swift; sourceTree = "<group>"; };
 		3DD626561EAD85F100AC7E8D /* CustomPartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPartView.swift; sourceTree = "<group>"; };
@@ -153,7 +151,6 @@
 			isa = PBXGroup;
 			children = (
 				3DB036B21E9C46CF003D7FAD /* NavigationFilterInterfaceViewController.swift */,
-				3DB036B01E9C43FA003D7FAD /* NavigationFilterInterfaceView.swift */,
 				3DF992AA1EA695FA00EE8728 /* PartFilterInterfaceView.swift */,
 				3DF992AD1EA6974400EE8728 /* MainFilterView.swift */,
 			);
@@ -261,7 +258,6 @@
 				0A8537AA1EA832D200185DFA /* CategoryViewController.swift in Sources */,
 				0AF2575B1E98434E00D9F312 /* BuildInterfaceView.swift in Sources */,
 				3DD626571EAD85F100AC7E8D /* CustomPartView.swift in Sources */,
-				3DB036B11E9C43FA003D7FAD /* NavigationFilterInterfaceView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

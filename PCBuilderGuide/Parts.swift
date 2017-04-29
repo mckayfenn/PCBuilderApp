@@ -1350,6 +1350,7 @@ class OpticalDrive: MyParts {
         _price = dictionary.value(forKey: "Price") as? String
         _image = dictionary.value(forKey: "Image") as? String
         _model = dictionary.value(forKey: "Model") as? String
+        _class = dictionary.value(forKey: "Class") as? String
         _manufacturer = dictionary.value(forKey: "Manufacturer") as? String
         _isCustom = Bool(dictionary.value(forKey: "IsCustom") as! String)!
     }
@@ -1359,13 +1360,16 @@ class OpticalDrive: MyParts {
         //var result: [String: [String : String]] = [:]
         var partAttributes: [String : String] = [:]
         
-        partAttributes["Link"] = _link != nil ? _link : ""
-        partAttributes["Specs"] = _specs != nil ? _specs : ""
-        partAttributes["Speed"] = _speed != nil ? _speed : ""
-        partAttributes["Price"] = _price != nil ? _price : ""
-        partAttributes["Image"] = _image != nil ? _image : ""
-        partAttributes["Model"] = _model != nil ? _model : ""
-        partAttributes["Manufacturer"] = _manufacturer != nil ? _manufacturer : ""
+
+        partAttributes["Link"] = _link
+        partAttributes["Specs"] = _specs
+        partAttributes["Speed"] = _speed
+        partAttributes["Price"] = _price
+        partAttributes["Image"] = _image
+        partAttributes["Model"] = _model
+        partAttributes["Class"] = _class
+        partAttributes["Manufacturer"] = _manufacturer
+
         // have to do this because swift is stupid
         if (_isCustom)! {
             partAttributes["IsCustom"] = "true"

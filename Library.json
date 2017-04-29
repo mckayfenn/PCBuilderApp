@@ -465,6 +465,7 @@
   [
     {
       "Manufacturer": "ASUS",
+      "Model": "ASUS DVD/CD Burner",
       "Class": "DVD/CD Burner",
       "Price": "23",
       "Speed": "24x",
@@ -475,6 +476,7 @@
     },
     {
       "Manufacturer": "LG",
+      "Model": "LG Bluray Burner",
       "Class": "Bluray Burner",
       "Price": "50",
       "Speed": "16x",

@@ -94,7 +94,7 @@ class NavigationFilterInterfaceViewController: UIViewController, PartFilterInter
     }
     
     override func viewDidLoad() {
-        partFilterView?.backgroundColor = UIColor.white
+        //partFilterView?.backgroundColor = UIColor.yellow
         
         let viewAll = UIBarButtonItem(title: "View All", style: .plain, target: self, action: #selector(viewAllClicked))
         buttons.append(viewAll)

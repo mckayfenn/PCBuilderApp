@@ -24,7 +24,7 @@ class CategoryCellView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
+        self.backgroundColor = UIColor.darkGray
         
         
         

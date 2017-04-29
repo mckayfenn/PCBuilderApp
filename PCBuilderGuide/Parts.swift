@@ -1534,7 +1534,7 @@ class Cooler: MyParts {
     }
     
     
-    // Create a CPU from a dictionary
+    // Create a Cooler from a dictionary
     public init(dictionary: NSDictionary) {
         
         _link = dictionary.value(forKey: "Link") as? String

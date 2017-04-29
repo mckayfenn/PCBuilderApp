@@ -362,7 +362,7 @@
   [
     {
       "Manufacturer": "EVGA",
-      "Model": “EVGA 650W G2",
+      "Model": "EVGA 650W G2",
       "Wattage": "650W",
       "Efficiency": "80+ Gold",
       "Modular": "Full",
@@ -373,7 +373,7 @@
     },
     {
       "Manufacturer": "Corsair",
-      "Model": “Corsair RM650x",
+      "Model": "Corsair RM650x",
       "Wattage": "650W",
       "Efficiency": "80+ Gold",
       "Modular": "Full",
@@ -384,7 +384,7 @@
     },
     {
       "Manufacturer": "EVGA",
-      "Model": “EVGA 450 B1",
+      "Model": "EVGA 450 B1",
       "Wattage": "450W",
       "Efficiency": "80+ Bronze",
       "Modular": "No",
@@ -404,7 +404,7 @@
     },
     {
       "Manufacturer": "Corsair",
-      "Model": “Corsair AX1500i",
+      "Model": "Corsair AX1500i",
       "Wattage": "1500W",
       "Efficiency": "80+ Titanium",
       "Modular": "Full",

@@ -119,8 +119,8 @@ class PartView: UIView {
         
         let selectButton: UIButton = UIButton()
         selectButton.frame.size = CGSize(width: frame.width / 2, height: frame.height / 10)
-        selectButton.frame.origin.x = frame.midX - frame.midX / 2
-        selectButton.frame.origin.y = 10
+        selectButton.frame.origin.x = frame.midX - frame.midX / 2 + 6
+        selectButton.frame.origin.y = 10 + 6
         selectButton.layer.borderWidth = 4.5
         selectButton.layer.borderColor = UIColor(red: 82.0/255.0, green: 128.0/255.0, blue: 164.0/255.0, alpha: 1.0).cgColor
         selectButton.layer.cornerRadius = 8.0
@@ -140,24 +140,40 @@ class PartView: UIView {
         }
         stackView?.addSubview(imageView!)
         
-        let specsRect = CGRect(x: 10.0, y: (imageView?.frame.maxY)!, width: frame.width, height: frame.height / 20)
-        let specsText = "Specs:"
-        let specsTextAttribute: [String:Any] = [NSFontAttributeName:UIFont.systemFont(ofSize: specsRect.width / 18), NSForegroundColorAttributeName: UIColor.black]
-        let specsTextSize: CGSize = specsText.size(attributes: specsTextAttribute)
-        specsText.draw(at: CGPoint(x: specsRect.minX, y: specsRect.minY), withAttributes: specsTextAttribute)
-
         
-//        let specsDataRect = CGRect(x: 15, y: specsRect.maxY, width: frame.width, height: frame.height / 2)
-//        let specsDataStrings = _part?._specs?.components(separatedBy: ",")
-//        for i: Int in 0..<(specsDataStrings?.count)! {
-//            let specsData = "• " + (specsDataStrings?[i])!.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-//            let specsDataAttribute: [String:Any] = [NSFontAttributeName:UIFont.systemFont(ofSize: specsDataRect.width / 25), NSForegroundColorAttributeName: UIColor.black]
-//            let specsDataSize: CGSize = specsData.size(attributes: specsDataAttribute)
-//            specsData.draw(at: CGPoint(x: specsDataRect.minX, y: specsDataRect.minY + CGFloat(i * 15)), withAttributes: specsDataAttribute)
-//        }
+        // DRAW price
+        let priceLabel = UILabel(frame: CGRect(x: 0.0, y: (imageView?.frame.maxY)!, width: frame.width, height: 20))
+        priceLabel.text = "Price:   $" + (_part?._price)!
+        priceLabel.font = UIFont.systemFont(ofSize: 20)
+        priceLabel.textColor = UIColor(red: 82.0/255.0, green: 128.0/255.0, blue: 164.0/255.0, alpha: 1.0)
+        priceLabel.textAlignment = .center
+        stackView?.addSubview(priceLabel)
         
         
-        let linkButton = UIButton(frame: CGRect(x: frame.midX - frame.midX / 2, y: frame.maxY - 100, width: frame.width / 2, height: frame.height / 10))
+        
+        // DRAW specs
+        let specsTitle = UILabel(frame: CGRect(x: 10.0, y: priceLabel.frame.maxY + 20, width: frame.width, height: 20))
+        specsTitle.text = "Specs:"
+        specsTitle.font = UIFont.systemFont(ofSize: 18)
+        stackView?.addSubview(specsTitle)
+        
+        var finalPosition: CGRect? = nil
+        if (_part?._specs != nil || _part?._specs != "") {
+            
+            
+            let specsDataStrings = _part?._specs?.components(separatedBy: ",")
+            for i: Int in 0..<(specsDataStrings?.count)! {
+                let specsDataRect = CGRect(x: specsTitle.frame.minX + 10, y: specsTitle.frame.maxY + CGFloat(i * 15), width: frame.width, height: 20)
+                let specsDataLabel = UILabel(frame: specsDataRect)
+                specsDataLabel.text = "• " + (specsDataStrings?[i])!.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+                specsDataLabel.font = UIFont.systemFont(ofSize: 10)
+                stackView?.addSubview(specsDataLabel)
+                finalPosition = specsDataRect
+            }
+        }
+        
+        
+        let linkButton = UIButton(frame: CGRect(x: frame.midX - frame.midX / 2, y: (finalPosition?.maxY)! + 20, width: frame.width / 2, height: frame.height / 10))
         linkButton.setTitle("Newegg.com", for: .normal)
         linkButton.setTitleColor(UIColor.blue, for: .normal)
         linkButton.addTarget(self, action: #selector(linkSelected), for: .touchUpInside)

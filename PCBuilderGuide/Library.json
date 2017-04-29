@@ -133,7 +133,7 @@
   [
     {
       "Manufacturer": "MSI",
-      "Model": "MSI B150 Gaming M3",
+      "Model": "MSI B150 Gaming",
       "Size": "ATX",
       "Socket": "LGA 1151",
       "Chipset": "B150",
@@ -145,7 +145,7 @@
     },
     {
       "Manufacturer": "Gigabyte",
-      "Model": "Gigabyte GA-B250M-DS3H",
+      "Model": "Gigabyte GA-B250M",
       "Size": "Micro ATX",
       "Socket": "LGA 1151",
       "Chipset": "B250",
@@ -157,7 +157,7 @@
     },
     {
       "Manufacturer": "Asus",
-      "Model": "Asus PRIME X370-PRO",
+      "Model": "Asus PRIME X370",
       "Size": "ATX",
       "Socket": "AM4",
       "Chipset": "X370",
@@ -181,7 +181,7 @@
     },
     {
       "Manufacturer": "Asus",
-      "Model": "Asus 970 PRO GAMING",
+      "Model": "Asus 970 PRO",
       "Size": "ATX",
       "Socket": "AM3+",
       "Chipset": "970",
@@ -262,7 +262,7 @@
     {
       "Manufacturer": "NVIDIA",
       "Brand": "EVGA",
-      "Model": "EVGA GeForce GTX 1070 SC GAMING",
+      "Model": "EVGA GTX 1070 SC",
       "Series": "10 series",
       "Class": "1070",
       "VRAM": "8gb",
@@ -276,7 +276,7 @@
     {
       "Manufacturer": "NVIDIA",
       "Brand": "MSI",
-      "Model": "MSI GeForce GTX 1060 GAMING X",
+      "Model": "MSI GTX 1060 GAMING X",
       "Series": "10 series",
       "Class": "1060",
       "VRAM": "6gb",
@@ -289,7 +289,7 @@
     {
       "Manufacturer": "AMD",
       "Brand": "XFX",
-      "Model": "XFX Radeon RX 470 RS Triple X",
+      "Model": "XFX RX 470 RS",
       "Series": "RX 400 series",
       "Class": "470",
       "VRAM": "4gb",
@@ -302,7 +302,7 @@
     {
       "Manufacturer": "AMD",
       "Brand": "Sapphire",
-      "Model": "Radeon Nitro+ RX 580 8GB",
+      "Model": "Radeon RX 580 8GB",
       "Series": "RX 500 series",
       "Class": "580",
       "VRAM": "8gb",
@@ -338,7 +338,7 @@
     },
     {
       "Manufacturer": "Thermaltake",
-      "Model": "View 31 RGB Dual Tempered Glass",
+      "Model": "View 31",
       "Color": "Black",
       "Size": "ATX full",
       "Price": "130",
@@ -362,7 +362,7 @@
   [
     {
       "Manufacturer": "EVGA",
-      "Model": "G2",
+      "Model": “EVGA 650W G2",
       "Wattage": "650W",
       "Efficiency": "80+ Gold",
       "Modular": "Full",
@@ -373,7 +373,7 @@
     },
     {
       "Manufacturer": "Corsair",
-      "Model": "RMx",
+      "Model": “Corsair RM650x",
       "Wattage": "650W",
       "Efficiency": "80+ Gold",
       "Modular": "Full",
@@ -384,7 +384,7 @@
     },
     {
       "Manufacturer": "EVGA",
-      "Model": "450 B1",
+      "Model": “EVGA 450 B1",
       "Wattage": "450W",
       "Efficiency": "80+ Bronze",
       "Modular": "No",
@@ -404,7 +404,7 @@
     },
     {
       "Manufacturer": "Corsair",
-      "Model": "AXi",
+      "Model": “Corsair AX1500i",
       "Wattage": "1500W",
       "Efficiency": "80+ Titanium",
       "Modular": "Full",
@@ -465,6 +465,7 @@
   [
     {
       "Manufacturer": "ASUS",
+      "Model": "ASUS DVD/CD Burner",
       "Class": "DVD/CD Burner",
       "Price": "23",
       "Speed": "24x",
@@ -475,6 +476,7 @@
     },
     {
       "Manufacturer": "LG",
+      "Model": "LG Bluray Burner",
       "Class": "Bluray Burner",
       "Price": "50",
       "Speed": "16x",

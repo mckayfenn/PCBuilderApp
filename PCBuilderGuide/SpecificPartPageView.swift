@@ -103,7 +103,7 @@ class PartView: UIView {
     func setGradientColors(button: UIView,colors: [UIColor], gradientLocations: [NSNumber])
     {
         let gradient: CAGradientLayer = CAGradientLayer()
-        gradient.frame = CGRect(x: 1.9, y: 1.0, width: button.frame.width * 0.96, height: button.frame.height * 0.95)
+        gradient.frame = CGRect(x: 3, y: 1.5, width: button.frame.width * 0.96, height: button.frame.height * 0.95)
         gradient.colors = colors.map {$0.cgColor}
         gradient.locations = gradientLocations
         button.layer.insertSublayer(gradient, at: 0)
@@ -119,8 +119,8 @@ class PartView: UIView {
         
         let selectButton: UIButton = UIButton()
         selectButton.frame.size = CGSize(width: frame.width / 2, height: frame.height / 10)
-        selectButton.frame.origin.x = frame.midX - frame.midX / 2 + 6
-        selectButton.frame.origin.y = 10 + 6
+        selectButton.frame.origin.x = frame.midX - frame.midX / 2
+        selectButton.frame.origin.y = 10
         selectButton.layer.borderWidth = 4.5
         selectButton.layer.borderColor = UIColor(red: 82.0/255.0, green: 128.0/255.0, blue: 164.0/255.0, alpha: 1.0).cgColor
         selectButton.layer.cornerRadius = 8.0
@@ -152,14 +152,15 @@ class PartView: UIView {
         
         
         // DRAW specs
-        let specsTitle = UILabel(frame: CGRect(x: 10.0, y: priceLabel.frame.maxY + 20, width: frame.width, height: 20))
-        specsTitle.text = "Specs:"
-        specsTitle.font = UIFont.systemFont(ofSize: 18)
-        stackView?.addSubview(specsTitle)
         
-        var finalPosition: CGRect? = nil
-        if (_part?._specs != nil || _part?._specs != "") {
+        
+        var finalPosition: CGRect = priceLabel.frame
+        if (_part?._specs != nil && _part?._specs != "") {
             
+            let specsTitle = UILabel(frame: CGRect(x: 10.0, y: priceLabel.frame.maxY + 20, width: frame.width, height: 20))
+            specsTitle.text = "Specs:"
+            specsTitle.font = UIFont.systemFont(ofSize: 18)
+            stackView?.addSubview(specsTitle)
             
             let specsDataStrings = _part?._specs?.components(separatedBy: ",")
             for i: Int in 0..<(specsDataStrings?.count)! {
@@ -173,7 +174,7 @@ class PartView: UIView {
         }
         
         
-        let linkButton = UIButton(frame: CGRect(x: frame.midX - frame.midX / 2, y: (finalPosition?.maxY)! + 20, width: frame.width / 2, height: frame.height / 10))
+        let linkButton = UIButton(frame: CGRect(x: frame.midX - frame.midX / 2, y: finalPosition.maxY + 20, width: frame.width / 2, height: frame.height / 10))
         linkButton.setTitle("Newegg.com", for: .normal)
         linkButton.setTitleColor(UIColor.blue, for: .normal)
         linkButton.addTarget(self, action: #selector(linkSelected), for: .touchUpInside)

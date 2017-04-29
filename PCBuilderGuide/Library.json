@@ -1,0 +1,487 @@
+{
+  "Processors": 
+  [
+    {
+      "Manufacturer": "Intel",
+      "Model": "i7 7700k",
+      "Socket": "LGA 1151",
+      "Description": "This is a description",
+      "Specs": "For A Great VR Experience, Max Turbo Frequency 4.50 GHz, Intel HD Graphics 630, Unlocked Processor, DDR4 Support, Display Resolution up to 4096 x 2304, Socket LGA 1151, Cooler / thermal paste not included",
+      "Link" : "https://www.newegg.com/Product/Product.aspx?Item=N82E16819117726&cm_re=7700k-_-19-117-726-_-Product",
+      "Family": "Core i7",
+      "Generation": "Kabylake",
+      "Price": "350",
+      "Image": "https://images10.newegg.com/ProductImageCompressAll1280/19-117-726-Z01.jpg?w=660&h=500",
+      "IsCustom": "false",
+      "RAM": "DDR4"
+    },
+    {
+      "Manufacturer": "AMD",
+      "Model": "R7 1700",
+      "Socket": "AM4",
+      "Description": "This is a description",
+      "Specs": "This is specs",
+      "Link" : "https://www.newegg.com/Product/Product.aspx?Item=N82E16819113428&cm_re=r7_1700-_-19-113-428-_-Product",
+      "Family": "Ryzen 7",
+      "Generation": "Summit Ridge",
+      "Price": "330",
+      "Image": "https://images10.newegg.com/NeweggImage/ProductImageCompressAll1280/19-113-428-01.jpg?w=660&h=500",
+      "IsCustom": "false",
+      "RAM": "DDR4"
+    },
+    {
+      "Manufacturer": "AMD",
+      "Model": "R5 1600",
+      "Socket": "AM4",
+      "Description": "This is a description",
+      "Specs": "This is specs",
+      "Link" : "https://www.newegg.com/Product/Product.aspx?Item=N82E16819113435&cm_re=r5_1600-_-19-113-435-_-Product",
+      "Family": "Ryzen 5",
+      "Generation": "Summit Ridge",
+      "Price": "220",
+      "Image": "https://images10.newegg.com/NeweggImage/ProductImageCompressAll1280/19-113-435-Z01.jpg?w=660&h=500",
+      "IsCustom": "false",
+      "RAM": "DDR4"
+    },
+    {
+      "Manufacturer": "Intel",
+      "Model": "i5 7600k",
+      "Socket": "LGA 1151",
+      "Description": "This is a description",
+      "Specs": "This is specs",
+      "Link" : "https://www.newegg.com/Product/Product.aspx?Item=N82E16819117728&cm_re=7600k-_-19-117-728-_-Product",
+      "Family": "Core i5",
+      "Generation": "Kabylake",
+      "Price": "240",
+      "Image": "https://images10.newegg.com/ProductImageCompressAll1280/19-117-728-Z01.jpg?w=660&h=500",
+      "IsCustom": "false",
+      "RAM": "DDR4"
+    },
+    {
+      "Manufacturer": "Intel",
+      "Model": "i5 7500",
+      "Socket": "LGA 1151",
+      "Description": "This is a description",
+      "Specs": "This is specs",
+      "Link" : "https://www.newegg.com/Product/Product.aspx?Item=N82E16819117730&cm_re=7500-_-19-117-730-_-Product",
+      "Family": "Core i5",
+      "Generation": "Kabylake",
+      "Price": "200",
+      "Image": "https://images10.newegg.com/ProductImageCompressAll1280/19-117-730-Z01.jpg?w=660&h=500",
+      "IsCustom": "false",
+      "RAM": "DDR4"
+    },
+    {
+      "Manufacturer": "Intel",
+      "Model": "i7 4790K",
+      "Socket": "LGA 1150",
+      "Description": "Haswell",
+      "Specs": "This is specs",
+      "Link" : "https://www.newegg.com/Product/Product.aspx?Item=9SIA85V4R42461&cm_re=core_i7_4790k-_-19-117-369-_-Product",
+      "Family": "Core i7",
+      "Generation": "Haswell",
+      "Price": "359",
+      "Image": "https://images10.newegg.com/productimage/19-117-369-02.jpg",
+      "IsCustom": "false",
+      "RAM": "DDR3"
+    },
+    {
+      "Manufacturer": "Intel",
+      "Model": "i5 4690K",
+      "Socket": "LGA 1150",
+      "Description": "Haswell",
+      "Specs": "This is specs",
+      "Link" : "https://www.newegg.com/Product/Product.aspx?Item=9SIA7HN5JF1550&cm_re=i5_4690k-_-19-117-372-_-Product",
+      "Family": "Core i5",
+      "Generation": "Haswell",
+      "Price": "249",
+      "Image": "https://images10.newegg.com/NeweggImage/ProductImageCompressAll1280/19-117-372-03.jpg?w=660&h=500",
+      "IsCustom": "false",
+      "RAM": "DDR3"
+    },
+    {
+      "Manufacturer": "AMD",
+      "Model": "FX-8350",
+      "Socket": "AM3+",
+      "Description": "32nm Vishera 125W",
+      "Specs": "This is specs",
+      "Link" : "https://www.newegg.com/Product/Product.aspx?Item=N82E16819113284",
+      "Family": "FX-8",
+      "Generation": "FX",
+      "Price": "119",
+      "Image": "https://images10.newegg.com/NeweggImage/ProductImageCompressAll1280/19-113-284-04.jpg?w=660&h=500",
+      "IsCustom": "false",
+      "RAM": "DDR3"
+    },
+    {
+      "Manufacturer": "AMD",
+      "Model": "FX-6300",
+      "Socket": "AM3+",
+      "Description": "32nm Vishera 95W",
+      "Specs": "This is specs",
+      "Link" : "https://www.newegg.com/Product/Product.aspx?Item=N82E16819113286",
+      "Family": "FX-6",
+      "Generation": "FX",
+      "Price": "80",
+      "Image": "https://images10.newegg.com/ProductImageCompressAll1280/19-113-286-04.jpg?w=660&h=500",
+      "IsCustom": "false",
+      "RAM": "DDR3"
+    }
+  ],
+  
+  "Motherboards": 
+  [
+    {
+      "Manufacturer": "MSI",
+      "Model": "MSI B150 Gaming M3",
+      "Size": "ATX",
+      "Socket": "LGA 1151",
+      "Chipset": "B150",
+      "Price": "100",
+      "RAM": "DDR4",
+      "Link": "https://www.newegg.com/Product/Product.aspx?Item=N82E16813130886&cm_re=msi_b150-_-13-130-886-_-Product",
+      "Image": "https://images10.newegg.com/ProductImageCompressAll1280/13-130-886_R01.jpg?w=660&h=500",
+      "IsCustom": "false"
+    },
+    {
+      "Manufacturer": "Gigabyte",
+      "Model": "Gigabyte GA-B250M-DS3H",
+      "Size": "Micro ATX",
+      "Socket": "LGA 1151",
+      "Chipset": "B250",
+      "Price": "60",
+      "RAM": "DDR4",
+      "Link": "https://www.newegg.com/Product/Product.aspx?Item=N82E16813128980&cm_re=gigabyte_b250-_-13-128-980-_-Product",
+      "Image": "https://images10.newegg.com/NeweggImage/ProductImageCompressAll1280/13-128-980_R01.jpg?w=660&h=500",
+      "IsCustom": "false"
+    },
+    {
+      "Manufacturer": "Asus",
+      "Model": "Asus PRIME X370-PRO",
+      "Size": "ATX",
+      "Socket": "AM4",
+      "Chipset": "X370",
+      "Price": "160",
+      "RAM": "DDR4",
+      "Link": "https://www.newegg.com/Product/Product.aspx?Item=N82E16813132964&cm_re=asus_x370_pro-_-13-132-964-_-Product",
+      "Image": "https://images10.newegg.com/NeweggImage/ProductImageCompressAll1280/13-132-964-V01.jpg?w=660&h=500",
+      "IsCustom": "false"
+    },
+    {
+      "Manufacturer": "Asus",
+      "Model": "Asus Z97-A",
+      "Size": "ATX",
+      "Socket": "LGA 1150",
+      "Chipset": "Z97",
+      "Price": "150",
+      "RAM": "DDR3",
+      "Link": "https://www.newegg.com/Product/Product.aspx?Item=N82E16813132510",
+      "Image": "https://images10.newegg.com/ProductImageCompressAll1280/13-132-510_R01.jpg?w=660&h=500",
+      "IsCustom": "false"
+    },
+    {
+      "Manufacturer": "Asus",
+      "Model": "Asus 970 PRO GAMING",
+      "Size": "ATX",
+      "Socket": "AM3+",
+      "Chipset": "970",
+      "Price": "110",
+      "RAM": "DDR3",
+      "Link": "https://www.newegg.com/Product/Product.aspx?Item=N82E16813132713",
+      "Image": "https://images10.newegg.com/ProductImageCompressAll1280/13-132-713-12.jpg?w=660&h=500",
+      "IsCustom": "false"
+    }
+  ],
+  
+  "RAM": 
+  [
+    {
+      "Manufacturer": "Corsair",
+      "Model": "Corsair Vengence RGB",
+      "RAM": "DDR4",
+      "Size": "2x8gb",
+      "Price": "155",
+      "Speed": "3000",
+      "Specs": "DDR4 3000 (PC4 24000), Timing 15-17-17-35, Cas Latency 15, Voltage 1.35V",
+      "Link": "https://www.newegg.com/Product/Product.aspx?Item=N82E16820236165",
+      "Image": "https://images10.newegg.com/NeweggImage/ProductImageCompressAll1280/20-236-165-V03[1].jpg?w=660&h=500",
+      "IsCustom": "false"
+    },
+    {
+      "Manufacturer": "Crucial",
+      "Model": "Ballistix Sport LT",
+      "RAM": "DDR4",
+      "Size": "1x8gb",
+      "Price": "60",
+      "Speed": "2400",
+      "Specs": "DDR4 2400 (PC4 19200), Timing 16-16-16, Cas Latency 16, Voltage 1.2V",
+      "Link": "https://www.newegg.com/Product/Product.aspx?Item=N82E16820148983",
+      "Image": "https://images10.newegg.com/NeweggImage/ProductImageCompressAll1280/20-148-983-V01.jpg?w=660&h=500",
+      "IsCustom": "false"
+    },
+    {
+      "Manufacturer": "G.Skill",
+      "Model": "TridentZ RGB",
+      "RAM": "DDR4",
+      "Size": "2x8gb",
+      "Price": "160",
+      "Speed": "3200",
+      "Specs": "DDR4 3200 (PC4 25600), Timing 16-18-18-38, Cas Latency 16, Voltage 1.35V",
+      "Link": "https://www.newegg.com/Product/Product.aspx?Item=N82E16820232476",
+      "Image": "https://images10.newegg.com/NeweggImage/ProductImageCompressAll1280/20-232-476-S01.jpg?w=660&h=500",
+      "IsCustom": "false"
+    },
+    {
+      "Manufacturer": "Corsair",
+      "Model": "Vengeance",
+      "RAM": "DDR3",
+      "Size": "2x8gb",
+      "Price": "65",
+      "Speed": "1600",
+      "Specs": "DDR3 1600 (PC4 12800), Timing 9-9-9-24, Cas Latency 9, Voltage 1.5V",
+      "Link": "https://www.newegg.com/Product/Product.aspx?Item=N82E16820233144",
+      "Image": "https://images10.newegg.com/NeweggImage/ProductImageCompressAll1280/20-233-144-05.jpg?w=660&h=500",
+      "IsCustom": "false"
+    },
+    {
+      "Manufacturer": "G.SKILL",
+      "Model": "Ripjaws X",
+      "RAM": "DDR3",
+      "Size": "2x8gb",
+      "Price": "108",
+      "Speed": "1600",
+      "Specs": "DDR3 1600 (PC4 12800), Timing 10-10-10-30, Cas Latency 10, Voltage 1.5V",
+      "Link": "https://www.newegg.com/Product/Product.aspx?Item=N82E16820231489",
+      "Image": "https://images10.newegg.com/NeweggImage/ProductImageCompressAll1280/20-231-489-02.jpg?w=660&h=500",
+      "IsCustom": "false"
+    }
+  ],
+  
+  "GPU":
+  [
+    {
+      "Manufacturer": "NVIDIA",
+      "Brand": "EVGA",
+      "Model": "EVGA GeForce GTX 1070 SC GAMING",
+      "Series": "10 series",
+      "Class": "1070",
+      "VRAM": "8gb",
+      "Size": "267mm",
+      "Price": "400",
+      "Link": "https://www.newegg.com/Product/Product.aspx?Item=N82E16814487265&cm_re=gtx_1070-_-14-487-265-_-Product",
+      "Image": "https://images10.newegg.com/ProductImageCompressAll1280/14-487-265-S99.jpg?w=660&h=500",
+      "IsCustom": "false"
+    },
+
+    {
+      "Manufacturer": "NVIDIA",
+      "Brand": "MSI",
+      "Model": "MSI GeForce GTX 1060 GAMING X",
+      "Series": "10 series",
+      "Class": "1060",
+      "VRAM": "6gb",
+      "Size": "277mm",
+      "Price": "275",
+      "Link": "https://www.newegg.com/Product/Product.aspx?Item=N82E16814127963&cm_re=msi_1060_gaming_x-_-14-127-963-_-Product",
+      "Image": "https://images10.newegg.com/ProductImageCompressAll1280/14-127-963-08.jpg?w=660&h=500",
+      "IsCustom": "false"
+    },
+    {
+      "Manufacturer": "AMD",
+      "Brand": "XFX",
+      "Model": "XFX Radeon RX 470 RS Triple X",
+      "Series": "RX 400 series",
+      "Class": "470",
+      "VRAM": "4gb",
+      "Size": "240mm",
+      "Price": "185",
+      "Link": "https://www.newegg.com/Product/Product.aspx?Item=N82E16814150776&cm_re=xfx_rx_470-_-14-150-776-_-Product",
+      "Image": "https://images10.newegg.com/ProductImageCompressAll1280/14-150-776-09.jpg?w=660&h=500",
+      "IsCustom": "false"
+    },
+    {
+      "Manufacturer": "AMD",
+      "Brand": "Sapphire",
+      "Model": "Radeon Nitro+ RX 580 8GB",
+      "Series": "RX 500 series",
+      "Class": "580",
+      "VRAM": "8gb",
+      "Size": "N/A",
+      "Price": "290",
+      "Link": "https://www.newegg.com/Product/Product.aspx?Item=N82E16814202281&cm_re=rx_580-_-14-202-281-_-Product",
+      "Image": "https://images10.newegg.com/NeweggImage/ProductImageCompressAll1280/14-202-281-V01.jpg?w=660&h=500",
+      "IsCustom": "false"
+    }
+  ],
+  
+  "Case":
+  [
+    {
+      "Manufacturer": "NZXT",
+      "Model": "S340 Elite",
+      "Color": "White",
+      "Size": "ATX mid",
+      "Price": "100",
+      "Link": "https://www.newegg.com/Product/Product.aspx?item=N82E16811146239",
+      "Image": "https://www.newegg.com/Product/Product.aspx?item=N82E16811146239",
+      "IsCustom": "false"
+    },
+    {
+      "Manufacturer": "Phanteks",
+      "Model": "Eclipse P400",
+      "Color": "Black",
+      "Size": "ATX mid",
+      "Price": "80",
+      "Link": "https://www.newegg.com/Product/Product.aspx?Item=N82E16811854049&cm_re=p400-_-11-854-049-_-Product",
+      "Image": "https://images10.newegg.com/NeweggImage/ProductImageCompressAll1280/11-854-049-V26.jpg?w=660&h=500",
+      "IsCustom": "false"
+    },
+    {
+      "Manufacturer": "Thermaltake",
+      "Model": "View 31 RGB Dual Tempered Glass",
+      "Color": "Black",
+      "Size": "ATX full",
+      "Price": "130",
+      "Link": "https://www.newegg.com/Product/Product.aspx?Item=N82E16811133334&cm_re=case-_-11-133-334-_-Product",
+      "Image": "https://images10.newegg.com/NeweggImage/ProductImageCompressAll1280/11-133-334-V19.jpg?w=660&h=500",
+      "IsCustom": "false"
+    },
+    {
+      "Manufacturer": "Fractal design",
+      "Model": "Define Nano S",
+      "Color": "Black",
+      "Size": "Mini ITX",
+      "Price": "70",
+      "Link": "https://www.newegg.com/Product/Product.aspx?Item=N82E16811352062&cm_re=case-_-11-352-062-_-Product",
+      "Image": "https://images10.newegg.com/NeweggImage/ProductImageCompressAll1280/11-352-062-10.jpg?w=660&h=500",
+      "IsCustom": "false"
+    }
+  ],
+  
+  "PSU":
+  [
+    {
+      "Manufacturer": "EVGA",
+      "Model": "G2",
+      "Wattage": "650W",
+      "Efficiency": "80+ Gold",
+      "Modular": "Full",
+      "Price": "100",
+      "Link": "https://www.newegg.com/Product/Product.aspx?Item=N82E16817438054&cm_re=evga_g2-_-17-438-054-_-Product",
+      "Image": "https://images10.newegg.com/NeweggImage/ProductImageCompressAll1280/17-438-054-18.jpg?w=660&h=500",
+      "IsCustom": "false"
+    },
+    {
+      "Manufacturer": "Corsair",
+      "Model": "RMx",
+      "Wattage": "650W",
+      "Efficiency": "80+ Gold",
+      "Modular": "Full",
+      "Price": "110",
+      "Link": "https://www.newegg.com/Product/Product.aspx?Item=N82E16817139143&cm_re=corsair_rmx-_-17-139-143-_-Product",
+      "Image": "https://images10.newegg.com/productimage/17-139-143-06.jpg",
+      "IsCustom": "false"
+    },
+    {
+      "Manufacturer": "EVGA",
+      "Model": "450 B1",
+      "Wattage": "450W",
+      "Efficiency": "80+ Bronze",
+      "Modular": "No",
+      "Price": "40",
+      "Link": "https://www.newegg.com/Product/Product.aspx?Item=N82E16817438082&ignorebbr=1",    "Image": "https://images10.newegg.com/ProductImageCompressAll1280/17-438-082-16.jpg?w=660&h=500",
+      "IsCustom": "false"
+    },
+    {
+      "Manufacturer": "EVGA",
+      "Model": "SuperNOVA 1000 P2",
+      "Wattage": "1000W",
+      "Efficiency": "80+ Platinum",
+      "Modular": "Full",
+      "Price": "190",
+      "Link": "https://www.newegg.com/Product/Product.aspx?Item=N82E16817438013&ignorebbr=1",    "Image": "https://images10.newegg.com/ProductImageCompressAll1280/17-438-013-08.jpg?w=660&h=500",
+      "IsCustom": "false"
+    },
+    {
+      "Manufacturer": "Corsair",
+      "Model": "AXi",
+      "Wattage": "1500W",
+      "Efficiency": "80+ Titanium",
+      "Modular": "Full",
+      "Price": "410",
+      "Link": "https://www.newegg.com/Product/Product.aspx?Item=N82E16817139079&ignorebbr=1",    "Image": "https://images10.newegg.com/ProductImageCompressAll1280/17-139-079-13.jpg?w=660&h=500",
+      "IsCustom": "false"
+    }
+  ],
+"Cooler":
+  [
+   {
+      "Manufacturer": "Cooler Master",
+      "Model": "Hyper 212 EVO",
+      "Class": "Air",
+      "Price": "25",
+      "Specs": "N/A",
+      "Link": "https://www.newegg.com/Product/Product.aspx?Item=N82E16835103099",    "Image": "https://images10.newegg.com/productimage/35-103-099-08.jpg",
+      "IsCustom": "false"
+    },
+    {
+      "Manufacturer": "Deep Cool",
+      "Model": "Captain 240EX",
+      "Class": "Liquid",
+      "Price": "90",
+      "Specs": "240 Radiator, 2 included fans",
+      "Link": "https://www.newegg.com/Product/Product.aspx?Item=N82E16835103099",    "Image": "https://images10.newegg.com/productimage/35-103-099-08.jpg",
+      "IsCustom": "false"
+    }
+  ],
+  "Storage":
+  [
+    {
+      "Manufacturer": "Seagate",
+      "Model": "IronWolf",
+      "Class": "Hard Disk Drive",
+      "Price": "65",
+      "Size": "1TB",
+      "Speed": "5900RPM",
+      "Specs": "N/A",
+      "Link": "https://www.newegg.com/Product/Product.aspx?Item=N82E16822179008",    
+      "Image": "https://images10.newegg.com/ProductImageCompressAll1280/22-179-008-V01.jpg?w=660&h=500",
+      "IsCustom": "false"
+    },
+    {
+      "Manufacturer": "Kingston",
+      "Model": "SSDNow V300",
+      "Class": "Solid State Drive",
+      "Price": "95",
+      "Size": "240GB",
+      "Speed": "Sata III",
+      "Specs": "2.5",
+      "Link": "https://www.newegg.com/Product/Product.aspx?Item=N82E16820721108",    
+      "Image": "https://images10.newegg.com/NeweggImage/productimage/20-721-108-02.jpg",
+      "IsCustom": "false"
+    }
+  ],
+  "Optical Drive":
+  [
+    {
+      "Manufacturer": "ASUS",
+      "Class": "DVD/CD Burner",
+      "Price": "23",
+      "Speed": "24x",
+      "Specs": "N/A",
+      "Link": "https://www.newegg.com/Product/Product.aspx?Item=N82E16827135240&cm_re=optical_drive-_-27-135-240-_-Product",    
+      "Image": "https://images10.newegg.com/NeweggImage/ProductImageCompressAll1280/27-135-240-07.jpg",
+      "IsCustom": "false"
+    },
+    {
+      "Manufacturer": "LG",
+      "Class": "Bluray Burner",
+      "Price": "50",
+      "Speed": "16x",
+      "Specs": "N/A",
+      "Link": "https://www.amazon.com/LG-WH16NS40-Internal-Blu-ray-Rewriter/dp/B00E7B08MS/ref=sr_1_2?s=electronics&ie=UTF8&qid=1493172213&sr=1-2&keywords=blu+ray+burner",    
+      "Image": "https://images-na.ssl-images-amazon.com/images/I/416X3wRYtzL.jpg",
+      "IsCustom": "false"
+    }
+  ]
+}

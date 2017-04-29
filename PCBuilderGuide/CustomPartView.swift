@@ -566,6 +566,10 @@ class CustomPartView: UIView, UITextFieldDelegate
         textField.backgroundColor = UIColor.gray
     }
     
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textFieldShouldReturn(textField)
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         textField.resignFirstResponder()
@@ -626,11 +630,11 @@ class CustomPartView: UIView, UITextFieldDelegate
         
         //["Manufacturer: ", "Model: ", "Price: ", "Brand: ", "Specs: ", "Ram Type: ", "Speed: ", "Socket: ", "Chipset: ", "Link: ", "Image URL: "]
         
-        result["Manufacturer"] = _manufacturer
-        result["Model"] = _model
-        result["Price"] = _price
-        result["Link"] = _link
-        result["Image"] = _image
+        result["Manufacturer"] = (_manufacturer != nil) ? _manufacturer : ""
+        result["Model"] = (_model != nil) ? _model : ""
+        result["Price"] = (_price != nil) ? _price : "0"
+        result["Link"] = (_link != nil) ? _link : ""
+        result["Image"] = (_image != nil) ? _image : ""
         
         if (_partCreating == "CPU" || _partCreating == "Motherboard" || _partCreating == "RAM") {
             result["RAM"] = _ram
@@ -645,10 +649,10 @@ class CustomPartView: UIView, UITextFieldDelegate
             result["Speed"] = _speed
         }
         if (_partCreating == "GPU") {
-            result["Brand"] == _brand
+            result["Brand"] = _brand
         }
         if (_partCreating == "CPU" || _partCreating == "RAM" || _partCreating == "Cooler" || _partCreating == "Storage" || _partCreating == "Optical Drive") {
-            result["Specs"] == _specs
+            result["Specs"] = _specs
         }
         
         result["IsCustom"] = "true"

@@ -56,10 +56,19 @@ class UserBuilds {
             buildDictionaries.append(build.dictionaryRepresentation)
         }
         
+//        let jsonData: Data = try! JSONSerialization.data(withJSONObject: buildDictionaries, options: .prettyPrinted)
+//        let docDirectory: URL = getDesktop().appendingPathComponent("UserBuilds.json")
+//        //try! jsonData.write(to: docDirectory)
+//        try! jsonData.write(to: URL.init(fileURLWithPath: "/Users/Authenticated User/Desktop/UserBuilds.json"))
+        
+        
         let jsonData: Data = try! JSONSerialization.data(withJSONObject: buildDictionaries, options: .prettyPrinted)
-        let docDirectory: URL = getDesktop().appendingPathComponent("UserBuilds.json")
-        //try! jsonData.write(to: docDirectory)
-        try! jsonData.write(to: URL.init(fileURLWithPath: "/Users/Authenticated User/Desktop/UserBuilds.json"))
+        let docDirectory: URL = getDocumentsDirectory().appendingPathComponent("UserBuilds.json")
+        
+        try! jsonData.write(to: docDirectory)
+
+        
+        
         print("finsih save")
     }
     
@@ -71,8 +80,17 @@ class UserBuilds {
     public func loadBuilds() {
         var buildDictionaries: [NSDictionary] = []
         
-        let jsonData: Data = try! Data(contentsOf: URL(fileURLWithPath: "/Users/Authenticated User/Desktop/UserBuilds.json"))
-        buildDictionaries = try! JSONSerialization.jsonObject(with: jsonData, options: []) as! [NSDictionary]
+        
+        let path: String = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+        let url = NSURL(fileURLWithPath: path)
+        let filePath: String? = url.appendingPathComponent("UserBuilds.json")?.path
+        let fileManager: FileManager = FileManager.default
+        if fileManager.fileExists(atPath: filePath!) {
+            let docDirectory: URL = getDocumentsDirectory().appendingPathComponent("UserBuilds.json")
+            let jsonData: Data = try! Data(contentsOf: docDirectory)
+            buildDictionaries = try! JSONSerialization.jsonObject(with: jsonData, options: []) as! [NSDictionary]
+        }
+
         
         for build: NSDictionary in buildDictionaries {
             let keys = build.allKeys

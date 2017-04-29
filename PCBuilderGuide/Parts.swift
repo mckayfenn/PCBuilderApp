@@ -119,11 +119,10 @@ class Parts {
     
     
     public func addCustomPart(part: MyParts) {
+        var contains: Bool = false
         switch part.self {
         case is CPU:
-            var contains: Bool = false
             for cpu: CPU in _processors {
-                
                 // only add unique parts
                 if (cpu === part as! CPU) {
                     contains = true
@@ -135,6 +134,96 @@ class Parts {
                 _processors.append(part as! CPU)
             }
             break
+        case is Motherboard:
+            for mobo: Motherboard in _motherboards {
+                if (mobo === part as! Motherboard) {
+                    contains = true
+                    break
+                }
+            }
+            
+            if (!contains) {
+                _motherboards.append(part as! Motherboard)
+            }
+            break
+        case is RAM:
+            for ram: RAM in _rams {
+                if (ram === part as! RAM) {
+                    contains = true
+                    break
+                }
+            }
+            
+            if (!contains) {
+                _rams.append(part as! RAM)
+            }
+            break
+        case is GPU:
+            for gpu: GPU in _gpus {
+                if (gpu === part as! GPU) {
+                    contains = true
+                    break
+                }
+            }
+            if (!contains) {
+                _gpus.append(part as! GPU)
+            }
+            break
+        case is Case:
+            for tower: Case in _cases {
+                if (tower === part as! Case) {
+                    contains = true
+                    break
+                }
+            }
+            if (!contains) {
+                _cases.append(part as! Case)
+            }
+            break
+        case is PSU:
+            for psu: PSU in _psus {
+                if (psu === part as! Case) {
+                    contains = true
+                    break
+                }
+            }
+            if (!contains) {
+                _psus.append(part as! PSU)
+            }
+            break
+        case is Cooler:
+            for cooler: Cooler in _coolers {
+                if (cooler === part as! Cooler) {
+                    contains = true
+                    break
+                }
+            }
+            if (!contains) {
+                _coolers.append(part as! Cooler)
+            }
+            break
+        case is Storage:
+            for drive: Storage in _storages {
+                if (drive === part as! Storage) {
+                    contains = true
+                    break
+                }
+            }
+            if (!contains) {
+                _storages.append(part as! Storage)
+            }
+            break
+        case is OpticalDrive:
+            for drive: OpticalDrive in _opticalDrives {
+                if (drive === part as! OpticalDrive) {
+                    contains = true
+                    break
+                }
+            }
+            if (!contains) {
+                _opticalDrives.append(part as! OpticalDrive)
+            }
+            break
         default:
             break
         }
@@ -144,7 +233,7 @@ class Parts {
     public func isPartCompatibleTo(currentParts: [MyParts], thisPart: MyParts) -> Bool {
         
         // if any part is custom, we can't tell for sure compatibility
-
+        
         
         // switch on which part they are trying to select
         switch thisPart {
@@ -660,17 +749,17 @@ class CPU: MyParts {
         //var result: [String: [String : String]] = [:]
         var partAttributes: [String : String] = [:]
         
-        partAttributes["RAM"] = _ram
-        partAttributes["Link"] = _link
-        partAttributes["Specs"] = _specs
-        partAttributes["Price"] = _price
-        partAttributes["Image"] = _image
-        partAttributes["Model"] = _model
-        partAttributes["Socket"] = _socket
-        partAttributes["Family"] = _family
-        partAttributes["Generation"] = _generation
-        partAttributes["Description"] = _description
-        partAttributes["Manufacturer"] = _manufacturer
+        partAttributes["RAM"] = _ram != nil ? _ram : ""
+        partAttributes["Link"] = _link != nil ? _link : ""
+        partAttributes["Specs"] = _specs != nil ? _specs : ""
+        partAttributes["Price"] = _price != nil ? _price : ""
+        partAttributes["Image"] = _image != nil ? _image : ""
+        partAttributes["Model"] = _model != nil ? _model : ""
+        partAttributes["Socket"] = _socket != nil ? _socket : ""
+        partAttributes["Family"] = _family != nil ? _family : ""
+        partAttributes["Generation"] = _generation != nil ? _generation : ""
+        partAttributes["Description"] = _description != nil ? _description : ""
+        partAttributes["Manufacturer"] = _manufacturer != nil ? _manufacturer : ""
         // have to do this because swift is stupid
         if (_isCustom)! {
             partAttributes["IsCustom"] = "true"
@@ -766,15 +855,15 @@ class Motherboard: MyParts {
         //var result: [String: [String : String]] = [:]
         var partAttributes: [String : String] = [:]
         
-        partAttributes["RAM"] = _ram
-        partAttributes["Link"] = _link
-        partAttributes["Size"] = _size
-        partAttributes["Price"] = _price
-        partAttributes["Image"] = _image
-        partAttributes["Model"] = _model
-        partAttributes["Socket"] = _socket
-        partAttributes["Chipset"] = _chipset
-        partAttributes["Manufacturer"] = _manufacturer
+        partAttributes["RAM"] = _ram != nil ? _ram : ""
+        partAttributes["Link"] = _link != nil ? _link : ""
+        partAttributes["Size"] = _size != nil ? _size : ""
+        partAttributes["Price"] = _price != nil ? _price : ""
+        partAttributes["Image"] = _image != nil ? _image : ""
+        partAttributes["Model"] = _model != nil ? _model : ""
+        partAttributes["Socket"] = _socket != nil ? _socket : ""
+        partAttributes["Chipset"] = _chipset != nil ? _chipset : ""
+        partAttributes["Manufacturer"] = _manufacturer != nil ? _manufacturer : ""
         // have to do this because swift is stupid
         if (_isCustom)! {
             partAttributes["IsCustom"] = "true"
@@ -787,7 +876,7 @@ class Motherboard: MyParts {
         
         return partAttributes as NSDictionary
     }
-
+    
     
     var ram: String { get { return _ram! } set { _ram = newValue } }
     var link: String { get { return _link! } set { _link = newValue } }
@@ -868,15 +957,15 @@ class RAM: MyParts {
         //var result: [String: [String : String]] = [:]
         var partAttributes: [String : String] = [:]
         
-        partAttributes["RAM"] = _link
-        partAttributes["Link"] = _link
-        partAttributes["Size"] = _size
-        partAttributes["Specs"] = _specs
-        partAttributes["Price"] = _price
-        partAttributes["Image"] = _image
-        partAttributes["Model"] = _model
-        partAttributes["Speed"] = _speed
-        partAttributes["Manufacturer"] = _manufacturer
+        partAttributes["RAM"] = _ram != nil ? _ram : ""
+        partAttributes["Link"] = _link != nil ? _link : ""
+        partAttributes["Size"] = _size != nil ? _size : ""
+        partAttributes["Specs"] = _specs != nil ? _specs : ""
+        partAttributes["Price"] = _price != nil ? _price : ""
+        partAttributes["Image"] = _image != nil ? _image : ""
+        partAttributes["Model"] = _model != nil ? _model : ""
+        partAttributes["Speed"] = _speed != nil ? _speed : ""
+        partAttributes["Manufacturer"] = _manufacturer != nil ? _manufacturer : ""
         // have to do this because swift is stupid
         if (_isCustom)! {
             partAttributes["IsCustom"] = "true"
@@ -969,15 +1058,15 @@ class Storage: MyParts {
         //var result: [String: [String : String]] = [:]
         var partAttributes: [String : String] = [:]
         
-        partAttributes["Link"] = _link
-        partAttributes["Size"] = _size
-        partAttributes["Speed"] = _speed
-        partAttributes["Class"] = _class
-        partAttributes["Specs"] = _specs
-        partAttributes["Price"] = _price
-        partAttributes["Image"] = _image
-        partAttributes["Model"] = _model
-        partAttributes["Manufacturer"] = _manufacturer
+        partAttributes["Link"] = _link != nil ? _link : ""
+        partAttributes["Size"] = _size != nil ? _size : ""
+        partAttributes["Speed"] = _speed != nil ? _speed : ""
+        partAttributes["Class"] = _class != nil ? _class : ""
+        partAttributes["Specs"] = _specs != nil ? _specs : ""
+        partAttributes["Price"] = _price != nil ? _price : ""
+        partAttributes["Image"] = _image != nil ? _image : ""
+        partAttributes["Model"] = _model != nil ? _model : ""
+        partAttributes["Manufacturer"] = _manufacturer != nil ? _manufacturer : ""
         // have to do this because swift is stupid
         if (_isCustom)! {
             partAttributes["IsCustom"] = "true"
@@ -1071,16 +1160,16 @@ class GPU: MyParts {
         //var result: [String: [String : String]] = [:]
         var partAttributes: [String : String] = [:]
         
-        partAttributes["VRAM"] = _vram
-        partAttributes["Link"] = _link
-        partAttributes["Size"] = _size
-        partAttributes["Class"] = _class
-        partAttributes["Price"] = _price
-        partAttributes["Image"] = _image
-        partAttributes["Brand"] = _brand
-        partAttributes["Model"] = _model
-        partAttributes["Series"] = _series
-        partAttributes["Manufacturer"] = _manufacturer
+        partAttributes["VRAM"] = _vram != nil ? _vram : ""
+        partAttributes["Link"] = _link != nil ? _link : ""
+        partAttributes["Size"] = _size != nil ? _size : ""
+        partAttributes["Class"] = _class != nil ? _class : ""
+        partAttributes["Price"] = _price != nil ? _price : ""
+        partAttributes["Image"] = _image != nil ? _image : ""
+        partAttributes["Brand"] = _brand != nil ? _brand : ""
+        partAttributes["Model"] = _model != nil ? _model : ""
+        partAttributes["Series"] = _series != nil ? _series : ""
+        partAttributes["Manufacturer"] = _manufacturer != nil ? _manufacturer : ""
         // have to do this because swift is stupid
         if (_isCustom)! {
             partAttributes["IsCustom"] = "true"
@@ -1173,14 +1262,14 @@ class PSU: MyParts {
         //var result: [String: [String : String]] = [:]
         var partAttributes: [String : String] = [:]
         
-        partAttributes["Link"] = _link
-        partAttributes["Price"] = _price
-        partAttributes["Image"] = _image
-        partAttributes["Model"] = _model
-        partAttributes["Wattage"] = _wattage
-        partAttributes["Modular"] = _modular
-        partAttributes["Efficiency"] = _efficiency
-        partAttributes["Manufacturer"] = _manufacturer
+        partAttributes["Link"] = _link != nil ? _link : ""
+        partAttributes["Price"] = _price != nil ? _price : ""
+        partAttributes["Image"] = _image != nil ? _image : ""
+        partAttributes["Model"] = _model != nil ? _model : ""
+        partAttributes["Wattage"] = _wattage != nil ? _wattage : ""
+        partAttributes["Modular"] = _modular != nil ? _modular : ""
+        partAttributes["Efficiency"] = _efficiency != nil ? _efficiency : ""
+        partAttributes["Manufacturer"] = _manufacturer != nil ? _manufacturer : ""
         // have to do this because swift is stupid
         if (_isCustom)! {
             partAttributes["IsCustom"] = "true"
@@ -1270,13 +1359,13 @@ class OpticalDrive: MyParts {
         //var result: [String: [String : String]] = [:]
         var partAttributes: [String : String] = [:]
         
-        partAttributes["Link"] = _link
-        partAttributes["Specs"] = _specs
-        partAttributes["Speed"] = _speed
-        partAttributes["Price"] = _price
-        partAttributes["Image"] = _image
-        partAttributes["Model"] = _model
-        partAttributes["Manufacturer"] = _manufacturer
+        partAttributes["Link"] = _link != nil ? _link : ""
+        partAttributes["Specs"] = _specs != nil ? _specs : ""
+        partAttributes["Speed"] = _speed != nil ? _speed : ""
+        partAttributes["Price"] = _price != nil ? _price : ""
+        partAttributes["Image"] = _image != nil ? _image : ""
+        partAttributes["Model"] = _model != nil ? _model : ""
+        partAttributes["Manufacturer"] = _manufacturer != nil ? _manufacturer : ""
         // have to do this because swift is stupid
         if (_isCustom)! {
             partAttributes["IsCustom"] = "true"
@@ -1365,13 +1454,13 @@ class Case: MyParts {
         //var result: [String: [String : String]] = [:]
         var partAttributes: [String : String] = [:]
         
-        partAttributes["Link"] = _link
-        partAttributes["Size"] = _size
-        partAttributes["Color"] = _color
-        partAttributes["Price"] = _price
-        partAttributes["Image"] = _image
-        partAttributes["Model"] = _model
-        partAttributes["Manufacturer"] = _manufacturer
+        partAttributes["Link"] = _link != nil ? _link : ""
+        partAttributes["Size"] = _size != nil ? _size : ""
+        partAttributes["Color"] = _color != nil ? _color : ""
+        partAttributes["Price"] = _price != nil ? _price : ""
+        partAttributes["Image"] = _image != nil ? _image : ""
+        partAttributes["Model"] = _model != nil ? _model : ""
+        partAttributes["Manufacturer"] = _manufacturer != nil ? _manufacturer : ""
         // have to do this because swift is stupid
         if (_isCustom)! {
             partAttributes["IsCustom"] = "true"
@@ -1459,13 +1548,13 @@ class Cooler: MyParts {
         //var result: [String: [String : String]] = [:]
         var partAttributes: [String : String] = [:]
         
-        partAttributes["Link"] = _link
-        partAttributes["Specs"] = _specs
-        partAttributes["Class"] = _class
-        partAttributes["Price"] = _price
-        partAttributes["Image"] = _image
-        partAttributes["Model"] = _model
-        partAttributes["Manufacturer"] = _manufacturer
+        partAttributes["Link"] = _link != nil ? _link : ""
+        partAttributes["Specs"] = _specs != nil ? _specs : ""
+        partAttributes["Class"] = _class != nil ? _class : ""
+        partAttributes["Price"] = _price != nil ? _price : ""
+        partAttributes["Image"] = _image != nil ? _image : ""
+        partAttributes["Model"] = _model != nil ? _model : ""
+        partAttributes["Manufacturer"] = _manufacturer != nil ? _manufacturer : ""
         // have to do this because swift is stupid
         if (_isCustom)! {
             partAttributes["IsCustom"] = "true"

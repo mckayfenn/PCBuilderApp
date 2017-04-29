@@ -29,7 +29,7 @@ class PartFilterInterfaceView: UIView
         stackView?.isLayoutMarginsRelativeArrangement = true
         stackView?.distribution = UIStackViewDistribution.fillEqually
         stackView?.spacing = 15.0
-        stackView?.backgroundColor = UIColor.white
+        //stackView?.backgroundColor = UIColor.yellow
         addSubview(stackView!)
         
         
@@ -61,13 +61,14 @@ class PartFilterInterfaceView: UIView
         for i: Int in 0..<(buttonAttributes.count)
         {
             let button: UIButton = UIButton()
-            button.frame = CGRect(x: 0.0, y: 0.0, width: dimension, height: dimension / 2)
-            button.layer.borderWidth = 2.5
-            button.layer.borderColor = UIColor.lightGray.cgColor
-            button.layer.cornerRadius = 10.0
+            button.frame = CGRect(x: 2.0, y: 2.0, width: dimension * 0.77, height: dimension / 4)
+            button.layer.borderWidth = 4.0
+            button.layer.borderColor = UIColor.darkGray.cgColor
+            button.layer.cornerRadius = 5.0
             
             button.setTitle(buttonAttributes[i].text as String, for: .normal)
-            button.backgroundColor = buttonAttributes[i].color
+            //button.backgroundColor = buttonAttributes[i].color
+            setGradientColors(button: button, colors: [UIColor.gray, UIColor.lightGray], gradientLocations: [0.0,0.5,1.0])
             button.tag = i
             button.addTarget(self, action: #selector(buttonTouchUp), for: .touchUpInside)
             button.addTarget(self, action: #selector(buttonTouchDown), for: .touchDown)
@@ -79,13 +80,23 @@ class PartFilterInterfaceView: UIView
     }
     func buttonTouchDown(button: UIButton)
     {
-        button.backgroundColor = UIColor.cyan
+         //setGradientColors(button: button, colors: [UIColor.darkGray, UIColor.lightGray], gradientLocations: [0.0,0.5,1.0])
+        //setNeedsDisplay()
     }
     func buttonTouchUp(button: UIButton)
     {
         button.backgroundColor = UIColor.cyan
         let buttonName = buttonAttributes[button.tag].text
         delegate?.buttonTouched(specificPartType: buttonName as String)
+    }
+    func setGradientColors(button: UIButton,colors: [UIColor], gradientLocations: [NSNumber])
+    {
+        let gradient: CAGradientLayer = CAGradientLayer()
+        gradient.frame = button.frame
+        gradient.colors = colors.map {$0.cgColor}
+        gradient.locations = gradientLocations
+        button.layer.insertSublayer(gradient, at: 0)
+        
     }
     
     var getButtonAttributes: [(text: NSString, color: UIColor)] {return buttonAttributes}

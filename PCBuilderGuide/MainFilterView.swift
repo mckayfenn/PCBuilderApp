@@ -30,7 +30,8 @@ class MainFilterView: UIView
             screenView = frame.height
         }
         partFilterInterfaceView?.frame = CGRect(x: 0.0, y: 0.0, width: frame.width, height: screenView)
-        partFilterInterfaceView?.backgroundColor = UIColor.white
+        //partFilterInterfaceView?.backgroundColor = UIColor.yellow
+        setGradientColors(viewPassed: partFilterInterfaceView!, colors: [UIColor.white, UIColor.lightGray, UIColor.darkGray], gradientLocations: [0.0,0.5,1.0])
         
         mainScrollView?.addSubview(partFilterInterfaceView!)
         
@@ -39,6 +40,15 @@ class MainFilterView: UIView
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    func setGradientColors(viewPassed: UIView,colors: [UIColor], gradientLocations: [NSNumber])
+    {
+        let gradient: CAGradientLayer = CAGradientLayer()
+        gradient.frame = viewPassed.frame
+        gradient.colors = colors.map {$0.cgColor}
+        gradient.locations = gradientLocations
+        viewPassed.layer.insertSublayer(gradient, at: 0)
+        
     }
     
     var mainScrollingView: UIScrollView? {return mainScrollView}

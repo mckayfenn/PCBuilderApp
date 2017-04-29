@@ -46,9 +46,18 @@ class BuildInterfaceView: UIView {
     
     let storageText: NSString = "Storage"
     private var storageRect: CGRect = CGRect.zero
+    private var storageColor: CGColor = UIColor(red: 200.0, green: 200.0, blue: 200.0, alpha: 0.7).cgColor
     private var storageSelected: Bool = false
     
+    let opticalDriveText: NSString = "Optical Drive"
+    private var opticalDriveRect: CGRect = CGRect.zero
+    private var opticalDriveColor: CGColor = UIColor(red: 200.0, green: 200.0, blue: 200.0, alpha: 0.7).cgColor
+    private var opticalDriveSelected: Bool = false
     
+    let coolerText: NSString = "Cooler"
+    private var coolerRect: CGRect = CGRect.zero
+    private var coolerColor: CGColor = UIColor(red: 200.0, green: 200.0, blue: 200.0, alpha: 0.7).cgColor
+    private var coolerSelected: Bool = false
     
     
     private var noImageBackgroundColor: CGColor = UIColor(red: 200.0, green: 200.0, blue: 200.0, alpha: 0.7).cgColor
@@ -273,13 +282,77 @@ class BuildInterfaceView: UIView {
             let storageTextSize: CGSize = storageText.size(attributes: storageTextAttribute)
             storageText.draw(at: CGPoint(x: storageRect.midX - storageTextSize.width / 2, y: storageRect.midY - storageTextSize.height / 2), withAttributes: storageTextAttribute)
         }
+        
+        
+        // DRAW Optical Drive
+        opticalDriveRect = CGRect.zero
+        opticalDriveRect.size.width = caseRect.width / 6
+        opticalDriveRect.size.height = caseRect.height / 8
+        
+        opticalDriveRect.origin.x = caseRect.midX + caseRect.midX / 4 + caseRect.midX / 6
+        opticalDriveRect.origin.y = caseRect.minY + caseRect.height * 0.1
+        
+        //let psuSelected = true
+        if (opticalDriveSelected) {
+            let opticalDriveImage: UIImage = UIImage(named: "OpticalDrivePhoto.jpg")!
+            let opticalDriveImageView: UIImageView = UIImageView(image: opticalDriveImage)
+            opticalDriveImageView.frame = opticalDriveRect
+            opticalDriveImage.draw(in: opticalDriveRect)
+        }
+        else {
+            context.addRect(opticalDriveRect)
+            context.setStrokeColor(UIColor.orange.cgColor)
+            context.setFillColor(noImageBackgroundColor)
+            context.drawPath(using: .fillStroke)
+            
+            let opticalDriveTextAttribute: [String:Any] = [NSFontAttributeName:UIFont.systemFont(ofSize: opticalDriveRect.width / 6)]
+            let opticalDriveTextSize: CGSize = opticalDriveText.size(attributes: opticalDriveTextAttribute)
+            opticalDriveText.draw(at: CGPoint(x: opticalDriveRect.midX - opticalDriveTextSize.width / 2, y: opticalDriveRect.midY - opticalDriveTextSize.height / 2), withAttributes: opticalDriveTextAttribute)
+        }
+        
+        
+        // DRAW Cooler
+        coolerRect = CGRect.zero
+        if(cpuSelected)
+        {
+            
+            coolerRect.size.width = caseRect.width / 6
+            coolerRect.size.height = caseRect.height / 6
+            
+            coolerRect.origin.x = cpuRect.minX - coolerRect.width * 0.3
+            coolerRect.origin.y = cpuRect.minY - coolerRect.height * 0.3
+
+            //let psuSelected = true
+            if (coolerSelected) {
+                let coolerImage: UIImage = UIImage(named: "CoolerPhoto.jpg")!
+                let coolerImageView: UIImageView = UIImageView(image: coolerImage)
+                coolerImageView.frame = coolerRect
+                coolerImage.draw(in: coolerRect)
+            }
+            else {
+                context.addRect(coolerRect)
+                context.setStrokeColor(UIColor.orange.cgColor)
+                context.setFillColor(noImageBackgroundColor)
+                context.drawPath(using: .fillStroke)
+                
+                let coolerTextAttribute: [String:Any] = [NSFontAttributeName:UIFont.systemFont(ofSize: coolerRect.width / 6)]
+                let coolerTextSize: CGSize = coolerText.size(attributes: coolerTextAttribute)
+                coolerText.draw(at: CGPoint(x: coolerRect.midX - coolerTextSize.width / 2, y: coolerRect.midY - coolerTextSize.height / 2), withAttributes: coolerTextAttribute)
+            }
+        }
+
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch: UITouch = touches.first!
         let touchPoint = touch.location(in: self)
         
-        if (cpuRect.contains(touchPoint)) {
+        
+        if (coolerRect.contains(touchPoint)) {
+            coolerColor = UIColor.cyan.cgColor
+            setNeedsDisplay()
+        }
+        else if (cpuRect.contains(touchPoint)) {
             cpuColor = UIColor.cyan.cgColor
             setNeedsDisplay()
         }
@@ -300,19 +373,31 @@ class BuildInterfaceView: UIView {
             setNeedsDisplay()
         }
         else if (storageRect.contains(touchPoint)) {
+            storageColor = UIColor.cyan.cgColor
+            setNeedsDisplay()
+        }
+        else if (opticalDriveRect.contains(touchPoint)) {
+            opticalDriveColor = UIColor.cyan.cgColor
             setNeedsDisplay()
         }
         else if (caseRect.contains(touchPoint)) {
             caseColor = UIColor.cyan.cgColor
             setNeedsDisplay()
         }
+
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch: UITouch = touches.first!
         let touchPoint = touch.location(in: self)
         
-        if (cpuRect.contains(touchPoint)) {
+        
+        if (coolerRect.contains(touchPoint)) {
+            coolerColor = UIColor.blue.cgColor
+            setNeedsDisplay()
+            delegate?.buttonTouched(partType: coolerText as String)
+        }
+        else if (cpuRect.contains(touchPoint)) {
             cpuColor = UIColor.blue.cgColor
             setNeedsDisplay()
             delegate?.buttonTouched(partType: cpuText as String)
@@ -338,15 +423,21 @@ class BuildInterfaceView: UIView {
             delegate?.buttonTouched(partType: psuText as String)
         }
         else if (storageRect.contains(touchPoint)) {
-            //storageColor = UIColor.blue.cgColor
+            storageColor = UIColor.blue.cgColor
             setNeedsDisplay()
             delegate?.buttonTouched(partType: storageText as String)
+        }
+        else if (opticalDriveRect.contains(touchPoint)) {
+            opticalDriveColor = UIColor.blue.cgColor
+            setNeedsDisplay()
+            delegate?.buttonTouched(partType: opticalDriveText as String)
         }
         else if (caseRect.contains(touchPoint)) {
             caseColor = UIColor.blue.cgColor
             setNeedsDisplay()
             delegate?.buttonTouched(partType: caseText as String)
         }
+
     }
     
     weak var delegate: BuildInterfaceViewDelegate? = nil
@@ -358,6 +449,8 @@ class BuildInterfaceView: UIView {
     var motherboardSelectedBool: Bool {get{return motherboardSelected} set{motherboardSelected = newValue}}
     var storageSelectedBool: Bool {get{return storageSelected} set{storageSelected = newValue}}
     var caseSelectedBool: Bool {get{return caseSelected} set{caseSelected = newValue}}
+    var coolerSelectedBool: Bool {get{return coolerSelected} set{coolerSelected = newValue}}
+    var opticalDriveSelectedBool: Bool {get{return opticalDriveSelected} set{opticalDriveSelected = newValue}}
 
     
 }

@@ -21,10 +21,12 @@ class BuildButtonsView: UIView
     private var caseButton: UIButton? = nil
     private var ramButton: UIButton? = nil
     private var storageButton: UIButton? = nil
+    private var opticalDriveButton: UIButton? = nil
+    private var coolerButton: UIButton? = nil
     
     var buttonStackView: UIStackView? = nil
     
-    
+    private var buttons = [UIButton]()
     
     private var cpuButtonTitle: String = "CPU: Select CPU"
     private var gpuButtonTitle: String = "Graphics Card: Select GPU"
@@ -44,7 +46,7 @@ class BuildButtonsView: UIView
         super.init(frame: frame)
         
         
-        buttonStackView = UIStackView(frame: CGRect(x: 0.0, y: 0.0, width: frame.width, height: frame.height))
+        buttonStackView = UIStackView()
         buttonStackView?.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
         buttonStackView?.layoutMargins = UIEdgeInsets(top: 10, left: 5, bottom: 40, right: 5)
         buttonStackView?.isLayoutMarginsRelativeArrangement = true
@@ -56,88 +58,112 @@ class BuildButtonsView: UIView
         buttonStackView?.spacing = 8.0
         
         cpuButton = UIButton()
-        cpuButton?.backgroundColor = _buttonColor
-        cpuButton?.layer.cornerRadius = 8.0
-        cpuButton?.layer.borderWidth = 1.5
+        cpuButton?.layer.cornerRadius = 7.0
+        cpuButton?.layer.borderWidth = 4.7
         cpuButton?.layer.borderColor = UIColor.lightGray.cgColor
         cpuButton?.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
         cpuButton?.titleLabel?.textAlignment = .center
         cpuButton?.setTitle(cpuButtonTitle, for: .normal)
         cpuButton?.titleLabel?.font = UIFont(name: "Helvetica-Bold", size: 10)
+        buttons.append(cpuButton!)
         cpuButton?.addTarget(self, action: #selector(buttonTouchUp), for: .touchUpInside)
         cpuButton?.addTarget(self, action: #selector(buttonTouchDown), for: .touchDown)
         
         gpuButton = UIButton()
-        gpuButton?.backgroundColor = _buttonColor
-        gpuButton?.layer.cornerRadius = 8.0
-        gpuButton?.layer.borderWidth = 1.5
+        gpuButton?.layer.cornerRadius = 7.0
+        gpuButton?.layer.borderWidth = 4.7
         gpuButton?.layer.borderColor = UIColor.lightGray.cgColor
         gpuButton?.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
         gpuButton?.titleLabel?.textAlignment = .center
         gpuButton?.setTitle(gpuButtonTitle, for: .normal)
         gpuButton?.titleLabel?.font = UIFont(name: "Helvetica-Bold", size: 10)
+        buttons.append(gpuButton!)
         gpuButton?.addTarget(self, action: #selector(buttonTouchUp), for: .touchUpInside)
         gpuButton?.addTarget(self, action: #selector(buttonTouchDown), for: .touchDown)
         
         caseButton = UIButton()
-        caseButton?.backgroundColor = _buttonColor
-        caseButton?.layer.cornerRadius = 8.0
-        caseButton?.layer.borderWidth = 1.5
+        caseButton?.layer.cornerRadius = 7.0
+        caseButton?.layer.borderWidth = 4.7
         caseButton?.layer.borderColor = UIColor.lightGray.cgColor
         caseButton?.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
         caseButton?.titleLabel?.textAlignment = .center
         caseButton?.setTitle(caseButtonTitle, for: .normal)
         caseButton?.titleLabel?.font = UIFont(name: "Helvetica-Bold", size: 10)
+        buttons.append(caseButton!)
         caseButton?.addTarget(self, action: #selector(buttonTouchUp), for: .touchUpInside)
         caseButton?.addTarget(self, action: #selector(buttonTouchDown), for: .touchDown)
         
         psuButton = UIButton()
-        psuButton?.backgroundColor = _buttonColor
-        psuButton?.layer.cornerRadius = 8.0
-        psuButton?.layer.borderWidth = 1.5
+        psuButton?.layer.cornerRadius = 7.0
+        psuButton?.layer.borderWidth = 4.7
         psuButton?.layer.borderColor = UIColor.lightGray.cgColor
         psuButton?.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
         psuButton?.titleLabel?.textAlignment = .center
         psuButton?.setTitle(psuButtonTitle, for: .normal)
         psuButton?.titleLabel?.font = UIFont(name: "Helvetica-Bold", size: 10)
+        buttons.append(psuButton!)
         psuButton?.addTarget(self, action: #selector(buttonTouchUp), for: .touchUpInside)
         psuButton?.addTarget(self, action: #selector(buttonTouchDown), for: .touchDown)
         
         ramButton = UIButton()
-        ramButton?.backgroundColor = _buttonColor
-        ramButton?.layer.cornerRadius = 8.0
-        ramButton?.layer.borderWidth = 1.5
+        ramButton?.layer.cornerRadius = 7.0
+        ramButton?.layer.borderWidth = 4.7
         ramButton?.layer.borderColor = UIColor.lightGray.cgColor
         ramButton?.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
         ramButton?.titleLabel?.textAlignment = .center
         ramButton?.setTitle(ramButtonTitle, for: .normal)
         ramButton?.titleLabel?.font = UIFont(name: "Helvetica-Bold", size: 10)
+        buttons.append(ramButton!)
         ramButton?.addTarget(self, action: #selector(buttonTouchUp), for: .touchUpInside)
         ramButton?.addTarget(self, action: #selector(buttonTouchDown), for: .touchDown)
         
         motherboardButton = UIButton()
-        motherboardButton?.backgroundColor = _buttonColor
-        motherboardButton?.layer.cornerRadius = 8.0
-        motherboardButton?.layer.borderWidth = 1.5
+        motherboardButton?.layer.cornerRadius = 7.0
+        motherboardButton?.layer.borderWidth = 4.7
         motherboardButton?.layer.borderColor = UIColor.lightGray.cgColor
         motherboardButton?.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
         motherboardButton?.titleLabel?.textAlignment = .center
         motherboardButton?.setTitle(motherboardButtonTitle, for: .normal)
         motherboardButton?.titleLabel?.font = UIFont(name: "Helvetica-Bold", size: 10)
+        buttons.append(motherboardButton!)
         motherboardButton?.addTarget(self, action: #selector(buttonTouchUp), for: .touchUpInside)
         motherboardButton?.addTarget(self, action: #selector(buttonTouchDown), for: .touchDown)
         
         storageButton = UIButton()
-        storageButton?.backgroundColor = _buttonColor
-        storageButton?.layer.cornerRadius = 8.0
-        storageButton?.layer.borderWidth = 1.5
+        storageButton?.layer.cornerRadius = 7.0
+        storageButton?.layer.borderWidth = 4.7
         storageButton?.layer.borderColor = UIColor.lightGray.cgColor
         storageButton?.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
         storageButton?.titleLabel?.textAlignment = .center
-        storageButton?.setTitle(motherboardButtonTitle, for: .normal)
+        storageButton?.setTitle(storageButtonTitle, for: .normal)
         storageButton?.titleLabel?.font = UIFont(name: "Helvetica-Bold", size: 10)
+        buttons.append(storageButton!)
         storageButton?.addTarget(self, action: #selector(buttonTouchUp), for: .touchUpInside)
         storageButton?.addTarget(self, action: #selector(buttonTouchDown), for: .touchDown)
+        
+        opticalDriveButton = UIButton()
+        opticalDriveButton?.layer.cornerRadius = 7.0
+        opticalDriveButton?.layer.borderWidth = 4.7
+        opticalDriveButton?.layer.borderColor = UIColor.lightGray.cgColor
+        opticalDriveButton?.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
+        opticalDriveButton?.titleLabel?.textAlignment = .center
+        opticalDriveButton?.setTitle(opticalDriveButtonTitle, for: .normal)
+        opticalDriveButton?.titleLabel?.font = UIFont(name: "Helvetica-Bold", size: 10)
+        buttons.append(opticalDriveButton!)
+        opticalDriveButton?.addTarget(self, action: #selector(buttonTouchUp), for: .touchUpInside)
+        opticalDriveButton?.addTarget(self, action: #selector(buttonTouchDown), for: .touchDown)
+        
+        coolerButton = UIButton()
+        coolerButton?.layer.cornerRadius = 7.0
+        coolerButton?.layer.borderWidth = 4.7
+        coolerButton?.layer.borderColor = UIColor.lightGray.cgColor
+        coolerButton?.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
+        coolerButton?.titleLabel?.textAlignment = .center
+        coolerButton?.setTitle(coolerButtonTitle, for: .normal)
+        coolerButton?.titleLabel?.font = UIFont(name: "Helvetica-Bold", size: 10)
+        buttons.append(coolerButton!)
+        coolerButton?.addTarget(self, action: #selector(buttonTouchUp), for: .touchUpInside)
+        coolerButton?.addTarget(self, action: #selector(buttonTouchDown), for: .touchDown)
         
         buttonStackView?.addArrangedSubview(cpuButton!)
         buttonStackView?.addArrangedSubview(motherboardButton!)
@@ -145,6 +171,9 @@ class BuildButtonsView: UIView
         buttonStackView?.addArrangedSubview(ramButton!)
         buttonStackView?.addArrangedSubview(caseButton!)
         buttonStackView?.addArrangedSubview(psuButton!)
+        buttonStackView?.addArrangedSubview(storageButton!)
+        buttonStackView?.addArrangedSubview(coolerButton!)
+        buttonStackView?.addArrangedSubview(opticalDriveButton!)
         
         
         addSubview(buttonStackView!)
@@ -156,13 +185,14 @@ class BuildButtonsView: UIView
         psuButton?.setTitle(psuButtonTitle, for: .normal)
         ramButton?.setTitle(ramButtonTitle, for: .normal)
         motherboardButton?.setTitle(motherboardButtonTitle, for: .normal)
+        storageButton?.setTitle(storageButtonTitle, for: .normal)
+        coolerButton?.setTitle(coolerButtonTitle, for: .normal)
+        opticalDriveButton?.setTitle(opticalDriveButtonTitle, for: .normal)
         
-        cpuButton?.backgroundColor = _buttonColor
-        caseButton?.backgroundColor = _buttonColor
-        ramButton?.backgroundColor = _buttonColor
-        psuButton?.backgroundColor = _buttonColor
-        motherboardButton?.backgroundColor = _buttonColor
-        gpuButton?.backgroundColor = _buttonColor
+        for button in buttons
+        {
+            setGradientColors(button: button, colors: [UIColor.lightGray, UIColor.darkGray], gradientLocations: [0.0,0.5,1.0])
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -183,6 +213,16 @@ class BuildButtonsView: UIView
         //button.backgroundColor = UIColor.lightGray
         //setNeedsDisplay()
     }
+    
+    func setGradientColors(button: UIButton,colors: [UIColor], gradientLocations: [NSNumber])
+    {
+        let gradient: CAGradientLayer = CAGradientLayer()
+        gradient.frame = CGRect(x: 1.5, y: 1.5, width: frame.width * 0.104, height: frame.height * 0.62)
+        gradient.colors = colors.map {$0.cgColor}
+        gradient.locations = gradientLocations
+        button.layer.insertSublayer(gradient, at: 0)
+    }
+
     weak var delegate: BuildButtonsViewDelegate? = nil
     
     var cpuButtonTitleText: String {get{return cpuButtonTitle} set{cpuButtonTitle = "CPU: " + newValue}}
@@ -192,7 +232,7 @@ class BuildButtonsView: UIView
     var caseButtonTitleText: String {get{return caseButtonTitle} set{caseButtonTitle = "Case: " + newValue}}
     var ramButtonTitleText: String {get{return ramButtonTitle} set{ramButtonTitle = "RAM: " + newValue}}
     var storageButtonTitleText: String {get{return storageButtonTitle} set{storageButtonTitle = "Storage: " + newValue}}
-    var opticalDriveButtonTitleText: String {get{return opticalDriveButtonTitle} set{opticalDriveButtonTitle = "Optical Drive" + newValue}}
+    var opticalDriveButtonTitleText: String {get{return opticalDriveButtonTitle} set{opticalDriveButtonTitle = "Optical Drive: " + newValue}}
     var coolerButtonTitleText: String {get{return coolerButtonTitle} set{coolerButtonTitle = "Cooler: " + newValue}}
     
     var buttonColor: UIColor {get{return _buttonColor} set{_buttonColor = newValue}}

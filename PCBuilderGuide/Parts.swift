@@ -1261,6 +1261,7 @@ class OpticalDrive: MyParts {
         _price = dictionary.value(forKey: "Price") as? String
         _image = dictionary.value(forKey: "Image") as? String
         _model = dictionary.value(forKey: "Model") as? String
+        _class = dictionary.value(forKey: "Class") as? String
         _manufacturer = dictionary.value(forKey: "Manufacturer") as? String
         _isCustom = Bool(dictionary.value(forKey: "IsCustom") as! String)!
     }
@@ -1276,6 +1277,7 @@ class OpticalDrive: MyParts {
         partAttributes["Price"] = _price
         partAttributes["Image"] = _image
         partAttributes["Model"] = _model
+        partAttributes["Class"] = _class
         partAttributes["Manufacturer"] = _manufacturer
         // have to do this because swift is stupid
         if (_isCustom)! {

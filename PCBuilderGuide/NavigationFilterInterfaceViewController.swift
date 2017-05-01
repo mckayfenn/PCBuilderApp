@@ -40,6 +40,8 @@ class NavigationFilterInterfaceViewController: UIViewController, PartFilterInter
         partFilterView = PartFilterInterfaceView()
         
         _inList = partType
+
+        categoryViewController.title = _inList
         
         self.partFilterView?.setButtonAttributes(partType: _partsList.getFirstLevelParts(partType: _inList))
     }
@@ -93,8 +95,9 @@ class NavigationFilterInterfaceViewController: UIViewController, PartFilterInter
     }
     
     func buttonTouched(specificPartType: String) {
+
         _specificPartType = specificPartType
-        
+
         if (!_secondLevel) {
             _firstLevel = specificPartType
         }

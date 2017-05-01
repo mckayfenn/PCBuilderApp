@@ -322,6 +322,10 @@ class PartsList {
         _listOfParts?.addCustomPart(part: part)
     }
     
+    public func sortByPrice(listOfParts: [MyParts], order: String) -> [MyParts] {
+        return (_listOfParts?.sortByPrice(listOfParts: listOfParts, highLow: order))!
+    }
+    
     private func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let documentsDirectory = paths[0]

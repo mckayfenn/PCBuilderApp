@@ -308,6 +308,36 @@ class Parts {
         return true;
     }
     
+    
+    
+    /** 
+     * Sort the given parts by price
+     **/
+    public func sortByPrice(listOfParts: [MyParts], highLow: String) -> [MyParts]{
+        var results: [MyParts] = []
+        
+        switch highLow {
+        case "high":
+            // sort by highest first
+            results = listOfParts.sorted(by: {orderHighest($0._price!, $1._price!)})
+            break
+        case "low":
+            results = listOfParts.sorted(by: {orderLowest($0._price!, $1._price!)})
+            break
+        default:
+            break
+        }
+        
+        return results
+    }
+    
+    func orderHighest(_ s1: String, _ s2: String) -> Bool {
+        return Int(s1)! > Int(s2)!
+    }
+    func orderLowest(_ s1: String, _ s2: String) -> Bool {
+        return Int(s1)! < Int(s2)!
+    }
+    
     /**
      * Get all the parts of a given category
      * EX: getAllPartsForCategory(type: "Processor") -> [i7 7700k, R7 1700, i3 6100, R5 1600x ....]

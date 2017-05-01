@@ -15,6 +15,7 @@ protocol CategoryViewControllerDelegate: class {
 class CategoryViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, SpecificPartPageControllerDelegate {
     
     private var allPartsList: PartsList = PartsList.Instance
+    private var _sortOrder: Bool = true // true will be low, false will be high
     
     private var categoryView: UICollectionView { return view as! UICollectionView }
     private var _partsToShow: [MyParts] = []
@@ -24,6 +25,9 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
     public var usersCurrentParts: [MyParts] { get { return _usersCurrentParts } set { _usersCurrentParts = newValue } }
     
     private var partViewController: SpecificPartPageController? = nil
+    
+    //private var _title: String? = nil
+    //public var pageTitle: String { get { return _title! } set { _title = newValue } }
     
     override func loadView() {
         super.loadView()
@@ -36,11 +40,6 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
         
         view = UICollectionView(frame: CGRect.zero, collectionViewLayout: categoryLayout)
         
-    
-        
-        //partViewController?.delegate = self
-        
-        
         
     }
     
@@ -49,13 +48,15 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // set delegate
         
         categoryView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: NSStringFromClass(UICollectionViewCell.self))
-        //categoryView.backgroundColor = UIColor.white
         
         categoryView.dataSource = self
         categoryView.delegate = self
+        
+        let sort = UIBarButtonItem(title: "Sort Price", style: .plain, target: self, action: #selector(sortPriceSelected))
+        
+        navigationItem.setRightBarButton(sort, animated: true)
         
         self.view.backgroundColor = UIColor.darkGray
     }
@@ -128,6 +129,17 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
     
     func partWasSelected(part: MyParts) {
         delegate?.partWasSelected(part: part)
+    }
+    
+    func sortPriceSelected() {
+        if (!_sortOrder) { // true is low
+            _partsToShow = allPartsList.sortByPrice(listOfParts: _partsToShow, order: "low")
+        }
+        else { // false is high
+            _partsToShow = allPartsList.sortByPrice(listOfParts: _partsToShow, order: "high")
+        }
+        _sortOrder = !_sortOrder
+        categoryView.reloadData()
     }
     
     weak var delegate: CategoryViewControllerDelegate? = nil

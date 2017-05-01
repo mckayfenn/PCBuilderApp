@@ -36,12 +36,6 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
         
         view = UICollectionView(frame: CGRect.zero, collectionViewLayout: categoryLayout)
         
-    
-        
-        //partViewController?.delegate = self
-        
-        
-        
     }
     
     
@@ -49,10 +43,8 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // set delegate
         
         categoryView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: NSStringFromClass(UICollectionViewCell.self))
-        //categoryView.backgroundColor = UIColor.white
         
         categoryView.dataSource = self
         categoryView.delegate = self

@@ -611,8 +611,8 @@ class Parts {
         switch type {
         case "CPU":
             for cpu in _processors {
-                if (cpu._manufacturer == firstLevelSelection && !result.contains(cpu.family)) {
-                    result.append(cpu.family)
+                if (cpu._manufacturer == firstLevelSelection && !result.contains(cpu._family!)) {
+                    result.append(cpu._family!)
                 }
             }
             break
@@ -730,17 +730,17 @@ class CPU: MyParts {
     // Create a CPU from a dictionary
     public init(dictionary: NSDictionary) {
         
-        _ram = dictionary.value(forKey: "RAM") as? String
-        _link = dictionary.value(forKey: "Link") as? String
-        _specs = dictionary.value(forKey: "Specs") as? String
-        _price = dictionary.value(forKey: "Price") as? String
-        _image = dictionary.value(forKey: "Image") as? String
-        _model = dictionary.value(forKey: "Model") as? String
-        _socket = dictionary.value(forKey: "Socket") as? String
-        _family = dictionary.value(forKey: "Family") as? String
-        _generation = dictionary.value(forKey: "Generation") as? String
-        _description = dictionary.value(forKey: "Description") as? String
-        _manufacturer = dictionary.value(forKey: "Manufacturer") as? String
+        _ram = dictionary.value(forKey: "RAM") as? String != nil ? dictionary.value(forKey: "RAM") as? String : ""
+        _link = dictionary.value(forKey: "Link") as? String != nil ? dictionary.value(forKey: "Link") as? String : ""
+        _specs = dictionary.value(forKey: "Specs") as? String != nil ? dictionary.value(forKey: "Specs") as? String : ""
+        _price = dictionary.value(forKey: "Price") as? String != nil ? dictionary.value(forKey: "Price") as? String : ""
+        _image = dictionary.value(forKey: "Image") as? String != nil ? dictionary.value(forKey: "Image") as? String : ""
+        _model = dictionary.value(forKey: "Model") as? String != nil ? dictionary.value(forKey: "Model") as? String : ""
+        _socket = dictionary.value(forKey: "Socket") as? String != nil ? dictionary.value(forKey: "Socket") as? String : ""
+        _family = dictionary.value(forKey: "Family") as? String != nil ? dictionary.value(forKey: "Family") as? String : ""
+        _generation = dictionary.value(forKey: "Generation") as? String != nil ? dictionary.value(forKey: "Generation") as? String : ""
+        _description = dictionary.value(forKey: "Description") as? String != nil ? dictionary.value(forKey: "Description") as? String : ""
+        _manufacturer = dictionary.value(forKey: "Manufacturer") as? String != nil ? dictionary.value(forKey: "Manufacturer") as? String : ""
         _isCustom = Bool(dictionary.value(forKey: "IsCustom") as! String)!
     }
     
@@ -773,18 +773,18 @@ class CPU: MyParts {
         return partAttributes as NSDictionary
     }
     
-    var ram: String { get { return _ram! } set { _ram = newValue } }
-    var link: String { get { return _link! } set {_link = newValue} }
-    var specs: String { get { return _specs! } set {_specs = newValue}}
-    var price: String { get { return _price! } set {_price = newValue}}
-    var image: String { get { return _image! } set{_image = newValue}}
-    var model: String { get { return _model! } set {_model = newValue}}
-    var socket: String { get { return _socket! } set {_socket = newValue}}
-    var family: String { get { return _family! } set {_family = newValue}}
-    var generation: String { get { return _generation! } set{_generation = newValue} }
-    var description: String { get { return _description! } set {_description = newValue}}
-    var manufacturer: String { get { return _manufacturer! } set {_manufacturer = newValue}}
-    var isCustom: Bool {get{return _isCustom! } set{_isCustom = newValue}}
+//    var ram: String { get { return _ram! } set { _ram = newValue } }
+//    var link: String { get { return _link! } set {_link = newValue} }
+//    var specs: String { get { return _specs! } set {_specs = newValue}}
+//    var price: String { get { return _price! } set {_price = newValue}}
+//    var image: String { get { return _image! } set{_image = newValue}}
+//    var model: String { get { return _model! } set {_model = newValue}}
+//    var socket: String { get { return _socket! } set {_socket = newValue}}
+//    var family: String { get { return _family! } set {_family = newValue}}
+//    var generation: String { get { return _generation! } set{_generation = newValue} }
+//    var description: String { get { return _description! } set {_description = newValue}}
+//    var manufacturer: String { get { return _manufacturer! } set {_manufacturer = newValue}}
+//    var isCustom: Bool {get{return _isCustom! } set{_isCustom = newValue}}
     
 }
 
@@ -814,37 +814,19 @@ class Motherboard: MyParts {
     
     internal var _isCustom: Bool?
     
-    public init(link: String, specs: String, price: String, image: String, model: String, socket: String, family: String, generation: String, description: String, manufacturer: String, ram: String, isCustom: Bool)
-    {
-        _link = link
-        _specs = specs
-        _price = price
-        _image = image
-        _model = model
-        _socket = socket
-        _family = family
-        _generation = generation
-        _description = description
-        _manufacturer = manufacturer
-        _ram = ram
-        
-        _isCustom = isCustom
-        
-    }
-    
     
     // Create a motherboard from a dictionary
     public init(dictionary: NSDictionary) {
         //parts motherboard
-        _ram = dictionary.value(forKey: "RAM") as? String
-        _link = dictionary.value(forKey: "Link") as? String
-        _size = dictionary.value(forKey: "Size") as? String
-        _price = dictionary.value(forKey: "Price") as? String
-        _image = dictionary.value(forKey: "Image") as? String
-        _model = dictionary.value(forKey: "Model") as? String
-        _socket = dictionary.value(forKey: "Socket") as? String
-        _chipset = dictionary.value(forKey: "Chipset") as? String
-        _manufacturer = dictionary.value(forKey: "Manufacturer") as? String
+        _ram = dictionary.value(forKey: "RAM") as? String != nil ? dictionary.value(forKey: "RAM") as? String : ""
+        _link = dictionary.value(forKey: "Link") as? String != nil ? dictionary.value(forKey: "Link") as? String : ""
+        _size = dictionary.value(forKey: "Size") as? String != nil ? dictionary.value(forKey: "Size") as? String : ""
+        _price = dictionary.value(forKey: "Price") as? String != nil ? dictionary.value(forKey: "Price") as? String : ""
+        _image = dictionary.value(forKey: "Image") as? String != nil ? dictionary.value(forKey: "Image") as? String : ""
+        _model = dictionary.value(forKey: "Model") as? String != nil ? dictionary.value(forKey: "Model") as? String : ""
+        _socket = dictionary.value(forKey: "Socket") as? String != nil ? dictionary.value(forKey: "Socket") as? String : ""
+        _chipset = dictionary.value(forKey: "Chipset") as? String != nil ? dictionary.value(forKey: "Chipset") as? String : ""
+        _manufacturer = dictionary.value(forKey: "Manufacturer") as? String != nil ? dictionary.value(forKey: "Manufacturer") as? String : ""
         
         _isCustom = Bool(dictionary.value(forKey: "IsCustom") as! String)!
         
@@ -878,17 +860,17 @@ class Motherboard: MyParts {
     }
     
     
-    var ram: String { get { return _ram! } set { _ram = newValue } }
-    var link: String { get { return _link! } set { _link = newValue } }
-    var size: String { get { return _size! } set { _size = newValue } }
-    var price: String { get { return _price! } set { _price = newValue} }
-    var image: String { get { return _image! } set { _image = newValue } }
-    var model: String { get { return _model! } set { _model = newValue } }
-    var socket: String { get { return _socket! } set { _socket = newValue } }
-    var chipset: String { get { return _chipset! } set { _chipset = newValue } }
-    var manufacturer: String { get { return _manufacturer! } set {_manufacturer = newValue}}
-    
-    var isCustom: Bool { get { return _isCustom! } set { _isCustom = newValue } }
+//    var ram: String { get { return _ram! } set { _ram = newValue } }
+//    var link: String { get { return _link! } set { _link = newValue } }
+//    var size: String { get { return _size! } set { _size = newValue } }
+//    var price: String { get { return _price! } set { _price = newValue} }
+//    var image: String { get { return _image! } set { _image = newValue } }
+//    var model: String { get { return _model! } set { _model = newValue } }
+//    var socket: String { get { return _socket! } set { _socket = newValue } }
+//    var chipset: String { get { return _chipset! } set { _chipset = newValue } }
+//    var manufacturer: String { get { return _manufacturer! } set {_manufacturer = newValue}}
+//    
+//    var isCustom: Bool { get { return _isCustom! } set { _isCustom = newValue } }
     
 }
 
@@ -918,37 +900,20 @@ class RAM: MyParts {
     
     internal var _isCustom: Bool?
     
-    public init(link: String, specs: String, price: String, image: String, model: String, socket: String, family: String, generation: String, description: String, manufacturer: String, ram: String, isCustom: Bool)
-    {
-        _link = link
-        _specs = specs
-        _price = price
-        _image = image
-        _model = model
-        _socket = socket
-        _family = family
-        _generation = generation
-        _description = description
-        _manufacturer = manufacturer
-        _ram = ram
-        
-        _isCustom = isCustom
-        
-    }
     
     
     // Create a RAM from a dictionary
     public init(dictionary: NSDictionary) {
         
-        _ram = dictionary.value(forKey: "RAM") as? String
-        _link = dictionary.value(forKey: "Link") as? String
-        _size = dictionary.value(forKey: "Size") as? String
-        _specs = dictionary.value(forKey: "Specs") as? String
-        _price = dictionary.value(forKey: "Price") as? String
-        _image = dictionary.value(forKey: "Image") as? String
-        _model = dictionary.value(forKey: "Model") as? String
-        _speed = dictionary.value(forKey: "Speed") as? String
-        _manufacturer = dictionary.value(forKey: "Manufacturer") as? String
+        _ram = dictionary.value(forKey: "RAM") as? String != nil ? dictionary.value(forKey: "RAM") as? String : ""
+        _link = dictionary.value(forKey: "Link") as? String != nil ? dictionary.value(forKey: "Link") as? String : ""
+        _size = dictionary.value(forKey: "Size") as? String != nil ? dictionary.value(forKey: "Size") as? String : ""
+        _specs = dictionary.value(forKey: "Specs") as? String != nil ? dictionary.value(forKey: "Specs") as? String : ""
+        _price = dictionary.value(forKey: "Price") as? String != nil ? dictionary.value(forKey: "Price") as? String : ""
+        _image = dictionary.value(forKey: "Image") as? String != nil ? dictionary.value(forKey: "Image") as? String : ""
+        _model = dictionary.value(forKey: "Model") as? String != nil ? dictionary.value(forKey: "Model") as? String : ""
+        _speed = dictionary.value(forKey: "Speed") as? String != nil ? dictionary.value(forKey: "Speed") as? String : ""
+        _manufacturer = dictionary.value(forKey: "Manufacturer") as? String != nil ? dictionary.value(forKey: "Manufacturer") as? String : ""
         _isCustom = Bool(dictionary.value(forKey: "IsCustom") as! String)!
     }
     
@@ -979,16 +944,16 @@ class RAM: MyParts {
         return partAttributes as NSDictionary
     }
     
-    var ram: String { get { return _ram! } set { _ram = newValue } }
-    var link: String { get { return _link! } set { _link = newValue } }
-    var size: String { get { return _size! } set { _size = newValue } }
-    var specs: String { get { return _specs! } set { _specs = newValue } }
-    var price: String { get { return _price! } set { _price = newValue } }
-    var image: String { get { return _image! } set { _image = newValue } }
-    var model: String { get { return _model! } set { _model = newValue } }
-    var speed: String { get { return _speed! } set { _speed = newValue } }
-    var manufacturer: String { get { return _manufacturer! } set { _manufacturer = newValue } }
-    var isCustom: Bool { get { return _isCustom! } set { _isCustom = newValue } }
+//    var ram: String { get { return _ram! } set { _ram = newValue } }
+//    var link: String { get { return _link! } set { _link = newValue } }
+//    var size: String { get { return _size! } set { _size = newValue } }
+//    var specs: String { get { return _specs! } set { _specs = newValue } }
+//    var price: String { get { return _price! } set { _price = newValue } }
+//    var image: String { get { return _image! } set { _image = newValue } }
+//    var model: String { get { return _model! } set { _model = newValue } }
+//    var speed: String { get { return _speed! } set { _speed = newValue } }
+//    var manufacturer: String { get { return _manufacturer! } set { _manufacturer = newValue } }
+//    var isCustom: Bool { get { return _isCustom! } set { _isCustom = newValue } }
     
 }
 
@@ -1019,37 +984,20 @@ class Storage: MyParts {
     
     internal var _isCustom: Bool?
     
-    public init(link: String, specs: String, price: String, image: String, model: String, socket: String, family: String, generation: String, description: String, manufacturer: String, ram: String, isCustom: Bool)
-    {
-        _link = link
-        _specs = specs
-        _price = price
-        _image = image
-        _model = model
-        _socket = socket
-        _family = family
-        _generation = generation
-        _description = description
-        _manufacturer = manufacturer
-        _ram = ram
-        
-        _isCustom = isCustom
-        
-    }
     
     
     // Create a Storage from a dictionary
     public init(dictionary: NSDictionary) {
         
-        _link = dictionary.value(forKey: "Link") as? String
-        _size = dictionary.value(forKey: "Size") as? String
-        _speed = dictionary.value(forKey: "Speed") as? String
-        _class = dictionary.value(forKey: "Class") as? String
-        _specs = dictionary.value(forKey: "Specs") as? String
-        _price = dictionary.value(forKey: "Price") as? String
-        _image = dictionary.value(forKey: "Image") as? String
-        _model = dictionary.value(forKey: "Model") as? String
-        _manufacturer = dictionary.value(forKey: "Manufacturer") as? String
+        _link = dictionary.value(forKey: "Link") as? String != nil ? dictionary.value(forKey: "Link") as? String : ""
+        _size = dictionary.value(forKey: "Size") as? String != nil ? dictionary.value(forKey: "Size") as? String : ""
+        _speed = dictionary.value(forKey: "Speed") as? String != nil ? dictionary.value(forKey: "Speed") as? String : ""
+        _class = dictionary.value(forKey: "Class") as? String != nil ? dictionary.value(forKey: "Class") as? String : ""
+        _specs = dictionary.value(forKey: "Specs") as? String != nil ? dictionary.value(forKey: "Specs") as? String : ""
+        _price = dictionary.value(forKey: "Price") as? String != nil ? dictionary.value(forKey: "Price") as? String : ""
+        _image = dictionary.value(forKey: "Image") as? String != nil ? dictionary.value(forKey: "Image") as? String : ""
+        _model = dictionary.value(forKey: "Model") as? String != nil ? dictionary.value(forKey: "Model") as? String : ""
+        _manufacturer = dictionary.value(forKey: "Manufacturer") as? String != nil ? dictionary.value(forKey: "Manufacturer") as? String : ""
         _isCustom = Bool(dictionary.value(forKey: "IsCustom") as! String)!
     }
     
@@ -1080,16 +1028,16 @@ class Storage: MyParts {
         return partAttributes as NSDictionary
     }
     
-    var link: String { get { return _link! } set { _link = newValue } }
-    var size: String { get { return _size! } set { _size = newValue } }
-    var speed: String { get { return _speed! } set { _speed = newValue } }
-    var `class`: String { get { return _class! } set { _class = newValue } }
-    var specs: String { get { return _specs! } set { _specs = newValue } }
-    var price: String { get { return _price! } set { _price = newValue } }
-    var image: String { get { return _image! } set { _image = newValue } }
-    var model: String { get { return _model! } set { _model = newValue } }
-    var manufacturer: String { get { return _manufacturer! } set { _manufacturer = newValue } }
-    var isCustom: Bool { get { return _isCustom! } set { _isCustom = newValue } }
+//    var link: String { get { return _link! } set { _link = newValue } }
+//    var size: String { get { return _size! } set { _size = newValue } }
+//    var speed: String { get { return _speed! } set { _speed = newValue } }
+//    var `class`: String { get { return _class! } set { _class = newValue } }
+//    var specs: String { get { return _specs! } set { _specs = newValue } }
+//    var price: String { get { return _price! } set { _price = newValue } }
+//    var image: String { get { return _image! } set { _image = newValue } }
+//    var model: String { get { return _model! } set { _model = newValue } }
+//    var manufacturer: String { get { return _manufacturer! } set { _manufacturer = newValue } }
+//    var isCustom: Bool { get { return _isCustom! } set { _isCustom = newValue } }
     
 }
 
@@ -1120,38 +1068,21 @@ class GPU: MyParts {
     
     internal var _isCustom: Bool?
     
-    public init(link: String, specs: String, price: String, image: String, model: String, socket: String, family: String, generation: String, description: String, manufacturer: String, ram: String, isCustom: Bool)
-    {
-        _link = link
-        _specs = specs
-        _price = price
-        _image = image
-        _model = model
-        _socket = socket
-        _family = family
-        _generation = generation
-        _description = description
-        _manufacturer = manufacturer
-        _ram = ram
-        
-        _isCustom = isCustom
-        
-    }
     
     
     // Create a GPU from a dictionary
     public init(dictionary: NSDictionary) {
         
-        _vram = dictionary.value(forKey: "VRAM") as? String
-        _link = dictionary.value(forKey: "Link") as? String
-        _size = dictionary.value(forKey: "Size") as? String
-        _class = dictionary.value(forKey: "Class") as? String
-        _price = dictionary.value(forKey: "Price") as? String
-        _image = dictionary.value(forKey: "Image") as? String
-        _brand = dictionary.value(forKey: "Brand") as? String
-        _model = dictionary.value(forKey: "Model") as? String
-        _series = dictionary.value(forKey: "Series") as? String
-        _manufacturer = dictionary.value(forKey: "Manufacturer") as? String
+        _vram = dictionary.value(forKey: "VRAM") as? String != nil ? dictionary.value(forKey: "VRAM") as? String : ""
+        _link = dictionary.value(forKey: "Link") as? String != nil ? dictionary.value(forKey: "Link") as? String : ""
+        _size = dictionary.value(forKey: "Size") as? String != nil ? dictionary.value(forKey: "Size") as? String : ""
+        _class = dictionary.value(forKey: "Class") as? String != nil ? dictionary.value(forKey: "Class") as? String : ""
+        _price = dictionary.value(forKey: "Price") as? String != nil ? dictionary.value(forKey: "Price") as? String : ""
+        _image = dictionary.value(forKey: "Image") as? String != nil ? dictionary.value(forKey: "Image") as? String : ""
+        _brand = dictionary.value(forKey: "Brand") as? String != nil ? dictionary.value(forKey: "Brand") as? String : ""
+        _model = dictionary.value(forKey: "Model") as? String != nil ? dictionary.value(forKey: "Model") as? String : ""
+        _series = dictionary.value(forKey: "Series") as? String != nil ? dictionary.value(forKey: "Series") as? String : ""
+        _manufacturer = dictionary.value(forKey: "Manufacturer") as? String != nil ? dictionary.value(forKey: "Manufacturer") as? String : ""
         _isCustom = Bool(dictionary.value(forKey: "IsCustom") as! String)!
     }
     
@@ -1183,17 +1114,17 @@ class GPU: MyParts {
         return partAttributes as NSDictionary
     }
     
-    var vram: String { get { return _vram! } set { _vram = newValue } }
-    var link: String { get { return _link! } set { _link = newValue } }
-    var size: String { get { return _size! } set { _size = newValue } }
-    var `class`: String { get { return _class! } set { _class = newValue } }
-    var price: String { get { return _price! } set { _price = newValue } }
-    var image: String { get { return _image! } set { _image = newValue } }
-    var brand: String { get { return _brand! } set { _brand = newValue } }
-    var model: String { get { return _model! } set { _model = newValue } }
-    var series: String { get { return _series! } set { _series = newValue } }
-    var manufacturer: String { get { return _manufacturer! } set { _manufacturer = newValue } }
-    var isCustom: Bool { get { return _isCustom! } set { _isCustom = newValue } }
+//    var vram: String { get { return _vram! } set { _vram = newValue } }
+//    var link: String { get { return _link! } set { _link = newValue } }
+//    var size: String { get { return _size! } set { _size = newValue } }
+//    var `class`: String { get { return _class! } set { _class = newValue } }
+//    var price: String { get { return _price! } set { _price = newValue } }
+//    var image: String { get { return _image! } set { _image = newValue } }
+//    var brand: String { get { return _brand! } set { _brand = newValue } }
+//    var model: String { get { return _model! } set { _model = newValue } }
+//    var series: String { get { return _series! } set { _series = newValue } }
+//    var manufacturer: String { get { return _manufacturer! } set { _manufacturer = newValue } }
+//    var isCustom: Bool { get { return _isCustom! } set { _isCustom = newValue } }
     
 }
 
@@ -1224,36 +1155,18 @@ class PSU: MyParts {
     
     internal var _isCustom: Bool?
     
-    public init(link: String, specs: String, price: String, image: String, model: String, socket: String, family: String, generation: String, description: String, manufacturer: String, ram: String, isCustom: Bool)
-    {
-        _link = link
-        _specs = specs
-        _price = price
-        _image = image
-        _model = model
-        _socket = socket
-        _family = family
-        _generation = generation
-        _description = description
-        _manufacturer = manufacturer
-        _ram = ram
-        
-        _isCustom = isCustom
-        
-    }
-    
     
     // Create a PSU from a dictionary
     public init(dictionary: NSDictionary) {
         
-        _link = dictionary.value(forKey: "Link") as? String
-        _price = dictionary.value(forKey: "Price") as? String
-        _image = dictionary.value(forKey: "Image") as? String
-        _model = dictionary.value(forKey: "Model") as? String
-        _wattage = dictionary.value(forKey: "Wattage") as? String
-        _modular = dictionary.value(forKey: "Modular") as? String
-        _efficiency = dictionary.value(forKey: "Efficiency") as? String
-        _manufacturer = dictionary.value(forKey: "Manufacturer") as? String
+        _link = dictionary.value(forKey: "Link") as? String != nil ? dictionary.value(forKey: "Link") as? String : ""
+        _price = dictionary.value(forKey: "Price") as? String != nil ? dictionary.value(forKey: "Price") as? String : ""
+        _image = dictionary.value(forKey: "Image") as? String != nil ? dictionary.value(forKey: "Image") as? String : ""
+        _model = dictionary.value(forKey: "Model") as? String != nil ? dictionary.value(forKey: "Model") as? String : ""
+        _wattage = dictionary.value(forKey: "Wattage") as? String != nil ? dictionary.value(forKey: "Wattage") as? String : ""
+        _modular = dictionary.value(forKey: "Modular") as? String != nil ? dictionary.value(forKey: "Modular") as? String : ""
+        _efficiency = dictionary.value(forKey: "Efficiency") as? String != nil ? dictionary.value(forKey: "Efficiency") as? String : ""
+        _manufacturer = dictionary.value(forKey: "Manufacturer") as? String != nil ? dictionary.value(forKey: "Manufacturer") as? String : ""
         _isCustom = Bool(dictionary.value(forKey: "IsCustom") as! String)!
     }
     
@@ -1282,16 +1195,6 @@ class PSU: MyParts {
         
         return partAttributes as NSDictionary
     }
-    
-    var link: String { get { return _link! } set { _link = newValue } }
-    var price: String { get { return _price! } set { _price = newValue } }
-    var image: String { get { return _image! } set { _image = newValue } }
-    var model: String { get { return _model! } set { _model = newValue } }
-    var wattage: String { get { return _wattage! } set { _wattage = newValue } }
-    var modular: String { get { return _modular! } set { _modular = newValue } }
-    var efficiency: String { get { return _efficiency! } set { _efficiency = newValue } }
-    var manufacturer: String { get { return _manufacturer! } set { _manufacturer = newValue } }
-    var isCustom: Bool { get { return _isCustom! } set { _isCustom = newValue } }
     
 }
 
@@ -1322,36 +1225,18 @@ class OpticalDrive: MyParts {
     
     internal var _isCustom: Bool?
     
-    public init(link: String, specs: String, price: String, image: String, model: String, socket: String, family: String, generation: String, description: String, manufacturer: String, ram: String, isCustom: Bool)
-    {
-        _link = link
-        _specs = specs
-        _price = price
-        _image = image
-        _model = model
-        _socket = socket
-        _family = family
-        _generation = generation
-        _description = description
-        _manufacturer = manufacturer
-        _ram = ram
-        
-        _isCustom = isCustom
-        
-    }
-    
     
     // Create a Optical Drive from a dictionary
     public init(dictionary: NSDictionary) {
         
-        _link = dictionary.value(forKey: "Link") as? String
-        _specs = dictionary.value(forKey: "Specs") as? String
-        _speed = dictionary.value(forKey: "Speed") as? String
-        _price = dictionary.value(forKey: "Price") as? String
-        _image = dictionary.value(forKey: "Image") as? String
-        _model = dictionary.value(forKey: "Model") as? String
-        _class = dictionary.value(forKey: "Class") as? String
-        _manufacturer = dictionary.value(forKey: "Manufacturer") as? String
+        _link = dictionary.value(forKey: "Link") as? String != nil ? dictionary.value(forKey: "Link") as? String : ""
+        _specs = dictionary.value(forKey: "Specs") as? String != nil ? dictionary.value(forKey: "Specs") as? String : ""
+        _speed = dictionary.value(forKey: "Speed") as? String != nil ? dictionary.value(forKey: "Speed") as? String : ""
+        _price = dictionary.value(forKey: "Price") as? String != nil ? dictionary.value(forKey: "Price") as? String : ""
+        _image = dictionary.value(forKey: "Image") as? String != nil ? dictionary.value(forKey: "Image") as? String : ""
+        _model = dictionary.value(forKey: "Model") as? String != nil ? dictionary.value(forKey: "Model") as? String : ""
+        _class = dictionary.value(forKey: "Class") as? String != nil ? dictionary.value(forKey: "Class") as? String : ""
+        _manufacturer = dictionary.value(forKey: "Manufacturer") as? String != nil ? dictionary.value(forKey: "Manufacturer") as? String : ""
         _isCustom = Bool(dictionary.value(forKey: "IsCustom") as! String)!
     }
     
@@ -1383,15 +1268,6 @@ class OpticalDrive: MyParts {
         return partAttributes as NSDictionary
     }
     
-    var link: String { get { return _link! } set { _link = newValue } }
-    var specs: String { get { return _specs! } set { _specs = newValue } }
-    var speed: String { get { return _speed! } set { _speed = newValue } }
-    var price: String { get { return _price! } set { _price = newValue } }
-    var image: String { get { return _image! } set { _image = newValue } }
-    var model: String { get { return _model! } set { _model = newValue } }
-    var manufacturer: String { get { return _manufacturer! } set { _manufacturer = newValue } }
-    var isCustom: Bool { get { return _isCustom! } set { _isCustom = newValue } }
-    
 }
 
 
@@ -1421,35 +1297,17 @@ class Case: MyParts {
     
     internal var _isCustom: Bool?
     
-    public init(link: String, specs: String, price: String, image: String, model: String, socket: String, family: String, generation: String, description: String, manufacturer: String, ram: String, isCustom: Bool)
-    {
-        _link = link
-        _specs = specs
-        _price = price
-        _image = image
-        _model = model
-        _socket = socket
-        _family = family
-        _generation = generation
-        _description = description
-        _manufacturer = manufacturer
-        _ram = ram
-        
-        _isCustom = isCustom
-        
-    }
-    
     
     // Create a Case from a dictionary
     public init(dictionary: NSDictionary) {
         
-        _link = dictionary.value(forKey: "Link") as? String
-        _size = dictionary.value(forKey: "Size") as? String
-        _color = dictionary.value(forKey: "Color") as? String
-        _price = dictionary.value(forKey: "Price") as? String
-        _image = dictionary.value(forKey: "Image") as? String
-        _model = dictionary.value(forKey: "Model") as? String
-        _manufacturer = dictionary.value(forKey: "Manufacturer") as? String
+        _link = dictionary.value(forKey: "Link") as? String != nil ? dictionary.value(forKey: "Link") as? String : ""
+        _size = dictionary.value(forKey: "Size") as? String != nil ? dictionary.value(forKey: "Size") as? String : ""
+        _color = dictionary.value(forKey: "Color") as? String != nil ? dictionary.value(forKey: "Color") as? String : ""
+        _price = dictionary.value(forKey: "Price") as? String != nil ? dictionary.value(forKey: "Price") as? String : ""
+        _image = dictionary.value(forKey: "Image") as? String != nil ? dictionary.value(forKey: "Image") as? String : ""
+        _model = dictionary.value(forKey: "Model") as? String != nil ? dictionary.value(forKey: "Model") as? String : ""
+        _manufacturer = dictionary.value(forKey: "Manufacturer") as? String != nil ? dictionary.value(forKey: "Manufacturer") as? String : ""
         _isCustom = Bool(dictionary.value(forKey: "IsCustom") as! String)!
     }
     
@@ -1478,14 +1336,6 @@ class Case: MyParts {
         return partAttributes as NSDictionary
     }
     
-    var link: String { get { return _link! } set { _link = newValue } }
-    var size: String { get { return _size! } set { _size = newValue } }
-    var color: String { get { return _color! } set { _color = newValue } }
-    var price: String { get { return _price! } set { _price = newValue } }
-    var image: String { get { return _image! } set { _image = newValue } }
-    var model: String { get { return _model! } set { _model = newValue } }
-    var manufacturer: String { get { return _manufacturer! } set { _manufacturer = newValue } }
-    var isCustom: Bool { get { return _isCustom! } set { _isCustom = newValue } }
     
 }
 
@@ -1515,35 +1365,18 @@ class Cooler: MyParts {
     
     internal var _isCustom: Bool?
     
-    public init(link: String, specs: String, price: String, image: String, model: String, socket: String, family: String, generation: String, description: String, manufacturer: String, ram: String, isCustom: Bool)
-    {
-        _link = link
-        _specs = specs
-        _price = price
-        _image = image
-        _model = model
-        _socket = socket
-        _family = family
-        _generation = generation
-        _description = description
-        _manufacturer = manufacturer
-        _ram = ram
-        
-        _isCustom = isCustom
-        
-    }
     
     
     // Create a Cooler from a dictionary
     public init(dictionary: NSDictionary) {
         
-        _link = dictionary.value(forKey: "Link") as? String
-        _specs = dictionary.value(forKey: "Specs") as? String
-        _class = dictionary.value(forKey: "Class") as? String
-        _price = dictionary.value(forKey: "Price") as? String
-        _image = dictionary.value(forKey: "Image") as? String
-        _model = dictionary.value(forKey: "Model") as? String
-        _manufacturer = dictionary.value(forKey: "Manufacturer") as? String
+        _link = dictionary.value(forKey: "Link") as? String != nil ? dictionary.value(forKey: "Link") as? String : ""
+        _specs = dictionary.value(forKey: "Specs") as? String != nil ? dictionary.value(forKey: "Specs") as? String : ""
+        _class = dictionary.value(forKey: "Class") as? String != nil ? dictionary.value(forKey: "Class") as? String : ""
+        _price = dictionary.value(forKey: "Price") as? String != nil ? dictionary.value(forKey: "Price") as? String : ""
+        _image = dictionary.value(forKey: "Image") as? String != nil ? dictionary.value(forKey: "Image") as? String : ""
+        _model = dictionary.value(forKey: "Model") as? String != nil ? dictionary.value(forKey: "Model") as? String : ""
+        _manufacturer = dictionary.value(forKey: "Manufacturer") as? String != nil ? dictionary.value(forKey: "Manufacturer") as? String : ""
         _isCustom = Bool(dictionary.value(forKey: "IsCustom") as! String)!
     }
     
@@ -1571,15 +1404,6 @@ class Cooler: MyParts {
         
         return partAttributes as NSDictionary
     }
-    
-    var link: String { get { return _link! } set { _link = newValue } }
-    var specs: String { get { return _specs! } set { _specs = newValue } }
-    var `class`: String { get { return _class! } set { _class = newValue } }
-    var price: String { get { return _price! } set { _price = newValue } }
-    var image: String { get { return _image! } set { _image = newValue } }
-    var model: String { get { return _model! } set { _model = newValue } }
-    var manufacturer: String { get { return _manufacturer! } set { _manufacturer = newValue } }
-    var isCustom: Bool { get { return _isCustom! } set { _isCustom = newValue } }
     
 }
 

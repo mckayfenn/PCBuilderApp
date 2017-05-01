@@ -18,51 +18,7 @@ class CustomPartView: UIView, UITextFieldDelegate
     private var partTypeField: UITextField? = nil
     private var partTypeLabel: UILabel? = nil
     
-    private var manufacturerStackView: UIStackView? = nil
-    private var manufacturerTypeField: UITextField? = nil
-    private var manufacturerTypeLabel: UILabel? = nil
-    
-    private var modelStackView: UIStackView? = nil
-    private var modelTypeField: UITextField? = nil
-    private var modelTypeLabel: UILabel? = nil
-    
-    private var specsStackView: UIStackView? = nil
-    private var specsTypeField: UITextField? = nil
-    private var specsTypeLabel: UILabel? = nil
-    
-    private var priceStackView: UIStackView? = nil
-    private var priceTypeField: UITextField? = nil
-    private var priceTypeLabel: UILabel? = nil
-    
-    private var familyStackView: UIStackView? = nil
-    private var familyTypeField: UITextField? = nil
-    private var familyTypeLabel: UILabel? = nil
-    
-    private var socketStackView: UIStackView? = nil
-    private var socketTypeField: UITextField? = nil
-    private var socketTypeLabel: UILabel? = nil
-    
-    private var generationStackView: UIStackView? = nil
-    private var generationTypeField: UITextField? = nil
-    private var generationTypeLabel: UILabel? = nil
-    
-    private var linkStackView: UIStackView? = nil
-    private var linkTypeField: UITextField? = nil
-    private var linkTypeLabel: UILabel? = nil
-    
-    private var imageStackView: UIStackView? = nil
-    private var imageTypeField: UITextField? = nil
-    private var imageTypeLabel: UILabel? = nil
-    
-    private var descriptionStackView: UIStackView? = nil
-    private var descriptionTypeField: UITextField? = nil
-    private var descriptionTypeLabel: UILabel? = nil
-    
-    private var ramStackView: UIStackView? = nil
-    private var ramTypeField: UITextField? = nil
-    private var ramTypeLabel: UILabel? = nil
-    
-    private var fields: [String] = ["Manufacturer: ", "Model: ", "Price: ", "Brand: ", "Specs: ", "Ram Type: ", "Speed: ", "Socket: ", "Chipset: ", "Link: ", "Image URL: "]
+    private var fields: [String] = ["Manufacturer: ", "Model: ", "Price: ", "Brand: ", "Specs: ", "Ram Type: ", "Speed: ", "Socket: ", "Chipset: ", "Link: ", "Image URL: ", "Family: "]
     
     private var _partCreating: String? = nil
       
@@ -88,445 +44,80 @@ class CustomPartView: UIView, UITextFieldDelegate
         stackView?.backgroundColor = UIColor.white
         setGradientColors(viewPassed: stackView!, colors: [UIColor.white, UIColor.lightGray], gradientLocations: [0.0,0.5,1.0])
         scrollView?.addSubview(stackView!)
-//
-//        
-//        partStackView = UIStackView(frame: CGRect(x: 0.0, y: 0.0, width: frame.width, height: frame.height))
-//        partStackView?.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
-//        partStackView?.axis = UILayoutConstraintAxis.horizontal
-//        //partStackView?.layoutMargins = UIEdgeInsets(top: 10, left: 35, bottom: 10, right: 35)
-//        //partStackView?.isLayoutMarginsRelativeArrangement = true
-//        partStackView?.distribution = UIStackViewDistribution.fill
-//        partStackView?.spacing = 5.0
-//        partStackView?.backgroundColor = UIColor.white
-//        
-//        partTypeLabel = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: 150, height: 30))
-//        partTypeLabel?.text = "Part: "
-//        partTypeLabel?.font = UIFont(name: "Helvetica", size: 15)
-//        //partTypeLabel?.textColor = UIColor.black
-//        partStackView?.addArrangedSubview(partTypeLabel!)
-//        
-//        partTypeField = UITextField(frame: CGRect(x: 0.0, y: 0.0, width: 150, height: frame.width))
-//        partTypeField?.allowsEditingTextAttributes = true
-//        partTypeField?.placeholder = "Enter your text here"
-//        partTypeField?.font = UIFont.systemFont(ofSize: 15)
-//        partTypeField?.keyboardType = UIKeyboardType.default
-//        partTypeField?.returnKeyType = UIReturnKeyType.done
-//        partTypeField?.clearButtonMode = UITextFieldViewMode.whileEditing
-//        partTypeField?.borderStyle = UITextBorderStyle.roundedRect
-//        partTypeField?.autocorrectionType = UITextAutocorrectionType.no
-//        partTypeField?.backgroundColor = UIColor.lightGray
-//        partTypeField?.clearsOnBeginEditing = true
-//        partTypeField?.tag = 0
-//        partTypeField?.delegate = self
-//        partStackView?.addArrangedSubview(partTypeField!)
-//        //stackView?.addArrangedSubview(partStackView!)
-//        
-//        
-//        manufacturerStackView = UIStackView(frame: CGRect(x: 0.0, y: 0.0, width: frame.width, height: frame.height))
-//        manufacturerStackView?.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
-//        manufacturerStackView?.axis = UILayoutConstraintAxis.horizontal
-//        //manufacturerStackView?.layoutMargins = UIEdgeInsets(top: 10, left: 35, bottom: 10, right: 35)
-//        //manufacturerStackView?.isLayoutMarginsRelativeArrangement = true
-//        manufacturerStackView?.distribution = UIStackViewDistribution.fill
-//        manufacturerStackView?.spacing = 5.0
-//        manufacturerStackView?.backgroundColor = UIColor.white
-//        
-//        manufacturerTypeLabel = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: 150, height: 30))
-//        manufacturerTypeLabel?.text = "Manufacturer: "
-//        manufacturerTypeLabel?.font = UIFont(name: "Helvetica", size: 15)
-//        //manufacturerTypeLabel?.textColor = UIColor.black
-//        manufacturerStackView?.addArrangedSubview(manufacturerTypeLabel!)
-//        
-//        manufacturerTypeField = UITextField(frame: CGRect(x: 0.0, y: 0.0, width: 150, height: frame.width))
-//        manufacturerTypeField?.allowsEditingTextAttributes = true
-//        manufacturerTypeField?.placeholder = "Enter your text here"
-//        manufacturerTypeField?.font = UIFont.systemFont(ofSize: 15)
-//        manufacturerTypeField?.keyboardType = UIKeyboardType.default
-//        manufacturerTypeField?.returnKeyType = UIReturnKeyType.done
-//        manufacturerTypeField?.clearButtonMode = UITextFieldViewMode.whileEditing
-//        manufacturerTypeField?.borderStyle = UITextBorderStyle.roundedRect
-//        manufacturerTypeField?.autocorrectionType = UITextAutocorrectionType.no
-//        manufacturerTypeField?.backgroundColor = UIColor.lightGray
-//        manufacturerTypeField?.clearsOnBeginEditing = true
-//        manufacturerTypeField?.tag = 1
-//        manufacturerTypeField?.delegate = self
-//        manufacturerStackView?.addArrangedSubview(manufacturerTypeField!)
-//        stackView?.addArrangedSubview(manufacturerStackView!)
-//        
-//        
-//        modelStackView = UIStackView(frame: CGRect(x: 0.0, y: 0.0, width: frame.width, height: frame.height))
-//        modelStackView?.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
-//        modelStackView?.axis = UILayoutConstraintAxis.horizontal
-//        //modelStackView?.layoutMargins = UIEdgeInsets(top: 10, left: 35, bottom: 10, right: 35)
-//        //modelStackView?.isLayoutMarginsRelativeArrangement = true
-//        modelStackView?.distribution = UIStackViewDistribution.fill
-//        modelStackView?.spacing = 5.0
-//        modelStackView?.backgroundColor = UIColor.white
-//        
-//        modelTypeLabel = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: 150, height: 30))
-//        modelTypeLabel?.text = "Model: "
-//        modelTypeLabel?.font = UIFont(name: "Helvetica", size: 15)
-//        //modelTypeLabel?.textColor = UIColor.black
-//        modelStackView?.addArrangedSubview(modelTypeLabel!)
-//        
-//        modelTypeField = UITextField(frame: CGRect(x: 0.0, y: 0.0, width: 150, height: frame.width))
-//        modelTypeField?.allowsEditingTextAttributes = true
-//        modelTypeField?.placeholder = "Enter your text here"
-//        modelTypeField?.font = UIFont.systemFont(ofSize: 15)
-//        modelTypeField?.keyboardType = UIKeyboardType.default
-//        modelTypeField?.returnKeyType = UIReturnKeyType.done
-//        modelTypeField?.clearButtonMode = UITextFieldViewMode.whileEditing
-//        modelTypeField?.borderStyle = UITextBorderStyle.roundedRect
-//        modelTypeField?.autocorrectionType = UITextAutocorrectionType.no
-//        modelTypeField?.backgroundColor = UIColor.lightGray
-//        modelTypeField?.clearsOnBeginEditing = true
-//        modelTypeField?.tag = 2
-//        modelTypeField?.delegate = self
-//        modelStackView?.addArrangedSubview(modelTypeField!)
-//        stackView?.addArrangedSubview(modelStackView!)
-//        
-//        
-//        specsStackView = UIStackView(frame: CGRect(x: 0.0, y: 0.0, width: frame.width, height: frame.height))
-//        specsStackView?.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
-//        specsStackView?.axis = UILayoutConstraintAxis.horizontal
-//        //specsStackView?.layoutMargins = UIEdgeInsets(top: 10, left: 35, bottom: 10, right: 35)
-//        //specsStackView?.isLayoutMarginsRelativeArrangement = true
-//        specsStackView?.distribution = UIStackViewDistribution.fill
-//        specsStackView?.spacing = 5.0
-//        specsStackView?.backgroundColor = UIColor.white
-//        
-//        specsTypeLabel = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: 150, height: 30))
-//        specsTypeLabel?.text = "Specs: "
-//        specsTypeLabel?.font = UIFont(name: "Helvetica", size: 15)
-//        //partTypeLabel?.textColor = UIColor.black
-//        specsStackView?.addArrangedSubview(specsTypeLabel!)
-//        
-//        specsTypeField = UITextField(frame: CGRect(x: 0.0, y: 0.0, width: 150, height: frame.width))
-//        specsTypeField?.allowsEditingTextAttributes = true
-//        specsTypeField?.placeholder = "Enter your text here"
-//        specsTypeField?.font = UIFont.systemFont(ofSize: 15)
-//        specsTypeField?.keyboardType = UIKeyboardType.default
-//        specsTypeField?.returnKeyType = UIReturnKeyType.done
-//        specsTypeField?.clearButtonMode = UITextFieldViewMode.whileEditing
-//        specsTypeField?.borderStyle = UITextBorderStyle.roundedRect
-//        specsTypeField?.autocorrectionType = UITextAutocorrectionType.no
-//        specsTypeField?.backgroundColor = UIColor.lightGray
-//        specsTypeField?.clearsOnBeginEditing = true
-//        specsTypeField?.tag = 3
-//        specsTypeField?.delegate = self
-//        specsStackView?.addArrangedSubview(specsTypeField!)
-//        stackView?.addArrangedSubview(specsStackView!)
-//        
-//        
-//        priceStackView = UIStackView(frame: CGRect(x: 0.0, y: 0.0, width: frame.width, height: frame.height))
-//        priceStackView?.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
-//        priceStackView?.axis = UILayoutConstraintAxis.horizontal
-//        //priceStackView?.layoutMargins = UIEdgeInsets(top: 10, left: 35, bottom: 10, right: 35)
-//        //priceStackView?.isLayoutMarginsRelativeArrangement = true
-//        priceStackView?.distribution = UIStackViewDistribution.fill
-//        priceStackView?.spacing = 5.0
-//        priceStackView?.backgroundColor = UIColor.white
-//        
-//        priceTypeLabel = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: 150, height: 30))
-//        priceTypeLabel?.text = "Price: "
-//        priceTypeLabel?.font = UIFont(name: "Helvetica", size: 15)
-//        //partTypeLabel?.textColor = UIColor.black
-//        priceStackView?.addArrangedSubview(priceTypeLabel!)
-//        
-//        priceTypeField = UITextField(frame: CGRect(x: 0.0, y: 0.0, width: 150, height: frame.width))
-//        priceTypeField?.allowsEditingTextAttributes = true
-//        priceTypeField?.placeholder = "Enter your text here"
-//        priceTypeField?.font = UIFont.systemFont(ofSize: 15)
-//        priceTypeField?.keyboardType = UIKeyboardType.default
-//        priceTypeField?.returnKeyType = UIReturnKeyType.done
-//        priceTypeField?.clearButtonMode = UITextFieldViewMode.whileEditing
-//        priceTypeField?.borderStyle = UITextBorderStyle.roundedRect
-//        priceTypeField?.autocorrectionType = UITextAutocorrectionType.no
-//        priceTypeField?.backgroundColor = UIColor.lightGray
-//        priceTypeField?.clearsOnBeginEditing = true
-//        priceTypeField?.tag = 4
-//        priceTypeField?.delegate = self
-//        priceStackView?.addArrangedSubview(priceTypeField!)
-//        stackView?.addArrangedSubview(priceStackView!)
-//        
-//        
-//        familyStackView = UIStackView(frame: CGRect(x: 0.0, y: 0.0, width: frame.width, height: frame.height))
-//        familyStackView?.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
-//        familyStackView?.axis = UILayoutConstraintAxis.horizontal
-//        //familyStackView?.layoutMargins = UIEdgeInsets(top: 10, left: 35, bottom: 10, right: 35)
-//        //familyStackView?.isLayoutMarginsRelativeArrangement = true
-//        familyStackView?.distribution = UIStackViewDistribution.fill
-//        familyStackView?.spacing = 5.0
-//        familyStackView?.backgroundColor = UIColor.white
-//        
-//        familyTypeLabel = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: 150, height: 30))
-//        familyTypeLabel?.text = "Family: "
-//        familyTypeLabel?.font = UIFont(name: "Helvetica", size: 15)
-//        //partTypeLabel?.textColor = UIColor.black
-//        familyStackView?.addArrangedSubview(familyTypeLabel!)
-//        
-//        familyTypeField = UITextField(frame: CGRect(x: 0.0, y: 0.0, width: 150, height: frame.width))
-//        familyTypeField?.allowsEditingTextAttributes = true
-//        familyTypeField?.placeholder = "Enter your text here"
-//        familyTypeField?.font = UIFont.systemFont(ofSize: 15)
-//        familyTypeField?.keyboardType = UIKeyboardType.default
-//        familyTypeField?.returnKeyType = UIReturnKeyType.done
-//        familyTypeField?.clearButtonMode = UITextFieldViewMode.whileEditing
-//        familyTypeField?.borderStyle = UITextBorderStyle.roundedRect
-//        familyTypeField?.autocorrectionType = UITextAutocorrectionType.no
-//        familyTypeField?.backgroundColor = UIColor.lightGray
-//        familyTypeField?.clearsOnBeginEditing = true
-//        familyTypeField?.tag = 5
-//        familyTypeField?.delegate = self
-//        familyStackView?.addArrangedSubview(familyTypeField!)
-//        stackView?.addArrangedSubview(familyStackView!)
-//        
-//        
-//        socketStackView = UIStackView(frame: CGRect(x: 0.0, y: 0.0, width: frame.width, height: frame.height))
-//        socketStackView?.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
-//        socketStackView?.axis = UILayoutConstraintAxis.horizontal
-//        //socketStackView?.layoutMargins = UIEdgeInsets(top: 10, left: 35, bottom: 10, right: 35)
-//        //socketStackView?.isLayoutMarginsRelativeArrangement = true
-//        socketStackView?.distribution = UIStackViewDistribution.fill
-//        socketStackView?.spacing = 5.0
-//        socketStackView?.backgroundColor = UIColor.white
-//        
-//        socketTypeLabel = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: 150, height: 30))
-//        socketTypeLabel?.text = "Socket: "
-//        socketTypeLabel?.font = UIFont(name: "Helvetica", size: 15)
-//        //socketTypeLabel?.textColor = UIColor.black
-//        socketStackView?.addArrangedSubview(socketTypeLabel!)
-//        
-//        socketTypeField = UITextField(frame: CGRect(x: 0.0, y: 0.0, width: 150, height: frame.width))
-//        socketTypeField?.allowsEditingTextAttributes = true
-//        socketTypeField?.placeholder = "Enter your text here"
-//        socketTypeField?.font = UIFont.systemFont(ofSize: 15)
-//        socketTypeField?.keyboardType = UIKeyboardType.default
-//        socketTypeField?.returnKeyType = UIReturnKeyType.done
-//        socketTypeField?.clearButtonMode = UITextFieldViewMode.whileEditing
-//        socketTypeField?.borderStyle = UITextBorderStyle.roundedRect
-//        socketTypeField?.autocorrectionType = UITextAutocorrectionType.no
-//        socketTypeField?.backgroundColor = UIColor.lightGray
-//        socketTypeField?.clearsOnBeginEditing = true
-//        socketTypeField?.tag = 6
-//        socketTypeField?.delegate = self
-//        socketStackView?.addArrangedSubview(socketTypeField!)
-//        stackView?.addArrangedSubview(socketStackView!)
-//        
-//        
-//        generationStackView = UIStackView(frame: CGRect(x: 0.0, y: 0.0, width: frame.width, height: frame.height))
-//        generationStackView?.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
-//        generationStackView?.axis = UILayoutConstraintAxis.horizontal
-//        //generationStackView?.layoutMargins = UIEdgeInsets(top: 10, left: 35, bottom: 10, right: 35)
-//        //generationStackView?.isLayoutMarginsRelativeArrangement = true
-//        generationStackView?.distribution = UIStackViewDistribution.fill
-//        generationStackView?.spacing = 5.0
-//        generationStackView?.backgroundColor = UIColor.white
-//        
-//        generationTypeLabel = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: 150, height: 30))
-//        generationTypeLabel?.text = "Generation: "
-//        generationTypeLabel?.font = UIFont(name: "Helvetica", size: 15)
-//        //partTypeLabel?.textColor = UIColor.black
-//        generationStackView?.addArrangedSubview(generationTypeLabel!)
-//        
-//        generationTypeField = UITextField(frame: CGRect(x: 0.0, y: 0.0, width: 150, height: frame.width))
-//        generationTypeField?.allowsEditingTextAttributes = true
-//        generationTypeField?.placeholder = "Enter your text here"
-//        generationTypeField?.font = UIFont.systemFont(ofSize: 15)
-//        generationTypeField?.keyboardType = UIKeyboardType.default
-//        generationTypeField?.returnKeyType = UIReturnKeyType.done
-//        generationTypeField?.clearButtonMode = UITextFieldViewMode.whileEditing
-//        generationTypeField?.borderStyle = UITextBorderStyle.roundedRect
-//        generationTypeField?.autocorrectionType = UITextAutocorrectionType.no
-//        generationTypeField?.backgroundColor = UIColor.lightGray
-//        generationTypeField?.clearsOnBeginEditing = true
-//        generationTypeField?.tag = 7
-//        generationTypeField?.delegate = self
-//        generationStackView?.addArrangedSubview(generationTypeField!)
-//        stackView?.addArrangedSubview(generationStackView!)
-//        
-//        
-//        linkStackView = UIStackView(frame: CGRect(x: 0.0, y: 0.0, width: frame.width, height: frame.height))
-//        linkStackView?.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
-//        linkStackView?.axis = UILayoutConstraintAxis.horizontal
-//        //linkStackView?.layoutMargins = UIEdgeInsets(top: 10, left: 35, bottom: 10, right: 35)
-//        //linkStackView?.isLayoutMarginsRelativeArrangement = true
-//        linkStackView?.distribution = UIStackViewDistribution.fill
-//        linkStackView?.spacing = 5.0
-//        linkStackView?.backgroundColor = UIColor.white
-//        
-//        linkTypeLabel = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: 150, height: 30))
-//        linkTypeLabel?.text = "Link: "
-//        linkTypeLabel?.font = UIFont(name: "Helvetica", size: 15)
-//        //linkTypeLabel?.textColor = UIColor.black
-//        linkStackView?.addArrangedSubview(linkTypeLabel!)
-//        
-//        linkTypeField = UITextField(frame: CGRect(x: 0.0, y: 0.0, width: 150, height: frame.width))
-//        linkTypeField?.allowsEditingTextAttributes = true
-//        linkTypeField?.placeholder = "Enter your text here"
-//        linkTypeField?.font = UIFont.systemFont(ofSize: 15)
-//        linkTypeField?.keyboardType = UIKeyboardType.default
-//        linkTypeField?.returnKeyType = UIReturnKeyType.done
-//        linkTypeField?.clearButtonMode = UITextFieldViewMode.whileEditing
-//        linkTypeField?.borderStyle = UITextBorderStyle.roundedRect
-//        linkTypeField?.autocorrectionType = UITextAutocorrectionType.no
-//        linkTypeField?.backgroundColor = UIColor.lightGray
-//        linkTypeField?.clearsOnBeginEditing = true
-//        linkTypeField?.tag = 8
-//        linkTypeField?.delegate = self
-//        linkStackView?.addArrangedSubview(linkTypeField!)
-//        stackView?.addArrangedSubview(linkStackView!)
-//        
-//        
-//        imageStackView = UIStackView(frame: CGRect(x: 0.0, y: 0.0, width: frame.width, height: frame.height))
-//        imageStackView?.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
-//        imageStackView?.axis = UILayoutConstraintAxis.horizontal
-//        //imageStackView?.layoutMargins = UIEdgeInsets(top: 10, left: 35, bottom: 10, right: 35)
-//        //imageStackView?.isLayoutMarginsRelativeArrangement = true
-//        imageStackView?.distribution = UIStackViewDistribution.fill
-//        imageStackView?.spacing = 5.0
-//        imageStackView?.backgroundColor = UIColor.white
-//        
-//        imageTypeLabel = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: 150, height: 30))
-//        imageTypeLabel?.text = "Image URL: "
-//        imageTypeLabel?.font = UIFont(name: "Helvetica", size: 15)
-//        //imageTypeLabel?.textColor = UIColor.black
-//        imageStackView?.addArrangedSubview(imageTypeLabel!)
-//        
-//        imageTypeField = UITextField(frame: CGRect(x: 0.0, y: 0.0, width: 150, height: frame.width))
-//        imageTypeField?.allowsEditingTextAttributes = true
-//        imageTypeField?.placeholder = "Enter your text here"
-//        imageTypeField?.font = UIFont.systemFont(ofSize: 15)
-//        imageTypeField?.keyboardType = UIKeyboardType.default
-//        imageTypeField?.returnKeyType = UIReturnKeyType.done
-//        imageTypeField?.clearButtonMode = UITextFieldViewMode.whileEditing
-//        imageTypeField?.borderStyle = UITextBorderStyle.roundedRect
-//        imageTypeField?.autocorrectionType = UITextAutocorrectionType.no
-//        imageTypeField?.backgroundColor = UIColor.lightGray
-//        imageTypeField?.clearsOnBeginEditing = true
-//        imageTypeField?.tag = 9
-//        imageTypeField?.delegate = self
-//        imageStackView?.addArrangedSubview(imageTypeField!)
-//        stackView?.addArrangedSubview(imageStackView!)
-//        
-//        
-//        descriptionStackView = UIStackView(frame: CGRect(x: 0.0, y: 0.0, width: frame.width, height: frame.height))
-//        descriptionStackView?.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
-//        descriptionStackView?.axis = UILayoutConstraintAxis.horizontal
-//        //descriptionStackView?.layoutMargins = UIEdgeInsets(top: 10, left: 35, bottom: 10, right: 35)
-//        //descriptionStackView?.isLayoutMarginsRelativeArrangement = true
-//        descriptionStackView?.distribution = UIStackViewDistribution.fill
-//        descriptionStackView?.spacing = 5.0
-//        descriptionStackView?.backgroundColor = UIColor.white
-//        
-//        descriptionTypeLabel = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: 150, height: 30))
-//        descriptionTypeLabel?.text = "Image URL: "
-//        descriptionTypeLabel?.font = UIFont(name: "Helvetica", size: 15)
-//        //imageTypeLabel?.textColor = UIColor.black
-//        descriptionStackView?.addArrangedSubview(descriptionTypeLabel!)
-//        
-//        descriptionTypeField = UITextField(frame: CGRect(x: 0.0, y: 0.0, width: 150, height: frame.width))
-//        descriptionTypeField?.allowsEditingTextAttributes = true
-//        descriptionTypeField?.placeholder = "Enter your text here"
-//        descriptionTypeField?.font = UIFont.systemFont(ofSize: 15)
-//        descriptionTypeField?.keyboardType = UIKeyboardType.default
-//        descriptionTypeField?.returnKeyType = UIReturnKeyType.done
-//        descriptionTypeField?.clearButtonMode = UITextFieldViewMode.whileEditing
-//        descriptionTypeField?.borderStyle = UITextBorderStyle.roundedRect
-//        descriptionTypeField?.autocorrectionType = UITextAutocorrectionType.no
-//        descriptionTypeField?.backgroundColor = UIColor.lightGray
-//        descriptionTypeField?.clearsOnBeginEditing = true
-//        descriptionTypeField?.tag = 10
-//        descriptionTypeField?.delegate = self
-//        descriptionStackView?.addArrangedSubview(descriptionTypeField!)
-//        stackView?.addArrangedSubview(descriptionStackView!)
-//        
-//        
-//        // RAM
-//        ramStackView = UIStackView(frame: CGRect(x: 0.0, y: 0.0, width: frame.width, height: frame.height))
-//        ramStackView?.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
-//        ramStackView?.axis = UILayoutConstraintAxis.horizontal
-//        //descriptionStackView?.layoutMargins = UIEdgeInsets(top: 10, left: 35, bottom: 10, right: 35)
-//        //descriptionStackView?.isLayoutMarginsRelativeArrangement = true
-//        ramStackView?.distribution = UIStackViewDistribution.fill
-//        ramStackView?.spacing = 5.0
-//        ramStackView?.backgroundColor = UIColor.white
-//        
-//        ramTypeLabel = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: 150, height: 30))
-//        ramTypeLabel?.text = "Image URL: "
-//        ramTypeLabel?.font = UIFont(name: "Helvetica", size: 15)
-//        //imageTypeLabel?.textColor = UIColor.black
-//        ramStackView?.addArrangedSubview(ramTypeLabel!)
-//        
-//        ramTypeField = UITextField(frame: CGRect(x: 0.0, y: 0.0, width: 150, height: frame.width))
-//        ramTypeField?.allowsEditingTextAttributes = true
-//        ramTypeField?.placeholder = "Enter your text here"
-//        ramTypeField?.font = UIFont.systemFont(ofSize: 15)
-//        ramTypeField?.keyboardType = UIKeyboardType.default
-//        ramTypeField?.returnKeyType = UIReturnKeyType.done
-//        ramTypeField?.clearButtonMode = UITextFieldViewMode.whileEditing
-//        ramTypeField?.borderStyle = UITextBorderStyle.roundedRect
-//        ramTypeField?.autocorrectionType = UITextAutocorrectionType.no
-//        ramTypeField?.backgroundColor = UIColor.lightGray
-//        ramTypeField?.clearsOnBeginEditing = true
-//        ramTypeField?.tag = 10
-//        ramTypeField?.delegate = self
-//        ramStackView?.addArrangedSubview(ramTypeField!)
-//        stackView?.addArrangedSubview(ramStackView!)
+
         
         for i: Int in 0..<fields.count {
+            
+            // create this first so it can be edited it the switch
+            let partTypeField = UITextField(frame: CGRect(x: 0.0, y: 0.0, width: 150, height: frame.width))
             
             // continue if this field is not applicable to the part being created
             switch i {
             case 3: // brand
                 if (partCreating == "GPU"){
                     // fall through
+                    partTypeField.placeholder = "e.g. MSI / EVGA"
                 }
                 else {
                     continue
                 }
-                break
+                
             case 4: // specs
                 if (partCreating == "CPU" || partCreating == "RAM" || partCreating == "Cooler" || partCreating == "Storage" || partCreating == "Optical Drive") {
                     // fall through
+                    partTypeField.placeholder = "Enter your text here"
                 }
                 else {
                     continue
                 }
-                break
+                
             case 5: // ram type
                 if (partCreating == "CPU" || partCreating == "RAM" || partCreating == "Motherboard") {
                     // fall through
+                    partTypeField.placeholder = "e.g. DDR4 / DDR3"
                 }
                 else {
                     continue
                 }
-                break
+                
             case 6: // speed
                 if (partCreating == "RAM" || partCreating == "Storage" || partCreating == "Optical Drive") {
                     // fall through
+                    partTypeField.placeholder = "Enter your text here"
                 }
                 else {
                     continue
                 }
-                break
+                
             case 7: // socket
                 if (partCreating == "CPU" || partCreating == "Motherboard" || partCreating == "RAM") {
                     // fall through
+                    partTypeField.placeholder = "Enter your text here"
                 }
                 else {
                     continue
                 }
-                break
+                
             case 8: // chipset
                 if (partCreating == "Motherboard") {
                     // fall through
+                    partTypeField.placeholder = "Enter your text here"
                 }
                 else {
                     continue
                 }
-                break
+                
+            case 11: // family (core i7)
+                if (partCreating == "CPU") {
+                    // fall through
+                    partTypeField.placeholder = "e.g. Core i5 / Ryzen 3"
+                }
+                else {
+                    continue
+                }
+                
             default:
+                partTypeField.placeholder = "Enter your text here"
                 break
             }
             let partStackView = UIStackView(frame: CGRect(x: 0.0, y: 0.0, width: frame.width, height: frame.height))
@@ -541,9 +132,8 @@ class CustomPartView: UIView, UITextFieldDelegate
             partLabel.font = UIFont(name: "Helvetica", size: 15)
             partStackView.addArrangedSubview(partLabel)
             
-            let partTypeField = UITextField(frame: CGRect(x: 0.0, y: 0.0, width: 150, height: frame.width))
+            
             partTypeField.allowsEditingTextAttributes = true
-            partTypeField.placeholder = "Enter your text here"
             partTypeField.font = UIFont.systemFont(ofSize: 15)
             partTypeField.keyboardType = UIKeyboardType.default
             partTypeField.returnKeyType = UIReturnKeyType.done
@@ -598,31 +188,13 @@ class CustomPartView: UIView, UITextFieldDelegate
             _link = textField.text!
         case 10:
             _image = textField.text!
+        case 11:
+            _family = textField.text!
         default:
             print("Unable to change field to variable")
         }
 
         return true
-    }
-    func getAllFieldValues() -> [String]
-    {
-        var arr = [String]()
-        //these are added in a very specific order so that it matches easily with how the controller calls them in the createPart Func
-        
-//        arr.append(link)
-//        arr.append(specs)
-//        arr.append(price)
-//        arr.append(image)
-//        arr.append(model)
-//        arr.append(socket)
-//        arr.append(family)
-//        arr.append(generation)
-//        arr.append(descriptionString)
-//        arr.append(manufacturer)
-//        arr.append(ram)
-        
-        return arr
-        
     }
     
     
@@ -638,22 +210,25 @@ class CustomPartView: UIView, UITextFieldDelegate
         result["Image"] = (_image != nil) ? _image : ""
         
         if (_partCreating == "CPU" || _partCreating == "Motherboard" || _partCreating == "RAM") {
-            result["RAM"] = _ram
+            result["RAM"] = _ram != nil ? _ram : ""
         }
         if (_partCreating == "CPU" || _partCreating == "Motherboard") {
-            result["Socket"] = _socket
+            result["Socket"] = _socket != nil ? _socket : ""
         }
         if (_partCreating == "Motherboard") {
-            result["Chipset"] = _chipset
+            result["Chipset"] = _chipset != nil ? _chipset : ""
         }
         if (_partCreating == "RAM" || _partCreating == "Storage" || _partCreating == "Optical Drive") {
-            result["Speed"] = _speed
+            result["Speed"] = _speed != nil ? _speed : ""
         }
         if (_partCreating == "GPU") {
-            result["Brand"] = _brand
+            result["Brand"] = _brand != nil ? _brand : ""
         }
         if (_partCreating == "CPU" || _partCreating == "RAM" || _partCreating == "Cooler" || _partCreating == "Storage" || _partCreating == "Optical Drive") {
-            result["Specs"] = _specs
+            result["Specs"] = _specs != nil ? _specs : ""
+        }
+        if (_partCreating == "CPU") {
+            result["Family"] = _family != nil ? _family : ""
         }
         
         result["IsCustom"] = "true"
@@ -678,21 +253,10 @@ class CustomPartView: UIView, UITextFieldDelegate
     var _model: String?  = nil
     var _brand: String?  = nil
     var _speed: String?  = nil
+    var _family: String? = nil
     var _socket: String?  = nil
     var _chipset: String?  = nil
     var _manufacturer: String?  = nil
-
-//    var link: String {get{return _link!}set{_link = newValue}}
-//    var specs: String {get{return _specs!}set{_specs = newValue}}
-//    var image: String {get{return _image!}set{_image = newValue}}
-//    var price: String {get{return _price!}set{_price = newValue}}
-//    var model: String {get{return _model!}set{_model = newValue}}
-//    var socket: String {get{return _socket!}set{_socket = newValue}}
-//    var family: String {get{return _family!}set{_family = newValue}}
-//    var generation: String {get{return _generation!}set{_generation = newValue}}
-//    var manufacturer: String {get{return _manufacturer!}set{_manufacturer = newValue}}
-//    var ram: String {get{return _ram!}set{_ram = newValue}}
-    
     
     
 }

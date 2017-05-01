@@ -10,6 +10,8 @@ import UIKit
 
 protocol SpecificPartPageDelegate: class {
     func selectPartClicked(part: MyParts)
+    
+    
 }
 
 protocol PartViewDelegate: class {
@@ -31,11 +33,11 @@ class SpecificPartPageView: UIView, PartViewDelegate {
         // Have a scroll view
         scrollView = UIScrollView(frame: CGRect(x: 0.0, y: 0.0, width: frame.width, height: frame.height))
         scrollView?.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
-        scrollView?.contentSize = CGSize(width: frame.width, height: screenView)
+        scrollView?.contentSize = CGSize(width: frame.width, height: screenView * 1.25)
         addSubview(scrollView!)
         
         partView = PartView(frame: frame, part: part)
-        partView?.frame = CGRect(x: 0.0, y: 0.0, width: frame.width, height: screenView)
+        partView?.frame = CGRect(x: 0.0, y: 0.0, width: frame.width, height: screenView * 1.25)
         //partView?.backgroundColor = UIColor.white
         
         scrollView?.addSubview(partView!)
@@ -75,7 +77,7 @@ class PartView: UIView {
         
         
         // have a stack view
-        stackView = UIStackView(frame: CGRect(x: 0.0, y: 0.0, width: frame.width, height: frame.height))
+        stackView = UIStackView(frame: CGRect(x: 0.0, y: 0.0, width: frame.width, height: frame.height * 1.25))
         stackView?.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
         stackView?.axis = UILayoutConstraintAxis.vertical
         stackView?.layoutMargins = UIEdgeInsets(top: 10, left: 35, bottom: 10, right: 35)
@@ -131,33 +133,39 @@ class PartView: UIView {
         
         stackView?.addSubview(selectButton)
         
+        var finalPosition: CGRect = selectButton.frame
+        
         
         // load the part image using helper methods
-        imageView = UIImageView(frame: CGRect(x: frame.midX - frame.midX / 2, y: selectButton.frame.maxY, width: frame.width / 2, height: frame.height / 3))
-        if let checkedURL = URL(string: (_part?._image)!) {
-            imageView?.contentMode = .scaleAspectFit
-            downloadImage(url: checkedURL)
+        if (_part?._image != nil && _part?._image != "") {
+            imageView = UIImageView(frame: CGRect(x: frame.midX - frame.midX / 2, y: selectButton.frame.maxY, width: frame.width / 2, height: frame.height / 3))
+            if let checkedURL = URL(string: (_part?._image)!) {
+                imageView?.contentMode = .scaleAspectFit
+                downloadImage(url: checkedURL)
+            }
+            stackView?.addSubview(imageView!)
+            finalPosition = (imageView?.frame)!
         }
-        stackView?.addSubview(imageView!)
         
         
         // DRAW price
-        let priceLabel = UILabel(frame: CGRect(x: 0.0, y: (imageView?.frame.maxY)!, width: frame.width, height: 20))
-        priceLabel.text = "Price:   $" + (_part?._price)!
-        priceLabel.font = UIFont.systemFont(ofSize: 20)
-        priceLabel.textColor = UIColor(red: 82.0/255.0, green: 128.0/255.0, blue: 164.0/255.0, alpha: 1.0)
-        priceLabel.textAlignment = .center
-        stackView?.addSubview(priceLabel)
+        let priceLabel = UILabel(frame: CGRect(x: 0.0, y: finalPosition.maxY + 10, width: frame.width, height: 20))
+        if (_part?._price != nil && _part?._price != "") {
+            
+            priceLabel.text = "Price:   $" + (_part?._price)!
+            priceLabel.font = UIFont.systemFont(ofSize: 20)
+            priceLabel.textColor = UIColor(red: 82.0/255.0, green: 128.0/255.0, blue: 164.0/255.0, alpha: 1.0)
+            priceLabel.textAlignment = .center
+            stackView?.addSubview(priceLabel)
+            finalPosition = priceLabel.frame
+        }
         
         
         
         // DRAW specs
-        
-        
-        var finalPosition: CGRect = priceLabel.frame
         if (_part?._specs != nil && _part?._specs != "") {
             
-            let specsTitle = UILabel(frame: CGRect(x: 10.0, y: priceLabel.frame.maxY + 20, width: frame.width, height: 20))
+            let specsTitle = UILabel(frame: CGRect(x: 10.0, y: finalPosition.maxY + 20, width: frame.width, height: 20))
             specsTitle.text = "Specs:"
             specsTitle.font = UIFont.systemFont(ofSize: 18)
             stackView?.addSubview(specsTitle)
@@ -173,13 +181,163 @@ class PartView: UIView {
             }
         }
         
+        // DRAW socket
+        //var isCPU: bool = type(of: _part).self === CPU.self
+        if (_part?._socket != nil && _part?._socket != "" && type(of: _part).self != CPU.self) {
+            let socketTitleLabel = UILabel(frame: CGRect(x: 10.0, y: finalPosition.maxY + 10, width: frame.width, height: 20))
+            socketTitleLabel.text = "Socket"
+            socketTitleLabel.font = UIFont.systemFont(ofSize: 18)
+            stackView?.addSubview(socketTitleLabel)
+            finalPosition = socketTitleLabel.frame
+            
+            let socketLabel = UILabel(frame: CGRect(x: finalPosition.minX + 10, y: finalPosition.maxY + 5, width: frame.width, height: 10))
+            socketLabel.text = "• " + (_part?._socket)!
+            socketLabel.font = UIFont.systemFont(ofSize: 10)
+            stackView?.addSubview(socketLabel)
+            finalPosition = socketLabel.frame
+        }
+        
+        // DRAW chipset
+        if (_part?._chipset != nil && _part?._chipset != "") {
+            let chipsetTitleLabel = UILabel(frame: CGRect(x: 10.0, y: finalPosition.maxY + 20, width: frame.width, height: 20))
+            chipsetTitleLabel.text = "Chipset"
+            chipsetTitleLabel.font = UIFont.systemFont(ofSize: 18)
+            stackView?.addSubview(chipsetTitleLabel)
+            finalPosition = chipsetTitleLabel.frame
+            
+            let chipsetLabel = UILabel(frame: CGRect(x: finalPosition.minX + 10, y: finalPosition.maxY + 5, width: frame.width, height: 10))
+            chipsetLabel.text = "• " + (_part?._chipset)!
+            chipsetLabel.font = UIFont.systemFont(ofSize: 10)
+            stackView?.addSubview(chipsetLabel)
+            finalPosition = chipsetLabel.frame
+        }
+        
+        // DRAW RAM Type
+        if (_part?._ram != nil && _part?._ram != "") {
+            let propertyTitleLabel = UILabel(frame: CGRect(x: 10.0, y: finalPosition.maxY + 20, width: frame.width, height: 20))
+            propertyTitleLabel.text = "RAM Type"
+            propertyTitleLabel.font = UIFont.systemFont(ofSize: 18)
+            stackView?.addSubview(propertyTitleLabel)
+            finalPosition = propertyTitleLabel.frame
+            
+            let propertyLabel = UILabel(frame: CGRect(x: finalPosition.minX + 10, y: finalPosition.maxY + 5, width: frame.width, height: 10))
+            propertyLabel.text = "• " + (_part?._ram)!
+            propertyLabel.font = UIFont.systemFont(ofSize: 10)
+            stackView?.addSubview(propertyLabel)
+            finalPosition = propertyLabel.frame
+        }
+        
+        // DRAW size
+        if (_part?._size != nil && _part?._size != "") {
+            let propertyTitleLabel = UILabel(frame: CGRect(x: 10.0, y: finalPosition.maxY + 20, width: frame.width, height: 20))
+            propertyTitleLabel.text = "Size"
+            propertyTitleLabel.font = UIFont.systemFont(ofSize: 18)
+            stackView?.addSubview(propertyTitleLabel)
+            finalPosition = propertyTitleLabel.frame
+            
+            let propertyLabel = UILabel(frame: CGRect(x: finalPosition.minX + 10, y: finalPosition.maxY + 5, width: frame.width, height: 10))
+            propertyLabel.text = "• " + (_part?._size)!
+            propertyLabel.font = UIFont.systemFont(ofSize: 10)
+            stackView?.addSubview(propertyLabel)
+            finalPosition = propertyLabel.frame
+        }
+        
+        
+        // DRAW speed
+        if (_part?._speed != nil && _part?._speed != "") {
+            let propertyTitleLabel = UILabel(frame: CGRect(x: 10.0, y: finalPosition.maxY + 20, width: frame.width, height: 20))
+            propertyTitleLabel.text = "Speed"
+            propertyTitleLabel.font = UIFont.systemFont(ofSize: 18)
+            stackView?.addSubview(propertyTitleLabel)
+            finalPosition = propertyTitleLabel.frame
+            
+            let propertyLabel = UILabel(frame: CGRect(x: finalPosition.minX + 10, y: finalPosition.maxY + 5, width: frame.width, height: 10))
+            propertyLabel.text = "• " + (_part?._speed)!
+            propertyLabel.font = UIFont.systemFont(ofSize: 10)
+            stackView?.addSubview(propertyLabel)
+            finalPosition = propertyLabel.frame
+        }
+        
+        // DRAW Series
+        if (_part?._series != nil && _part?._series != "") {
+            let propertyTitleLabel = UILabel(frame: CGRect(x: 10.0, y: finalPosition.maxY + 20, width: frame.width, height: 20))
+            propertyTitleLabel.text = "Series / Family"
+            propertyTitleLabel.font = UIFont.systemFont(ofSize: 18)
+            stackView?.addSubview(propertyTitleLabel)
+            finalPosition = propertyTitleLabel.frame
+            
+            let propertyLabel = UILabel(frame: CGRect(x: finalPosition.minX + 10, y: finalPosition.maxY + 5, width: frame.width, height: 10))
+            propertyLabel.text = "• " + (_part?._series)!
+            propertyLabel.font = UIFont.systemFont(ofSize: 10)
+            stackView?.addSubview(propertyLabel)
+            finalPosition = propertyLabel.frame
+        }
+        
+        // DRAW VRAM
+        if (_part?._vram != nil && _part?._vram != "") {
+            let propertyTitleLabel = UILabel(frame: CGRect(x: 10.0, y: finalPosition.maxY + 20, width: frame.width, height: 20))
+            propertyTitleLabel.text = "VRAM"
+            propertyTitleLabel.font = UIFont.systemFont(ofSize: 18)
+            stackView?.addSubview(propertyTitleLabel)
+            finalPosition = propertyTitleLabel.frame
+            
+            let propertyLabel = UILabel(frame: CGRect(x: finalPosition.minX + 10, y: finalPosition.maxY + 5, width: frame.width, height: 10))
+            propertyLabel.text = "• " + (_part?._vram)!
+            propertyLabel.font = UIFont.systemFont(ofSize: 10)
+            stackView?.addSubview(propertyLabel)
+            finalPosition = propertyLabel.frame
+        }
+        
+        // DRAW Wattage
+        if (_part?._wattage != nil && _part?._wattage != "") {
+            let propertyTitleLabel = UILabel(frame: CGRect(x: 10.0, y: finalPosition.maxY + 20, width: frame.width, height: 20))
+            propertyTitleLabel.text = "Wattage"
+            propertyTitleLabel.font = UIFont.systemFont(ofSize: 18)
+            stackView?.addSubview(propertyTitleLabel)
+            finalPosition = propertyTitleLabel.frame
+            
+            let propertyLabel = UILabel(frame: CGRect(x: finalPosition.minX + 10, y: finalPosition.maxY + 5, width: frame.width, height: 10))
+            propertyLabel.text = "• " + (_part?._wattage)!
+            propertyLabel.font = UIFont.systemFont(ofSize: 10)
+            stackView?.addSubview(propertyLabel)
+            finalPosition = propertyLabel.frame
+        }
+        
+        // DRAW Efficiency
+        if (_part?._efficiency != nil && _part?._efficiency != "") {
+            let propertyTitleLabel = UILabel(frame: CGRect(x: 10.0, y: finalPosition.maxY + 20, width: frame.width, height: 20))
+            propertyTitleLabel.text = "Efficiency"
+            propertyTitleLabel.font = UIFont.systemFont(ofSize: 18)
+            stackView?.addSubview(propertyTitleLabel)
+            finalPosition = propertyTitleLabel.frame
+            
+            let propertyLabel = UILabel(frame: CGRect(x: finalPosition.minX + 10, y: finalPosition.maxY + 5, width: frame.width, height: 10))
+            propertyLabel.text = "• " + (_part?._efficiency)!
+            propertyLabel.font = UIFont.systemFont(ofSize: 10)
+            stackView?.addSubview(propertyLabel)
+            finalPosition = propertyLabel.frame
+        }
+        
+        // DRAW Modular
+        if (_part?._modular != nil && _part?._modular != "") {
+            let propertyTitleLabel = UILabel(frame: CGRect(x: 10.0, y: finalPosition.maxY + 20, width: frame.width, height: 20))
+            propertyTitleLabel.text = "Modular"
+            propertyTitleLabel.font = UIFont.systemFont(ofSize: 18)
+            stackView?.addSubview(propertyTitleLabel)
+            finalPosition = propertyTitleLabel.frame
+            
+            let propertyLabel = UILabel(frame: CGRect(x: finalPosition.minX + 10, y: finalPosition.maxY + 5, width: frame.width, height: 10))
+            propertyLabel.text = "• " + (_part?._modular)!
+            propertyLabel.font = UIFont.systemFont(ofSize: 10)
+            stackView?.addSubview(propertyLabel)
+            finalPosition = propertyLabel.frame
+        }
         
         let linkButton = UIButton(frame: CGRect(x: frame.midX - frame.midX / 2, y: finalPosition.maxY + 20, width: frame.width / 2, height: frame.height / 10))
         linkButton.setTitle("Newegg.com", for: .normal)
         linkButton.setTitleColor(UIColor.blue, for: .normal)
         linkButton.addTarget(self, action: #selector(linkSelected), for: .touchUpInside)
         stackView?.addSubview(linkButton)
-        
     }
     
     func buttonSelected() {
@@ -211,7 +369,7 @@ class PartView: UIView {
             }
         }
     }
-
+    
     
     weak var delegate: PartViewDelegate? = nil
     

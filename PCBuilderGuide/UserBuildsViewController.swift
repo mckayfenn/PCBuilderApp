@@ -27,7 +27,7 @@ class UserBuildsViewController: UIViewController, UITableViewDataSource, UITable
 //        _userBuilds.loadBuilds()
         _partsList.loadParts()
         
-        _partsList.loadCustomParts()
+        //_partsList.loadCustomParts()
         
         _userBuilds.loadBuilds()
         

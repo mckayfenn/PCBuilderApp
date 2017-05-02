@@ -19,7 +19,7 @@ class NavigationFilterInterfaceViewController: UIViewController, PartFilterInter
     private var customPartViewController: CustomPartViewController? = nil
     var buttons = [UIBarButtonItem]()
     
-    private var categoryViewController: CategoryViewController = CategoryViewController()
+    private var categoryViewController: CategoryViewController? = nil
     
     
     private var _partsList: PartsList = PartsList.Instance
@@ -41,7 +41,6 @@ class NavigationFilterInterfaceViewController: UIViewController, PartFilterInter
         
         _inList = partType
 
-        categoryViewController.title = _inList
         
         self.partFilterView?.setButtonAttributes(partType: _partsList.getFirstLevelParts(partType: _inList))
     }
@@ -57,7 +56,6 @@ class NavigationFilterInterfaceViewController: UIViewController, PartFilterInter
         
         partFilterView?.delegate = self
         
-        categoryViewController.delegate = self
         customPartViewController?.delegate = self
     }
     
@@ -81,16 +79,19 @@ class NavigationFilterInterfaceViewController: UIViewController, PartFilterInter
     
     func viewAllClicked()
     {
-        categoryViewController.usersCurrentParts = _usersCurrentParts
+        categoryViewController = CategoryViewController()
+        categoryViewController?.title = _inList
+        categoryViewController?.usersCurrentParts = _usersCurrentParts
+        categoryViewController?.delegate = self
         
         if (_secondLevel) {
-            categoryViewController.partsList = _partsList.getAllPartsSecondLevel(type: _inList, firstLevelSelection: _specificPartType!)
+            categoryViewController?.partsList = _partsList.getAllPartsSecondLevel(type: _inList, firstLevelSelection: _firstLevel!)
         }
         else {
-            categoryViewController.partsList = _partsList.getAllPartsFirstLevel(type: _inList)
+            categoryViewController?.partsList = _partsList.getAllPartsFirstLevel(type: _inList)
         }
         
-        navigationController?.pushViewController(categoryViewController, animated: true)
+        navigationController?.pushViewController(categoryViewController!, animated: true)
         
     }
     
@@ -103,9 +104,12 @@ class NavigationFilterInterfaceViewController: UIViewController, PartFilterInter
         }
         
         if (_showCategoryPage) {
-            categoryViewController.usersCurrentParts = _usersCurrentParts
-            categoryViewController.partsList = _partsList.getPartsForCategory(type: _inList, firstLevelSelection: _firstLevel!, secondLevelSelection: specificPartType)
-            navigationController?.pushViewController(categoryViewController, animated: true)
+            categoryViewController = CategoryViewController()
+            categoryViewController?.title = _inList
+            categoryViewController?.delegate
+            categoryViewController?.usersCurrentParts = _usersCurrentParts
+            categoryViewController?.partsList = _partsList.getPartsForCategory(type: _inList, firstLevelSelection: _firstLevel!, secondLevelSelection: specificPartType)
+            navigationController?.pushViewController(categoryViewController!, animated: true)
         }
         else {
             _secondLevel = true

@@ -419,7 +419,7 @@ class Parts {
             break
         case "Motherboard":
             for mobo in _motherboards {
-                if (mobo._socket == firstLevelSelection) {
+                if (mobo._manufacturer == firstLevelSelection) {
                     result.append(mobo)
                 }
             }

@@ -66,7 +66,6 @@ class CategoryCellView: UIView {
         addSubview(imageView!)
         
         context.addRect(imageRect)
-        print(imageView)
         
         
         let modelLength: Int = (_modelLabel?.characters.count)!
@@ -105,11 +104,8 @@ class CategoryCellView: UIView {
     
     // download the image.     FROM (http://stackoverflow.com/questions/24231680/loading-downloading-image-from-url-on-swift)
     func downloadImage(url: URL) {
-        print("Download Started")
         getDataFromUrl(url: url) { (data, response, error)  in
             guard let data = data, error == nil else { return }
-            print(response?.suggestedFilename ?? url.lastPathComponent)
-            print("Download Finished")
             DispatchQueue.main.async() { () -> Void in
                 self.imageView?.image = UIImage(data: data)
             }

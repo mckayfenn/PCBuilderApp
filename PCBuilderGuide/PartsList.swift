@@ -153,7 +153,6 @@ class PartsList {
         let docDirectory: URL = getDocumentsDirectory().appendingPathComponent("CustomParts.json")
         
         try! jsonData.write(to: docDirectory)
-        print("finish saving custom parts")
     }
     
     public func loadCustomParts() {

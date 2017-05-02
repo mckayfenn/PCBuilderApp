@@ -124,9 +124,6 @@ class UserBuildsViewController: UIViewController, UITableViewDataSource, UITable
     
     
     func deleteBuild(index: Int) {
-        print("delete \(index)")
-        
-        
         
         // Have an alert to make sure they actually want to delete it
         let alertController = UIAlertController(title: "", message: "Are you sure you want to delete this build?", preferredStyle: .alert)
@@ -147,9 +144,6 @@ class UserBuildsViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func renameBuild(index: Int) {
-        print("rename \(index)")
-        
-        
         let alertController = UIAlertController(title: "", message: "Please enter a name:", preferredStyle: .alert)
         
         let confirmAction = UIAlertAction(title: "Confirm", style: .default) { (_) in
@@ -179,7 +173,6 @@ class UserBuildsViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func saveBuilds() {
-        print("in tableview save the builds")
         _userBuilds.saveBuilds()
         
     }
@@ -187,7 +180,6 @@ class UserBuildsViewController: UIViewController, UITableViewDataSource, UITable
     
     
     @objc private func newBuildClicked() {
-        print("New Build was clicked")
         numOfBuilds = numOfBuilds + 1
         _userBuilds.createBuild()
         contentView.reloadData()

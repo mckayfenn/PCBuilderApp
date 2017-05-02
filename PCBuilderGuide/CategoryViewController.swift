@@ -120,7 +120,6 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
         partViewController?.delegate = self
         
         navigationController?.pushViewController(partViewController!, animated: true)
-        print("Create a view with this specific part")
     }
     
     

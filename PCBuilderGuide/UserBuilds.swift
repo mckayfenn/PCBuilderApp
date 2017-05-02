@@ -60,10 +60,6 @@ class UserBuilds {
         let docDirectory: URL = getDocumentsDirectory().appendingPathComponent("UserBuilds.json")
         
         try! jsonData.write(to: docDirectory)
-
-        
-        
-        print("finsih save")
     }
     
     

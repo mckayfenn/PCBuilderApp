@@ -72,9 +72,6 @@ class PartView: UIView {
         
         _part = part
         
-        print("in PartView")
-        
-        
         // have a stack view
         stackView = UIStackView(frame: CGRect(x: 0.0, y: 0.0, width: frame.width, height: frame.height * 1.25))
         stackView?.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
@@ -355,11 +352,8 @@ class PartView: UIView {
     
     // download the image.     FROM (http://stackoverflow.com/questions/24231680/loading-downloading-image-from-url-on-swift)
     func downloadImage(url: URL) {
-        print("Download Started")
         getDataFromUrl(url: url) { (data, response, error)  in
             guard let data = data, error == nil else { return }
-            print(response?.suggestedFilename ?? url.lastPathComponent)
-            print("Download Finished")
             DispatchQueue.main.async() { () -> Void in
                 self.imageView?.image = UIImage(data: data)
             }

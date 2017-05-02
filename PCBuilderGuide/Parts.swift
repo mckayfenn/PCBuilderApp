@@ -110,10 +110,6 @@ class Parts {
         for drive in opticalDrives {
             _opticalDrives.append(OpticalDrive(dictionary: drive as! NSDictionary))
         }
-        
-        
-        
-        print("jsonData has been processed")
     }
     
     

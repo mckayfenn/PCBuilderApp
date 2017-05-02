@@ -20,7 +20,6 @@ class MainFilterView: UIView
         
         mainScrollView = UIScrollView(frame: CGRect(x: 0.0, y: 0.0, width: frame.width, height: frame.height))
         mainScrollView?.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
-        //mainScrollView?.alwaysBounceVertical = true
         mainScrollView?.contentSize = CGSize(width: frame.width, height: screenView)
         addSubview(mainScrollView!)
         
@@ -30,7 +29,6 @@ class MainFilterView: UIView
             screenView = frame.height
         }
         partFilterInterfaceView?.frame = CGRect(x: 0.0, y: 0.0, width: frame.width, height: screenView)
-        //partFilterInterfaceView?.backgroundColor = UIColor.yellow
         setGradientColors(viewPassed: partFilterInterfaceView!, colors: [UIColor.white, UIColor.lightGray], gradientLocations: [0.0,0.5,1.0])
         
         mainScrollView?.addSubview(partFilterInterfaceView!)

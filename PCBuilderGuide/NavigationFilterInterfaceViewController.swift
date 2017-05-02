@@ -106,7 +106,7 @@ class NavigationFilterInterfaceViewController: UIViewController, PartFilterInter
         if (_showCategoryPage) {
             categoryViewController = CategoryViewController()
             categoryViewController?.title = _inList
-            categoryViewController?.delegate
+            categoryViewController?.delegate = self
             categoryViewController?.usersCurrentParts = _usersCurrentParts
             categoryViewController?.partsList = _partsList.getPartsForCategory(type: _inList, firstLevelSelection: _firstLevel!, secondLevelSelection: specificPartType)
             navigationController?.pushViewController(categoryViewController!, animated: true)

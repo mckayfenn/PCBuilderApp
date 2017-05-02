@@ -51,7 +51,6 @@ class BuildButtonsView: UIView
         buttonStackView?.layoutMargins = UIEdgeInsets(top: 10, left: 5, bottom: 40, right: 5)
         buttonStackView?.isLayoutMarginsRelativeArrangement = true
         buttonStackView?.axis = UILayoutConstraintAxis.horizontal
-        //buttonStackView?.alignment = UIStackViewAlignment
         buttonStackView?.distribution = UIStackViewDistribution.fillEqually
         
         buttonStackView?.backgroundColor = UIColor.brown
@@ -203,15 +202,12 @@ class BuildButtonsView: UIView
     {
         var splitString = button.currentTitle?.components(separatedBy: ":")
         let partType = splitString?[0]
-        //button.backgroundColor = UIColor.gray
-        //setNeedsDisplay()
-        
+
         delegate?.buttonTouched(partType: partType!)
     }
     func buttonTouchDown(button: UIButton)
     {
-        //button.backgroundColor = UIColor.lightGray
-        //setNeedsDisplay()
+
     }
     
     func setGradientColors(button: UIButton,colors: [UIColor], gradientLocations: [NSNumber])

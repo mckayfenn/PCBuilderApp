@@ -75,9 +75,7 @@ class BuildInterfaceView: UIView {
         
         
         let dimension: CGFloat = min(bounds.width, bounds.height)
-        
-        
-        
+
         
         // DRAW CASE BUTTON
         caseRect = CGRect.zero
@@ -108,9 +106,7 @@ class BuildInterfaceView: UIView {
             //caseText.draw(at: CGPoint(x: caseRect.midX - caseTextSize.width / 2, y: caseRect.midY - caseTextSize.height / 2), withAttributes: caseTextAttribute)
             caseText.draw(at: CGPoint(x: caseRect.maxX - (caseTextSize.width * 2), y: caseRect.minY + (caseTextSize.height*4)) , withAttributes: caseTextAttribute)
         }
-        
-        
-        
+         
         
         // DRAW MOTHERBOARD
         motherboardRect = CGRect.zero

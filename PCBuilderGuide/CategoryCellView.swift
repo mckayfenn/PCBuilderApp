@@ -26,8 +26,6 @@ class CategoryCellView: UIView {
         super.init(frame: frame)
         self.backgroundColor = UIColor.darkGray
         
-        
-        
     }
     
 
@@ -64,18 +62,11 @@ class CategoryCellView: UIView {
         
         let url = URL(string: imageURL)
         
-//        DispatchQueue.global().async {
-//            let data = try? Data(contentsOf: url!)
-//            DispatchQueue.main.async {
-//                self.imageView?.image = UIImage(data: data!)
-//            }
-//        }
         
         addSubview(imageView!)
         
         context.addRect(imageRect)
         print(imageView)
-        //context.draw((imageView?.image?.cgImage)!, in: imageRect)
         
         
         let modelLength: Int = (_modelLabel?.characters.count)!

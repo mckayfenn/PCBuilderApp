@@ -55,13 +55,7 @@ class UserBuilds {
         for build: UserBuild in _listOfBuilds {
             buildDictionaries.append(build.dictionaryRepresentation)
         }
-        
-//        let jsonData: Data = try! JSONSerialization.data(withJSONObject: buildDictionaries, options: .prettyPrinted)
-//        let docDirectory: URL = getDesktop().appendingPathComponent("UserBuilds.json")
-//        //try! jsonData.write(to: docDirectory)
-//        try! jsonData.write(to: URL.init(fileURLWithPath: "/Users/Authenticated User/Desktop/UserBuilds.json"))
-        
-        
+
         let jsonData: Data = try! JSONSerialization.data(withJSONObject: buildDictionaries, options: .prettyPrinted)
         let docDirectory: URL = getDocumentsDirectory().appendingPathComponent("UserBuilds.json")
         
@@ -191,21 +185,6 @@ class UserBuild {
     **/
     public func addPart(part: MyParts) {
         
-//        if (type(of: part) == CPU.self) {
-//            for i: Int in 0..<_listOfUsersParts.count {
-//                let thisPart = _listOfUsersParts[i]
-//                if (type(of: thisPart) == CPU.self) {
-//                    _listOfUsersParts.remove(at: i)
-//                    break
-//                }
-//            }
-//        }
-//        else if (type(of: part) == Motherboard.self) {
-//            // same thing but remove motherboard
-//        }
-        
-
-        
         // This is a much better way to do it add part
         for i: Int in 0..<_listOfUsersParts.count {
             let thisPart = _listOfUsersParts[i]
@@ -214,7 +193,6 @@ class UserBuild {
                 break
             }
         }
-        
         
         // add the new one
         _listOfUsersParts.append(part)

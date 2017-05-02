@@ -26,8 +26,6 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
     
     private var partViewController: SpecificPartPageController? = nil
     
-    //private var _title: String? = nil
-    //public var pageTitle: String { get { return _title! } set { _title = newValue } }
     
     override func loadView() {
         super.loadView()

@@ -148,9 +148,6 @@ class BuildInterfaceViewController: UIViewController, BuildInterfaceViewDelegate
             _partsList.saveCustomParts()
         }
         
-        // TODO: remove the part first if there is already one of these
-        // actually maybe not needed. Now assigning userparts based on the parts in the userbuilds. 
-        //_usersParts?.append(part)
     }
     func showPictureAndTextFor(part: MyParts)
     {

@@ -22,7 +22,6 @@ class MainBuilderView: UIView {
         super.init(frame: frame)
         
         self.backgroundColor = UIColor.white
-        //setGradientColors(viewPassed: self, colors: [UIColor.white, UIColor.lightGray], gradientLocations: [0.0,0.5,1.0])
         
         buildInterfaceView = buildView
         buildInterfaceView?.frame = CGRect(x: 0.0, y: 0.0, width: frame.width, height: frame.height)
@@ -38,12 +37,10 @@ class MainBuilderView: UIView {
         _costTotalLabel?.font = UIFont(name: "Helvetica-Bold", size: 20)
         _costTotalLabel?.textColor = UIColor.black
         _costTotalLabel?.backgroundColor = UIColor.white
-//setGradientColors(viewPassed: _costTotalLabel!, colors: [UIColor.lightGray, UIColor.white], gradientLocations: [0.0,0.5,1.0])
 
         
         _buildButtonsView = buildButtonsView
         _buildButtonsView?.frame = CGRect(x: 0.0, y: 0.0, width: (scrollView?.frame.width)! * 5, height: (scrollView?.frame.height)!)
-        //_buildButtonsView?.backgroundColor = UIColor.white
         setGradientColors(viewPassed: _buildButtonsView!, colors: [UIColor.white, UIColor.lightGray], gradientLocations: [0.0,0.5,1.0])
 
         

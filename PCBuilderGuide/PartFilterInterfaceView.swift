@@ -29,10 +29,7 @@ class PartFilterInterfaceView: UIView
         stackView?.isLayoutMarginsRelativeArrangement = true
         stackView?.distribution = UIStackViewDistribution.fillEqually
         stackView?.spacing = 15.0
-        //stackView?.backgroundColor = UIColor.yellow
         addSubview(stackView!)
-        
-        
         
     }
     
@@ -67,7 +64,6 @@ class PartFilterInterfaceView: UIView
             button.layer.cornerRadius = 5.0
             
             button.setTitle(buttonAttributes[i].text as String, for: .normal)
-            //button.backgroundColor = buttonAttributes[i].color
             setGradientColors(button: button, colors: [UIColor.gray, UIColor.darkGray], gradientLocations: [0.0,0.5,1.0])
             button.tag = i
             button.addTarget(self, action: #selector(buttonTouchUp), for: .touchUpInside)
@@ -80,8 +76,7 @@ class PartFilterInterfaceView: UIView
     }
     func buttonTouchDown(button: UIButton)
     {
-         //setGradientColors(button: button, colors: [UIColor.darkGray, UIColor.lightGray], gradientLocations: [0.0,0.5,1.0])
-        //setNeedsDisplay()
+
     }
     func buttonTouchUp(button: UIButton)
     {

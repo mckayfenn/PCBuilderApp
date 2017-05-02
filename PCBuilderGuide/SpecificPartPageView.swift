@@ -38,7 +38,6 @@ class SpecificPartPageView: UIView, PartViewDelegate {
         
         partView = PartView(frame: frame, part: part)
         partView?.frame = CGRect(x: 0.0, y: 0.0, width: frame.width, height: screenView * 1.25)
-        //partView?.backgroundColor = UIColor.white
         
         scrollView?.addSubview(partView!)
         
@@ -84,7 +83,6 @@ class PartView: UIView {
         stackView?.isLayoutMarginsRelativeArrangement = true
         stackView?.distribution = UIStackViewDistribution.fillEqually
         stackView?.spacing = 15.0
-        //stackView?.backgroundColor = UIColor.blue
         setGradientColors(viewPassed: stackView!, colors: [UIColor.white, UIColor.lightGray], gradientLocations: [0.0,0.7,1.0])
         
         addSubview(stackView!)
@@ -126,7 +124,6 @@ class PartView: UIView {
         selectButton.layer.borderWidth = 4.5
         selectButton.layer.borderColor = UIColor(red: 82.0/255.0, green: 128.0/255.0, blue: 164.0/255.0, alpha: 1.0).cgColor
         selectButton.layer.cornerRadius = 8.0
-        //selectButton.backgroundColor = UIColor.blue
         selectButton.setTitle("Select", for: .normal)
         selectButton.addTarget(self, action: #selector(buttonSelected), for: .touchUpInside)
         setGradientColors(button: selectButton, colors: [UIColor.gray, UIColor.darkGray], gradientLocations: [0.0,0.5,1.0])
@@ -182,7 +179,6 @@ class PartView: UIView {
         }
         
         // DRAW socket
-        //var isCPU: bool = type(of: _part).self === CPU.self
         if (_part?._socket != nil && _part?._socket != "" && type(of: _part).self != CPU.self) {
             let socketTitleLabel = UILabel(frame: CGRect(x: 10.0, y: finalPosition.maxY + 10, width: frame.width, height: 20))
             socketTitleLabel.text = "Socket"

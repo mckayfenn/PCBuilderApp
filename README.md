@@ -1,5 +1,5 @@
 # PCBuilderApp
-A final project app for CS4530. Created by McKay Fenn and Neal Phelps
+A final project app for CS4530. Created by McKay Fenn and [Neal Phelps](https://github.com/nphelpsiv).
 
 All the functionality is working and it follows our original outline. 
 We just need to continue updating the json file with the list of parts.
